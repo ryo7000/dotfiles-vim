@@ -71,9 +71,16 @@ map <C-w>t :tabnew<cr>
 " fuzzyfinder
 nmap <unique> <silent> <C-s> :FuzzyFinderBuffer<CR>
 
-let g:FuzzyFinder_KeySwitchMode = ['<C-s>', '']
-let g:FuzzyFinder_MruFileModeVars = { 'maxItems' : 100 }
+let g:FuzzyFinderOptions = {
+\   'key_next_mode'   : '<C-s>',
+\   'mru_file' : {
+\     'max_item' : 100,
+\   },
+\ }
 
+" 現在のディレクトリからfileモードを開く
+nnoremap <C-x> :let g:FuzzyFinderOptions.file.initial_text =
+      \ expand('%')[:-1-len(expand('%:t'))]<CR>:FuzzyFinderFile<CR>
 
 "---------------------------------------------------------------------------
 " cscope関連
