@@ -3,7 +3,7 @@
 " An example for a Japanese version vimrc file.
 " 日本語版のデフォルト設定ファイル(vimrc) - Vim7用試作
 "
-" Last Change: 24-Jul-2007.
+" Last Change: 10-Jan-2008.
 " Maintainer:  MURAOKA Taro <koron@tka.att.ne.jp>
 "
 " 解説:
@@ -29,6 +29,12 @@
 "   :echo $HOME
 "   :echo $VIM
 "   :version
+
+if has('win32')
+  " syntax onの前に設定しないと、
+  " runtimepath/ftdetect以下のファイルが読み込まれない
+  set runtimepath=$VIM/.vim,$VIMRUNTIME,$VIM/.vim/after
+endif
 
 "---------------------------------------------------------------------------
 " サイトローカルな設定($VIM/vimrc_local.vim)があれば読み込む。読み込んだ後に
