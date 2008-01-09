@@ -78,8 +78,17 @@ let g:FuzzyFinderOptions = {
 \   },
 \ }
 
+nnoremap <C-q><C-b> :FuzzyFinderBuffer<CR>
+nnoremap <C-q><C-f> :FuzzyFinderFile<CR>
+nnoremap <C-q><C-n> :FuzzyFinderMruFile<CR>
+nnoremap <C-q><C-p> :FuzzyFinderMruCmd<CR>
+nnoremap <C-q><C-v> :FuzzyFinderFavFile<CR>
+nnoremap <C-q><C-d> :FuzzyFinderDir<CR>
+nnoremap <C-q><C-t> :FuzzyFinderTag<CR>
+nnoremap <C-q><C-g> :FuzzyFinderTaggedFile<CR>
+
 " 現在のディレクトリからfileモードを開く
-nnoremap <C-x> :let g:FuzzyFinderOptions.file.initial_text =
+nnoremap <C-q><C-x> :let g:FuzzyFinderOptions.file.initial_text =
       \ expand('%')[:-1-len(expand('%:t'))]<CR>:FuzzyFinderFile<CR>
 
 "---------------------------------------------------------------------------
