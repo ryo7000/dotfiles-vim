@@ -3,7 +3,7 @@ filetype plugin on
 "---------------------------------------------------------------------------
 " vimrcの設定上書き
 if has('win32')
-  let $HOME="c:/online/vim"
+  let $HOME=$VIM
 endif
 set nobackup
 set nowrapscan
