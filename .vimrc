@@ -71,12 +71,16 @@ map <C-w>t :tabnew<cr>
 " fuzzyfinder
 nmap <unique> <silent> <C-s> :FuzzyFinderBuffer<CR>
 
+" file.lasting_cache : ディレクトリ移動が反映されないのでoff
 let g:FuzzyFinderOptions = {
-\   'key_next_mode'   : '<C-s>',
-\   'mru_file' : {
-\     'max_item' : 100,
-\   },
-\ }
+\    'key_next_mode'   : '<C-s>',
+\    'file' : {
+\      'lasting_cache' : 0,
+\    },
+\    'mru_file' : {
+\      'max_item' : 100,
+\    },
+\  }
 
 nnoremap <C-q><C-b> :FuzzyFinderBuffer<CR>
 nnoremap <C-q><C-n> :FuzzyFinderMruFile<CR>
