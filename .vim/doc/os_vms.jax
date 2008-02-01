@@ -1,4 +1,4 @@
-*os_vms.txt*    For Vim バージョン 7.0.  Last change: 2006 Apr 30 和訳
+*os_vms.txt*    For Vim バージョン 7.0.  Last change: 2006 Apr 30
 
 
 			  VIMリファレンスマニュアル
@@ -61,7 +61,7 @@ VMSでvim.exeを構築するにはUNIXとextraアーカイブの両方が必要�
 
 アーカイブには次のファイルが含まれる: vim.exe, ctags.exe, xxd.exe, mms_vim.exe
 
-GTK 用実行可能ファイルでは Alpha と IA64 プラットフォームで利用可能な GTKLIB 
+GTK 用実行可能ファイルでは Alpha と IA64 プラットフォームで利用可能な GTKLIB
 が必要。
 
 ==============================================================================

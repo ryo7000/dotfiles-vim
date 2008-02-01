@@ -1,4 +1,4 @@
-*quickref.txt*  For Vim バージョン 7.1.  Last change: 2007 May 11 ?a??
+*quickref.txt*  For Vim バージョン 7.1.  Last change: 2007 May 11
 
 
 		  VIM REFERENCE MANUAL    by Bram Moolenaar
@@ -69,7 +69,7 @@ smz			※ f,F,t,Tで指定する{char}は１文字分の文字だけです。
 |-|	N  -		上に N 行移動し、行頭の非空白文字に移動
 |+|	N  +		下に N 行移動し、行頭の非空白文字に移動(CTRL-M, <CR>
 			キーでも同じ)
-|_|	N  _		下に N-1 行移動し,行頭の非空白文字に移動 
+|_|	N  _		下に N-1 行移動し,行頭の非空白文字に移動
 |G|	N  G		N 行目(デフォルトは最後の行)に移動し、行頭の非空白文
 			字に移動
 |gg|	N  gg		N 行目(デフォルトは１行目)に移動し、行頭の非空白文字
@@ -159,7 +159,7 @@ smz			※ f,F,t,Tで指定する{char}は１文字分の文字だけです。
 	    直前に指定したatomと0回以上一致 	*	\*
 	    直前に指定したatomと1回以上一致 	\+	\+
       直前に指定した文字と0回もしくは1回一致 	\=	\=
-	    直前に指定した文字と2回?5回一致 	\{2,5}  \{2,5}
+	    直前に指定した文字と2回〜5回一致 	\{2,5}  \{2,5}
 		       2種類の正規表現を列記	\|	\|
 	  パターンをグループ化してatomとする	\(\)	\(\)
 
@@ -426,9 +426,9 @@ smz			   号のこと。英語圏では昔から使われている。
 |:ce|	  :[range]ce[nter] [width]
 			[range]の行範囲をセンタリング
 |:le|	  :[range]le[ft] [indent]
-			[range]の行範囲を( [indent] 分)左寄せ 
+			[range]の行範囲を( [indent] 分)左寄せ
 |:ri|	  :[range]ri[ght] [width]
-			[range]の行範囲を( [width] 桁まで)右寄せ 
+			[range]の行範囲を( [width] 桁まで)右寄せ
 ------------------------------------------------------------------------------
 *Q_co*		複雑な変更処理
 
@@ -479,10 +479,10 @@ smz			   号のこと。英語圏では昔から使われている。
 |v_is|	N  is		"inner sentence"を選択
 |v_ap|	N  ap		"a paragraph"を選択
 |v_ip|	N  ip		"inner paragraph"を選択
-|v_ab|	N  ab		"a block"( "[("?"])"の範囲)を選択
-|v_ib|	N  ib		"inner block" ( "[("?"])"の範囲)を選択
-|v_aB|	N  aB		"a Block" ( "[{"?"]}"の範囲)を選択
-|v_iB|	N  iB		"inner Block" ( "[{"?"]}"の範囲)を選択
+|v_ab|	N  ab		"a block"( "[("〜"])"の範囲)を選択
+|v_ib|	N  ib		"inner block" ( "[("〜"])"の範囲)を選択
+|v_aB|	N  aB		"a Block" ( "[{"〜"]}"の範囲)を選択
+|v_iB|	N  iB		"inner Block" ( "[{"〜"]}"の範囲)を選択
 ------------------------------------------------------------------------------
 *Q_re*		繰り返しコマンド
 
@@ -510,7 +510,7 @@ smz			   号のこと。英語圏では昔から使われている。
 ------------------------------------------------------------------------------
 *Q_km*		キーマップ
 
-|:map|	     :ma[p] {lhs} {rhs}	  通常モード/visualモードで{lhs} を{rhs} 
+|:map|	     :ma[p] {lhs} {rhs}	  通常モード/visualモードで{lhs} を{rhs}
 				  に割り付け
 |:map!|	     :ma[p]! {lhs} {rhs}  挿入モード/コマンドラインモードで{lhs} を
 				  {rhs} に割り付け
@@ -518,7 +518,7 @@ smz			   号のこと。英語圏では昔から使われている。
 				  ":map"と同じだが、{rhs}の再割り付けしない
 |:unmap|     :unm[ap] {lhs}	  通常モード/visualモード用の{lhs} 定義を
 				  削除
-|:unmap!|    :unm[ap]! {lhs}	  挿入モード/コマンドラインモードの{lhs} 
+|:unmap!|    :unm[ap]! {lhs}	  挿入モード/コマンドラインモードの{lhs}
 				  定義を削除
 |:map_l|     :ma[p] [lhs]	  通常モード/visualモード用の( [lhs]で始まる)
 				  マップを一覧表示
@@ -1000,7 +1000,7 @@ smz			   号のこと。英語圏では昔から使われている。
 |<Del>|		   <Del>	回数指定中: 最後の文字を削除
 |:version|	:ve[rsion]	バージョン情報を表示
 |:mode|		:mode N		MS-DOS: 画面モードを N (数字,C80,C4350,など)
-				に 
+				に
 
 |:normal|	:norm[al][!] {commands}
 				通常モードコマンドを実行
@@ -1183,7 +1183,7 @@ smz			   号のこと。英語圏では昔から使われている。
 				編集
 
 	     in current window    in new window	~
-|:argument|  :argu[ment] N	  :sar[gument] N	ファイル N を編集 
+|:argument|  :argu[ment] N	  :sar[gument] N	ファイル N を編集
 |:next|	     :n[ext]		  :sn[ext]		次のファイルを編集
 |:next_f|    :n[ext] {arglist}	  :sn[ext] {arglist}	新たな引数リストを作り
 							最初のファイルを編集
@@ -1208,7 +1208,7 @@ smz			   号のこと。英語圏では昔から使われている。
 |:q|	  :q[uit]!		変更を破棄して、現在のバッファを終了。他に
 				ヘルプ以外のバッファがなければvimを終了。
 |:qa|	  :qa[ll]		変更がない限りvimを終了
-|:qa|	  :qa[ll]!		変更があってもvimを強制終了 
+|:qa|	  :qa[ll]!		変更があってもvimを強制終了
 |:cq|	  :cq			保存せずに終了し、エラーコードを返す。
 
 |:wq|	  :wq[!]		現ファイルを保存して終了
@@ -1245,7 +1245,7 @@ smz			   号のこと。英語圏では昔から使われている。
 |:autocmd|	:au			自動コマンドの一覧表示
 |:autocmd|	:au {event}		{event}用の自動コマンドの一覧表示
 |:autocmd|	:au {event} {pat}	{event}用の自動コマンドのうち、{pat}
-					に合致するコマンドの一覧表示 
+					に合致するコマンドの一覧表示
 					{pat}
 |:autocmd|	:au {event} {pat} {cmd}	{event}と{pat}用の新たな自動コマンドを
 					{cmd}として登録

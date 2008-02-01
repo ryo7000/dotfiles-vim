@@ -1,4 +1,4 @@
-*tagsrch.txt*   For Vim バージョン 7.0.  Last change: 2006 Apr 24 和訳
+*tagsrch.txt*   For Vim バージョン 7.0.  Last change: 2006 Apr 24
 
 
 		  VIM REFERENCE MANUAL    by Bram Moolenaar
@@ -482,7 +482,7 @@ exuberant ctags		これはとてもよいものだ。C言語、C++、Java、Fort
 			生成することができる。
 			http://ctags.sourceforge.net をご覧ください。
 etags			Emacsに連携する。多言語に対応している。
-JTags			For Java, in Java. 
+JTags			For Java, in Java.
 			http://www.fleiner.com/jtags/で入手できる。
 ptags.py		For Python, in Python.
 			PythonのソースディレクトリTools/scripts/ptags.pyにある。

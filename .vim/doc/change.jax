@@ -1,4 +1,4 @@
-*change.txt*    For Vim バージョン 7.1.  Last change: 2007 Jan 07 和訳
+*change.txt*    For Vim バージョン 7.1.  Last change: 2007 Jan 07
 
 
 		  VIM REFERENCE MANUAL    by Bram Moolenaar
@@ -985,7 +985,7 @@ Note 文字単位のコピーコマンドの後、コピーされたテキスト
 4. 26個の名前付きレジスタ "a から "z または "A から "Z
 5. 4個の読み取り専用レジスタ ": と ". と "% と "#
 6. expression 用レジスタ "=
-7. 選択領域用レジスタ "* と "+ と "~ 
+7. 選択領域用レジスタ "* と "+ と "~
 8. 消去専用レジスタ "_
 9. 最終検索パターン用レジスタ "/
 
@@ -1153,7 +1153,7 @@ gq{motion}		{motion} の行を整形する。整形は3種類の方法のうち�
 
                         3番目の場合は、オプション 'textwidth'が整形された各行
                         の長さを制御する (後述)。'textwidth'が 0 なら、整形さ
-                        れた行の長さは画面の幅となる (ただし、最大で79)。 
+                        れた行の長さは画面の幅となる (ただし、最大で79)。
 			'formatoptions' は、整形の仕方を制御する |fo-table|。
                         カーソルは最後に整形された行の最初の非空白文字の上に置
                         かれる。
@@ -1430,9 +1430,9 @@ autocommand と連携して、クールに振舞うはずである。
 - 'formatoptions' を "aw2tcq" に設定し、テキストのインデントを次のようにするこ
   ともできる。
 
-	    bla bla foobar bla 
+	    bla bla foobar bla
 	bla foobar bla foobar bla
-	    bla bla foobar bla 
+	    bla bla foobar bla
 	bla foobar bla bla foobar
 
 - コメントだけを自動整形するには'c'フラグを追加する。ソースコードの編集向き。

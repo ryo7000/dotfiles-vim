@@ -1,4 +1,4 @@
-*intro.txt*     For Vim バージョン 7.0.  Last change: 2006 Apr 20 和訳
+*intro.txt*     For Vim バージョン 7.0.  Last change: 2006 Apr 20
 
 
 		  VIM REFERENCE MANUAL    by Bram Moolenaar
@@ -154,7 +154,7 @@ http://groups.yahoo.com/group/vim-mac
 メッセージは簡潔にお願いします。メールに回答する時間は、Vim を改良する時間から
 消費されています! 常に再現可能な例をつけてください。できれば、どこの設定が (あ
 るいは機能が) バグの発生に影響しているかを探してください。可能なら、違うマシン
-でも試してみて下さい。そして、もし修正できた場合はパッチを私に送って下さい。 
+でも試してみて下さい。そして、もし修正できた場合はパッチを私に送って下さい。
 (本家へのリポートは英語でお願いします)
 
 Vim のバージョンや設定情報を含めてくれると助かります。次のコマンドで情報を得る
@@ -430,7 +430,7 @@ CTRL-{char}	制御文字として入力された文字 {char}。CTRL キーを�
 <C-Left>	コントロール + 上カーソル
 <C-Right>	コントロール + 上カーソル
 <F1> - <F12>	ファンクションキー1から12	*function_key* *function-key*
-<S-F1> - <S-F12> シフト + ファンクションキー1から12	
+<S-F1> - <S-F12> シフト + ファンクションキー1から12
 						*<S-F1>*
 <Help>		ヘルプキー
 <Undo>		アンドゥキー
@@ -452,7 +452,7 @@ CTRL-{char}	制御文字として入力された文字 {char}。CTRL キーを�
 <k0> - <k9>	テンキーの0から9		*keypad-0* *keypad-9*
 <S-...>		シフトキー			*shift* *<S-*
 <C-...>		コントロールキー		*control* *ctrl* *<C-*
-<M-...>		altまたはmetaキー		*meta* *alt* *<M-*	
+<M-...>		altまたはmetaキー		*meta* *alt* *<M-*
 <A-...>		<M-...>と同じ			*<A-*
 <D-...>		コマンドキー (Macintosh のみ)	*<D-*
 <t_xx>		termcapで"xx"エントリを持つキー
@@ -857,10 +857,10 @@ screen	| window 1	| window 2	|
 						8.  ccc ccc c
 1. aaa		1. aaa		1. aaa		9.  cc
 2. bbb		2. bbb		2. bbb		10. ddd
-3. ccc ccc ccc	3. ccc ccc ccc	3. ccc ccc c	11. ~ 
+3. ccc ccc ccc	3. ccc ccc ccc	3. ccc ccc c	11. ~
 4. ddd		4. ddd		4. cc		12. === status line ===
 				5. ddd		13. (command line)
-				6. ~ 
+				6. ~
 
 ==============================================================================
  vim:tw=78:ts=8:ft=help:norl:

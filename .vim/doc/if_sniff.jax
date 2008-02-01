@@ -1,4 +1,4 @@
-*if_sniff.txt*	For Vim バージョン 7.0.  Last change: 2005 Mar 29 和訳
+*if_sniff.txt*	For Vim バージョン 7.0.  Last change: 2005 Mar 29
 
 
 		  VIM REFERENCE MANUAL
@@ -54,7 +54,7 @@ Vim で SNiFF+ を使うには
 connect			sc	SNiFF+ との接続を確立します。
 				Preference で、これが可能なように SNiFF+ を設
 				定ずみかどうか確認しておいてください。
-disconnect		sq	SNiFF+ との接続を切断します。:sniff connect 
+disconnect		sq	SNiFF+ との接続を切断します。:sniff connect
 				(もしくは 'sc')で、いつでも再接続できます。
 toggle			st	実装と定義ファイルをトグルします。
 find-symbol		sf	シンボル・ブラウザーに symbol を読み込みます。

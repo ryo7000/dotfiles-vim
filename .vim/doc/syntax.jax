@@ -1,4 +1,4 @@
-*syntax.txt*	For Vim バージョン 7.1.  Last change: 2007 May 11 和訳
+*syntax.txt*	For Vim バージョン 7.1.  Last change: 2007 May 11
 
 
 		VIMリファレンスマニュアル    by Bram Moolenaar
@@ -197,7 +197,7 @@ NOTE: |.gvimrc|の中で":gui"を使用すると"gvim -f"によりフォアグ�
 イルのうち最初に見つけた1つだけを読込む。
 
 
-名前付けの慣習		
+名前付けの慣習
 							*group-name*
 ハイライトや構文グループの名前はアスキー文字、数字、アンダースコアだけでつけな
 ければならない。正規表現では: "[a-zA-Z0-9_]*"
@@ -858,7 +858,7 @@ g:doxygen_enhanced_color
 g:doxygen_enhanced_colour	0	Doxygen コメントに対して標準でないハイ
 					ライトを行う。
 
-doxygen_my_rendering		0	HTML の太字、斜体、html_my_rendering 
+doxygen_my_rendering		0	HTML の太字、斜体、html_my_rendering
 					に対する下線の描画を無効にする。
 
 doxygen_javadoc_autobrief	1	0にすると JavaDoc の autobrief に対す
@@ -1125,7 +1125,7 @@ fortran_dialectへ設定した場合にはそれは無視される。
 	let fortran_dialect="elf"
     else
 	unlet! fortran_dialect
-    endif 
+    endif
 これは.vimrcで"syntax on"より前に"filetype plugin indent on"が書かれていないと
 機能しないことに注意。
 
@@ -1293,7 +1293,7 @@ Basicだけであり、他のスクリプト言語はまだ加えられていな
 
 htmlプロセッサ言語は複数ある。html.vimはインクルードしやすいように簡素に書かれ
 ている。html.vimをインクルードするには以下の2行をその言語用の構文ファイルに書
-き足すこと(この例はasp.vimからとった): 
+き足すこと(この例はasp.vimからとった):
 
     runtime! syntax/html.vim
     syn cluster htmlPreproc add=asp
@@ -2289,7 +2289,7 @@ SGMLファイル中のタグをハイライトする方法は以下のように�
  <link>。
 
 そのテキストの表示法を変えたいなら以下の構文グループを再定義しなければならない
-: 
+:
     - sgmlBold
     - sgmlBoldItalic
     - sgmlUnderline
@@ -2529,7 +2529,7 @@ VIM						*vim.vim* *ft-vim-syntax*
 速度を改善するのに使える(これについては|:syn-sync|を参照)。
 
 	g:vim_minlines : シンクロナイズの最小行数をセットするのに使う
-	g:vim_maxlines : シンクロナイズの最大行数をセットするのに使う 
+	g:vim_maxlines : シンクロナイズの最大行数をセットするのに使う
 
 g:vimembedscriptオプションは外部スクリプト言語(現在のところperl, python, ruby,
 tcl)のサポートを犠牲にする代わりに、vimスクリプト用の構文ハイライトの読み込み
@@ -2755,7 +2755,7 @@ xpm.vimは編集中のXPMファイルの内容から、動的に構文要素を�
 
 	例 (文字定数にマッチする): >
   :syntax match Character /'.'/hs=s+1,he=e-1
-< 
+<
 
 リージョンの定義	*:syn-region* *:syn-start* *:syn-skip* *:syn-end*
 							*E398* *E399*
@@ -2769,7 +2769,7 @@ xpm.vimは編集中のXPMファイルの内容から、動的に構文要素を�
 		[skip={skip_pattern}]
 		end={end_pattern} ..
 		[{options}]
-	
+
 	リージョンを定義する。複数行にわたってもよい。
 
 	{group-name}		"Comment"のような構文グループ名。
@@ -3081,7 +3081,7 @@ contains=CONTAINED
 contains=CONTAINED,{group-name},..
 		"CONTAINED"と同様だが、{group-name}に列挙したグループは除かれ
 		る。
-		
+
 
 "contains"リスト内の{group-name}はパターンであってもよい。そのパターンにマッチ
 するグループ名全てが含まれる("ALLBUT"が使われたときはそれが除かれる)。パターン
@@ -3236,7 +3236,7 @@ region item end     -	 yes  -    yes	-    yes  yes
 
 複数のオフセットの間に','を入れて連結することができる。例: >
   :syn match String  /"[^"]*"/hs=s+1,he=e-1
-< 
+<
     some "string" text
 	  ^^^^^^		ここがハイライトされる
 
@@ -3447,7 +3447,7 @@ skipパターンも"\n"を含んでよい。ただし次の行の最初の文字
 行数が最大N行になる。これは遅いマシンを使っていて、シンクロナイズする行数が少
 ないとわかっているときに便利である。例: >
    :syntax sync ccomment maxlines=500
-< 
+<
 						*:syn-sync-linebreaks*
 複数行にマッチする正規表現を使っているとき、ある行に変更を施すと、前の行でマッ
 チしていた正規表現がマッチしなくなってしまうことがある。この場合、変更を施した
@@ -3549,7 +3549,7 @@ skipパターンも"\n"を含んでよい。ただし次の行の最初の文字
 
 					    *syn-sync-grouphere* *E393* *E394*
     :syntax sync match {sync-group-name} grouphere {group-name} "pattern" ..
-    
+
 	シンクロナイズ用に使うマッチを定義する。{group-name}はマッチのすぐ後に
 	続く構文グループの名前である。ハイライトのためのテキストのパースはマッ
 	チの直後から始まる。この{group-name}がついたリージョンが存在しなければ
@@ -3590,7 +3590,7 @@ skipパターンも"\n"を含んでよい。ただし次の行の最初の文字
    :syntax sync clear
 
 あるシンクロナイズパターンをクリアするには: >
-   :syntax sync clear {sync-group-name} ..  
+   :syntax sync clear {sync-group-name} ..
 
 ==============================================================================
 11. 構文アイテムのリストを表示する	*:syntax* *:sy* *:syn* *:syn-list*
@@ -3689,7 +3689,7 @@ skipパターンも"\n"を含んでよい。ただし次の行の最初の文字
 ハイライトに関して、ターミナルは3種類に分類される:
 term	通常のターミナル(vt100, xterm)
 cterm	カラーターミナル(MS-DOS console, color-xterm。これらはtermcapエントリ
-	"Co"をもつ) 
+	"Co"をもつ)
 gui	GUI
 
 ハイライトはこれらのタイプごとに指定できる。そうすることによって、同じ構文ファ
@@ -3773,7 +3773,7 @@ ctermbg={color-nr}				*highlight-ctermbg*
 	ハイライトの設定に可搬性を持たせるため、X11の色設定が使われている(複雑
 	であるが)。以下の色名を、色番号の代わりに使うことができる:
 
-							*cterm-colors* 
+							*cterm-colors*
 	    NR-16   NR-8    COLOR NAME ~
 	    0	    0	    Black
 	    1	    4	    DarkBlue
@@ -3873,7 +3873,7 @@ guisp={color-name}					*highlight-guisp*
 	クォートでくくる。それゆえシングルクォートを使うことはできない。
 	例: >
 	    :hi comment guifg='salmon pink'
-< 
+<
 							*gui-colors*
 	推奨されている色名 (これらはほとんどのシステムで利用可能である)
 	    Red		LightRed	DarkRed
@@ -4027,7 +4027,7 @@ Scrollbar	メインウィンドウのスクロールバーの文字と背景。
 							*hl-Tooltip*
 Tooltip		ツールチップのフォント、文字、背景。
 		使用可能なhighlightの引数: font, guibg, guifg.
-    
+
 		NOTE: MotifとAthenaでは'guifontset'が空かどうかに関わらず、常
 		に引数fontで実際のフォントセットを指定する。そしてそれが現在の
 		|:language|に結び付けられる。
