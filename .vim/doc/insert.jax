@@ -1,4 +1,4 @@
-*insert.txt*    For Vim バージョン 6.3.  Last change: 2004 Apr 09 和訳
+*insert.txt*    For Vim バージョン 6.3.  Last change: 2004 Apr 09
 
 
 		VIMリファレンスマニュアル    by Bram Moolenaar
@@ -592,7 +592,7 @@ CTRL-X CTRL-L		現在行のカーソルの前にあるのと同じ文字で始�
 	CTRL-X CTRL-L	行を展開した後で再びCTRL-X CTRL-Lをタイプすれば、それ
 			に続けて付加的に行を取得でき、CTRL-Xを2回押すことで終
 			了する。
-			
+
 現在のファイルのキーワードで補完する			*compl-current*
 
 							*i_CTRL-X_CTRL-P*

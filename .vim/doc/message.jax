@@ -1,4 +1,4 @@
-*message.txt*   For Vim バージョン 7.1.  Last change: 2007 Mar 20 和訳
+*message.txt*   For Vim バージョン 7.1.  Last change: 2007 Mar 20
 
 
 		VIMリファレンスマニュアル    by Bram Moolenaar
@@ -50,7 +50,7 @@ Note: 出力を表示中に "q" を押してそれ以降の出力表示をさせ
 
 とすればよい。面倒ならシフトキーを使わないでもできる: >
 
-	:help e72 
+	:help e72
 
 ==============================================================================
 2. エラーメッセージ					*error-messages*
@@ -716,7 +716,7 @@ Vimが一時ファイルを読み込めなかった。
 例: >
 	:command MyCommand1 echo "one"
 	:command MyCommand2 echo "two"
-	:MyCommand 
+	:MyCommand
 <
 							*E492*  >
   Not an editor command

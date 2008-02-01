@@ -1,4 +1,4 @@
-*undo.txt*      For Vim バージョン 6.3.  Last change: 2003 Oct 21 和訳
+*undo.txt*      For Vim バージョン 6.3.  Last change: 2003 Oct 21
 
 
 		  VIM REFERENCE MANUAL    by Bram Moolenaar
@@ -22,18 +22,18 @@ u			undo [回数] 変更。  {Vi: 一度のみ}
 :u[ndo] 		undo 一度変更.  {Vi: 一度のみ}
 
 							*CTRL-R*
-CTRL-R			undo してしまった後 変更 [回数] を redo する。  
+CTRL-R			undo してしまった後 変更 [回数] を redo する。
 			{Vi: 再描画}
 
 							*:red* *:redo* *redo*
-:red[o]			undo してしまった後一度の変更を redo する。  
+:red[o]			undo してしまった後一度の変更を redo する。
 			{Vi: redo はない}
 
 							*U*
 U			行中のすべての最新変更を undo する。  {Vi: その行から
 			動かない間}
 
-最後の変更は憶えられている。あなたは Undo と Redo コマンド上で、それぞれ  
+最後の変更は憶えられている。あなたは Undo と Redo コマンド上で、それぞれ
 変更する前にテキストを戻すのに使える。あなたはその上もう一度の変更を適用
 することができ、Undo の前にテキストを元に戻すことができる。
 
@@ -50,9 +50,9 @@ Undo するのに バッファの変更が無くなるまで "u" を使いなさ
 ==============================================================================
 2. 2つの undo						*undo-two-ways*
 
-どんな undo と redo コマンドは 'cpoptions' 内の 'u' フラグに依存している。 
+どんな undo と redo コマンドは 'cpoptions' 内の 'u' フラグに依存している。
 Vim の方法 ('u' 含まない) と Vi 互換の方法 ('u' 含む) がある。
-Vim の方法、"uu" は2度の変更を undo する。Vi 互換の方法, "uu" は何もしない 
+Vim の方法、"uu" は2度の変更を undo する。Vi 互換の方法, "uu" は何もしない
 (undo を undo する)
 
 'u' 含まない, Vim の方法:

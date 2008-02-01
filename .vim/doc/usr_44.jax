@@ -1,4 +1,4 @@
-*usr_44.txt*	For Vim バージョン 7.1.  Last change: 2006 Apr 24 和訳
+*usr_44.txt*	For Vim バージョン 7.1.  Last change: 2006 Apr 24
 
 		     VIM USER MANUAL - by Bram Moolenaar
 
@@ -744,7 +744,7 @@ vim5.8との互換が必要なら次のようにします: >
 	  hi def link nameString	String
 	  hi def link nameNumber	Number
 	  hi def link nameCommand	Statement
-	  ... etc ...  
+	  ... etc ...
 
 同期を取る時には使わない項目には"display"パラメタを与えることで、逆スクロー
 ル時やCTRL-Lを実行した時のスピードアップを図ることができます。

@@ -1,4 +1,4 @@
-*gui_w16.txt*   For Vim バージョン 7.1.  Last change: 2005 Mar 29 和訳
+*gui_w16.txt*   For Vim バージョン 7.1.  Last change: 2005 Mar 29
 
 
 		VIMリファレンスマニュアル    by Bram Moolenaar
@@ -123,7 +123,7 @@ Gray, Grey, LightYellow, SeaGreen, Orange, Purple, SlateBlue, Violet,
 
 ==============================================================================
 						*win16-dialogs*
-6. ダイアログとブラウズ		
+6. ダイアログとブラウズ
 
 コンソールバージョンから受け継がれる伝統的なインターフェースはもちろん、さらに
 Win16 GUIでは幾つかの操作に見慣れたWindowsのコンポーネントを使用することができ

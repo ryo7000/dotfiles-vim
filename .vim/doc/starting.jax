@@ -1,4 +1,4 @@
-*starting.txt*  For Vim バージョン 7.0.  Last change: 2006 Apr 25 和訳
+*starting.txt*  For Vim バージョン 7.0.  Last change: 2006 Apr 25
 
 
 		VIMリファレンスマニュアル    by Bram Moolenaar
@@ -697,7 +697,7 @@ Evimでは以下のオプションが標準設定から変更される:
 	る。MS-DOSとWin32ではSHELLが設定されていない場合COMSPECの値が使用され
 	る。
 	環境変数TERMが存在するならば、オプション'term'を設定するのに使われる。
-	しかし、後で GUI を開始するときに 'term' は変更される(下のステップ 8 
+	しかし、後で GUI を開始するときに 'term' は変更される(下のステップ 8
 	を参照。
 
 2. 引数を処理する
@@ -794,7 +794,7 @@ Evimでは以下のオプションが標準設定から変更される:
 	- |+eval|の機能を無効にしてVimをコンパイルした。
 	Note: 引数に"-c set noloadplugins"と指定しても意味がない。このコマンド
 	はこの時点ではまだ実行されない。"--cmd 'set noloadplugins'" とすればよ
-	い。|--cmd| 
+	い。|--cmd|
 
 5. 'shellpipe'と'shellredir'を設定する
 	それ以前に設定されていなければ、'shell'オプションに従って'shellpipe'と

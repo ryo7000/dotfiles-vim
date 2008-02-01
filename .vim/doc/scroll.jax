@@ -1,4 +1,4 @@
-*scroll.txt*    For Vim バージョン 7.0.  Last change: 2006 Apr 24 和訳
+*scroll.txt*    For Vim バージョン 7.0.  Last change: 2006 Apr 24
 
 
 		VIMリファレンスマニュアル    by Bram Moolenaar
@@ -292,7 +292,7 @@ XFree86を使っているときには、/etc/XF86Configに貴方のマウスの�
   		<Btn4Down>: string("0x9b") string("[62~") \n\
   		<Btn5Down>: string("0x9b") string("[63~") \n\
  		<Btn4Up>: \n\
- 		<Btn5Up>: 
+ 		<Btn5Up>:
 
 これらのマッピングを貴方のvimrcファイルに追加しなさい: >
 	:map <M-Esc>[62~ <MouseDown>

@@ -1,4 +1,4 @@
-*usr_45.txt*	For Vim バージョン 6.3.  Last change: 2002 Oct 08 和訳
+*usr_45.txt*	For Vim バージョン 6.3.  Last change: 2002 Oct 08
 
 		     VIM USER MANUAL - by Bram Moolenaar
 
@@ -24,7 +24,7 @@ Table of contents: |usr_toc.txt|
 
 vimは起動時に環境をチェックし、あなたの利用している言語が何かを調べます。ま
 ず間違いなくこの機能は正しく動いて、お使いの言語でのメッセージ(のセットが存
-在すれば)を表示します。現在の言語が何かを見るには、このコマンドを使います。 
+在すれば)を表示します。現在の言語が何かを見るには、このコマンドを使います。
 >
 	:language
 

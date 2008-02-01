@@ -1,154 +1,153 @@
-*term.txt*      For Vim version 6.3.  Last change: 2004 Jan 09 和訳
+*term.txt*      For Vim バージョン 7.1.  Last change: 2007 Feb 28
 
 
-		  VIM REFERENCE MANUAL    by Bram Moolenaar
+		VIMリファレンスマニュアル    by Bram Moolenaar
 
 
-Terminal information					*terminal-info*
+端末情報						*terminal-info*
 
-Vim uses information about the terminal you are using to fill the screen and
-recognize what keys you hit.  If this information is not correct, the screen
-may be messed up or keys may not be recognized.  The actions which have to be
-performed on the screen are accomplished by outputting a string of
-characters.  Special keys produce a string of characters.  These strings are
-stored in the terminal options, see |terminal-options|.
+Vim はユーザが使っている端末の情報にもとづいて、ユーザがどのキーを押したかを認
+識します。この情報が正しくないと、スクリーンは乱れ、キーが認識されなくなってし
+まいます。スクリーンに対する操作は、キーコードのシーケンスを出力することで実現
+されています。特殊なキーを押すとコードのシーケンスが出力されます。これらのシー
+ケンスは端末オプションに保存されています。|terminal-options|を参照。
 
-NOTE: Most of this is not used when running the |GUI|.
+NOTE: |GUI| で実行しているときは、このドキュメントのほとんどの事柄は関係ありま
+せん。
 
-1. Startup			|startup-terminal|
-2. Terminal options		|terminal-options|
-3. Window size			|window-size|
-4. Slow and fast terminals	|slow-fast-terminal|
-5. Using the mouse		|mouse-using|
+1. 起動				|startup-terminal|
+2. 端末オプション		|terminal-options|
+3. ウィンドウサイズ		|window-size|
+4. 端末の速度			|slow-fast-terminal|
+5. マウスの使用			|mouse-using|
 
 ==============================================================================
-1. Startup						*startup-terminal*
+1. 起動							*startup-terminal*
 
-When Vim is started a default terminal type is assumed.  For the Amiga this is
-a standard CLI window, for MS-DOS the pc terminal, for Unix an ansi terminal.
-A few other terminal types are always available, see below |builtin-terms|.
+Vim の起動時はデフォルトの端末タイプ向けの設定になっています。これは Amiga で
+は標準の CLI ウィンドウ、MS-DOS では PC の端末、Unix では ANSI 端末です。
+他に 2, 3 の端末が常に使用可能です。後述の |builtin-terms| を参照。
 
-You can give the terminal name with the '-T' Vim argument.  If it is not given
-Vim will try to get the name from the TERM environment variable.
+Vim の引数 '-T' により端末名を指定することができます。これが指定されない場合、
+環境変数 TERM から端末名を取得しようとします。
 
 				*termcap* *terminfo* *E557* *E558* *E559*
-On Unix the terminfo database or termcap file is used.  This is referred to as
-"termcap" in all the documentation.  At compile time, when running configure,
-the choice whether to use terminfo or termcap is done automatically.  When
-running Vim the output of ":version" will show |+terminfo| if terminfo is
-used.  Also see |xterm-screens|.
+Unix では terminfo データベースや termcap ファイルが使われます。全てのドキュメ
+ントを通して、これのことを "termcap" と呼びます。コンパイル時に、configure に
+より terminfo と termcap を使うかどうかが自動的に決定されます。":version" の出
+力に |+terminfo| が含まれていれば terminfo を使用しています。|xterm-screens|も
+参照。
 
-On non-Unix systems a termcap is only available if Vim was compiled with
-TERMCAP defined.
+Unix 以外のシステムでは、TERMCAP を定義してコンパイルしたときのみ termcap を使
+用できます。
 
 					*builtin-terms* *builtin_terms*
-Which builtin terminals are available depends on a few defines in feature.h,
-which need to be set at compile time:
-    define		output of ":version"	terminals builtin	~
-NO_BUILTIN_TCAPS	-builtin_terms		none
-SOME_BUILTIN_TCAPS	+builtin_terms		most common ones (default)
-ALL_BUILTIN_TCAPS	++builtin_terms		all available
+どの組み込み端末が利用できるかは、feature.h で定義されているマクロに依存します。
+これらはコンパイル時に設定しなければなりません:
+    define		":version" の出力	組み込まれる端末	~
+NO_BUILTIN_TCAPS	-builtin_terms		なし
+SOME_BUILTIN_TCAPS	+builtin_terms		一般的なもの (デフォルト)
+ALL_BUILTIN_TCAPS	++builtin_terms		全て使用可能
 
-You can see a list of available builtin terminals with ":set term=xxx" (when
-not running the GUI).  Also see |+builtin_terms|.
+利用可能な組み込み端末のリストを見るには ":set term=xxx" とします(GUI でないと
+きのみ)。|+builtin_terms|も参照。
 
-If the termcap code is included Vim will try to get the strings for the
-terminal you are using from the termcap file and the builtin termcaps.  Both
-are always used, if an entry for the terminal you are using is present.  Which
-one is used first depends on the 'ttybuiltin' option:
+termcap のコードが組み込まれているときは、termcap ファイルと組み込みの
+termpcap から、使われている端末用のキーシーケンスを取得しようとします。使われ
+ている端末のエントリがあるならば、その両方が使われます。どちらが先に使われるか
+はオプション 'ttybuiltin' に依存します。
 
-'ttybuiltin' on		1: builtin termcap	2: external termcap
-'ttybuiltin' off	1: external termcap	2: builtin termcap
+'ttybuiltin' on		1: 組み込み termcap	2: 外部 termcap
+'ttybuiltin' off	1: 外部 termcap		2: 組み込み termcap
 
-If an option is missing in one of them, it will be obtained from the other
-one.  If an option is present in both, the one first encountered is used.
+ある端末オプションが片方にないときは、もう一方から取得します。ある端末オプショ
+ンが両方にあるときは、先に見つかった方が使われます。
 
-Which external termcap file is used varies from system to system and may
-depend on the environment variables "TERMCAP" and "TERMPATH".  See "man
-tgetent".
+どの外部 termcap ファイルが使われるかはシステムによって異なり、環境変数
+"TERMCAP" と "TERMPATH" に依存します。"man tgetent" を参照してください。
 
-Settings depending on terminal			*term-dependent-settings*
+端末によって設定を切り替える			*term-dependent-settings*
 
-If you want to set options or mappings, depending on the terminal name, you
-can do this best in your .vimrc.  Example: >
+端末名によってオプションやマッピングを切り替えるには .vimrc で行うのがベスト
+です。例: >
 
    if &term == "xterm"
-     ... xterm maps and settings ...
+     ... xterm 用のマッピングと設定 ...
    elseif &term =~ "vt10."
-     ... vt100, vt102 maps and settings ...
+     ... vt100, vt102 用のマッピングと設定 ...
    endif
 <
 						*raw-terminal-mode*
-For normal editing the terminal will be put into "raw" mode.  The strings
-defined with 't_ti' and 't_ks' will be sent to the terminal.  Normally this
-puts the terminal in a state where the termcap codes are valid and activates
-the cursor and function keys.  When Vim exits the terminal will be put back
-into the mode it was before Vim started.  The strings defined with 't_te' and
-'t_ke' will be sent to the terminal.  On the Amiga, with commands that execute
-an external command (e.g., "!!"), the terminal will be put into Normal mode
-for a moment.  This means that you can stop the output to the screen by
-hitting a printing key.  Output resumes when you hit <BS>.
+通常の編集に入るとき、端末は raw モードになります。このとき、't_ti' と 't_ks'
+で定義されるシーケンスが端末に送信されます。これらのシーケンスにより、端末は
+termcap のコードが有効になり、カーソルキーとファンクションキーが使えるようにな
+ります。Vim が終了するとき、端末を起動前のモードに戻します。このとき't_te' と
+'t_ke' で定義されるシーケンスが端末に送信されます。Amiga では、外部プログラム
+を起動するコマンド(例: "!!")を実行するとき、一時的に端末が通常モードになります。
+そのため、print キーを押してスクリーンへの出力を止めることができます。<BS> を
+押すと出力が再開します。
 
 							*cs7-problem*
-Note: If the terminal settings are changed after running Vim, you might have
-an illegal combination of settings.  This has been reported on Solaris 2.5
-with "stty cs8 parenb", which is restored as "stty cs7 parenb".  Use
-"stty cs8 -parenb -istrip" instead, this is restored correctly.
+Note: Vim を起動した後で端末の設定を変えると、設定が一貫しない状態になるかもし
+れません。Solaris 2.5 で "stty cs8 parenb" が "stty cs7 parenb" に復元されてし
+まうという報告が上がっています。代わりに "stty cs8 -parenb -istrip" を使ってく
+ださい。これは正しく復元されます。
 
-Some termcap entries are wrong in the sense that after sending 't_ks' the
-cursor keys send codes different from the codes defined in the termcap.  To
-avoid this you can set 't_ks' (and 't_ke') to empty strings.  This must be
-done during initialization (see |initialization|), otherwise it's too late.
+'t_ks' を送った後では、カーソルキーが termcap で定義されているのとは異なるコー
+ドを送るという意味で、ある種の termcap エントリは正しくありません。この問題を
+避けるには't_ks' (と't_ke')を空文字列にします。これは初期化の最中に行わねばな
+りません(|initialization| を参照)。そうでないと手遅れです。
 
-Some termcap entries assume that the highest bit is always reset.  For
-example: The cursor-up entry for the Amiga could be ":ku=\E[A:".  But the
-Amiga really sends "\233A".  This works fine if the highest bit is reset,
-e.g., when using an Amiga over a serial line.  If the cursor keys don't work,
-try the entry ":ku=\233A:".
+いくつかの termcap エントリは、最上位ビットが常にオフになっていると仮定してい
+ます。例: Amiga のカーソル↑エントリは例えば ":ku=\E[A:" です。しかし実際には
+"\233A" が送られます。これは、シリアル回線上で使っているときなど、最上位ビット
+がオフならば正しく動作します。カーソルキーが使えない場合はこのエントリを
+":ku=\233A:" にしてみてください。
 
-Some termcap entries have the entry ":ku=\E[A:".  But the Amiga really sends
-"\233A".  On output "\E[" and "\233" are often equivalent, on input they
-aren't.  You will have to change the termcap entry, or change the key code with
-the :set command to fix this.
+":ku=\E[A:" というエントリをもつ termcap エントリがあります。しかし実際には
+"\233A" が送られます。出力において "\E[" と "\233" はしばしば同値であり、入力
+においてはそうでありません。この問題を解決するには、termcap エントリを変更する
+か、:set コマンドでキーコードを変更するしかありません。
 
-Many cursor key codes start with an <Esc>.  Vim must find out if this is a
-single hit of the <Esc> key or the start of a cursor key sequence.  It waits
-for a next character to arrive.  If it does not arrive within one second a
-single <Esc> is assumed.  On very slow systems this may fail, causing cursor
-keys not to work sometimes.  If you discover this problem reset the 'timeout'
-option.  Vim will wait for the next character to arrive after an <Esc>.  If
-you want to enter a single <Esc> you must type it twice.  Resetting the
-'esckeys' option avoids this problem in Insert mode, but you lose the
-possibility to use cursor and function keys in Insert mode.
+多くのカーソルキーのコードは <Esc> から始まります。Vim はこれが 1 つの <Esc>
+キーを押下したものか、カーソルキーのシーケンスのはじまりかを判定しなければなり
+ません。そのため、次の文字が届くのを待ちます。1 秒以内に次のキーが届かない場合
+は <Esc> が押されたとみなします。非常に遅いシステムではこれが誤判定され、カー
+ソルキーが使えなくなることがあります。この問題に出会った場合は 'timeout' をオ
+フにしてください。Vim は <Esc> の後に届く文字を待ちます。1 つの <Esc> を入力す
+るには 2 回押さなければなりません。'esckeys' をオフにすると、インサートモード
+でのこの問題を解決できます。しかしインサートモードでカーソルキーとファンクショ
+ンキーが使えなくなってしまいます。
 
-On the Amiga the recognition of window resizing is activated only when the
-terminal name is "amiga" or "builtin_amiga".
+Amiga でウィンドウリサイズを認識するには、端末名が "amiga" か "builtin_amiga"
+でなければなりません。
 
-Some terminals have confusing codes for the cursor keys.  The televideo 925 is
-such a terminal.  It sends a CTRL-H for cursor-left.  This would make it
-impossible to distinguish a backspace and cursor-left.  To avoid this problem
-CTRL-H is never recognized as cursor-left.
+ある種の端末ではカーソルキーに混乱を招きやすいコードを割り当てています。
+televideo 925 はその一例です。televideo 925 はカーソル左キーで CTRL-H を送りま
+す。そのためバックスペースとカーソル左を区別することは不可能です。この問題のた
+め CTRL-H は常にカーソル左と認識されます。
 
 					*vt100-cursor-keys* *xterm-cursor-keys*
-Other terminals (e.g., vt100 and xterm) have cursor keys that send <Esc>OA,
-<Esc>OB, etc.  Unfortunately these are valid commands in insert mode: Stop
-insert, Open a new line above the new one, start inserting 'A', 'B', etc.
-Instead of performing these commands Vim will erroneously recognize this typed
-key sequence as a cursor key movement.  To avoid this and make Vim do what you
-want in either case you could use these settings: >
-	:set notimeout		" don't timeout on mappings
-	:set ttimeout		" do timeout on terminal key codes
-	:set timeoutlen=100	" timeout after 100 msec
-This requires the key-codes to be sent within 100msec in order to recognize
-them as a cursor key.  When you type you normally are not that fast, so they
-are recognized as individual typed commands, even though Vim receives the same
-sequence of bytes.
+vt100 や xterm などの端末ではカーソルキーを押すと <Esc>0A や <Esc>0B などが送
+られます。不運なことに、これらは「挿入を終了し、上に新規行を作成して 'A' や
+'B' を挿入する」というインサートモードでのコマンドでもあります。
+このコマンドを実行するのでなく、カーソルキーのシーケンスが入力されたのだと誤認
+識してしまうかもしれません。これを防ぎ、意図通りの動作をさせるには次の設定を使
+います
+: >
+	:set notimeout		" マッピングについてタイムアウトしない
+	:set ttimeout		" 端末のキーコードについてタイムアウトする
+	:set timeoutlen=100	" 100 ミリ秒後にタイムアウトする
+この設定をすると、キーコードが 100 ミリ秒以内に送られた場合のみカーソルキーと
+認識されます。ユーザが普通に入力するときはそんなに速くないので、たとえまったく
+同じキーコードのシーケンスを送信しても、個々のコマンドと認識されます。
 
 				*vt100-function-keys* *xterm-function-keys*
-An xterm can send function keys F1 to F4 in two modes: vt100 compatible or
-not.  Because Vim cannot know what the xterm is sending, both types of keys
-are recognized.  The same happens for the <Home> and <End> keys.
-			normal			vt100 ~
+xterm は vt100 互換モードと非互換モードの両方のモードで F1 から F4 のファンク
+ションキーを送信できます。Vim は xterm がどちらのコードを送信するかわからない
+ので、両方のタイプのキーを認識するようになっています。<Home> と <End> について
+も同様です。
+			通常			vt100 ~
 	<F1>	t_k1	<Esc>[11~	<xF1>	<Esc>OP	    *<xF1>-xterm*
 	<F2>	t_k2	<Esc>[12~	<xF2>	<Esc>OQ	    *<xF2>-xterm*
 	<F3>	t_k3	<Esc>[13~	<xF3>	<Esc>OR	    *<xF3>-xterm*
@@ -156,290 +155,330 @@ are recognized.  The same happens for the <Home> and <End> keys.
 	<Home>	t_kh	<Esc>[7~	<xHome>	<Esc>OH	    *<xHome>-xterm*
 	<End>	t_@7	<Esc>[4~	<xEnd>	<Esc>OF	    *<xEnd>-xterm*
 
-When Vim starts, <xF1> is mapped to <F1>, <xF2> to <F2> etc.  This means that
-by default both codes do the same thing.  If you make a mapping for <xF2>,
-because your terminal does have two keys, the default mapping is overwritten,
-thus you can use the <F2> and <xF2> keys for something different.
+Vim が起動したときに <xF1> が <F1>へ、<xF2> が <F2> へマッピングされます。これ
+により、デフォルトではどちらのコードも同じ動作になります。<xF2> へのマッピング
+を作ると、デフォルトのマッピングが上書きされます。そして <F2> と <xF2> に別の
+動作をさせることができます。
 
 							*xterm-shifted-keys*
-Newer versions of xterm support shifted function keys and special keys.  Vim
-recognizes most of them.  Use ":set termcap" to check which are supported and
-what the codes are.  Mostly these are not in a termcap, they are only
-supported by the builtin_xterm termcap.
+新しいバージョンの xterm はシフトキーとファンクションキー、特殊キーの組み合わ
+せをサポートしています。Vim はこれらのほとんどを認識します。":set termcap" に
+よりどれがサポートされているか、そのコードは何かを調べることができます。大抵の
+場合、これらは termcap には入っていません。 builtin_xterm の termcap でのみサ
+ポートされています。
+
+							*xterm-modifier-keys*
+新しいバージョンの xterm は Alt と Ctrl キーとほとんどのファンクションキーの組
+み合わせをサポートしています。全てのキーに対する Alt、Ctrl、Shift の組み合わせ
+全てを termcap に追加しなくてもいいように、termcap エントリの最後に ";*X" とい
+う特殊なシーケンスを追加することができます。この "X" はどんな文字でもよく、'~'
+がよく使われます。";*" は省略可能な修飾キー引数を意味します。";2" は
+Shift、";3" は Alt、";5" はCtrl、";9" は Meta (Alt と異なる場合)。これらを組み
+合わせることができます。例: >
+	:set <F8>=^[[19;*~
+	:set <Home>=^[[1;*H
+これらのコードのもう1つの特殊な性質は、他のコードで上書きできないことです。
+xterm から直接得られたコードが |t_RV| それらを上書きするのを避けるためです。
 
 							*xterm-scroll-region*
-The default termcap entry for xterm on Sun and other platforms does not
-contain the entry for scroll regions.  Add ":cs=\E[%i%d;%dr:" to the xterm
-entry in /etc/termcap and everything should work.
+Sun などのプラットフォームのデフォルトの xterm 用の termcap エントリには領域の
+スクロール用のエントリが入っていません。/etc/termcap の xterm エントリに
+":cs=\E[%i%d;%dr:" を追加すれば全てうまく動作するでしょう。
 
 							*xterm-end-home-keys*
-On some systems (at least on FreeBSD with XFree86 3.1.2) the codes that the
-<End> and <Home> keys send contain a <Nul> character.  To make these keys send
-the proper key code, add these lines to your ~/.Xdefaults file:
+いくつかのシステム(少なくとも FreeBSD と XFree86 3.1.2)では、 <End> と <Home>
+キーが送信するキーに <NUL> 文字が含まれています。これらのキーが適切なキーコー
+ドを送信するようにするために、次の行を ~/.Xdefaults に追加してください:
 
 *VT100.Translations:		#override \n\
 		<Key>Home: string("0x1b") string("[7~") \n\
 		<Key>End: string("0x1b") string("[8~")
 
 						*xterm-8bit* *xterm-8-bit*
-Xterm can be run in a mode where it uses 8-bit escape sequences.  The CSI code
-is used instead of <Esc>[.  The advantage is that an <Esc> can quickly be
-recognized in Insert mode, because it can't be confused with the start of a
-special key.
-For the builtin termcap entries, Vim checks if the 'term' option contains
-"8bit" anywhere.  It then uses 8-bit characters for the termcap entries, the
-mouse and a few other things.  You would normally set $TERM in your shell to
-"xterm-8bit" and Vim picks this up and adjusts to the 8-bit setting
-automatically.
-When Vim receives a response to the |t_RV| (request version) sequence and it
-starts with CSI, it assumes that the terminal is in 8-bit mode and will
-convert all key sequences to their 8-bit variants.
+xterm は 8 ビットエスケープシーケンスを使うモードで動作させることができます。
+このモードでは <Esc>[ の代わりに CSI コードが使われます。この利点は、インサー
+トモードで <Esc> が即座に認識されることです。なぜなら、特殊キーの開始と紛らわ
+しくないためです。
+組み込みの termcap エントリでは、オプション 'term' のどこかに "8bit" が含まれ
+ていないか確認されます。含まれていると、termcap エントリ、マウス等に 8 ビット
+文字が使われます。シェルにおいて $TERM を "xterm-8bit" に設定しておくと、Vim
+はそれに気づいて自動的に 8 ビットの設定を使うようになります。
+Vim がシーケンス |t_RV| (バージョン要求)への応答を受け取ったとき、それが CSI
+で始まっていれば、その端末は 8 ビットモードであると認識し、全てのキーシーケン
+スを 8 ビット版に変換します。
 
 ==============================================================================
-2. Terminal options				*terminal-options* *E436*
+2. 端末オプション		*terminal-options* *termcap-options* *E436*
 
-The terminal options can be set just like normal options.  But they are not
-shown with the ":set all" command.  Instead use ":set termcap".
+端末オプションは普通のオプションとまったく同じように設定できます。しかし端末オ
+プションは ":set all" コマンドでは表示されないので、代わりに ":set termcap" を
+使ってください。
 
-It is always possible to change individual strings by setting the
-appropriate option.  For example: >
+termcap コードに対応するオプションを設定することによって、そのシーケンスを変更
+することができます。例: >
 	:set t_ce=^V^[[K	(CTRL-V, <Esc>, [, K)
 
-{Vi: no terminal options.  You have to exit Vi, edit the termcap entry and
-try again}
+{Vi: 端末オプションは存在しない。Vi を終了し、termcap エントリを編集して再起動
+しなければならない}
 
-The options are listed below.  The associated termcap code is always equal to
-the last two characters of the option name.  Only one termcap code is
-required: Cursor motion, 't_cm'.
+端末オプションの一覧を後で載せます。対応する termcap のコードと、それに対応す
+るオプション名の最後の2文字が等しくなっています。絶対に必要な termcap コードは
+カーソルを移動させる 't_cm' の1つだけです。
 
-The options 't_da', 't_db', 't_ms', 't_xs' represent flags in the termcap.
-When the termcap flag is present, the option will be set to "y".  But any
-non-empty string means that the flag is set.  An empty string means that the
-flag is not set.  't_CS' works like this too, but it isn't a termcap flag.
+オプション 't_da', 't_db', 't_ms', 't_xs' は termcap におけるフラグに対応して
+います。termcap にこれらのフラグが存在すると、対応するオプションに "y" が設定
+されます。空でない文字列を設定するとオンになり、空文字列を設定するとオフになり
+ます。't_CS' もこれと同様ですが、termcap フラグではありません。
 
-OUTPUT CODES
-	option	meaning	~
+出力コード
+	option	意味	~
 
-	t_AB	set background color (ANSI)			*t_AB* *'t_AB'*
-	t_AF	set foreground color (ANSI)			*t_AF* *'t_AF'*
-	t_AL	add number of blank lines			*t_AL* *'t_AL'*
-	t_al	add new blank line				*t_al* *'t_al'*
-	t_bc	backspace character				*t_bc* *'t_bc'*
-	t_cd	clear to end of screen				*t_cd* *'t_cd'*
-	t_ce	clear to end of line				*t_ce* *'t_ce'*
-	t_cl	clear screen					*t_cl* *'t_cl'*
-	t_cm	cursor motion (required!)		  *E437* *t_cm* *'t_cm'*
-	t_Co	number of colors				*t_Co* *'t_Co'*
-	t_CS	if non-empty, cursor relative to scroll region	*t_CS* *'t_CS'*
-	t_cs	define scrolling region				*t_cs* *'t_cs'*
-	t_CV	define vertical scrolling region		*t_CV* *'t_CV'*
-	t_da	if non-empty, lines from above scroll down	*t_da* *'t_da'*
-	t_db	if non-empty, lines from below scroll up	*t_db* *'t_db'*
-	t_DL	delete number of lines				*t_DL* *'t_DL'*
-	t_dl	delete line					*t_dl* *'t_dl'*
-	t_fs	set window title end (from status line)		*t_fs* *'t_fs'*
-	t_ke	exit "keypad transmit" mode			*t_ke* *'t_ke'*
-	t_ks	start "keypad transmit" mode			*t_ks* *'t_ks'*
-	t_le	move cursor one char left			*t_le* *'t_le'*
-	t_mb	blinking mode					*t_mb* *'t_mb'*
-	t_md	bold mode					*t_md* *'t_md'*
-	t_me	Normal mode (undoes t_mr, t_mb, t_md and color)	*t_me* *'t_me'*
-	t_mr	reverse (invert) mode				*t_mr* *'t_mr'*
+	t_AB	背景色を設定 (ANSI)				*t_AB* *'t_AB'*
+	t_AF	文字色を設定 (ANSI)				*t_AF* *'t_AF'*
+	t_AL	指定数の空行を追加する				*t_AL* *'t_AL'*
+	t_al	空行を追加する					*t_al* *'t_al'*
+	t_bc	バックスペース文字				*t_bc* *'t_bc'*
+	t_cd	スクリーンの最後までクリア			*t_cd* *'t_cd'*
+	t_ce	行末までクリア					*t_ce* *'t_ce'*
+	t_cl	画面をクリア					*t_cl* *'t_cl'*
+	t_cm	カーソル移動 (必須!)			  *E437* *t_cm* *'t_cm'*
+	t_Co	色数						*t_Co* *'t_Co'*
+	t_CS	空でなければカーソルをスクロール範囲に相対的に	*t_CS* *'t_CS'*
+	t_cs	スクロール範囲を定義				*t_cs* *'t_cs'*
+	t_CV	縦スクロール範囲を定義				*t_CV* *'t_CV'*
+	t_da	空でない場合は上の行からスクロールダウンする	*t_da* *'t_da'*
+	t_db	空でない場合は下の行からスクロールアップする	*t_db* *'t_db'*
+	t_DL	複数行を削除					*t_DL* *'t_DL'*
+	t_dl	行を削除					*t_dl* *'t_dl'*
+	t_fs	ウィンドウタイトルの終端を設定(ステータスラインから)*t_fs* *'t_fs'*
+	t_ke	キーパッド使用終了				*t_ke* *'t_ke'*
+	t_ks	キーパッド使用開始				*t_ks* *'t_ks'*
+	t_le	カーソルを1文字分左へ移動			*t_le* *'t_le'*
+	t_mb	点滅モード					*t_mb* *'t_mb'*
+	t_md	太字モード					*t_md* *'t_md'*
+	t_me	通常モード (t_mr, t_mb, t_md, 色設定を解除)	*t_me* *'t_me'*
+	t_mr	反転モード					*t_mr* *'t_mr'*
 								*t_ms* *'t_ms'*
-	t_ms	if non-empty, cursor can be moved in standout/inverse mode
+	t_ms	空でない場合は強調・反転モードでカーソルを移動できる
 	t_nd	non destructive space character			*t_nd* *'t_nd'*
-	t_op	reset to original color pair			*t_op* *'t_op'*
-	t_RI	cursor number of chars right			*t_RI* *'t_RI'*
-	t_Sb	set background color				*t_Sb* *'t_Sb'*
-	t_Sf	set foreground color				*t_Sf* *'t_Sf'*
-	t_se	standout end					*t_se* *'t_se'*
-	t_so	standout mode					*t_so* *'t_so'*
-	t_sr	scroll reverse (backward)			*t_sr* *'t_sr'*
-	t_te	out of "termcap" mode				*t_te* *'t_te'*
-	t_ti	put terminal in "termcap" mode			*t_ti* *'t_ti'*
-	t_ts	set window title start (to status line)		*t_ts* *'t_ts'*
-	t_ue	underline end					*t_ue* *'t_ue'*
-	t_us	underline mode					*t_us* *'t_us'*
-	t_ut	clearing uses the current background color	*t_ut* *'t_ut'*
-	t_vb	visual bell					*t_vb* *'t_vb'*
-	t_ve	cursor visible					*t_ve* *'t_ve'*
-	t_vi	cursor invisible				*t_vi* *'t_vi'*
-	t_vs	cursor very visible				*t_vs* *'t_vs'*
+	t_op	元の色のペアに戻す				*t_op* *'t_op'*
+	t_RI	カーソルを指定数右へ移動			*t_RI* *'t_RI'*
+	t_Sb	背景色を設定					*t_Sb* *'t_Sb'*
+	t_Sf	文字色を設定					*t_Sf* *'t_Sf'*
+	t_se	強調終了					*t_se* *'t_se'*
+	t_so	強調モード					*t_so* *'t_so'*
+	t_sr	逆スクロール					*t_sr* *'t_sr'*
+	t_te	"termcap" モードから抜ける			*t_te* *'t_te'*
+	t_ti	端末を "termcap" モードにする			*t_ti* *'t_ti'*
+	t_ts	(ステータスラインに)ウィンドウタイトル設定開始	*t_ts* *'t_ts'*
+	t_ue	下線終了					*t_ue* *'t_ue'*
+	t_us	下線モード					*t_us* *'t_us'*
+	t_Ce	下波線終了					*t_Ce* *'t_Ce'*
+	t_Cs	下波線モード					*t_Cs* *'t_Cs'*
+	t_ut	現在の背景色を使ってクリア			*t_ut* *'t_ut'*
+	t_vb	ビジュアルベル					*t_vb* *'t_vb'*
+	t_ve	カーソル表示					*t_ve* *'t_ve'*
+	t_vi	カーソル非表示					*t_vi* *'t_vi'*
+	t_vs	カーソル強調表示				*t_vs* *'t_vs'*
 								*t_xs* *'t_xs'*
-	t_xs	if non-empty, standout not erased by overwriting (hpterm)
-	t_ZH	italics mode					*t_ZH* *'t_ZH'*
-	t_ZR	italics end					*t_ZR* *'t_ZR'*
+	t_xs	空でない場合は強調が上書きによって消されない(hpterm)
+	t_ZH	斜体モード					*t_ZH* *'t_ZH'*
+	t_ZR	斜体終了					*t_ZR* *'t_ZR'*
 
-Added by Vim (there are no standard codes for these):
-	t_IS	set icon text start				*t_IS* *'t_IS'*
-	t_IE	set icon text end				*t_IE* *'t_IE'*
-	t_WP	set window position (Y, X) in pixels		*t_WP* *'t_WP'*
-	t_WS	set window size (height, width) in characters	*t_WS* *'t_WS'*
-	t_RV	request terminal version string (for xterm)	*t_RV* *'t_RV'*
+Vim 独自のもの (標準的なコードはないもの):
+	t_IS	アイコンテキスト設定開始			*t_IS* *'t_IS'*
+	t_IE	アイコンテキスト設定終了			*t_IE* *'t_IE'*
+	t_WP	ウィンドウ位置 (Y, X) をピクセルで指定		*t_WP* *'t_WP'*
+	t_WS	ウィンドウサイズ (height, width) を文字数で指定	*t_WS* *'t_WS'*
+	t_SI	インサートモード開始 (バー型のカーソル)		*t_SI* *'t_SI'*
+	t_EI	インサートモード終了(ブロック型カーソル)	*t_EI* *'t_EI'*
+		|termcap-cursor-shape|
+	t_RV	端末バージョン文字列を要求 (xterm 用)		*t_RV* *'t_RV'*
 		|xterm-8bit| |v:termresponse| |'ttymouse'| |xterm-codes|
 
-KEY CODES
-Note: Use the <> form if possible
+キーコード
+Note: 可能なかぎり <> 形式を使ってください。
 
-	option	name		meaning	~
+	オプション名		意味	~
 
-	t_ku	<Up>		arrow up			*t_ku* *'t_ku'*
-	t_kd	<Down>		arrow down			*t_kd* *'t_kd'*
-	t_kr	<Right>		arrow right			*t_kr* *'t_kr'*
-	t_kl	<Left>		arrow left			*t_kl* *'t_kl'*
-		<S-Up>		shift arrow up
-		<S-Down>	shift arrow down
-	t_%i	<S-Right>	shift arrow right		*t_%i* *'t_%i'*
-	t_#4	<S-Left>	shift arrow left		*t_#4* *'t_#4'*
-	t_k1	<F1>		function key 1			*t_k1* *'t_k1'*
-		<xF1>		alternate F1			*<xF1>*
-	t_k2	<F2>		function key 2		*<F2>*	*t_k2* *'t_k2'*
-		<xF2>		alternate F2			*<xF2>*
-	t_k3	<F3>		function key 3		*<F3>*	*t_k3* *'t_k3'*
-		<xF3>		alternate F3			*<xF3>*
-	t_k4	<F4>		function key 4		*<F4>*	*t_k4* *'t_k4'*
-		<xF4>		alternate F4			*<xF4>*
-	t_k5	<F5>		function key 5		*<F5>*	*t_k5* *'t_k5'*
-	t_k6	<F6>		function key 6		*<F6>*	*t_k6* *'t_k6'*
-	t_k7	<F7>		function key 7		*<F7>*	*t_k7* *'t_k7'*
-	t_k8	<F8>		function key 8		*<F8>*	*t_k8* *'t_k8'*
-	t_k9	<F9>		function key 9		*<F9>*	*t_k9* *'t_k9'*
-	t_k;	<F10>		function key 10		*<F10>*	*t_k;* *'t_k;'*
-	t_F1	<F11>		function key 11		*<F11>* *t_F1* *'t_F1'*
-	t_F2	<F12>		function key 12		*<F12>*	*t_F2* *'t_F2'*
-	t_F3	<F13>		function key 13		*<F13>*	*t_F3* *'t_F3'*
-	t_F4	<F14>		function key 14		*<F14>*	*t_F4* *'t_F4'*
-	t_F5	<F15>		function key 15		*<F15>*	*t_F5* *'t_F5'*
-	t_F6	<F16>		function key 16		*<F16>*	*t_F6* *'t_F6'*
-	t_F7	<F17>		function key 17		*<F17>*	*t_F7* *'t_F7'*
-	t_F8	<F18>		function key 18		*<F18>*	*t_F8* *'t_F8'*
-	t_F9	<F19>		function key 19		*<F19>*	*t_F9* *'t_F9'*
-		<S-F1>		shifted function key 1
-		<S-xF1>		alternate <S-F1>		*<S-xF1>*
-		<S-F2>		shifted function key 2		*<S-F2>*
-		<S-xF2>		alternate <S-F2>		*<S-xF2>*
-		<S-F3>		shifted function key 3		*<S-F3>*
-		<S-xF3>		alternate <S-F3>		*<S-xF3>*
-		<S-F4>		shifted function key 4		*<S-F4>*
-		<S-xF4>		alternate <S-F4>		*<S-xF4>*
-		<S-F5>		shifted function key 5		*<S-F5>*
-		<S-F6>		shifted function key 6		*<S-F6>*
-		<S-F7>		shifted function key 7		*<S-F7>*
-		<S-F8>		shifted function key 8		*<S-F8>*
-		<S-F9>		shifted function key 9		*<S-F9>*
-		<S-F10>		shifted function key 10		*<S-F10>*
-		<S-F11>		shifted function key 11		*<S-F11>*
-		<S-F12>		shifted function key 12		*<S-F12>*
-	t_%1	<Help>		help key			*t_%1* *'t_%1'*
-	t_&8	<Undo>		undo key			*t_&8* *'t_&8'*
-	t_kI	<Insert>	insert key			*t_kI* *'t_kI'*
-	t_kD	<Del>		delete key			*t_kD* *'t_kD'*
-	t_kb	<BS>		backspace key			*t_kb* *'t_kb'*
-	t_kB	<S-Tab>		back-tab (shift-tab)  *<S-Tab>* *t_kB* *'t_kB'*
-	t_kh	<Home>		home key			*t_kh* *'t_kh'*
-	t_#2	<S-Home>	shifted home key     *<S-Home>* *t_#2* *'t_#2'*
-		<xHome>		alternate home key		*<xHome>*
-	t_@7	<End>		end key				*t_@7* *'t_@7'*
-	t_*7	<S-End>		shifted end key	*<S-End>* *t_star7* *'t_star7'*
-		<xEnd>		alternate end key		*<xEnd>*
-	t_kP	<PageUp>	page-up key			*t_kP* *'t_kP'*
-	t_kN	<PageDown>	page-down key			*t_kN* *'t_kN'*
-	t_K1	<kHome>		keypad home key			*t_K1* *'t_K1'*
-	t_K4	<kEnd>		keypad end key			*t_K4* *'t_K4'*
-	t_K3	<kPageUp>	keypad page-up key		*t_K3* *'t_K3'*
-	t_K5	<kPageDown>	keypad page-down key		*t_K5* *'t_K5'*
-	t_K6	<kPlus>		keypad plus key	      *<kPlus>*	*t_K6* *'t_K6'*
-	t_K7	<kMinus>	keypad minus key     *<kMinus>*	*t_K7* *'t_K7'*
-	t_K8	<kDivide>	keypad divide	    *<kDivide>* *t_K8* *'t_K8'*
-	t_K9	<kMultiply>	keypad multiply   *<kMultiply>* *t_K9* *'t_K9'*
-	t_KA	<kEnter>	keypad enter key     *<kEnter>*	*t_KA* *'t_KA'*
-	t_KB	<kPoint>	keypad decimal point *<kPoint>*	*t_KB* *'t_KB'*
-	t_KC	<k0>		keypad 0		 *<k0>*	*t_KC* *'t_KC'*
-	t_KD	<k1>		keypad 1		 *<k1>*	*t_KD* *'t_KD'*
-	t_KE	<k2>		keypad 2		 *<k2>*	*t_KE* *'t_KE'*
-	t_KF	<k3>		keypad 3		 *<k3>*	*t_KF* *'t_KF'*
-	t_KG	<k4>		keypad 4		 *<k4>*	*t_KG* *'t_KG'*
-	t_KH	<k5>		keypad 5		 *<k5>*	*t_KH* *'t_KH'*
-	t_KI	<k6>		keypad 6		 *<k6>*	*t_KI* *'t_KI'*
-	t_KJ	<k7>		keypad 7		 *<k7>*	*t_KJ* *'t_KJ'*
-	t_KK	<k8>		keypad 8		 *<k8>*	*t_KK* *'t_KK'*
-	t_KL	<k9>		keypad 9		 *<k9>*	*t_KL* *'t_KL'*
-		<Mouse>		leader of mouse code		*<Mouse>*
+	t_ku	<Up>		カーソル上			*t_ku* *'t_ku'*
+	t_kd	<Down>		カーソル下			*t_kd* *'t_kd'*
+	t_kr	<Right>		カーソル右			*t_kr* *'t_kr'*
+	t_kl	<Left>		カーソル左			*t_kl* *'t_kl'*
+		<xUp>		カーソル上の代替		*<xUp>*
+		<xDown>		カーソル下の代替		*<xDown>*
+		<xRight>	カーソル右の代替		*<xRight>*
+		<xLeft>		カーソル左の代替		*<xLeft>*
+		<S-Up>		シフト＋カーソル上
+		<S-Down>	シフト＋カーソル下
+	t_%i	<S-Right>	シフト＋カーソル右		*t_%i* *'t_%i'*
+	t_#4	<S-Left>	シフト＋カーソル左		*t_#4* *'t_#4'*
+	t_k1	<F1>		F1				*t_k1* *'t_k1'*
+		<xF1>		もう1つの F1			*<xF1>*
+	t_k2	<F2>		F2				*<F2>*	*t_k2* *'t_k2'*
+		<xF2>		もう1つのF2			*<xF2>*
+	t_k3	<F3>		F3				*<F3>*	*t_k3* *'t_k3'*
+		<xF3>		もう1つのF3			*<xF3>*
+	t_k4	<F4>		F4				*<F4>*	*t_k4* *'t_k4'*
+		<xF4>		もう1つのF4			*<xF4>*
+	t_k5	<F5>		F5				*<F5>*	*t_k5* *'t_k5'*
+	t_k6	<F6>		F6				*<F6>*	*t_k6* *'t_k6'*
+	t_k7	<F7>		F7				*<F7>*	*t_k7* *'t_k7'*
+	t_k8	<F8>		F8				*<F8>*	*t_k8* *'t_k8'*
+	t_k9	<F9>		F9				*<F9>*	*t_k9* *'t_k9'*
+	t_k;	<F10>		F10				*<F10>*	*t_k;* *'t_k;'*
+	t_F1	<F11>		F11				*<F11>* *t_F1* *'t_F1'*
+	t_F2	<F12>		F12				*<F12>*	*t_F2* *'t_F2'*
+	t_F3	<F13>		F13				*<F13>*	*t_F3* *'t_F3'*
+	t_F4	<F14>		F14				*<F14>*	*t_F4* *'t_F4'*
+	t_F5	<F15>		F15				*<F15>*	*t_F5* *'t_F5'*
+	t_F6	<F16>		F16				*<F16>*	*t_F6* *'t_F6'*
+	t_F7	<F17>		F17				*<F17>*	*t_F7* *'t_F7'*
+	t_F8	<F18>		F18				*<F18>*	*t_F8* *'t_F8'*
+	t_F9	<F19>		F19				*<F19>*	*t_F9* *'t_F9'*
+		<S-F1>		シフト＋F1
+		<S-xF1>		もう1つの<S-F1>			*<S-xF1>*
+		<S-F2>		シフト＋F2			*<S-F2>*
+		<S-xF2>		もう1つの<S-F2>			*<S-xF2>*
+		<S-F3>		シフト＋F3			*<S-F3>*
+		<S-xF3>		もう1つの<S-F3>			*<S-xF3>*
+		<S-F4>		シフト＋F4			*<S-F4>*
+		<S-xF4>		もう1つの<S-F4>			*<S-xF4>*
+		<S-F5>		シフト＋F5			*<S-F5>*
+		<S-F6>		シフト＋F6			*<S-F6>*
+		<S-F7>		シフト＋F7			*<S-F7>*
+		<S-F8>		シフト＋F8			*<S-F8>*
+		<S-F9>		シフト＋F9			*<S-F9>*
+		<S-F10>		シフト＋F10			*<S-F10>*
+		<S-F11>		シフト＋F11			*<S-F11>*
+		<S-F12>		シフト＋F12			*<S-F12>*
+	t_%1	<Help>		ヘルプキー			*t_%1* *'t_%1'*
+	t_&8	<Undo>		アンドゥキー			*t_&8* *'t_&8'*
+	t_kI	<Insert>	インサートキー			*t_kI* *'t_kI'*
+	t_kD	<Del>		デリートキー			*t_kD* *'t_kD'*
+	t_kb	<BS>		バックスペースキー		*t_kb* *'t_kb'*
+	t_kB	<S-Tab>		バックタブ(シフト＋タブ) *<S-Tab>* *t_kB* *'t_kB'*
+	t_kh	<Home>		ホームキー			*t_kh* *'t_kh'*
+	t_#2	<S-Home>	シフト＋ホームキー   *<S-Home>* *t_#2* *'t_#2'*
+		<xHome>		もう1つのホームキー		*<xHome>*
+	t_@7	<End>		エンドキー			*t_@7* *'t_@7'*
+	t_*7	<S-End>		シフト＋エンドキー*<S-End>* *t_star7* *'t_star7'*
+		<xEnd>		もう1つのエンドキー		*<xEnd>*
+	t_kP	<PageUp>	ページアップキー		*t_kP* *'t_kP'*
+	t_kN	<PageDown>	ページダウンキー		*t_kN* *'t_kN'*
+	t_K1	<kHome>		キーパッドホームキー		*t_K1* *'t_K1'*
+	t_K4	<kEnd>		キーパッドエンドキー		*t_K4* *'t_K4'*
+	t_K3	<kPageUp>	キーパッドページアップキー	*t_K3* *'t_K3'*
+	t_K5	<kPageDown>	キーパッドページダウンキー	*t_K5* *'t_K5'*
+	t_K6	<kPlus>		キーパッドプラスキー*<kPlus>*	*t_K6* *'t_K6'*
+	t_K7	<kMinus>	キーパッドマイナスキー*<kMinus>*	*t_K7* *'t_K7'*
+	t_K8	<kDivide>	キーパッド /		*<kDivide>* *t_K8* *'t_K8'*
+	t_K9	<kMultiply>	キーパッド *		*<kMultiply>* *t_K9* *'t_K9'*
+	t_KA	<kEnter>	キーパッドエンターキー    *<kEnter>*	*t_KA* *'t_KA'*
+	t_KB	<kPoint>	キーパッド .	 *<kPoint>*	*t_KB* *'t_KB'*
+	t_KC	<k0>		キーパッド 0		 *<k0>*	*t_KC* *'t_KC'*
+	t_KD	<k1>		キーパッド 1		 *<k1>*	*t_KD* *'t_KD'*
+	t_KE	<k2>		キーパッド 2		 *<k2>*	*t_KE* *'t_KE'*
+	t_KF	<k3>		キーパッド 3		 *<k3>*	*t_KF* *'t_KF'*
+	t_KG	<k4>		キーパッド 4		 *<k4>*	*t_KG* *'t_KG'*
+	t_KH	<k5>		キーパッド 5		 *<k5>*	*t_KH* *'t_KH'*
+	t_KI	<k6>		キーパッド 6		 *<k6>*	*t_KI* *'t_KI'*
+	t_KJ	<k7>		キーパッド 7		 *<k7>*	*t_KJ* *'t_KJ'*
+	t_KK	<k8>		キーパッド 8		 *<k8>*	*t_KK* *'t_KK'*
+	t_KL	<k9>		キーパッド 9		 *<k9>*	*t_KL* *'t_KL'*
+		<Mouse>		マウスコードの先頭部分		*<Mouse>*
 
-Note about t_so and t_mr: When the termcap entry "so" is not present the
-entry for "mr" is used.  And vice versa.  The same is done for "se" and "me".
-If your terminal supports both inversion and standout mode, you can see two
-different modes.  If your terminal supports only one of the modes, both will
-look the same.
+Note t_so と t_mrについて: termcap に "so" エントリがない場合は "mr" が使われ
+ます。逆に "mr" がない場合は "so" が使われます。"se" と "me" も同じ関係にあり
+ます。お使いの端末が反転と強調の両方をサポートしているならば、これらは別々のモー
+ドとして表示されます。これらの片方しかサポートしていない場合は、どちらも同じよ
+うに表示されます。
 
-The keypad keys, when they are not mapped, behave like the equivalent normal
-key.
-							*xterm-codes*
-There is a special trick to obtain the key codes which currently only works
-for xterm.  When |t_RV| is defined and a response is received which indicates
-an xterm with patchlevel 141 or higher, Vim uses special escape sequences to
-request the key codes directly from the xterm.  The responses are used to
-adjust the various t_ codes.  This avoids the problem that the xterm can
-produce different codes, depending on the mode it is in (8-bit, VT102,
-VT220, etc.).  The result is that codes like <xF1> are no longer needed.
-Note: This is only done on startup.  If the xterm options are changed after
-Vim has started, the escape sequences may not be recognized any more.
+							*keypad-comma*
+キーパッドのキーは、何かにマップされていないときは通常のキーと等価です。ただ 1
+つだけ例外があります。小数点キーがあるべき場所にコンマキーがあるキーパッドの場
+合でも Vim では小数点として認識されます。これを修正するには次のマッピングを使
+ってください: >
+	:noremap <kPoint> ,
+	:noremap! <kPoint> ,
+<							*xterm-codes*
+キーコードを取得するトリックがあります。これは現在のところ xterm でだけ動作し
+ます。|t_RV| が定義されていて、xterm のパッチレベルが 141 以上であることを示す
+返信を受け取った場合、Vim は特別なエスケープシーケンスを使って xterm から直接
+キーコードを要求します。その返信を使って様々な t_ のコードを調整します。これに
+よって xterm がモード (8-bit, VT102, VT220 など) によって異なるコードを出力す
+るという問題に対応することができます。そのため、<xF1> のようなコードは必要なく
+なります。
+Note: これは起動時にのみ行われます。Vim が起動した後で xterm のオプションが変
+更された場合は、これらのエスケープシーケンスは認識されなくなる可能性があります。
 
 							*termcap-colors*
-Note about colors: The 't_Co' option tells Vim the number of colors available.
-When it is non-zero, the 't_AB' and 't_AF' options are used to set the color.
-If one of these is not available, 't_Sb' and 't_Sf' are used.  't_me' is used
-to reset to the default colors.
+色についての Note: 't_Co' は利用できる色の数を示します。この値が 0 でなければ
+'t_AB' と 't_AF' の値を使って色を設定します。これらのうちどれかが存在しない場
+合は 't_Sb' と 't_Sf' が使われます。色をデフォルトに戻すのには 't_me' が使われ
+ます。
+
+				*termcap-cursor-shape* *termcap-cursor-color*
+インサートモードに入るとき、エスケープシーケンス 't_SI' が送られます。インサ
+ートモードを抜けるときは 't_EI' が送られます。ただし、両方が定義されているとき
+のみです。これを利用して、インサートモードにおけるカーソルの形や色を変えること
+ができます。これらは標準的な termcap/terminfo エントリではないので、自分で設定
+する必要があります。
+以下は xterm でカーソルの色を変える例です: >
+    if &term =~ "xterm"
+	let &t_SI = "\<Esc>]12;purple\x7"
+	let &t_EI = "\<Esc>]12;blue\x7"
+    endif
+NOTE: Vim を終了するとき、ノーマルモードでのカーソル設定がそのまま残ります。
+Vim を起動する前のカーソル設定は復元されません。
+{+cursorshape つきでコンパイルしたときのみ利用可能}
 
 							*termcap-title*
-The 't_ts' and 't_fs' options are used to set the window title if the terminal
-allows title setting via sending strings.  They are sent before and after the
-title string, respectively.  Similar 't_IS' and 't_IE'  are used to set the
-icon text.  These are Vim-internal extensions of the Unix termcap, so they
-cannot be obtained from an external termcap.  However, the builtin termcap
-contains suitable entries for xterm and iris-ansi, so you don't need to set
-them here.
+文字列を送ってタイトルを変更できる端末の場合は 't_ts' と 't_fs' を使ってウィン
+ドウタイトルを変更できます。これらがタイトル文字列の前後に送られます。同様に
+'t_IS' と 't_IE' を使ってアイコンテキストが設定されます。これらの termcap エン
+トリは Vim 独自の拡張であり、外部の termcap からこれらを取得することはできませ
+ん。しかし組み込みの termcap に xterm と iris-ansi 用のエントリが含まれており、
+これらを自分で設定する必要はありません。
 							*hpterm*
-If inversion or other highlighting does not work correctly, try setting the
-'t_xs' option to a non-empty string.  This makes the 't_ce' code be used to
-remove highlighting from a line.  This is required for "hpterm".  Setting the
-'weirdinvert' option has the same effect as making 't_xs' non-empty, and vice
-versa.
+もしも反転などの強調が正常に機能しない場合は、't_xs' を空でない文字列に設定し
+てみてください。すると 't_ce' コードを使って行から強調を取り除くようになります。
+"hpterm" に対してはこれが必要です。'weirdinvert' を設定すると 't_xs' を空でな
+い値にするのと同じ効果があります。
 
 							*scroll-region*
-Some termcaps do not include an entry for 'cs' (scroll region), although the
-terminal does support it.  For example: xterm on a Sun.  You can use the
-builtin_xterm or define t_cs yourself.  For example: >
+端末が領域スクロールをサポートしているのに 'cs' エントリを含まない termcap があ
+ります。例えば Sun の xterm がそうです。この場合は builtin_xterm を使うか、
+t_cs を自分で定義します。例: >
 	:set t_cs=^V^[[%i%d;%dr
-Where ^V is CTRL-V and ^[ is <Esc>.
+^V は CTRL-V、^[ は <Esc> を表します。
 
-The vertical scroll region t_CV is not a standard termcap code.  Vim uses it
-internally in the GUI.  But it can also be defined for a terminal, if you can
-find one that supports it.  The two arguments are the left and right column of
-the region which to restrict the scrolling to.  Just like t_cs defines the top
-and bottom lines.  Defining t_CV will make scrolling in vertically split
-windows a lot faster.  Don't set t_CV when t_da or t_db is set (text isn't
-cleared when scrolling).
+t_CV (領域縦スクロール) は標準的な termcap コードではありません。Vim はこれを
+GUI モードで内部的に使っています。しかし、領域縦スクロールに対応している端末が
+あるなら、その端末でもこれを定義することができます。2つの引数は、スクロールを
+制限する領域の左右の桁を表します。t_cs が行の上端と下端を定義するのと同じです。
+t_CV を定義すると垂直分割したウィンドウのスクロールがとても速くなります。t_da
+または t_db を設定したときは t_CV を設定しないでください(スクロールするときテ
+キストが消去されなくなります)。
 
-Unfortunately it is not possible to deduce from the termcap how cursor
-positioning should be done when using a scrolling region: Relative to the
-beginning of the screen or relative to the beginning of the scrolling region.
-Most terminals use the first method.  A known exception is the MS-DOS console
-(pcterm).  The 't_CS' option should be set to any string when cursor
-positioning is relative to the start of the scrolling region.  It should be
-set to an empty string otherwise.  It defaults to "yes" when 'term' is
-"pcterm".
+残念ながら、領域スクロールを使用しているとき、カーソルの位置がどう変わるかを
+termcap から推測することは不可能です。スクリーンの始点から相対的またはスクロー
+ルさせる領域の始点から相対的になります。ほとんどの端末では前者となります。よく
+知られた例外は MS-DOS コンソール(pcterm)です。カーソル位置がスクロールさせる領
+域の始点から相対的となる場合は 't_CS' オプションになんらかの文字列を設定しなけ
+ればなりません。そうでなければ空文字列となります。'term' が "pcterm"のときはデ
+フォルトで "yes" になります。
 
-Note for xterm users: The shifted cursor keys normally don't work.  You can
-	make them work with the xmodmap command and some mappings in Vim.
+xterm ユーザへの注意: 通常、Shift + カーソルキーは使用できません。xmodmap コマ
+	ンドと Vim でマッピングを使えば、これらを使用できるようになります。
 
-	Give these commands in the xterm:
+	以下のコマンドを xterm の中で実行します:
 		xmodmap -e "keysym Up = Up F13"
 		xmodmap -e "keysym Down = Down F16"
 		xmodmap -e "keysym Left = Left F18"
 		xmodmap -e "keysym Right = Right F19"
 
-	And use these mappings in Vim:
+	そして次のマッピングを Vim の中で実行します:
 		:map <t_F3> <S-Up>
 		:map! <t_F3> <S-Up>
 		:map <t_F6> <S-Down>
@@ -449,195 +488,192 @@ Note for xterm users: The shifted cursor keys normally don't work.  You can
 		:map <t_F9> <S-Right>
 		:map! <t_F9> <S-Right>
 
-Instead of, say, <S-Up> you can use any other command that you want to use the
-shift-cursor-up key for.  (Note: To help people that have a Sun keyboard with
-left side keys F14 is not used because it is confused with the undo key; F15
-is not used, because it does a window-to-front; F17 is not used, because it
-closes the window.  On other systems you can probably use them.)
+Shift+カーソル上キーに対して <S-Up> 以外のコマンドを割り当てることもできます。
+Note: 左側にキーがある Sun のキーボードを使っている人を助けるために、以下のキ
+ーは使われません。
+F14 (アンドゥキーと混乱するため)
+F15 (ウィンドウを全面に移動するキーであるため)
+F17 (ウィンドウを閉じるキーであるため)
+他のシステムではこれらも使用できるでしょう。
 
 ==============================================================================
-3. Window size						*window-size*
+3. ウィンドウサイズ					*window-size*
 
-[This is about the size of the whole window Vim is using, not a window that is
-created with the ":split" command.]
+[これは Vim 自身のウィンドウのサイズのことです。":split" コマンドで分割できる
+ウィンドウのことではありません。]
 
-If you are running Vim on an Amiga and the terminal name is "amiga" or
-"builtin_amiga", the amiga-specific window resizing will be enabled.  On Unix
-systems three methods are tried to get the window size:
+Amiga 上では端末名が "amiga" または "builtin_amiga" であればアミーガ固有のウィ
+ンドウリサイズ処理が有効になります。Unix ではウィンドウサイズを取得するために
+3 種類の方法が試行されます:
 
-- an ioctl call (TIOCGSIZE or TIOCGWINSZ, depends on your system)
-- the environment variables "LINES" and "COLUMNS"
-- from the termcap entries "li" and "co"
+- ioctl 呼び出し (システムによって TIOCGSIZE か TIOCGWINSZ のどちらか)
+- 環境変数 "LINES" と "COLUMNS"
+- termcap エントリ "li" と "co"
 
-If everything fails a default size of 24 lines and 80 columns is assumed.  If
-a window-resize signal is received the size will be set again.  If the window
-size is wrong you can use the 'lines' and 'columns' options to set the
-correct values.
+これら全てが失敗した場合はデフォルトの 24 行 80 桁とみなされます。ウィンドウ
+サイズ変更のシグナルを受け取るとそのサイズに再設定されます。ウィンドウサイズが
+正しくない場合は、オプション 'lines' と 'columns' で正しい値を設定することがで
+きます。
 
-One command can be used to set the screen size:
+スクリーンサイズを設定するには次のコマンドを使います:
 
 						*:mod* *:mode* *E359* *E362*
 :mod[e] [mode]
 
-Without argument this only detects the screen size and redraws the screen.
-With MS-DOS it is possible to switch screen mode.  [mode] can be one of these
-values:
-	"bw40"		40 columns black&white
-	"c40"		40 columns color
-	"bw80"		80 columns black&white
-	"c80"		80 columns color (most people use this)
-	"mono"		80 columns monochrome
-	"c4350"		43 or 50 lines EGA/VGA mode
-	number		mode number to use, depends on your video card
+引数が指定されない場合はスクリーンサイズを検出し、スクリーンを再描画します。
+MS-DOS ではスクリーンモードを切り替えることが可能です。[mode] は以下のうちのど
+れか1つです。
+	"bw40"		40 桁 白黒
+	"c40"		40 桁 カラー
+	"bw80"		80 桁 白黒
+	"c80"		80 桁 カラー (ほとんどの場合はこれ)
+	"mono"		80 桁 モノクロ
+	"c4350"		43 or 50 行 EGA/VGA モード
+	number		モード番号。ビデオカードに依存
 
 ==============================================================================
-4. Slow and fast terminals			*slow-fast-terminal*
+4. 端末の速度					*slow-fast-terminal*
 						*slow-terminal*
 
-If you have a fast terminal you may like to set the 'ruler' option.  The
-cursor position is shown in the status line.  If you are using horizontal
-scrolling ('wrap' option off) consider setting 'sidescroll' to a small
-number.
+高速な端末を使用している場合はオプション 'ruler' をオンにするとよいでしょう。
+するとステータスラインにカーソル位置が表示されます。水平スクロールをオンにして
+いる('wrap' をオフ)にしているなら 'sidescroll' を小さい値にするとよいでしょう。
 
-If you have a slow terminal you may want to reset the 'showcmd' option.
-The command characters will not be shown in the status line.  If the terminal
-scrolls very slowly, set the 'scrolljump' to 5 or so.  If the cursor is moved
-off the screen (e.g., with "j") Vim will scroll 5 lines at a time.  Another
-possibility is to reduce the number of lines that Vim uses with the command
-"z{height}<CR>".
+遅い端末を使用している場合はオプション 'showcmd' をオフにするとよいでしょう。
+するとコマンド文字列がステータスラインに表示されなくなります。端末のスクロール
+が非常に遅いなら、'scrolljump' を5ぐらいにしてください。("j" などで)カーソルが
+スクリーンから出たとき、一度に5行スクロールするようになります。もう1つの方法は、
+"z{height}<CR>" でスクリーンの中で Vim が使う行数を減らすことです。
 
-If the characters from the terminal are arriving with more than 1 second
-between them you might want to set the 'timeout' and/or 'ttimeout' option.
-See the "Options" chapter |options|.
+端末から文字が届く間隔が1秒以上になる場合は 'timeout' と 'ttimeout' を設定しな
+おすとよいでしょう。オプションの章を参照してください |options|。
 
-If your terminal does not support a scrolling region, but it does support
-insert/delete line commands, scrolling with multiple windows may make the
-lines jump up and down.  If you don't want this set the 'ttyfast' option.
-This will redraw the window instead of scroll it.
+お使いの端末が領域のスクロールをサポートしていないが、行の挿入・削除コマンドを
+サポートしている場合、複数のウィンドウを開いた状態でスクロールすると、行が上下
+するかもしれません。これが好ましくない場合は 'ttyfast' をオンにしてください。
+するとウィンドウをスクロールするのでなく再描画するようになります。
 
-If your terminal scrolls very slowly, but redrawing is not slow, set the
-'ttyscroll' option to a small number, e.g., 3.  This will make Vim redraw the
-screen instead of scrolling, when there are more than 3 lines to be scrolled.
+お使いの端末におけるスクロールが非常に遅いが再描画は遅くないという場合は、
+'ttyoption' を 3 などの小さな値にしてください。すると、 3 行より多くスクロール
+する場合はスクロールでなく画面を再描画するようになります。
 
-If you are using a color terminal that is slow, use this command: >
+低速なカラー端末をお使いの場合は、次のコマンドを実行してください: >
 	hi NonText cterm=NONE ctermfg=NONE
-This avoids that spaces are sent when they have different attributes.  On most
-terminals you can't see this anyway.
+すると、異なる属性を持つスペースを送信しないようになります。ほとんどの端末では
+どちらにせよそれは目に見えません。
 
-If you are using Vim over a slow serial line, you might want to try running
-Vim inside the "screen" program.  Screen will optimize the terminal I/O quite
-a bit.
+低速なシリアル回線上で Vim を使っている場合は、"screen" プログラム上で Vim を
+実行するとよいかもしれません。screen は端末の入出力をほんの少し最適化します。
 
-If you are testing termcap options, but you cannot see what is happening,
-you might want to set the 'writedelay' option.  When non-zero, one character
-is sent to the terminal at a time (does not work for MS-DOS).  This makes the
-screen updating a lot slower, making it possible to see what is happening.
+termcap オプションをテストする際、何が起こっているかを見たいならば 'writedelay'
+をオンにするとよいかもしれません。これがゼロでない場合、一度に1つの文字が端末
+に送られます(MS-DOS では機能しません)。そうすると画面の更新がとても遅くなり、
+何が起こっているかが見えるようになります。
 
 ==============================================================================
-5. Using the mouse					*mouse-using*
+5. マウスの使用						*mouse-using*
 
-This section is about using the mouse on a terminal or a terminal window.  How
-to use the mouse in a GUI window is explained in |gui-mouse|.  For scrolling
-with a mouse wheel see |scroll-mouse-wheel|.
+この節では端末や端末エミュレータ上でマウスを使う方法を説明します。GUI のウィン
+ドウでマウスを使う方法については |gui-mouse| で説明されています。マウスホイー
+ルでスクロールする方法については |scroll-mouse-wheel| を参照してください。
 
-Don't forget to enable the mouse with this commands: >
+次のコマンドでマウスを有効にしてください: >
 	:set mouse=a
-Otherwise Vim won't recognize the mouse in all modes (See 'mouse').
+これを行わないと、Vim はどのモード('mouse' を参照)でもマウスを認識できません。
 
-Currently the mouse is supported for Unix in an xterm window, in a Linux
-console (with GPM |gpm-mouse|), for MS-DOS and in a Windows console.
-Mouse clicks can be used to position the cursor, select an area and paste.
+現時点では Unix の xterm、Linux コンソール(GPM マウスにも対応 |gpm-mouse|)、
+MS-DOS、Windows コンソールにおいてマウスがサポートされています。
+マウスクリックによってカーソル位置の設定、領域の選択、ペーストを行えます。
 
-These characters in the 'mouse' option tell in which situations the mouse will
-be used by Vim:
-		n	Normal mode
-		v	Visual mode
-		i	Insert mode
-		c	Command-line mode
-		h	all previous modes when in a help file
-		a	all previous modes
-		r	for |hit-enter| prompt
-		A	auto-select in Visual mode
+'mouse' オプションに以下の文字を含めることにより、どの状況でマウスを有効にする
+かを設定します:
+		n	ノーマルモード
+		v	ビジュアルモード
+		i	インサートモード
+		c	コマンドラインモード
+		h	ヘルプファイルを閲覧しているときの上記の4モード全て
+		a	上記の4モード全て
+		r	|hit-enter| プロンプトが出ているとき
 
-The default for 'mouse' is empty, the mouse is not used.  Normally you would
-do: >
+'mouse' の既定値は空で、マウスは無効になっています。普通は次のようにしてマウス
+を有効にします: >
 	:set mouse=a
-to start using the mouse (this is equivalent to setting 'mouse' to "nvich").
-If you only want to use the mouse in a few modes or also want to use it for
-the two questions you will have to concatenate the letters for those modes.
-For example: >
+これは 'mouse' の値を "nvich" にすることと同値です。
+特定のモードでだけマウスを使いたい場合や、2つの質問のために使いたい場合は、こ
+れらの文字を組み合わせます。
+例: >
 	:set mouse=nv
-Will make the mouse work in Normal mode and Visual mode. >
+上の例はノーマルモードとビジュアルモードでのみマウスを有効にします。 >
 	:set mouse=h
-Will make the mouse work in help files only (so you can use "g<LeftMouse>" to
-jump to tags).
+上の例はヘルプファイルでのみマウスを有効にします ("g<LeftMouse>" でタグジャン
+プができるようになります)
 
-Whether the selection that is started with the mouse is in Visual mode or
-Select mode depends on whether "mouse" is included in the 'selectmode'
-option.
+マウスで選択を開始した場合、ビジュアルモードとセレクトモードのどちらになるかは
+'selectmode' に "mouse" が含まれているかどうかによります。
 
-In an xterm, with the currently active mode included in the 'mouse' option,
-normal mouse clicks are used by Vim, mouse clicks with the shift or ctrl key
-pressed go to the xterm.  With the currently active mode not included in
-'mouse' all mouse clicks go to the xterm.
+xterm において、現在有効になっているモードが 'mouse' オプションに含まれている
+ときマウスをクリックすると、それは Vim によって処理されます。Shift や Ctrl キ
+ーを押しながらクリックすると xterm に伝わります。現在有効なモードが 'mouse' に
+含まれていない場合、すべてのクリックは xterm に伝わります。
 
 							*xterm-clipboard*
-In the Athena and Motif GUI versions, when running in a terminal and there is
-access to the X-server (DISPLAY is set), the copy and paste will behave like
-in the GUI.  If not, the middle mouse button will insert the unnamed register.
-In that case, here is how you copy and paste a piece of text:
+Athena と Motif の GUI 版では、端末の中で動作しているときも、X サーバとの接続
+があれば(DISPLAY がセットされていれば)、コピーとペーストが GUI 版と同様に動作
+します。そうでないときは真ん中ボタンクリックで無名レジスタが挿入されます。この
+場合、テキストをコピー＆ペーストする方法は次の通りです:
 
-Copy/paste with the mouse and Visual mode ('mouse' option must be set, see
-above):
-1. Press left mouse button on first letter of text, move mouse pointer to last
-   letter of the text and release the button.  This will start Visual mode and
-   highlight the selected area.
-2. Press "y" to yank the Visual text in the unnamed register.
-3. Click the left mouse button at the insert position.
-4. Click the middle mouse button.
+ビジュアルモードでマウスを使ってコピー＆ペーストする方法('mouse' がセットされ
+ていなければなりません。上記参照):
+1. コピーしたいテキストの最初の文字の上で左ボタンを押して最後の文字の上までマ
+   ウスポインタを動かし、ボタンを離します。するとビジュアルモードが開始し、選
+   択したテキストが強調されます。
+2. "y" を押して選択したテキストを無名レジスタにヤンクします。
+3. ペーストしたい位置で左ボタンをクリックします。
+4. 真ん中ボタンをクリックします。
 
-Shortcut: If the insert position is on the screen at the same time as the
-Visual text, you can do 2, 3 and 4 all in one: Click the middle mouse button
-at the insert position.
+ショートカット: ペーストしたい位置が選択したテキストと同時に画面に見えている場
+合は、ペーストしたい位置で真ん中ボタンをクリックすることにより、2, 3, 4 のステ
+ップを一度に行えます:
 
-Note: When the |-X| command line argument is used, Vim will not connect to the
-X server and copy/paste to the X clipboard (selection) will not work.  Use the
-shift key with the mouse buttons to let the xterm do the selection.
+Note: コマンドライン引数 |-X| が指定されていると Vim は X サーバに接続せず、
+X のクリップボード(セレクション)へのコピー＆ペーストは機能しません。Shift キー
+を押しながらクリックすることにより、xterm に選択を行わせることができます。
 
 							*xterm-command-server*
-When the X-server clipboard is available, the command server described in
-|x11-clientserver| can be enabled with the --servername command line argument.
+X サーバのクリップボードを利用できるときは、コマンドライン引数 --servername を
+指定すると |x11-clientserver| で説明されているコマンドサーバが有効になります。
 
 							*xterm-copy-paste*
-NOTE: In some (older) xterms, it's not possible to move the cursor past column
-95.  This is an xterm problem, not Vim's.  Get a newer xterm |color-xterm|.
+NOTE: 古い xterm では95桁目を越えてカーソルを移動できない場合があります。これ
+は xterm の問題であり、Vim の問題ではありません。新しい xterm を入手してくださ
+い |color-xterm|。
 
-Copy/paste in xterm with (current mode NOT included in 'mouse'):
-1. Press left mouse button on first letter of text, move mouse pointer to last
-   letter of the text and release the button.
-2. Use normal Vim commands to put the cursor at the insert position.
-3. Press "a" to start Insert mode.
-4. Click the middle mouse button.
-5. Press ESC to end Insert mode.
-(The same can be done with anything in 'mouse' if you keep the shift key
-pressed while using the mouse.)
+xterm でコピー＆ペーストする方法('mouse' に現在のモードが含まれていないとき):
+1. テキストの最初の文字の上で左ボタンを押し、最後の文字までマウスポインタを動
+   かしてからボタンを離します。
+2. 普通の Vim のコマンドを使ってカーソルをペーストしたい位置まで動かします。
+3. "a" を押してインサートモードを開始します。
+4. 真ん中ボタンを押します。
+5. ESC を押してインサートモードを抜けます。
+('mouse' に含まれているモードにいる場合も、Shift キーを押しながらマウスを操作
+することによりどの操作も同じようにできます)
 
-Note: if you lose the 8th bit when pasting (special characters are translated
-into other characters), you may have to do "stty cs8 -istrip -parenb" in your
-shell before starting Vim.
+Note: ペーストするときに8ビット目が失われてしまう(特殊文字が他の文字に変換され
+てしまう)ときは、Vim を起動する前にシェルで "stty cs8 -istrip -parenb" としな
+ければならないかもしれません。
 
-Thus in an xterm the shift and ctrl keys cannot be used with the mouse.  Mouse
-commands requiring the CTRL modifier can be simulated by typing the "g" key
-before using the mouse:
-	"g<LeftMouse>"	is "<C-LeftMouse>	(jump to tag under mouse click)
-	"g<RightMouse>" is "<C-RightMouse>	("CTRL-T")
+xterm では Shift と Ctrl キーを押しながらマウスを使うことはできません。CTRL 修
+飾子を必要とするマウスコマンドは、マウス操作の前に "g" を押すことでシミュレー
+トできます:
+	"g<LeftMouse>"	は "<C-LeftMouse>	(クリックした位置のタグへジャンプ)
+	"g<RightMouse>" は "<C-RightMouse>	("CTRL-T")
 
 					*mouse-mode-table* *mouse-overview*
-A short overview of what the mouse buttons do, when 'mousemodel' is "extend":
+以下は、'mousemodel' が "extend" の場合のマウスボタンの機能の概略です:
 
-Normal Mode:
-event	      position	   selection	  change  action	~
-	       cursor			  window		~
+ノーマルモード:
+イベント      カーソル	   選択範囲	ウィンドウ 動作	~
+	        移動			   切替	~
 <LeftMouse>     yes	     end	    yes
 <C-LeftMouse>   yes	     end	    yes	   "CTRL-]" (2)
 <S-LeftMouse>   yes	  no change	    yes	   "*" (2)    *<S-LeftMouse>*
@@ -646,14 +682,15 @@ event	      position	   selection	  change  action	~
 <MiddleMouse>   yes	  if not active     no	   put
 <MiddleMouse>   yes	  if active	    no	   yank and put
 <RightMouse>    yes	start or extend     yes
+<A-RightMouse>  yes start or extend blockw. yes		      *<A-RightMouse>*
 <S-RightMouse>  yes	   no change	    yes	   "#" (2)    *<S-RightMouse>*
 <C-RightMouse>  no	   no change	    no	   "CTRL-T"
 <RightDrag>     yes	    extend	    no		      *<RightDrag>*
 <RightRelease>  yes	    extend	    no		      *<RightRelease>*
 
-Insert or Replace Mode:
-event	      position	   selection	  change  action	~
-	       cursor			  window		~
+インサート/置換モード:
+イベント      カーソル	   選択範囲	ウィンドウ 動作	~
+	        移動			   切替	~
 <LeftMouse>     yes     (cannot be active)  yes
 <C-LeftMouse>   yes     (cannot be active)  yes	   "CTRL-O^]" (2)
 <S-LeftMouse>   yes     (cannot be active)  yes	   "CTRL-O*" (2)
@@ -661,135 +698,139 @@ event	      position	   selection	  change  action	~
 <LeftRelease>   yes     start or extend (1) no	   like CTRL-O (1)
 <MiddleMouse>   no      (cannot be active)  no	   put register
 <RightMouse>    yes     start or extend	    yes	   like CTRL-O
+<A-RightMouse>  yes start or extend blockw. yes
 <S-RightMouse>  yes     (cannot be active)  yes	   "CTRL-O#" (2)
 <C-RightMouse>  no	(cannot be active)  no	   "CTRL-O CTRL-T"
 
-In a help window:
-event	      position	   selection	  change  action	~
-	       cursor			  window		~
+ヘルプウィンドウ:
+イベント      位置	   選択		  変更  動作	~
+	       カーソル			  ウィンドウ	~
 <2-LeftMouse>   yes     (cannot be active)  no	   "^]" (jump to help tag)
 
-When 'mousemodel' is "popup", these are different:
+'mousemodel' が "popup" の場合は次のように異なります:
 
-Normal Mode:
-event	      position	   selection	  change  action	~
-	       cursor			  window		~
+ノーマルモード:
+イベント      カーソル	   選択範囲	ウィンドウ 動作	~
+	        移動			   切替	~
 <S-LeftMouse>	yes	start or extend (1) no
+<A-LeftMouse>   yes start or extend blockw. no		      *<A-LeftMouse>*
 <RightMouse>	no	popup menu	    no
 
-Insert or Replace Mode:
-event	      position	   selection	  change  action	~
-	       cursor			  window		~
+インサート/置換モード:
+イベント      カーソル	   選択範囲	ウィンドウ 動作	~
+	        移動			   切替	~
 <S-LeftMouse>   yes     start or extend (1) no	   like CTRL-O (1)
+<A-LeftMouse>   yes start or extend blockw. no
 <RightMouse>    no	popup menu	    no
 
-(1) only if mouse pointer moved since press
-(2) only if click is in same buffer
+(1) 押してからマウスポインタが移動したときのみ
+(2) 同一バッファでクリックしたときのみ
 
-Clicking the left mouse button causes the cursor to be positioned.  If the
-click is in another window that window is made the active window.  When
-editing the command-line the cursor can only be positioned on the
-command-line.  When in Insert mode Vim remains in Insert mode.  If 'scrolloff'
-is set, and the cursor is positioned within 'scrolloff' lines from the window
-border, the text is scrolled.
+左ボタンをクリックするとカーソルが移動します。他のウィンドウ内でクリックすると
+そのウィンドウがアクティブになります。コマンドラインを編集中はコマンドライン内
+でカーソルが移動します。インサートモードでクリックしたときはインサートモードの
+ままです。'scrolloff' がセットされている場合は、ウィンドウの境界から
+'scrolloff' 行数内の範囲にカーソルが移動し、テキストがスクロールします。
 
-A selection can be started by pressing the left mouse button on the first
-character, moving the mouse to the last character, then releasing the mouse
-button.  You will not always see the selection until you release the button,
-only in some versions (GUI, MS-DOS, WIN32) will the dragging be shown
-immediately.  Note that you can make the text scroll by moving the mouse at
-least one character in the first/last line in the window when 'scrolloff' is
-non-zero.
+選択は、左ボタンを押すと始まり、カーソルを移動してボタンを離すことで行います。
+ボタンを離すまでは選択が見えるようにならない場合もあります。GUI, MS-DOS, WIN32
+などいくつかのバージョンでのみドラッグが即座に表示されます。'scrolloff' がゼロ
+でない場合、ウィンドウの最初/最後の行で1文字以上動かすとテキストがスクロールす
+る可能性があることに注意してください。
 
-In Normal, Visual and Select mode clicking the right mouse button causes the
-Visual area to be extended.  When 'mousemodel' is "popup", the left button has
-to be used while keeping the shift key pressed.  When clicking in a window
-which is editing another buffer, the Visual or Select mode is stopped.
+ノーマルモード、ビジュアルモード、セレクトモードで右ボタンをクリックすると選択
+範囲が拡大します。ただし、'mousemodel' が "popup" のときは、Shift キーを押した
+ままで左ボタンをクリックします。他のバッファを開いているウィンドウの中をクリッ
+クするとビジュアルモードとセレクトモードは中止されます。
+
+ノーマルモード、ビジュアルモード、セレクトモードで Alt キーを押したまま右ボタ
+ンをクリックすると、選択範囲がブロック指向になります。ただし、'mousemodel' が
+"popup"のときは、Alt キーを押しながら左ボタンをクリックします。Alt キーを押し
+ているときはマウスイベントをウィンドウマネージャが処理(ウィンドウ移動など)して
+しまうシステムでは機能しないことに注意してください。
 
 							*double-click*
-Double, triple and quadruple clicks are supported when the GUI is active,
-for MS-DOS and Win32, and for an xterm (if the gettimeofday() function is
-available).  For selecting text, extra clicks extend the selection:
-	click		select ~
-	double		word or % match		*<2-LeftMouse>*
-	triple		line			*<3-LeftMouse>*
-	quadruple	rectangular block	*<4-LeftMouse>*
-Exception: In a Help window a double click jumps to help for the word that is
-clicked on.
-A double click on a word selects that word.  'iskeyword' is used to specify
-which characters are included in a word.  A double click on a character
-that has a match selects until that match (like using "v%").  If the match is
-an #if/#else/#endif block, the selection becomes linewise.
-For MS-DOS and xterm the time for double clicking can be set with the
-'mousetime' option.  For the other systems this time is defined outside of
-Vim.
-An example, for using a double click to jump to the tag under the cursor: >
+MS-DOS、Win32、xterm (関数 gettimeofday() が使用できるとき)において、GUI が有
+効なときはダブル、トリプル、クアドラプルクリックが使用できます。テキストを選択
+しているときさらにクリックすると選択範囲が拡大します:
+	クリック	選択範囲 ~
+	ダブル		単語または % でのマッチ	*<2-LeftMouse>*
+	トリプル	行			*<3-LeftMouse>*
+	クアドラプル	矩形範囲		*<4-LeftMouse>*
+例外: ヘルプウィンドウでダブルクリックすると、その下にある単語のヘルプへジャン
+プします。
+単語の上でダブルクリックするとその単語を選択します。単語を構成する文字は
+'iskeyword' によって決まります。対応する文字がある文字の上でダブルクリックする
+とそのマッチまでを選択します("v%" と同様)。そのマッチが #if/#else/#endif であ
+る場合、選択は行指向になります。
+MS-DOS と xterm ではダブルクリックの間隔は 'mousetime' で設定できます。他のシ
+ステムでは、この間隔は Vim の外部で設定されています。
+例: ダブルクリックでカーソル下のタグへジャンプする >
 	:map <2-LeftMouse> :exe "tag ". expand("<cword>")<CR>
 
-Dragging the mouse with a double click (button-down, button-up, button-down
-and then drag) will result in whole words to be selected.  This continues
-until the button is released, at which point the selection is per character
-again.
+ダブルクリックによるドラッグ(押す、離す、押してドラッグ)をすると単語全体が選択
+されるようになります。これはボタンが離されるまで続き、ボタンを離すと文字単位に
+戻ります。
 
 							*gpm-mouse*
-The GPM mouse is only supported when the |+mouse_gpm| feature was enabled at
-compile time.  The GPM mouse driver (Linux console) does not support quadruple
-clicks.
+GPM マウスは |+mouse_gpm| 機能を有効にしてコンパイルしたときのみサポートされま
+す。GPM マウスドライバ(Linux コンソール)はクアドラプルクリックに対応していませ
+ん。
 
-In Insert mode, when a selection is started, Vim goes into Normal mode
-temporarily.  When Visual or Select mode ends, it returns to Insert mode.
-This is like using CTRL-O in Insert mode.  Select mode is used when the
-'selectmode' option contains "mouse".
+インサートモードで選択を開始すると、一時的にノーマルモードへ移行します。ビジュ
+アルモードまたはセレクトモードが終了するとインサートモードへ戻ります。インサー
+トモードにおける CTRL-O と同様です。'selectmode' オプションが "mouse" を含んで
+いるとセレクトモードになります。
 
 							*drag-status-line*
-When working with several windows, the size of the windows can be changed by
-dragging the status line with the mouse.  Point the mouse at a status line,
-press the left button, move the mouse to the new position of the status line,
-release the button.  Just clicking the mouse in a status line makes that window
-the current window, without moving the cursor.  If by selecting a window it
-will change position or size, the dragging of the status line will look
-confusing, but it will work (just try it).
+ウィンドウを複数に分割しているとき、マウスでステータスラインをドラッグするとウ
+ィンドウのサイズを変更できます。マウスをステータスライン上へ持っていき、左ボタ
+ンを押し、ステータスラインを望みの位置まで動かしてボタンを離します。単にステータス
+ラインをクリックすると、カーソルを動かさずにそのウィンドウをカレントにします。
+ステータスラインのドラッグは、ウィンドウを選択して位置やサイズが変わると混乱を
+招きがちです。しかしこれは確かに動作します(試してみてください)。
 
 					*<MiddleRelease>* *<MiddleDrag>*
-Mouse clicks can be mapped.  The codes for mouse clicks are:
-     code	    mouse button	      normal action	~
- <LeftMouse>	 left pressed		    set cursor position
- <LeftDrag>	 left moved while pressed   extend selection
- <LeftRelease>	 left released		    set selection end
- <MiddleMouse>	 middle pressed		    paste text at cursor position
- <MiddleDrag>	 middle moved while pressed -
- <MiddleRelease> middle released	    -
- <RightMouse>	 right pressed		    extend selection
- <RightDrag>	 right moved while pressed  extend selection
- <RightRelease>  right released		    set selection end
- <X1Mouse>	 X1 button pressed	    -			*X1Mouse*
- <X1Drag>	 X1 moved while pressed	    -			*X1Drag*
- <X1Release>	 X1 button release	    -			*X1Release*
- <X2Mouse>	 X2 button pressed	    -			*X2Mouse*
- <X2Drag>	 X2 moved while pressed     -			*X2Drag*
- <X2Release>	 X2 button release	    -			*X2Release*
+マウスクリックイベントもマップすることができます。マウスクリックに対するコード
+は次の通りです:
+     コード	    マウスボタン	      通常の動作	~
+ <LeftMouse>	 左ボタン押下		    カーソル位置設定
+ <LeftDrag>	 左ボタンを押しながら移動   選択範囲を拡張
+ <LeftRelease>	 左ボタン放す		    選択を終了
+ <MiddleMouse>	 中央ボタン押下		    カーソル位置にテキストを貼りつけ
+ <MiddleDrag>	 中央ボタンを押しながら移動 -
+ <MiddleRelease> 中央ボタン放す		    -
+ <RightMouse>	 右ボタン押下		    選択を拡張
+ <RightDrag>	 右ボタンをお品が雷同	    選択を拡張
+ <RightRelease>  右ボタン放す		    選択を終了
+ <X1Mouse>	 X1 ボタン押下		    -			*X1Mouse*
+ <X1Drag>	 X1 ボタンを押しながら移動  -			*X1Drag*
+ <X1Release>	 X1 ボタン放す		    -			*X1Release*
+ <X2Mouse>	 X2 ボタン押下		    -			*X2Mouse*
+ <X2Drag>	 X2 ボタンを押しながら移動  -			*X2Drag*
+ <X2Release>	 X2 ボタン放す		    -			*X2Release*
 
-The X1 and X2 buttons refer to the extra buttons found on some mice.  The
-'Microsoft Explorer' mouse has these buttons available to the right thumb.
-Currently X1 and X2 only work on Win32 environments.
+X1 ボタンと X2 ボタンは、ある種のマウスについている4番目、5番目のボタンのこと
+です。'Microsoft Explorer' マウスの場合、これらのボタンは右親指の位置について
+います。現在のところ、X1 と X2 は Win32 環境でのみ機能します。
 
-Examples: >
+例: >
 	:noremap <MiddleMouse> <LeftMouse><MiddleMouse>
-Paste at the position of the middle mouse button click (otherwise the paste
-would be done at the cursor position). >
+マウス中央ボタンをクリックしたとき、クリックした位置に貼り付けます(通常はカー
+ソル位置に貼り付けます)。 >
 
 	:noremap <LeftRelease> <LeftRelease>y
-Immediately yank the selection, when using Visual mode.
+ビジュアルモードで選択範囲を即座にヤンクします。
 
-Note the use of ":noremap" instead of "map" to avoid a recursive mapping.
+Note 再帰マッピングにならないように "map" でなく "noremap" を使っています。
 >
 	:map <X1Mouse> <C-O>
 	:map <X2Mouse> <C-I>
-Map the X1 and X2 buttons to go forwards and backwards in the jump list, see
-|CTRL-O| and |CTRL-I|.
+X1 と X2 ボタンでジャンプリストの前後に移動するようにマップします。
+|CTRL-O| と |CTRL-I| を参照。
 
 						*mouse-swap-buttons*
-To swap the meaning of the left and right mouse buttons: >
+左右のマウスボタンの意味を交換するには次のようにします: >
 	:noremap	<LeftMouse>	<RightMouse>
 	:noremap	<LeftDrag>	<RightDrag>
 	:noremap	<LeftRelease>	<RightRelease>

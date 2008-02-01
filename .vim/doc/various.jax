@@ -1,4 +1,4 @@
-*various.txt*   For Vim バージョン 7.1.  Last change: 2007 Jan 14 和訳
+*various.txt*   For Vim バージョン 7.1.  Last change: 2007 Jan 14
 
 
 		VIM リファレンスマニュアル    by Bram Moolenaar
@@ -447,7 +447,7 @@ N  *+X11*		Unix のみ: ウィンドウタイトルを復帰可能 |X11|
 			クトします。互換性のため、レジスタ名の後ろの ">" は省
 			略できます。|quotestar| と |quoteplus| を参照。
 			{Vi にはない}
-:redi[r] @*>>		
+:redi[r] @*>>
 :redi[r] @+>>		メッセージをクリップボードに追記します。
 			{Vi にはない}
 

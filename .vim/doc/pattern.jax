@@ -1,4 +1,4 @@
-*pattern.txt*   For Vim バージョン 7.0.  Last change: 2006 Apr 30 ?a??
+*pattern.txt*   For Vim バージョン 7.0.  Last change: 2006 Apr 30
 
 
 		  VIM REFERENCE MANUAL	  by Bram Moolenaar
@@ -524,8 +524,8 @@ after:	  \v	   \m	    \M	     \V		マッチするもの ~
 
 [.!?][])"']*\($\|[ ]\)	文末。")" コマンドが認識する文末と同じ定義です。
 
-cat\Z			"cat" と "ca?t" ("a" + 0x0300) にマッチする。
-			見た目は似ていますが、"cat" (0x00e0)にはマッチしませ
+cat\Z			"cat" と "càt" ("a" + 0x0300) にマッチする。
+			見た目は似ていますが、"càt" (0x00e0)にはマッチしませ
 			ん。
 
 
