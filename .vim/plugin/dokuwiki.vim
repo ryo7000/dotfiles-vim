@@ -59,7 +59,7 @@ function! DW_get_edit_page(site_name, url, page, user, password)
 endfunction
 
 function! DW_write()
-  let conf = confirm("タイムスタンプを更新しますか？", "&No\n&Yes")
+  let conf = confirm("タイムスタンプを更新しますか？", "&Yes\n&No")
   if conf == 0 | return | endif
 
   silent! exec "normal! 1G2D"
