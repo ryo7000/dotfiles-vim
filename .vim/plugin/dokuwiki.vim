@@ -15,12 +15,12 @@ function! DW_get_edit_page(site_name, url, page, user, password)
   if a:user != ''
     let cmd .= ' -u ' . a:user . ":" . a:password
   endif
-  let cmd .= ' ' . a:url . AL_urlencode(a:page) . '?do=edit'
+  let cmd .= ' "' . a:url . AL_urlencode(a:page) . '?do=edit"'
 
   let result = system(cmd)
   let result = AL_fileread(tmp)
   let result = iconv(result, 'utf-8', &enc)
-  exec "e! ++enc=utf-8 " . tmp
+  silent! exec "e! ++enc=utf-8 " . tmp
 
   " read date parameter
   let stmp = @/
@@ -44,8 +44,10 @@ function! DW_get_edit_page(site_name, url, page, user, password)
   silent! exec "normal! i[[トップ]] [[リロード]] [[一覧]]\n--------------------------------------------------------------------------------\n"
   exec "set ft=dokuwiki"
   exec "normal! i".msg
+  let file = b:page . ' ' . b:site_name
+  silent! exec "f " . escape(file, ' ')
   silent! set nomodified
-  silent! set bt=nofile
+  silent! setlocal noswapfile
   nnoremap <silent> <buffer> <CR>    :call <SID>DW_move()<CR>
   nnoremap <silent> <buffer> <TAB>   :call <SID>DW_jump()<CR>
 
@@ -78,10 +80,10 @@ function! DW_write()
   call AL_write(post)
 
   let cmd = "curl -s -o " . result . " -d @" . post
-  if a:user != ''
-    let cmd .= ' -u ' . a:user . ":" . a:password
+  if b:user != ''
+    let cmd .= ' -u ' . b:user . ":" . b:password
   endif
-  let cmd .= b:url . 'doku.php'
+  let cmd .= ' "' . b:url . 'doku.php"'
 
   call system(cmd)
   call delete (post)
@@ -135,7 +137,7 @@ function! s:DW_get_list_page(param)
   if b:user != ''
     let cmd .= ' -u ' . b:user . ":" . b:password
   endif
-  let cmd .= ' ' . b:url . b:page . a:param
+  let cmd .= ' "' . b:url . b:page . a:param . '"'
 
   let result = system(cmd)
   let result = AL_fileread(tmp)
