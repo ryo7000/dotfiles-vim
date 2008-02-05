@@ -18,7 +18,7 @@ function! DW_get_edit_page(site_name, url, page, user, password)
   let cmd .= ' "' . a:url . AL_urlencode(a:page) . '?do=edit"'
 
   let result = system(cmd)
-  let result = AL_fileread(tmp)
+  let result = join(readfile(tmp), "\n")
   let result = iconv(result, 'utf-8', &enc)
   silent! exec "e! ++enc=utf-8 " . tmp
 
