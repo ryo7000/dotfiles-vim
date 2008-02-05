@@ -42,7 +42,7 @@ function! DW_get_edit_page(site_name, url, page, user, password)
   setlocal indentexpr=
   setlocal noai
 
-  silent! exec "normal! i[[トップ]] [[リロード]] [[一覧]]\n--------------------------------------------------------------------------------\n"
+  silent! exec "normal! i[[トップ]] [[リロード]] [[新規]] [[一覧]]\n--------------------------------------------------------------------------------\n"
   exec "set ft=dokuwiki"
   exec "normal! i".msg
   let file = b:page . ' ' . b:site_name
@@ -126,6 +126,10 @@ function! s:DW_move()
     endif
     if cur == 'リロード'
       call DW_get_edit_page(b:site_name, b:url, b:page, b:user, b:password)
+    endif
+    if cur == '新規'
+      let page = input('新規ページ名: ')
+      call DW_get_edit_page(b:site_name, b:url, page, b:user, b:password)
     endif
     if cur == '一覧'
       call s:DW_get_list_page('?do=index')
