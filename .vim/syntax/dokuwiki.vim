@@ -48,7 +48,7 @@ syn region DokuFileGeneric matchgroup=DokuFileMatch start=#<file># end=#</file>#
 syn region DokuCodeGeneric matchgroup=DokuCodeMatch start=#<code \=.\{-}># end=#</code># keepend
 syn region DokuBlockNoWiki matchgroup=DokuCodeMatch start=#<nowiki># end=#</nowiki># keepend
 syn region DokuBlockNoWiki matchgroup=DokuCodeMatch start=#%%# end=#%%#
-syn region DokuBlockPre    matchgroup=DokuPre start=#^ \{2}\([^ *-]\)\@=# end=#$#
+syn region DokuBlockPre    matchgroup=DokuPre start=#^ \{2}\([^*-]\)\@=# end=#$#
 
 " fix insert dokuformatting groups
 syn region DokuTableTH          start=#\^# end=#\^\|# contains=DokuTableTH,DokuLink,DokuMedia,DokuBold,DokuItalic,DokuUnderlined,DokuMonospaced,DokuSmileys,DokuNewLine oneline
