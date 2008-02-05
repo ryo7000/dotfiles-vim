@@ -30,6 +30,7 @@ function! DW_get_edit_page(site_name, url, page, user, password)
   let date_line = getline('.')
   let date = substitute(date_line, '.*name="date" value="\(\d\{-}\)" />', '\1', '') 
   let msg = substitute(result, '.*<textarea\_.\{-}>.\(\_.\{-}\)</textarea>.*', '\1', '')
+  let msg = s:decode_entityreference(msg)
 
   let b:site_name = a:site_name
   let b:page = a:page
@@ -195,6 +196,16 @@ function! s:DW_get_list_page(param)
 
   call delete(tmp)
 
+endfunction
+
+function! s:decode_entityreference(str)
+  let str = a:str
+  let str = substitute(str, '&gt;', '>', 'g')
+  let str = substitute(str, '&lt;', '<', 'g')
+  let str = substitute(str, '&quot;', '"', 'g')
+  let str = substitute(str, '&apos;', "'", 'g')
+  let str = substitute(str, '&amp;', '\&', 'g')
+  return str
 endfunction
 
 "-------------------------------------------------------------------------------
