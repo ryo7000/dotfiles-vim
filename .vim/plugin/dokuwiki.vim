@@ -39,7 +39,8 @@ function! DW_get_edit_page(site_name, url, page, user, password)
   let b:date = date
 
   normal! ggdG
-  set paste
+  setlocal indentexpr=
+  setlocal noai
 
   silent! exec "normal! i[[トップ]] [[リロード]] [[一覧]]\n--------------------------------------------------------------------------------\n"
   exec "set ft=dokuwiki"
