@@ -63,6 +63,24 @@ function! DW_write()
   if conf == 0 | return | endif
 
   silent! exec "normal! 1G2D"
+
+  " url encode per line
+	let cl = 1
+	while cl <= line('$')
+		let line = getline( cl )
+		let line = iconv( line, &enc, 'utf-8' )
+		let line = AL_urlencode( line )
+		call setline( cl, line )
+		let cl = cl + 1
+	endwhile
+
+  " url encode for LF
+	if 1 < line('$')
+		silent! %s/$/%0A/g
+		execute ":noh"
+		let @/ = ''
+	endif
+
   let cmd = "normal! 1G0i" . "id=" . b:page
   let cmd .= "&rev="
   let cmd .= "&date=" . b:date
@@ -169,6 +187,8 @@ function! s:DW_get_list_page(param)
       silent! exec "normal! a  * [[".page."]]\<CR>"
     endif
   endfor
+
+  call delete(tmp)
 
 endfunction
 
