@@ -25,6 +25,7 @@ syn match DokuUnderlined        #__[^_[\]]\+__#
 syn match DokuMonospaced        #''[^'[\]]\+''#
 syn match DokuNewLine           #\\\\\( \{1,}\|$\)#
 syn match DokuSmileys           #8-)\|8-O\|:-(\|:-)\|=)\|:-/\|:-\\\|:-?\|:-D\|:-P\|:-O\|:-X\|:-|\|;-)\|:?:\|:!:\|\^_\^\|LOL\|FIXME\|DELETEME#
+syn match DokuPre               #^  \( *$\| *[^*-]\)\@=#
 syn match DokuList              #^\( \{2}\| \{4}\| \{6}\| \{8}\| \{10}\| \{12}\| \{14}\| \{16}\| \{18}\| \{20}\| \{22}\| \{24}\)\(\-\|\*\)# 
 syn match DokuQuote             #^>\+#
 syn match DokuLinKInterwiki     #[a-z]\+>#    contained
@@ -48,7 +49,6 @@ syn region DokuFileGeneric matchgroup=DokuFileMatch start=#<file># end=#</file>#
 syn region DokuCodeGeneric matchgroup=DokuCodeMatch start=#<code \=.\{-}># end=#</code># keepend
 syn region DokuBlockNoWiki matchgroup=DokuCodeMatch start=#<nowiki># end=#</nowiki># keepend
 syn region DokuBlockNoWiki matchgroup=DokuCodeMatch start=#%%# end=#%%#
-syn region DokuBlockPre    matchgroup=DokuPre start=#^ \{2}\([^*-]\)\@=# end=#$#
 
 " fix insert dokuformatting groups
 syn region DokuTableTH          start=#\^# end=#\^\|# contains=DokuTableTH,DokuLink,DokuMedia,DokuBold,DokuItalic,DokuUnderlined,DokuMonospaced,DokuSmileys,DokuNewLine oneline
