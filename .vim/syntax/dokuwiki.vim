@@ -86,7 +86,7 @@ hi def link DokuTableTH       Identifier
 hi def link DokuTableTD       Constant
 
 " color groups
-hi def link DokuBlockColor    StatusLine
+hi def link DokuBlockColor    NonText
 hi def link DokuPre           NonText
 hi def link DokuFormatColor   Constant
 
