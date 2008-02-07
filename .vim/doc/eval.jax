@@ -1662,7 +1662,7 @@ remote_peek( {serverid} [, {retvar}])
 remote_read( {serverid})	文字列	返信文字列を読み込む
 remote_send( {server}, {string} [, {idvar}])
 				文字列	キーシーケンスを送信する
-remove( {list}, {idx} [, {end}])  任意	{list}から{idx}〜{end}の要素を削除
+remove( {list}, {idx} [, {end}])  任意	{list}から{idx}?{end}の要素を削除
 remove( {dict}, {key})		任意	{dict}から要素{key}を削除
 rename({from}, {to})		数値	{file}から{to}へファイル名変更
 repeat( {expr}, {count})	文字列	{expr}を{count}回繰り返す
@@ -1942,8 +1942,8 @@ char2nr({expr})
 			char2nr(" ")		returns 32
 			char2nr("ABC")		returns 65
 <		現在の'encoding'の値が適用される。"utf-8"のときの例: >
-			char2nr("á")	 	returns 225
-			char2nr("á"[0])	returns 195
+			char2nr("a")	 	returns 225
+			char2nr("a"[0])	returns 195
 <		nr2char()はこの逆を行う。
 
 cindent({lnum})						*cindent()*
@@ -4586,7 +4586,7 @@ substitute({expr}, {pat}, {sub}, {flags})
 		'smartcase'は適用されない。
 		{pat}がどう扱われるかについては|string-match|を参照。
 		また、{sub}内の"~"は前回の{sub}に置換されない。
-		{sub}内の幾つかのコードには|sub-replaced-special|の特殊な意味
+		{sub}内の幾つかのコードには|sub-replace-special|の特殊な意味
 		があることに注意。例えば、何かの文字列をリテラルの"\n"に置換え
 		るためには、"\\\\n"か'\\n'を使う必要がある。
 		{pat}が{expr}の何処にもマッチしなければ、{expr}が何の変更も受
