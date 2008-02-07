@@ -6,16 +6,17 @@ scriptencoding utf-8
 
 command! DokuVim :call DokuWiki()
 
+let s:curl_cmd = 'curl --silent'
+
 "-------------------------------------------------------------------------------
 " wiki edit
-function! DW_get_edit_page(site_name, url, page, user, password)
+"function! DW_get_edit_page(site_name, url, page, user, password)
+function! DW_get_edit_page(info)
   " read wiki data
   let tmp = tempname()
   let cmd = "curl -s -o " . tmp 
-  if a:user != ''
-    let cmd .= ' -u ' . a:user . ":" . a:password
-  endif
-  let cmd .= ' "' . a:url . AL_urlencode(a:page) . '?do=edit"'
+            \ . ' -b ' . a:info['cookie_file']
+            \ . ' "' . a:info['url'] . AL_urlencode(a:page) . '?do=edit"'
 
   let result = system(cmd)
   let result = join(readfile(tmp), "\n")
@@ -221,11 +222,34 @@ function! s:DW_list_read()
     return
   endif
 
-  let [site_name, url, page, user, password] = split(line, '\s\+')
+  let [site_name, url, page] = split(line, '\s\+')
 
 	if &modified
-		execute ":w"
+		execute "w"
 	endif
-  call DW_get_edit_page(site_name, url, page, user, password)
+  let info = call s:DW_Login(site_name, url, page)
 
+  call DW_get_edit_page(info)
+endfunction
+
+function! DW_Login(site_name, url, page)
+  let user = input('ユーザー名 : ')
+  let password = inputsecret('パスワード: ')
+  let cookie_file = tempname()
+
+  let cmd  = s:curl_cmd . ' ' . a:url . 'doku.php'
+             \ . ' -d do = login -d'
+             \ . ' -d id=' . a:page  . ' -d u=' . user . ' -d p=' . password
+             \ . ' -c ' . cookie_file
+
+  let result = system(cmd)
+
+  if result !~ '<div class="error">'
+    echo 'ログインしました'
+    return {'site_name' : a:site_name, 'usl' : a:url, 'page' : a:page, 'cookie_file' : cookie_file }
+  else
+    echohl Error | echo 'ログイン失敗しました' | echohl None
+    call delete(cookie_file)
+    return
+  endif
 endfunction
