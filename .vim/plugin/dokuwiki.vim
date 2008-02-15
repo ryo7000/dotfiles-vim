@@ -1,3 +1,4 @@
+" vim:set fdm=marker:
 " put $HOME .dokuwiki_list
 "
 " お勉強メモ	http://www.live-emotion.com/wiki/	start
@@ -13,7 +14,7 @@ let s:curl_cmd = 'curl --silent'
 function! DW_get_edit_page(info) " {{{
   " read wiki editpage data
   let tmp = tempname()
-  let cmd = "curl -s -o " . tmp 
+  let cmd = s:curl_cmd . " -o " . tmp 
             \ . ' -b ' . a:info['cookie_file']
             \ . ' "' . a:info['url'] . s:Urlencode(a:info['page']) . '?do=edit"'
 
@@ -37,7 +38,7 @@ function! DW_get_edit_page(info) " {{{
   silent! exec "normal! i[[トップ]] [[リロード]] [[新規]] [[一覧]]\n--------------------------------------------------------------------------------\n"
   set ft=dokuwiki
   exec "normal! i".msg
-  let file = b:info['site_name']
+  let file = b:info['page'] . " : " . b:info['site_name']
   silent! exec "f " . escape(file, ' ')
   silent! set nomodified
   silent! setlocal noswapfile
@@ -47,11 +48,11 @@ function! DW_get_edit_page(info) " {{{
   call delete(tmp)
 
   augroup WikiEdit
-    au! BufWriteCmd <buffer> call DW_write()
+    au! BufWriteCmd <buffer> call s:DW_write()
   augroup END
 endfunction " }}}
 
-function! DW_write() " {{{
+function! s:DW_write() " {{{
   let conf = confirm("タイムスタンプを更新しますか？", "&Yes\n&No")
   if conf == 0 | return | endif
 
@@ -90,7 +91,7 @@ function! DW_write() " {{{
   let result = tempname()
   call AL_write(post)
 
-  let cmd = "curl -s -o " . result . " -d @" . post
+  let cmd = s:curl_cmd . " -o " . result . " -d @" . post
   if b:info['user'] != ''
     let cmd .= ' -u ' . b:info['user'] . ":" . b:info['password']
   endif
@@ -99,6 +100,12 @@ function! DW_write() " {{{
   call system(cmd)
   call delete (post)
   call delete (result)
+
+  " start indexer
+  let cmd = s:curl_cmd . b:info['url'] . 'lib/exe/indexer.php?'
+            \ 'id='. b:info['page']
+            \ '&amp;' . b:info['date']
+  call system(cmd)
 
   call DW_get_edit_page(b:info)
 endfunction " }}}
@@ -150,7 +157,7 @@ endfunction " }}}
 function! s:DW_get_list_page(param) " {{{
   " read index
   let tmp = tempname()
-  let cmd = "curl -s -o " . tmp 
+  let cmd = s:curl_cmd . " -o " . tmp 
             \ . ' -b ' . b:info['cookie_file']
             \ . ' "' . b:info['url'] . b:info['page'] . a:param . '"'
 
@@ -265,3 +272,7 @@ function! s:Char2hex(c) " {{{
   let r = '%'.(strlen(r) < 2 ? '0' : '').r
   return r
 endfunction " }}}
+
+" s:siteinfo['site_name'] = { 'url', 'cookie_file' }
+" b:page = 'pagename'
+" b:date = date
