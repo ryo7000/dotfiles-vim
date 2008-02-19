@@ -69,19 +69,11 @@ map <C-w>t :tabnew<cr>
 
 "---------------------------------------------------------------------------
 " fuzzyfinder
+let g:FuzzyFinderOptions = { 'Base':{}, 'Buffer':{}, 'File':{}, 'MruFile':{}, 'FavFile':{}, 'Dir':{}, 'Tag':{}, 'TaggedFile':{}}
+let g:FuzzyFinderOptions.MruFile.max_item = 100
+let g:FuzzyFinderOptions.Base.key_next_mode = '<C-s>'
+
 nmap <unique> <silent> <C-s> :FuzzyFinderBuffer<CR>
-
-" file.lasting_cache : ディレクトリ移動が反映されないのでoff
-let g:FuzzyFinderOptions = {
-\    'key_next_mode'   : '<C-s>',
-\    'file' : {
-\      'lasting_cache' : 0,
-\    },
-\    'mru_file' : {
-\      'max_item' : 100,
-\    },
-\  }
-
 nnoremap <C-q><C-b> :FuzzyFinderBuffer<CR>
 nnoremap <C-q><C-n> :FuzzyFinderMruFile<CR>
 nnoremap <C-q><C-p> :FuzzyFinderMruCmd<CR>
@@ -89,14 +81,10 @@ nnoremap <C-q><C-v> :FuzzyFinderFavFile<CR>
 nnoremap <C-q><C-d> :FuzzyFinderDir<CR>
 nnoremap <C-q><C-t> :FuzzyFinderTag<CR>
 nnoremap <C-q><C-g> :FuzzyFinderTaggedFile<CR>
-
-" 現在のディレクトリからfileモードを開く
-nnoremap <C-q><C-f> :let g:FuzzyFinderOptions.file.initial_text =
-      \ ''<CR>:FuzzyFinderFile<CR>
+nnoremap <C-q><C-f> :FuzzyFinderFile<CR>
 
 " ファイルのディレクトリからfileモードを開く
-nnoremap <C-q><C-x> :let g:FuzzyFinderOptions.file.initial_text =
-      \ expand('%')[:-1-len(expand('%:t'))]<CR>:FuzzyFinderFile<CR>
+nnoremap <C-q><C-x> :FuzzyFinderFile <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>
 
 "---------------------------------------------------------------------------
 " cscope関連
