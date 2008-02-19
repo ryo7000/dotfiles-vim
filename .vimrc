@@ -76,10 +76,11 @@ let g:FuzzyFinderOptions.Base.key_next_mode = '<C-s>'
 nmap <unique> <silent> <C-s> :FuzzyFinderBuffer<CR>
 nnoremap <C-q><C-b> :FuzzyFinderBuffer<CR>
 nnoremap <C-q><C-n> :FuzzyFinderMruFile<CR>
-nnoremap <C-q><C-p> :FuzzyFinderMruCmd<CR>
 nnoremap <C-q><C-v> :FuzzyFinderFavFile<CR>
 nnoremap <C-q><C-d> :FuzzyFinderDir<CR>
 nnoremap <C-q><C-t> :FuzzyFinderTag<CR>
+nnoremap <C-q><C-p> :FuzzyFinderTag!<CR>
+nnoremap <C-q><C-]> :FuzzyFinderTag! <C-r>=expand('<cword>')<CR><CR>
 nnoremap <C-q><C-g> :FuzzyFinderTaggedFile<CR>
 nnoremap <C-q><C-f> :FuzzyFinderFile<CR>
 
