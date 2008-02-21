@@ -72,6 +72,8 @@ map <C-w>t :tabnew<cr>
 let g:FuzzyFinderOptions = { 'Base':{}, 'Buffer':{}, 'File':{}, 'MruFile':{}, 'FavFile':{}, 'Dir':{}, 'Tag':{}, 'TaggedFile':{}}
 let g:FuzzyFinderOptions.MruFile.max_item = 100
 let g:FuzzyFinderOptions.Base.key_next_mode = '<C-s>'
+let g:FuzzyFinderOptions.File.lasting_cache = 0
+let g:FuzzyFinderOptions.Dir.lasting_cache = 0
 
 nmap <unique> <silent> <C-s> :FuzzyFinderBuffer<CR>
 nnoremap <C-q><C-b> :FuzzyFinderBuffer<CR>
