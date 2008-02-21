@@ -158,8 +158,7 @@ function! s:DW_get_list_page(site_name, param) " {{{
   let result = join(readfile(tmp), "\n")
   let result = iconv(result, 'utf-8', &enc)
 
-  "FIXME SideBarの索引をひろっちゃってる
-  let msg = substitute(result, '.\{-}<ul class="idx">.\(\_.\{-}\)</li></ul>.*', '\1', '')
+  let msg = substitute(result, '.\{-}<\/div>\n\n<ul class="idx">.\(\_.\{-}\)</li></ul>.*', '\1', '')
   enew
   let b:site_name = a:site_name
 
@@ -200,7 +199,7 @@ function! s:DW_get_list_page(site_name, param) " {{{
   nnoremap <silent> <buffer> <TAB>   :call <SID>DW_jump(0)<CR>
   nnoremap <silent> <buffer> <S-TAB>   :call <SID>DW_jump(1)<CR>
 
-  "call delete(tmp)
+  call delete(tmp)
 
 endfunction " }}}
 
