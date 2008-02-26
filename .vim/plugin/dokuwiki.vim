@@ -153,7 +153,6 @@ function! s:DW_get_list_page(site_name, param) " {{{
             \ . ' -b ' . s:site_info[a:site_name].cookie
             \ . ' "' . s:site_info[a:site_name].url . a:param . '"'
 
-  echomsg cmd
   let result = system(cmd)
   let result = join(readfile(tmp), "\n")
   let result = iconv(result, 'utf-8', &enc)
