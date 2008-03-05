@@ -3416,6 +3416,7 @@ E266	if_ruby.jax	/*E266*
 E267	if_ruby.jax	/*E267*
 E268	if_ruby.jax	/*E268*
 E269	if_ruby.jax	/*E269*
+E27	farsi.jax	/*E27*
 E270	if_ruby.jax	/*E270*
 E271	if_ruby.jax	/*E271*
 E272	if_ruby.jax	/*E272*
@@ -3982,6 +3983,7 @@ Exuberant_ctags	tagsrch.jax	/*Exuberant_ctags*
 F	motion.jax	/*F*
 FAQ	intro.jax	/*FAQ*
 FAQ	vim_faq_help.jax	/*FAQ*
+Farsi	farsi.jax	/*Farsi*
 FileAppendCmd	autocmd.jax	/*FileAppendCmd*
 FileAppendPost	autocmd.jax	/*FileAppendPost*
 FileAppendPre	autocmd.jax	/*FileAppendPre*
@@ -5470,6 +5472,8 @@ faq-vim-with-external-applications	vim_faq_help.jax	/*faq-vim-with-external-appl
 faq-viminfo	vim_faq_help.jax	/*faq-viminfo*
 faq-visual-mode	vim_faq_help.jax	/*faq-visual-mode*
 faq-windows	vim_faq_help.jax	/*faq-windows*
+farsi	farsi.jax	/*farsi*
+farsi.txt	farsi.jax	/*farsi.txt*
 fasm.vim	syntax.jax	/*fasm.vim*
 fcs_choice-variable	eval.jax	/*fcs_choice-variable*
 fcs_reason-variable	eval.jax	/*fcs_reason-variable*
