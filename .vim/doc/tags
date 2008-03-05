@@ -57,6 +57,7 @@
 :V	eregex_j.txt	/*:V*
 :VCSAdd	vcscommand.txt	/*:VCSAdd*
 :VCSAnnotate	vcscommand.txt	/*:VCSAnnotate*
+:VCSBlame	vcscommand.txt	/*:VCSBlame*
 :VCSCommit	vcscommand.txt	/*:VCSCommit*
 :VCSDelete	vcscommand.txt	/*:VCSDelete*
 :VCSDiff	vcscommand.txt	/*:VCSDiff*
@@ -64,6 +65,7 @@
 :VCSInfo	vcscommand.txt	/*:VCSInfo*
 :VCSLock	vcscommand.txt	/*:VCSLock*
 :VCSLog	vcscommand.txt	/*:VCSLog*
+:VCSRemove	vcscommand.txt	/*:VCSRemove*
 :VCSRevert	vcscommand.txt	/*:VCSRevert*
 :VCSReview	vcscommand.txt	/*:VCSReview*
 :VCSStatus	vcscommand.txt	/*:VCSStatus*
