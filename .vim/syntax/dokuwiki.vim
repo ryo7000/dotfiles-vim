@@ -56,12 +56,16 @@ syn region DokuTableTD          start=#|#  end=#|\|# contains=DokuTableTD,DokuLi
 
 " TODO make other syntax work inside codeblocks
 " syn include @PHP syntax/php.vim
+" unlet b:current_syntax
 " syn region DokuPHP matchgroup=DokuCodeMatch start=#<code php># end=#</code># contains=@PHP
 " syn include @PERL syntax/perl.vim
+" unlet b:current_syntax
 " syn region DokuPERL matchgroup=DokuCodeMatch start=#<code perl># end=#</code># contains=@PERL
 " syn include @HTML syntax/html.vim
+" unlet b:current_syntax
 " syn region DokuHTML matchgroup=DokuCodeMatch start=#<html># end=#</html># contains=@HTML
 " syn include @JAVA syntax/java.vim
+" unlet b:current_syntax
 " syn region DokuJAVA matchgroup=DokuCodeMatch start=#<code java># end=#</code># contains=@JAVA
 
 " costum color groups
