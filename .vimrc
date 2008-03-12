@@ -4,6 +4,7 @@ filetype plugin on
 " vimrcの設定上書き
 if has('win32')
   let $HOME=$VIM
+  set isfname-=:
 endif
 set nobackup
 set nowrapscan
