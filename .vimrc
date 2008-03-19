@@ -109,17 +109,7 @@ let g:explStartRight=0
 "---------------------------------------------------------------------------
 " ステータスラインに関する設定
 
-" ファイルフォーマットとエンコーディングを取得
-function! GetStatusEx()
-    let str = ''
-    let str = str . '[' . &fileformat . ']'
-    if has('multi_byte') && &fileencoding != ''
-        let str = str . ' [' . &fileencoding . ']'
-    endif
-    return str
-endfunction
-
-set statusline=%n:\ %<%f%=%y\ %m%r%h%w%{GetStatusEx()}\ %l,%c\ %P 
+set statusline=%n:\ %<%f%=%y\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\ %l,%c\ %P 
 
 "---------------------------------------------------------------------------
 " cygwin連携
