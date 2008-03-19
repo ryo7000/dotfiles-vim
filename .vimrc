@@ -112,41 +112,11 @@ let g:explStartRight=0
 set statusline=%n:\ %<%f%=%y\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\ %l,%c\ %P 
 
 "---------------------------------------------------------------------------
-" cygwin連携
-
-"set shell=c:\cygwin\bin\bash.exe
-"set shellcmdflag=-c
-"set shellxquote=\"
-"set shellslash
-
-"---------------------------------------------------------------------------
 " その他
 
-command! Dt execute("diffthis")
 let g:mapleader = "\<C-k>"
 set grepprg=grep\ -nH\ $*\ \\\|\ grep\ -v\ .svn
 set shortmess+=I
-
-" ff11 equip db 更新用関数
-command! -nargs=+ -complete=command Db call Dbcall(<f-args>)
-
-function! Dbcall(species, date)
-	let s:spe = ""
-	if a:species == "w"
-		let s:spe = "weapon"
-	elseif a:species == "a"
-		let s:spe = "armor"
-	elseif a:species == "i"
-		let s:spe = "item"
-	endif
-
-	let s:url = "http://ryo:wqinbmxw@www.live-emotion.com/ff11/csv.php?species=". s:spe . "&date=" . a:date
-	execute ("set ff=unix")
-	execute ("set fenc=euc-jp")
-	execute ("normal ggdG")
-	execute ("Nread ". s:url)
-	execute ("normal ggD")
-endfunction
 
 " set fenc
 nmap <silent> eu :set fenc=utf-8<CR>
