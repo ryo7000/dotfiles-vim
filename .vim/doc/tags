@@ -76,9 +76,7 @@
 Align-copyright	Align.txt	/*Align-copyright*
 CreateBundleSnippet	snippets_emu.txt	/*CreateBundleSnippet*
 CreateSnippet	snippets_emu.txt	/*CreateSnippet*
-DelSnippet	snippets_emu.txt	/*DelSnippet*
 E2v()	eregex_j.txt	/*E2v()*
-Snippet	snippets_emu.txt	/*Snippet*
 Tlist_Get_Tag_Prototype_By_Line()	taglist.txt	/*Tlist_Get_Tag_Prototype_By_Line()*
 Tlist_Get_Tagname_By_Line()	taglist.txt	/*Tlist_Get_Tagname_By_Line()*
 Tlist_Set_App()	taglist.txt	/*Tlist_Set_App()*
@@ -196,7 +194,6 @@ bufexplorer.txt	bufexplorer.txt	/*bufexplorer.txt*
 buffer-explorer	bufexplorer.txt	/*buffer-explorer*
 config/rails.vim	rails.txt	/*config\/rails.vim*
 creating-snippets	snippets_emu.txt	/*creating-snippets*
-defining-snippets	snippets_emu.txt	/*defining-snippets*
 eregex	eregex_j.txt	/*eregex*
 eregex-about-vimregex	eregex_j.txt	/*eregex-about-vimregex*
 eregex-commands	eregex_j.txt	/*eregex-commands*
@@ -378,7 +375,6 @@ rails-tabs	rails.txt	/*rails-tabs*
 rails-template-types	rails.txt	/*rails-template-types*
 rails-vim-integration	rails.txt	/*rails-vim-integration*
 rails.txt	rails.txt	/*rails.txt*
-removing-snippets	snippets_emu.txt	/*removing-snippets*
 snip-advanced-tag-commands	snippets_emu.txt	/*snip-advanced-tag-commands*
 snip-buffer-specific	snippets_emu.txt	/*snip-buffer-specific*
 snip-bundles	snippets_emu.txt	/*snip-bundles*
@@ -395,7 +391,6 @@ snip-special-vars	snippets_emu.txt	/*snip-special-vars*
 snip-start-end-tags	snippets_emu.txt	/*snip-start-end-tags*
 snip-tag-name-syntax	snippets_emu.txt	/*snip-tag-name-syntax*
 snippet-commands	snippets_emu.txt	/*snippet-commands*
-snippets-commands-overview	snippets_emu.txt	/*snippets-commands-overview*
 snippets_emu-bugs	snippets_emu.txt	/*snippets_emu-bugs*
 snippets_emu-features	snippets_emu.txt	/*snippets_emu-features*
 snippets_emu-options	snippets_emu.txt	/*snippets_emu-options*
