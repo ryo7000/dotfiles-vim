@@ -9,7 +9,6 @@ endif
 set nobackup
 set nowrapscan
 set pumheight=15
-lang C
 
 set wildmode=list:longest
 
@@ -133,6 +132,6 @@ com! -bar -nargs=1 OpenURL call OpenNewTab("<args>")
 
 " autocomplpop.vim
 " 候補は大文字小文字無視する
-let g:AutoComplPop_IgnoreCaseOption=1
+let g:AutoComplPop_IgnoreCaseOption = 1
 " 補完時の'complete'
-let g:AutoComplPop_CompleteOption='.,w,b,u'
+let g:AutoComplPop_CompleteOption = '.,w,b,u'
