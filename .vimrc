@@ -135,3 +135,7 @@ com! -bar -nargs=1 OpenURL call OpenNewTab("<args>")
 let g:AutoComplPop_IgnoreCaseOption = 1
 " 補完時の'complete'
 let g:AutoComplPop_CompleteOption = '.,w,b,u'
+
+" fix SEGV for Gentoo + vim + rails.vim
+" http://www.nabble.com/Omni-completion-stack-overflow-td8922044.html
+silent! ruby nil

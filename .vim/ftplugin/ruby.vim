@@ -1,5 +1,7 @@
 set ts=2 sw=2 sts=2 et
 set isk+=!,?
 
-" Ruby‚ÌƒIƒ€ƒj•âŠ®‚ğİ’è(ft-ruby-omni)
+"Rubyã®ã‚ªãƒ ãƒ‹è£œå®Œã‚’è¨­å®š(ft-ruby-omni)
+let g:rubycomplete_buffer_loading = 1
+let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1
