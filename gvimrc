@@ -3,7 +3,7 @@
 " An example for a Japanese version gvimrc file.
 " 日本語版のデフォルトGUI設定ファイル(gvimrc) - Vim7用試作
 "
-" Last Change: 08-Aug-2007.
+" Last Change: 31-May-2008.
 " Maintainer:  MURAOKA Taro <koron@tka.att.ne.jp>
 "
 " 解説:
@@ -101,7 +101,7 @@ set cmdheight=2
 "
 if has('multi_byte_ime') || has('xim')
   " IME ON時のカーソルの色を設定(設定例:紫)
-  highlight CursorIM guibg=red guifg=NONE
+  highlight CursorIM guibg=Purple guifg=NONE
   " 挿入モード・検索モードでのデフォルトのIME状態設定
   set iminsert=0 imsearch=0
   if has('xim') && has('GUI_GTK')
