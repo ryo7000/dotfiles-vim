@@ -95,7 +95,11 @@ function! s:Rgb2xterm(color)
    let g = eval('0x'.a:color[3].a:color[4])
    let b = eval('0x'.a:color[5].a:color[6])
    for c in range(0,254)
-      let d = s:pow(s:colortable[c][0]-r,2) + s:pow(s:colortable[c][1]-g,2) + s:pow(s:colortable[c][2]-b,2)
+      let tr = s:colortable[c][0]-r
+      let tg = s:colortable[c][1]-g
+      let tb = s:colortable[c][2]-b
+      let d = tr * tr + tg * tg + tb * tb
+      "let d = s:pow(s:colortable[c][0]-r,2) + s:pow(s:colortable[c][1]-g,2) + s:pow(s:colortable[c][2]-b,2)
       if d<smallest_distance
       let smallest_distance = d
       let best_match = c
