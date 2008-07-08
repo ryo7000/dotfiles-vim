@@ -15,6 +15,8 @@ set wildmode=list:longest
 if !has("gui_running")
   set t_Co=256
   colorscheme desert256
+  set mouse=a
+  set ttymouse=xterm2
   hi Pmenu ctermbg=242
   hi PmenuSel cterm=reverse ctermfg=64 ctermbg=222
   hi PmenuSbar ctermbg=249
