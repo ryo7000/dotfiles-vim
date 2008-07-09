@@ -96,6 +96,7 @@ nnoremap <C-q><C-x> :FuzzyFinderFile <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.
 
 set cst
 map g<C-]> :cs find c <C-R>=expand("<cword>")<CR><CR>
+set cscopequickfix=s-,c-,d-,i-,t-,e-
 
 "---------------------------------------------------------------------------
 " ファイルエクスプローラに関する設定
