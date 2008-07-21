@@ -69,6 +69,15 @@ map <C-S-tab> :tabprevious<cr>
 map <C-tab> :tabnext<cr>
 map <C-w>t :tabnew<cr>
 
+" C-@でEsc
+noremap <C-@>  <Esc>
+noremap! <C-@>  <Esc>
+
+" 日本語入力中にESCで、Nomalに戻る & 日本語入力を終了する
+if has("gui_running")
+  inoremap <ESC> <ESC>:set iminsert=0<CR>
+endif
+
 "---------------------------------------------------------------------------
 " fuzzyfinder
 let g:FuzzyFinderOptions = { 'Base':{}, 'Buffer':{}, 'File':{}, 'MruFile':{}, 'FavFile':{}, 'Dir':{}, 'Tag':{}, 'TaggedFile':{}}
