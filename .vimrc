@@ -59,6 +59,7 @@ let g:DirDiffExcludes = ".svn"
 let g:winManagerWindowLayout = "FileExplorer,BufExplorer|TagList"
 let Tlist_Display_Tag_Scope = 0
 map <c-w><c-t> :WMToggle<cr>
+hi link MyTagListTagName Visual
 
 " closetag
 let g:closetag_html_style=1
@@ -101,6 +102,16 @@ nnoremap <C-q><C-f> :FuzzyFinderFile<CR>
 nnoremap <C-q><C-x> :FuzzyFinderFile <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>
 
 "---------------------------------------------------------------------------
+" autocomplpop
+
+" 候補は大文字小文字無視する
+let g:AutoComplPop_IgnoreCaseOption = 1
+" 補完時の'complete'
+let g:AutoComplPop_CompleteOption = '.,w,b,u'
+" キーワード補完の最小文字数を3に
+let g:AutoComplPop_BehaviorKeywordLength = 3
+
+"---------------------------------------------------------------------------
 " cscope関連
 
 set cst
@@ -141,12 +152,6 @@ nmap <silent> ers :e ++enc=cp932<CR>
 
 " rails.vim
 com! -bar -nargs=1 OpenURL call OpenNewTab("<args>")
-
-" autocomplpop.vim
-" 候補は大文字小文字無視する
-let g:AutoComplPop_IgnoreCaseOption = 1
-" 補完時の'complete'
-let g:AutoComplPop_CompleteOption = '.,w,b,u'
 
 " fix SEGV for Gentoo + vim + rails.vim
 " http://www.nabble.com/Omni-completion-stack-overflow-td8922044.html
