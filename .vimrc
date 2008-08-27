@@ -36,7 +36,7 @@ nmap <C-j> :set list!<CR>
 nmap <C-Enter> i<Enter><Esc>
 
 " 親ディレクトリのtagsも検索
-set tags+=tags;
+set tags& tags+=tags;
 
 " 検索語を画面の真ん中に
 nmap n nzz
@@ -53,17 +53,21 @@ set nrformats-=octal
 let g:DirDiffExcludes = ".svn"
 
 " matchit
-:source $VIMRUNTIME/macros/matchit.vim
+so $VIMRUNTIME/macros/matchit.vim
 
 " winmanager
-let g:winManagerWindowLayout = "FileExplorer,BufExplorer|TagList"
+let g:winManagerWindowLayout = "TagList"
+let g:winManagerWidth = 40
 let Tlist_Display_Tag_Scope = 0
 map <c-w><c-t> :WMToggle<cr>
 hi link MyTagListTagName Visual
 
 " closetag
 let g:closetag_html_style=1
-au Filetype html,xml,xsl,ant,tpl,php,eruby ru macros/closetag.vim
+augroup CloseTagMacro
+  au!
+  au Filetype html,xml,xsl,ant,tpl,php,eruby ru macros/closetag.vim
+augroup END
 
 " tab navigation like firefox
 map <C-S-tab> :tabprevious<cr>
@@ -81,13 +85,13 @@ endif
 
 "---------------------------------------------------------------------------
 " fuzzyfinder
-let g:FuzzyFinderOptions = { 'Base':{}, 'Buffer':{}, 'File':{}, 'MruFile':{}, 'FavFile':{}, 'Dir':{}, 'Tag':{}, 'TaggedFile':{}}
+let g:FuzzyFinderOptions = { 'Base':{}, 'Buffer':{}, 'File':{}, 'Dir':{}, 'MruFile':{}, 'MruCmd':{}, 'FavFile':{}, 'Tag':{}, 'TaggedFile':{}}
 let g:FuzzyFinderOptions.MruFile.max_item = 100
 let g:FuzzyFinderOptions.Base.key_next_mode = '<C-s>'
 let g:FuzzyFinderOptions.File.lasting_cache = 0
 let g:FuzzyFinderOptions.Dir.lasting_cache = 0
 
-nmap <unique> <silent> <C-s> :FuzzyFinderBuffer<CR>
+nmap <silent> <C-s> :FuzzyFinderBuffer<CR>
 nnoremap <C-q><C-b> :FuzzyFinderBuffer<CR>
 nnoremap <C-q><C-n> :FuzzyFinderMruFile<CR>
 nnoremap <C-q><C-v> :FuzzyFinderFavFile<CR>
@@ -138,7 +142,7 @@ set statusline=%n:\ %<%f%=%y\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}
 
 let g:mapleader = "\<C-k>"
 set grepprg=grep\ -nH\ $*\ \\\|\ grep\ -v\ .svn
-set shortmess+=I
+set shortmess& shortmess+=I
 
 " set fenc
 nmap <silent> eu :set fenc=utf-8<CR>
