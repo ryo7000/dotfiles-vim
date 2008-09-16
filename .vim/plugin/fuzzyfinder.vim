@@ -1073,7 +1073,7 @@ function! g:FuzzyFinderMode.File.on_complete(base)
   let base = s:ExpandTailDotSequenceToParentDir(a:base)
   let patterns = map(s:SplitPath(base), 'self.make_pattern(v:val)')
   let result = self.glob_ex(patterns.head.base, patterns.tail.re, self.excluded_path, s:SuffixNumber(patterns.tail.base), self.matching_limit)
-  let result = filter(result, 'bufnr(v:val.path) != self.prev_bufnr')
+  " let result = filter(result, 'bufnr(v:val.path) != self.prev_bufnr')
   if len(result) >= self.matching_limit
     call s:HighlightError()
   endif
