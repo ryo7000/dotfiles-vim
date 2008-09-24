@@ -58,7 +58,6 @@ so $VIMRUNTIME/macros/matchit.vim
 " winmanager
 let g:winManagerWindowLayout = "TagList"
 let g:winManagerWidth = 40
-let Tlist_Display_Tag_Scope = 0
 map <c-w><c-t> :WMToggle<cr>
 hi link MyTagListTagName Visual
 
@@ -119,7 +118,7 @@ let g:AutoComplPop_BehaviorKeywordLength = 3
 " cscope関連
 
 set cst
-map g<C-]> :cs find c <C-R>=expand("<cword>")<CR><CR>
+map <silent> g<C-]> :cs find c <C-R>=expand("<cword>")<CR><CR>
 set cscopequickfix=s-,c-,d-,i-,t-,e-
 
 "---------------------------------------------------------------------------
@@ -136,6 +135,43 @@ let g:explStartRight=0
 " ステータスラインに関する設定
 
 set statusline=%n:\ %<%f%=%y\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\ %l,%c\ %P 
+
+"---------------------------------------------------------------------------
+" kaoriya cmdex.vimより
+
+" :CdCurrent
+"   Change current directory to current file's one.
+command! -nargs=0 CdCurrent cd %:p:h
+
+" :Scratch
+"   Open a scratch (no file) buffer.
+"   閉じてしまっても:ls!で見つかる
+command! -nargs=0 Scratch new | setlocal bt=nofile noswf | let b:cmdex_scratch = 1
+function! s:CheckScratchWritten()
+  if &buftype ==# 'nofile' && expand('%').'x' !=# 'x' && exists('b:cmdex_scratch') && b:cmdex_scratch == 1
+    setlocal buftype= swapfile
+    unlet b:cmdex_scratch
+  endif
+endfunction
+augroup CmdexScratch
+autocmd!
+autocmd BufWritePost * call <SID>CheckScratchWritten()
+augroup END
+
+" c_CTRL-X
+"   Input current buffer's directory on command line.
+cnoremap <C-X> <C-R>=<SID>GetBufferDirectory()<CR>/
+function! s:GetBufferDirectory()
+  let path = expand('%:p:h')
+  let cwd = getcwd()
+  if match(path, cwd) != 0
+    return path
+  elseif strlen(path) > strlen(cwd)
+    return strpart(path, strlen(cwd) + 1)
+  else
+    return '.'
+  endif
+endfunction
 
 "---------------------------------------------------------------------------
 " その他
