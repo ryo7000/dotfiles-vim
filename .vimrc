@@ -86,9 +86,12 @@ endif
 " fuzzyfinder
 let g:FuzzyFinderOptions = { 'Base':{}, 'Buffer':{}, 'File':{}, 'Dir':{}, 'MruFile':{}, 'MruCmd':{}, 'FavFile':{}, 'Tag':{}, 'TaggedFile':{}}
 let g:FuzzyFinderOptions.MruFile.max_item = 100
+let g:FuzzyFinderOptions.MruFile.enumerating_limit = 50
 let g:FuzzyFinderOptions.Base.key_next_mode = '<C-s>'
 let g:FuzzyFinderOptions.File.lasting_cache = 0
 let g:FuzzyFinderOptions.Dir.lasting_cache = 0
+let g:FuzzyFinderOptions.Tag.enumerating_limit = 50
+let g:FuzzyFinderOptions.TaggedFile.enumerating_limit = 50
 
 nmap <silent> <C-s> :FuzzyFinderBuffer<CR>
 nnoremap <C-q><C-b> :FuzzyFinderBuffer<CR>
