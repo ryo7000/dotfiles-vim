@@ -1,4 +1,4 @@
-filetype plugin on
+"filetype plugin on
 
 "---------------------------------------------------------------------------
 " vimrcの設定上書き
@@ -84,7 +84,7 @@ endif
 
 "---------------------------------------------------------------------------
 " fuzzyfinder
-let g:FuzzyFinderOptions = { 'Base':{}, 'Buffer':{}, 'File':{}, 'Dir':{}, 'MruFile':{}, 'MruCmd':{}, 'FavFile':{}, 'Tag':{}, 'TaggedFile':{}}
+let g:FuzzyFinderOptions = { 'Base':{}, 'Buffer':{}, 'File':{}, 'Dir':{}, 'MruFile':{}, 'MruCmd':{}, 'Bookmark':{}, 'Tag':{}, 'TaggedFile':{}}
 let g:FuzzyFinderOptions.MruFile.max_item = 100
 let g:FuzzyFinderOptions.MruFile.enumerating_limit = 50
 let g:FuzzyFinderOptions.Base.key_next_mode = '<C-s>'
@@ -96,7 +96,7 @@ let g:FuzzyFinderOptions.TaggedFile.enumerating_limit = 50
 nmap <silent> <C-s> :FuzzyFinderBuffer<CR>
 nnoremap <C-q><C-b> :FuzzyFinderBuffer<CR>
 nnoremap <C-q><C-n> :FuzzyFinderMruFile<CR>
-nnoremap <C-q><C-v> :FuzzyFinderFavFile<CR>
+nnoremap <C-q><C-v> :FuzzyFinderBookmark<CR>
 nnoremap <C-q><C-d> :FuzzyFinderDir<CR>
 nnoremap <C-q><C-t> :FuzzyFinderTag!<CR>
 nnoremap <C-q><C-]> :FuzzyFinderTag! <C-r>=expand('<cword>')<CR><CR>
