@@ -73,6 +73,10 @@
 :VCSUnlock	vcscommand.txt	/*:VCSUnlock*
 :VCSUpdate	vcscommand.txt	/*:VCSUpdate*
 :VCSVimDiff	vcscommand.txt	/*:VCSVimDiff*
+<Plug>(smartword-b)	smartword.txt	/*<Plug>(smartword-b)*
+<Plug>(smartword-e)	smartword.txt	/*<Plug>(smartword-e)*
+<Plug>(smartword-ge)	smartword.txt	/*<Plug>(smartword-ge)*
+<Plug>(smartword-w)	smartword.txt	/*<Plug>(smartword-w)*
 Align-copyright	Align.txt	/*Align-copyright*
 CreateBundleSnippet	snippets_emu.txt	/*CreateBundleSnippet*
 CreateSnippet	snippets_emu.txt	/*CreateSnippet*
@@ -375,6 +379,15 @@ rails-tabs	rails.txt	/*rails-tabs*
 rails-template-types	rails.txt	/*rails-template-types*
 rails-vim-integration	rails.txt	/*rails-vim-integration*
 rails.txt	rails.txt	/*rails.txt*
+smartword	smartword.txt	/*smartword*
+smartword-bugs	smartword.txt	/*smartword-bugs*
+smartword-changelog	smartword.txt	/*smartword-changelog*
+smartword-contents	smartword.txt	/*smartword-contents*
+smartword-examples	smartword.txt	/*smartword-examples*
+smartword-interface	smartword.txt	/*smartword-interface*
+smartword-introduction	smartword.txt	/*smartword-introduction*
+smartword-mappings	smartword.txt	/*smartword-mappings*
+smartword.txt	smartword.txt	/*smartword.txt*
 snip-advanced-tag-commands	snippets_emu.txt	/*snip-advanced-tag-commands*
 snip-buffer-specific	snippets_emu.txt	/*snip-buffer-specific*
 snip-bundles	snippets_emu.txt	/*snip-bundles*
