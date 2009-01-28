@@ -117,14 +117,6 @@ let g:AutoComplPop_CompleteOption = '.,w,b,u'
 let g:AutoComplPop_BehaviorKeywordLength = 3
 
 "---------------------------------------------------------------------------
-" smartword
-" TODO: e は enc系マッピングとかぶってる
-map w  <Plug>(smartword-w)
-map b  <Plug>(smartword-b)
-map e  <Plug>(smartword-e)
-map ge <Plug>(smartword-ge)
-
-"---------------------------------------------------------------------------
 " cscope関連
 
 set cst
