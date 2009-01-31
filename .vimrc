@@ -60,17 +60,23 @@ end
 
 " Options {{{1
 
+" $VIMRUNTIME/menu.vimを読みこまない
+set guioptions& guioptions=+M
+
+syntax enable
+filetype plugin indent on
+
 if !has("gui_running")
   if has('unix')
     set term=builtin_linux
   endif
 
-  set t_Co=256
-
   if !exists('g:colors_name')
     colorscheme desert256
     set background=dark
   endif
+
+  set t_Co=256
 
   " Termでmouseを使う設定
   "set mouse=a
@@ -80,12 +86,6 @@ if !has("gui_running")
   hi PmenuSel cterm=reverse ctermfg=64 ctermbg=222
   hi PmenuSbar ctermbg=249
 endif
-
-" $VIMRUNTIME/menu.vimを読みこまない
-set guioptions& guioptions=+M
-
-syntax enable
-filetype plugin indent on
 
 if has('win32')
   " for gf
