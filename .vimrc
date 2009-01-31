@@ -39,7 +39,7 @@ if !exists('did_encoding_settings') && has('iconv')
 
   if &encoding ==? 'utf-8'
     " UTF-8環境向けにfileencodingsを設定する
-    let value = value. ','.s:enc_jisx. ',cp932,'.s:enc_eucjp
+    let value = value. ','.s:enc_jisx. ','.s:enc_eucjp. ',cp932'
   elseif &encoding ==? 'cp932'
     " CP932環境向けにfileencodingsを設定する
     let value = value. ','.s:enc_jisx. ',utf-8,'.s:enc_eucjp
