@@ -1,17 +1,42 @@
-"---------------------------------------------------------------------------
-" gvimrcã®è¨­å®šä¸Šæ›¸ã
+colorscheme desert
 
-set guifont=BDF_M+:h9:cSHIFTJIS
+" Font {{{1
+
+if has('win32')
+  set guifont=BDF_M+:h9:cSHIFTJIS
+endif
+
+" Options {{{1
+
 set columns=140
 set lines=60
-set guioptions-=m
-set guioptions-=T
+
+" Etc {{{1
 
 "---------------------------------------------------------------------------
-" è£œå®Œãƒªã‚¹ãƒˆã®è‰²
+" “ú–{Œê“ü—Í‚ÉŠÖ‚·‚éİ’è:
+"
+if has('multi_byte_ime') || has('xim')
+  " IME ON‚ÌƒJ[ƒ\ƒ‹‚ÌF‚ğİ’è(İ’è—á:‡)
+  highlight CursorIM guibg=Purple guifg=NONE
+  " ‘}“üƒ‚[ƒhEŒŸõƒ‚[ƒh‚Å‚ÌƒfƒtƒHƒ‹ƒg‚ÌIMEó‘Ôİ’è
+  set iminsert=0 imsearch=0
+  if has('xim') && has('GUI_GTK')
+    " XIM‚Ì“ü—ÍŠJnƒL[‚ğİ’è:
+    " ‰º‹L‚Ì s-space ‚ÍShift+Space‚ÌˆÓ–¡‚Åkinput2+canna—pİ’è
+    "set imactivatekey=s-space
+  endif
+  " ‘}“üƒ‚[ƒh‚Å‚ÌIMEó‘Ô‚ğ‹L‰¯‚³‚¹‚È‚¢ê‡AŸs‚ÌƒRƒƒ“ƒg‚ğ‰ğœ
+  "inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
+endif
+
+"---------------------------------------------------------------------------
+" •âŠ®ƒŠƒXƒg‚ÌF
 hi Pmenu guibg=grey40
 hi PmenuSel guibg=olivedrab
 hi PmenuSbar ctermbg=Gray
 
 highlight ZenkakuSpace guibg=gray40
-match ZenkakuSpace /ã€€/
+au BufRead,BufNew * match ZenkakuSpace /@/
+
+" vim: et sts=2 sw=2 fdm=marker fdc=3
