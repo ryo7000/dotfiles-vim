@@ -153,6 +153,18 @@ if has("gui_running")
   inoremap <ESC> <ESC>:set iminsert=0<CR>
 endif
 
+" folding {{{2
+" http://d.hatena.ne.jp/ns9tks/20080318/1205851539
+
+" 行頭で h を押すと折畳を閉じる。
+nnoremap <expr> h col('.') == 1 && foldlevel(line('.')) > 0 ? 'zc' : 'h'
+" 折畳上で l を押すと折畳を開く。
+nnoremap <expr> l foldclosed(line('.')) != -1 ? 'zo0' : 'l'
+" 行頭で h を押すと選択範囲に含まれる折畳を閉じる。
+vnoremap <expr> h col('.') == 1 && foldlevel(line('.')) > 0 ? 'zcgv' : 'h'
+" 折畳上で l を押すと選択範囲に含まれる折畳を開く。
+vnoremap <expr> l foldclosed(line('.')) != -1 ? 'zogv0' : 'l'
+
 " tab navigation like firefox {{{2
 map <C-S-tab> :tabprevious<cr>
 map <C-tab> :tabnext<cr>
