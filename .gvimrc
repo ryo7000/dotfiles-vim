@@ -4,6 +4,8 @@ colorscheme desert
 
 if has('win32')
   set guifont=BDF_M+:h9:cSHIFTJIS
+elseif has('unix')
+  set guifont=M+1MN+IPAG\ 10
 endif
 
 " Options {{{1
