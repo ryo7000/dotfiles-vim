@@ -61,7 +61,10 @@ end
 " Options {{{1
 
 " $VIMRUNTIME/menu.vimを読みこまない
-set guioptions& guioptions=+M
+set guioptions&
+set guioptions+=M
+set guioptions-=T
+set guioptions-=m
 
 syntax enable
 filetype plugin indent on
