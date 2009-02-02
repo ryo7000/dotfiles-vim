@@ -203,7 +203,11 @@ so $VIMRUNTIME/macros/matchit.vim
 " fuzzyfinder {{{2
 
 let g:FuzzyFinderOptions = { 'Base':{}, 'Buffer':{}, 'File':{}, 'Dir':{}, 'MruFile':{}, 'MruCmd':{}, 'Bookmark':{}, 'Tag':{}, 'TaggedFile':{}}
-let g:FuzzyFinderOptions.Base.info_file = '$VIM/.vimfuzzyfinder'
+if has('win32')
+  let g:FuzzyFinderOptions.Base.info_file = '$VIM/.vimfuzzyfinder'
+else
+  let g:FuzzyFinderOptions.Base.info_file = '$HOME/.vimfuzzyfinder'
+endif
 let g:FuzzyFinderOptions.MruFile.max_item = 100
 let g:FuzzyFinderOptions.MruFile.enumerating_limit = 50
 let g:FuzzyFinderOptions.Base.key_next_mode = '<C-s>'
