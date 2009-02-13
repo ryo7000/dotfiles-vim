@@ -106,7 +106,7 @@ set backspace=indent,eol,start
 set cinoptions=g0,(0
 set cmdheight=2
 set formatoptions=tcqmM
-set grepprg=grep\ -nH\ $*\ \\\|\ grep\ -v\ .svn
+set grepprg=grep\ -nH\ $*\ \\\|\ grep\ -v\ \"\\.svn\"
 set history=100
 set hlsearch
 set incsearch
