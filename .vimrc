@@ -237,6 +237,29 @@ let g:AutoComplPop_IgnoreCaseOption = 1
 let g:AutoComplPop_CompleteOption = '.,w,b,u'
 " キーワード補完の最小文字数を3に
 let g:AutoComplPop_BehaviorKeywordLength = 3
+" RubyのSymbol補完を行わない
+let g:AutoComplPop_Behavior = {
+\ 'ruby' : [
+\ {
+\ 'command' : "\<C-n>",
+\ 'pattern' : '\k\k$',
+\ 'excluded' : '^$',
+\ 'repeat' : 0,
+\ },
+\ {
+\ 'command' : "\<C-x>\<C-f>",
+\ 'pattern' : (has('win32') || has('win64') ? '\f[/\\]\f*$' : '\f[/]\f*$'),
+\ 'excluded' : '[*/\\][/\\]\f*$\|[^[:print:]]\f*$',
+\ 'repeat' : 1,
+\ },
+\ {
+\ 'command' : "\<C-x>\<C-o>",
+\ 'pattern' : '\([^. \t]\.\|::\)$',
+\ 'excluded' : (has('ruby') ? '^$' : '.*'),
+\ 'repeat' : 0,
+\ },
+\ ],
+\ }
 
 " DirDiff {{{2
 
