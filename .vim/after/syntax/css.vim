@@ -144,7 +144,7 @@ function! s:PreviewCSSColorInLine(where)
    endif
 endfunction
 
-if has("gui_running") || &t_Co==256
+if has("gui_running")
    " HACK modify cssDefinition to add @cssColors to its contains
    redir => s:olddef
       silent!  syn list cssDefinition
