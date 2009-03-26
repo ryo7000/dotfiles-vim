@@ -13,6 +13,12 @@ endif
 set columns=140
 set lines=60
 
+" Mappings {{{1
+
+" Make shift-insert work like in Xterm
+map <S-Insert> <MiddleMouse>
+map! <S-Insert> <MiddleMouse>
+
 " Etc {{{1
 
 "---------------------------------------------------------------------------
