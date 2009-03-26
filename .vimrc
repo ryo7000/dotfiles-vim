@@ -272,6 +272,10 @@ let g:winManagerWidth = 40
 map <c-w><c-t> :WMToggle<cr>
 hi link MyTagListTagName Visual
 
+" git-commit {{{2
+let git_diff_spawn_mode=1
+autocmd BufNewFile,BufRead COMMIT_EDITMSG set filetype=git
+
 " Etc {{{1
 
 let g:mapleader = "\<C-k>"
