@@ -86,10 +86,13 @@ VCSCommandCVSExec	vcscommand.txt	/*VCSCommandCVSExec*
 VCSCommandCommitOnWrite	vcscommand.txt	/*VCSCommandCommitOnWrite*
 VCSCommandDeleteOnHide	vcscommand.txt	/*VCSCommandDeleteOnHide*
 VCSCommandDiffSplit	vcscommand.txt	/*VCSCommandDiffSplit*
+VCSCommandDisableAll	vcscommand.txt	/*VCSCommandDisableAll*
 VCSCommandDisableExtensionMappings	vcscommand.txt	/*VCSCommandDisableExtensionMappings*
 VCSCommandDisableMappings	vcscommand.txt	/*VCSCommandDisableMappings*
 VCSCommandEdit	vcscommand.txt	/*VCSCommandEdit*
 VCSCommandEnableBufferSetup	vcscommand.txt	/*VCSCommandEnableBufferSetup*
+VCSCommandMapPrefix	vcscommand.txt	/*VCSCommandMapPrefix*
+VCSCommandMappings	vcscommand.txt	/*VCSCommandMappings*
 VCSCommandResultBufferNameExtension	vcscommand.txt	/*VCSCommandResultBufferNameExtension*
 VCSCommandResultBufferNameFunction	vcscommand.txt	/*VCSCommandResultBufferNameFunction*
 VCSCommandSVKExec	vcscommand.txt	/*VCSCommandSVKExec*
@@ -97,6 +100,7 @@ VCSCommandSVNDiffExt	vcscommand.txt	/*VCSCommandSVNDiffExt*
 VCSCommandSVNDiffOpt	vcscommand.txt	/*VCSCommandSVNDiffOpt*
 VCSCommandSVNExec	vcscommand.txt	/*VCSCommandSVNExec*
 VCSCommandSplit	vcscommand.txt	/*VCSCommandSplit*
+VCSCommandVCSTypeOverride	vcscommand.txt	/*VCSCommandVCSTypeOverride*
 WinManagerFileEdit	winmanager.txt	/*WinManagerFileEdit*
 WinManagerForceReSize	winmanager.txt	/*WinManagerForceReSize*
 WinManagerResumeAUs	winmanager.txt	/*WinManagerResumeAUs*
@@ -194,6 +198,7 @@ bufexplorer.txt	bufexplorer.txt	/*bufexplorer.txt*
 buffer-explorer	bufexplorer.txt	/*buffer-explorer*
 config/rails.vim	rails.txt	/*config\/rails.vim*
 creating-snippets	snippets_emu.txt	/*creating-snippets*
+cvscommand-changes	vcscommand.txt	/*cvscommand-changes*
 eregex	eregex_j.txt	/*eregex*
 eregex-about-vimregex	eregex_j.txt	/*eregex-about-vimregex*
 eregex-commands	eregex_j.txt	/*eregex-commands*
@@ -219,6 +224,7 @@ g:bufExplorerSortBy	bufexplorer.txt	/*g:bufExplorerSortBy*
 g:bufExplorerSplitOutPathName	bufexplorer.txt	/*g:bufExplorerSplitOutPathName*
 g:loaded_rails	rails.txt	/*g:loaded_rails*
 g:rails_abbreviations	rails.txt	/*g:rails_abbreviations*
+g:rails_ctags_arguments	rails.txt	/*g:rails_ctags_arguments*
 g:rails_dbext	rails.txt	/*g:rails_dbext*
 g:rails_default_database	rails.txt	/*g:rails_default_database*
 g:rails_default_file	rails.txt	/*g:rails_default_file*
@@ -229,7 +235,6 @@ g:rails_mappings	rails.txt	/*g:rails_mappings*
 g:rails_menu	rails.txt	/*g:rails_menu*
 g:rails_modelines	rails.txt	/*g:rails_modelines*
 g:rails_statusline	rails.txt	/*g:rails_statusline*
-g:rails_subversion	rails.txt	/*g:rails_subversion*
 g:rails_syntax	rails.txt	/*g:rails_syntax*
 g:rails_tabstop	rails.txt	/*g:rails_tabstop*
 g:rails_url	rails.txt	/*g:rails_url*
@@ -287,12 +292,14 @@ rails-:Rdestroy	rails.txt	/*rails-:Rdestroy*
 rails-:Rdoc	rails.txt	/*rails-:Rdoc*
 rails-:Rdoc!	rails.txt	/*rails-:Rdoc!*
 rails-:Redit	rails.txt	/*rails-:Redit*
+rails-:Renvironment	rails.txt	/*rails-:Renvironment*
 rails-:Rextract	rails.txt	/*rails-:Rextract*
 rails-:Rfind	rails.txt	/*rails-:Rfind*
 rails-:Rfixtures	rails.txt	/*rails-:Rfixtures*
 rails-:Rfunctionaltest	rails.txt	/*rails-:Rfunctionaltest*
 rails-:Rgenerate	rails.txt	/*rails-:Rgenerate*
 rails-:Rhelper	rails.txt	/*rails-:Rhelper*
+rails-:Rinitializer	rails.txt	/*rails-:Rinitializer*
 rails-:Rintegrationtest	rails.txt	/*rails-:Rintegrationtest*
 rails-:Rinvert	rails.txt	/*rails-:Rinvert*
 rails-:Rjavascript	rails.txt	/*rails-:Rjavascript*
@@ -300,8 +307,10 @@ rails-:Rlayout	rails.txt	/*rails-:Rlayout*
 rails-:Rlcd	rails.txt	/*rails-:Rlcd*
 rails-:Rlib	rails.txt	/*rails-:Rlib*
 rails-:Rlog	rails.txt	/*rails-:Rlog*
+rails-:Rmetal	rails.txt	/*rails-:Rmetal*
 rails-:Rmigration	rails.txt	/*rails-:Rmigration*
 rails-:Rmodel	rails.txt	/*rails-:Rmodel*
+rails-:Rnavcommand	rails.txt	/*rails-:Rnavcommand*
 rails-:Robserver	rails.txt	/*rails-:Robserver*
 rails-:Rp	rails.txt	/*rails-:Rp*
 rails-:Rpartial	rails.txt	/*rails-:Rpartial*
@@ -310,7 +319,6 @@ rails-:Rpp	rails.txt	/*rails-:Rpp*
 rails-:Rpreview	rails.txt	/*rails-:Rpreview*
 rails-:Rpreview!	rails.txt	/*rails-:Rpreview!*
 rails-:Rproject	rails.txt	/*rails-:Rproject*
-rails-:Rproject!	rails.txt	/*rails-:Rproject!*
 rails-:Rrefresh	rails.txt	/*rails-:Rrefresh*
 rails-:Rrefresh!	rails.txt	/*rails-:Rrefresh!*
 rails-:Rrunner	rails.txt	/*rails-:Rrunner*
@@ -318,6 +326,7 @@ rails-:Rscript	rails.txt	/*rails-:Rscript*
 rails-:Rserver	rails.txt	/*rails-:Rserver*
 rails-:Rserver!	rails.txt	/*rails-:Rserver!*
 rails-:Rset	rails.txt	/*rails-:Rset*
+rails-:Rspec	rails.txt	/*rails-:Rspec*
 rails-:Rstylesheet	rails.txt	/*rails-:Rstylesheet*
 rails-:Rtags	rails.txt	/*rails-:Rtags*
 rails-:Rtask	rails.txt	/*rails-:Rtask*
@@ -346,6 +355,7 @@ rails-integration	rails.txt	/*rails-integration*
 rails-introduction	rails.txt	/*rails-introduction*
 rails-license	rails.txt	/*rails-license*
 rails-menu	rails.txt	/*rails-menu*
+rails-merb	rails.txt	/*rails-merb*
 rails-migrations	rails.txt	/*rails-migrations*
 rails-misc-navigation	rails.txt	/*rails-misc-navigation*
 rails-model-navigation	rails.txt	/*rails-model-navigation*
@@ -421,11 +431,6 @@ taglist-session	taglist.txt	/*taglist-session*
 taglist-todo	taglist.txt	/*taglist-todo*
 taglist-using	taglist.txt	/*taglist-using*
 taglist.txt	taglist.txt	/*taglist.txt*
-textile-changelog	textile.txt	/*textile-changelog*
-textile-commands	textile.txt	/*textile-commands*
-textile-credits	textile.txt	/*textile-credits*
-textile-requirements	textile.txt	/*textile-requirements*
-textile.txt	textile.txt	/*textile.txt*
 vcscommand	vcscommand.txt	/*vcscommand*
 vcscommand-buffer-management	vcscommand.txt	/*vcscommand-buffer-management*
 vcscommand-buffer-variables	vcscommand.txt	/*vcscommand-buffer-variables*
