@@ -1,5 +1,5 @@
 "=============================================================================
-" Copyright:    Copyright © Pierre Habouzit
+" Copyright:    Copyright c Pierre Habouzit
 "               Permission is hereby granted to use and distribute this code,
 "               with or without modifications, provided that this copyright
 "               notice is copied with it. Like anything else that's free,
@@ -34,6 +34,7 @@ let b:did_ftplugin = 1
 
 setlocal tw=74
 setlocal nowarn nowb
+setlocal encoding=utf-8
 
 function! Git_diff_windows(vertsplit, auto, opts)
     if a:vertsplit
@@ -42,7 +43,11 @@ function! Git_diff_windows(vertsplit, auto, opts)
         rightbelow new
     endif
     silent! setlocal ft=diff previewwindow bufhidden=delete nobackup noswf nobuflisted nowrap buftype=nofile
-    exe "normal :r!LANG=C git diff --stat -p --cached ".a:opts."\no\<esc>1GddO\<esc>"
+    if has('win32')
+      exe "normal :r!git diff --stat -p --cached ".a:opts."\no\<esc>1GddO\<esc>"
+    elseif
+      exe "normal :r!LANG=C git diff --stat -p --cached ".a:opts."\no\<esc>1GddO\<esc>"
+    endif
     setlocal nomodifiable
     noremap <buffer> q :bw<cr>
     if a:auto
