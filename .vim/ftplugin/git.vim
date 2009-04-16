@@ -45,7 +45,7 @@ function! Git_diff_windows(vertsplit, auto, opts)
     silent! setlocal ft=diff previewwindow bufhidden=delete nobackup noswf nobuflisted nowrap buftype=nofile
     if has('win32')
       exe "normal :r!git diff --stat -p --cached ".a:opts."\no\<esc>1GddO\<esc>"
-    elseif
+    else
       exe "normal :r!LANG=C git diff --stat -p --cached ".a:opts."\no\<esc>1GddO\<esc>"
     endif
     setlocal nomodifiable
