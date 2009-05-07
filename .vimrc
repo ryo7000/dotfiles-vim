@@ -222,12 +222,10 @@ nnoremap <C-q><C-n> :FuzzyFinderMruFile<CR>
 nnoremap <C-q><C-v> :FuzzyFinderBookmark<CR>
 nnoremap <C-q><C-d> :FuzzyFinderDir<CR>
 nnoremap <C-q><C-t> :FuzzyFinderTag!<CR>
-nnoremap <C-q><C-]> :FuzzyFinderTag! <C-r>=expand('<cword>')<CR><CR>
+nnoremap <C-q><C-]> :FuzzyFinderTagWithCursorWord!<CR>
 nnoremap <C-q><C-g> :FuzzyFinderTaggedFile<CR>
 nnoremap <C-q><C-f> :FuzzyFinderFile<CR>
-
-" ファイルのディレクトリからfileモードを開く
-nnoremap <C-q><C-x> :FuzzyFinderFile <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>
+nnoremap <C-q><C-x> :FuzzyFinderFileWithCurrentBufferDir<CR>
 
 " autocomplpop {{{2
 
