@@ -62,7 +62,7 @@ end
 
 " $VIMRUNTIME/menu.vimを読みこまない
 set guioptions&
-set guioptions+=M
+"set guioptions+=M
 set guioptions-=T
 set guioptions-=m
 
@@ -286,6 +286,10 @@ autocmd BufReadPost *
 
 " rails.vim
 com! -bar -nargs=1 OpenURL call OpenNewTab("<args>")
+
+" 全角文字と半角文字の間にスペースを入れる
+" via http://vimwiki.net/?tips/54
+com! -nargs=0 EnterSpace s/\%(\([^\t -~]\)\%([!#-~]\)\@=\|\([!#-~]\)\%([^\t -~]\)\@=\)/\1\2 /g
 
 " fix SEGV for Gentoo + vim + rails.vim
 " http://www.nabble.com/Omni-completion-stack-overflow-td8922044.html
