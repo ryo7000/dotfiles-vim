@@ -202,30 +202,24 @@ so $VIMRUNTIME/macros/matchit.vim
 
 " fuzzyfinder {{{2
 
-let g:FuzzyFinderOptions = { 'Base':{}, 'Buffer':{}, 'File':{}, 'Dir':{}, 'MruFile':{}, 'MruCmd':{}, 'Bookmark':{}, 'Tag':{}, 'TaggedFile':{}}
+let g:fuf_modesDisable = [ 'mrucmd' ]
 if has('win32')
-  let g:FuzzyFinderOptions.Base.info_file = '$VIM/.vimfuzzyfinder'
+  let g:fuf_infoFile = '$VIM/.vim-fuf'
 else
-  let g:FuzzyFinderOptions.Base.info_file = '$HOME/.vimfuzzyfinder'
+  let g:fuf_infoFile = '$HOME/.vim-fuf'
 endif
-let g:FuzzyFinderOptions.MruFile.max_item = 100
-let g:FuzzyFinderOptions.MruFile.enumerating_limit = 50
-let g:FuzzyFinderOptions.Base.key_next_mode = '<C-s>'
-let g:FuzzyFinderOptions.File.lasting_cache = 0
-let g:FuzzyFinderOptions.Dir.lasting_cache = 0
-let g:FuzzyFinderOptions.Tag.enumerating_limit = 50
-let g:FuzzyFinderOptions.TaggedFile.enumerating_limit = 50
+let g:fuf_mrufile_maxItem = 100
 
-nmap <silent> <C-s> :FuzzyFinderBuffer<CR>
-nnoremap <C-q><C-b> :FuzzyFinderBuffer<CR>
-nnoremap <C-q><C-n> :FuzzyFinderMruFile<CR>
-nnoremap <C-q><C-v> :FuzzyFinderBookmark<CR>
-nnoremap <C-q><C-d> :FuzzyFinderDir<CR>
-nnoremap <C-q><C-t> :FuzzyFinderTag!<CR>
-nnoremap <C-q><C-]> :FuzzyFinderTagWithCursorWord!<CR>
-nnoremap <C-q><C-g> :FuzzyFinderTaggedFile<CR>
-nnoremap <C-q><C-f> :FuzzyFinderFile<CR>
-nnoremap <C-q><C-x> :FuzzyFinderFileWithCurrentBufferDir<CR>
+nmap <silent> <C-s> :FufBuffer<CR>
+nnoremap <C-q><C-b> :FufBuffer<CR>
+nnoremap <C-q><C-n> :FufMruFile<CR>
+nnoremap <C-q><C-v> :FufBookmark<CR>
+nnoremap <C-q><C-d> :FufDir<CR>
+nnoremap <C-q><C-t> :FufTag!<CR>
+nnoremap <C-q><C-]> :FufTagWithCursorWord!<CR>
+nnoremap <C-q><C-g> :FufTaggedFile<CR>
+nnoremap <C-q><C-f> :FufFile<CR>
+nnoremap <C-q><C-x> :FufFileWithCurrentBufferDir<CR>
 
 " autocomplpop {{{2
 
