@@ -224,13 +224,13 @@ nnoremap <C-q><C-x> :FufFileWithCurrentBufferDir<CR>
 " autocomplpop {{{2
 
 " 候補は大文字小文字無視する
-let g:AutoComplPop_IgnoreCaseOption = 1
+let g:acp_ignorecaseOption = 1
 " 補完時の'complete'
-let g:AutoComplPop_CompleteOption = '.,w,b,u'
+let g:acp_completeOption = '.,w,b,u'
 " キーワード補完の最小文字数を3に
-let g:AutoComplPop_BehaviorKeywordLength = 3
+let g:acp_behaviorKeywordLength = 3
 " RubyのSymbol補完を行わない
-let g:AutoComplPop_Behavior = {
+let g:acp_behavior = {
 \ 'ruby' : [
 \ {
 \ 'command' : "\<C-n>",
