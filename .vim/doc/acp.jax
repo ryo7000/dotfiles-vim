@@ -56,6 +56,7 @@ ZIPファイルをランタイムディレクトリに展開します。
                                     + 0文字以上のファイル名文字
         オムニ補完      ruby        ".", "::" or 単語を構成する文字以外 + ":"
         オムニ補完      python      "."
+        オムニ補完      xml         "<", "</" or ("<" + ">"以外の文字列 + " ")
         オムニ補完      html/xhtml  "<", "</" or ("<" + ">"以外の文字列 + " ")
         オムニ補完      css         (":", ";", "{", "^", "@", or "!")
                                     + 0個または1個のスペース
@@ -118,8 +119,19 @@ ZIPファイルをランタイムディレクトリに展開します。
 <
         真なら自動ポップアップ時に、 'completeopt' へ "preview" を追加します。
 
+                                             *g:acp_behaviorUserDefinedFunction*  >
+  let g:acp_behaviorUserDefinedFunction = ''
+<
+        ユーザー定義補完の関数。空ならこの補完は行いません。
+
+                                             *g:acp_behaviorUserDefinedPattern*  >
+  let g:acp_behaviorUserDefinedPattern = '\k$'
+<
+        ユーザー定義補完の自動ポップアップを行うのに必要なカーソルの直前のパタ
+        ーン。
+
                                              *g:acp_behaviorKeywordCommand*  >
-  let g:acp_behaviorKeywordCommand = "\<C-p>"
+  let g:acp_behaviorKeywordCommand = "\<C-n>"
 <
         キーワード補完のコマンド。このオプションには普通 "\<C-n>" か "\<C-p>"
         を設定します。
@@ -153,6 +165,12 @@ ZIPファイルをランタイムディレクトリに展開します。
 <
         Python オムニ補完の自動ポップアップを行うのに必要なカーソルの直前のキ
         ーワード文字数。負数ならこの補完は行いません。
+
+                                              *g:acp_behaviorXmlOmniLength*  >
+  let g:acp_behaviorXmlOmniLength = 0
+<
+        XML オムニ補完の自動ポップアップを行うのに必要なカーソルの直前のキーワ
+        ード文字数。負数ならこの補完は行いません。
 
                                              *g:acp_behaviorHtmlOmniLength*  >
   let g:acp_behaviorHtmlOmniLength = 0
@@ -190,8 +208,8 @@ ZIPファイルをランタイムディレクトリに展開します。
           'completefunc' に設定する関数。 "command" が "<C-x><C-u>" のときだけ
           意味があります。。
 
-        "pattern", "excluded":
-          カーソル直前テキストが "pattern" にマッチし、"excluded" にマッチしな
+        "pattern", "exclude":
+          カーソル直前テキストが "pattern" にマッチし、"exclude" にマッチしな
           かった場合、補完メニューをポップアップします。
 
         "repeat":
