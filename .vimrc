@@ -133,7 +133,6 @@ set smartcase
 set tags& tags+=tags;
 
 " cscope関連
-set cst
 map <silent> g<C-]> :cs find c <C-R>=expand("<cword>")<CR><CR>
 set cscopequickfix=s-,c-,d-,i-,t-,e-
 
