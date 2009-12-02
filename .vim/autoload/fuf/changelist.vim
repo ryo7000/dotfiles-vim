@@ -61,7 +61,6 @@ function s:parseChangesLine(line)
   return  {
         \   'prefix': elements[1],
         \   'count' : elements[2],
-        \   'lnum'  : elements[3],
         \   'text'  : printf('|%d:%d|%s', elements[3], elements[4], elements[5]),
         \ }
 endfunction
@@ -74,7 +73,6 @@ function s:makeItem(line)
   endif
   let item = fuf#makeNonPathItem(parsed.text, '')
   let item.abbrPrefix = parsed.prefix
-  let item.lnum = parsed.lnum
   return item
 endfunction
 
@@ -95,39 +93,18 @@ function s:handler.getPrompt()
 endfunction
 
 "
-function s:handler.getPreviewHeight()
-  return g:fuf_previewHeight
-endfunction
-
-"
 function s:handler.targetsPath()
   return 0
 endfunction
 
 "
-function s:handler.makePatternSet(patternBase)
-  return fuf#makePatternSet(a:patternBase, 's:parsePrimaryPatternForNonPath',
-        \                   self.partialMatching)
+function s:handler.onComplete(patternSet)
+  return fuf#filterMatchesAndMapToSetRanks(
+        \ self.items, a:patternSet, self.getFilteredStats(a:patternSet.raw))
 endfunction
 
 "
-function s:handler.makePreviewLines(word, count)
-  let items = filter(copy(self.items), 'v:val.word ==# a:word')
-  if empty(items)
-    return []
-  endif
-  let lines = fuf#getFileLines(self.bufNrPrev)
-  return fuf#makePreviewLinesAround(
-        \ lines, [items[0].lnum - 1], a:count, self.getPreviewHeight())
-endfunction
-
-"
-function s:handler.getCompleteItems(patternPrimary)
-  return self.items
-endfunction
-
-"
-function s:handler.onOpen(word, mode)
+function s:handler.onOpen(expr, mode)
   call fuf#prejump(a:mode)
   let older = 0
   for line in reverse(s:getChangesLines())
@@ -135,7 +112,7 @@ function s:handler.onOpen(word, mode)
       let older = 1
     endif
     let parsed = s:parseChangesLine(line)
-    if !empty(parsed) && parsed.text ==# a:word
+    if !empty(parsed) && parsed.text ==# a:expr
       if parsed.count != 0
         execute 'normal! ' . parsed.count . (older ? 'g;' : 'g,') . 'zvzz'
       endif

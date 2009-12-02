@@ -11,7 +11,7 @@ endif
 " Options {{{1
 
 set columns=140
-set lines=60
+set lines=50
 
 " Mappings {{{1
 

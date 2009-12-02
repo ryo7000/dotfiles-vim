@@ -60,7 +60,7 @@ end
 
 " Options {{{1
 
-" $VIMRUNTIME/menu.vimを読みこまない
+"" $VIMRUNTIME/menu.vimを読みこまない
 set guioptions&
 "set guioptions+=M
 set guioptions-=T
@@ -263,6 +263,11 @@ let g:winManagerWindowLayout = "TagList"
 let g:winManagerWidth = 40
 map <c-w><c-t> :WMToggle<cr>
 hi link MyTagListTagName Visual
+
+" vim-ruby (rubycomplete.vim) {{{2
+let g:rubycomplete_buffer_loading = 1
+let g:rubycomplete_rails = 1
+let g:rubycomplete_classes_in_global = 1
 
 " git-commit {{{2
 let git_diff_spawn_mode=1

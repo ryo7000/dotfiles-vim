@@ -69,37 +69,19 @@ function s:handler.getPrompt()
 endfunction
 
 "
-function s:handler.getPreviewHeight()
-  return g:fuf_previewHeight
-endfunction
-
-"
 function s:handler.targetsPath()
   return 1
 endfunction
 
 "
-function s:handler.makePatternSet(patternBase)
-  return fuf#makePatternSet(a:patternBase, 's:parsePrimaryPatternForPath',
-        \                   self.partialMatching)
+function s:handler.onComplete(patternSet)
+  return fuf#filterMatchesAndMapToSetRanks(
+        \ s:items, a:patternSet, self.getFilteredStats(a:patternSet.raw))
 endfunction
 
 "
-function s:handler.makePreviewLines(word, count)
-  return fuf#makePreviewLinesAround(
-        \ split(glob(fnamemodify(a:word, ':p') . '*'), "\n"),
-        \ [], a:count, self.getPreviewHeight())
-  return 
-endfunction
-
-"
-function s:handler.getCompleteItems(patternPrimary)
-  return s:items
-endfunction
-
-"
-function s:handler.onOpen(word, mode)
-  execute ':cd ' . fnameescape(a:word)
+function s:handler.onOpen(expr, mode)
+  execute ':cd ' . fnameescape(a:expr)
 endfunction
 
 "
