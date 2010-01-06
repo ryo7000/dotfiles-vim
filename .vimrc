@@ -155,6 +155,31 @@ if has("gui_running")
   inoremap <ESC> <ESC>:set iminsert=0<CR>
 endif
 
+" 閉じ括弧を自動挿入
+" via http://gist.github.com/269208
+inoremap ( ()<ESC>i
+inoremap <expr> ) ClosePair(')')
+
+inoremap { {}<ESC>i
+inoremap <expr> } ClosePair('}')
+
+inoremap [ []<ESC>i
+inoremap <expr> ] ClosePair(']')
+
+inoremap < <><ESC>i
+inoremap <expr> > ClosePair('>')
+ 
+" pair close checker.
+" from othree vimrc ( http://github.com/othree/rc/blob/master/osx/.vimrc )
+function! ClosePair(char)
+    if getline('.')[col('.') - 1] == a:char
+        return "\<Right>"
+    else
+        return a:char
+    endif
+endf
+
+
 " folding {{{2
 " http://d.hatena.ne.jp/ns9tks/20080318/1205851539
 
