@@ -1,0 +1,1 @@
+{"generated_by":"Vimana-2010.09302","installer_type":"auto","version":0.2,"files":[{"checksum":"2833f75df6767c3fef0fd59c37fb0086","file":"/home/ryo/.vim/plugin/rails.vim"},{"checksum":"a56ed214a5121a0093fc64e19790d8a5","file":"/home/ryo/.vim/autoload/rails.vim"},{"checksum":"9de8c60a9fccca498385685530be78b1","file":"/home/ryo/.vim/doc/rails.txt"}],"package":"rails.vim"}
