@@ -1,3 +1,1 @@
-command! Jc execute('!javac %')
-command! J execute('!java %:r')
-
+set ts=4 sw=4 sts=4 et ff=unix
