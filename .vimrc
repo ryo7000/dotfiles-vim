@@ -219,6 +219,7 @@ nnoremap <C-q><C-]> :FufTagWithCursorWord!<CR>
 nnoremap <C-q><C-g> :FufTaggedFile<CR>
 nnoremap <C-q><C-f> :FufFile<CR>
 nnoremap <C-q><C-x> :FufFileWithCurrentBufferDir<CR>
+nnoremap <C-q><C-r> :FufRenewCache<CR>
 
 " autocomplpop {{{2
 
