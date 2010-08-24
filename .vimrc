@@ -129,6 +129,11 @@ set wildmenu
 set ignorecase
 set smartcase
 
+if has('persistent_undo')
+  set undodir=./.vimundo,~/.vimundo
+  set undofile
+endif
+
 " 親ディレクトリのtagsも検索
 set tags& tags+=tags;
 
