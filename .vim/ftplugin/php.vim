@@ -1,4 +1,4 @@
-set ts=4 sw=4 sts=4 et ff=unix
+set ts=4 sw=4 sts=4 et
 
 " 文字列の中のSQLをハイライト
 let php_sql_query = 1
