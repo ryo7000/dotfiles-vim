@@ -125,6 +125,7 @@ set title
 set titlestring=Vim:\ %f\ %h%r%m
 set ruler
 set wildmenu
+set fileformat=unix
 
 set ignorecase
 set smartcase
