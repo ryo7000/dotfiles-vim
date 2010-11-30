@@ -8,6 +8,8 @@ if has('win32')
   set runtimepath=$VIM/.vim,$VIMRUNTIME,$VIM/.vim/after
 endif
 
+call pathogen#runtime_append_all_bundles()
+
 " Encoding {{{1
 
 " for Japanese lang
