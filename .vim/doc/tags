@@ -176,6 +176,8 @@ c_<Plug>(fakeclip-insert-r)	fakeclip.txt	/*c_<Plug>(fakeclip-insert-r)*
 c_<Plug>(fakeclip-screen-insert)	fakeclip.txt	/*c_<Plug>(fakeclip-screen-insert)*
 c_<Plug>(fakeclip-screen-insert-o)	fakeclip.txt	/*c_<Plug>(fakeclip-screen-insert-o)*
 c_<Plug>(fakeclip-screen-insert-r)	fakeclip.txt	/*c_<Plug>(fakeclip-screen-insert-r)*
+cs	surround.txt	/*cs*
+ds	surround.txt	/*ds*
 eregex	eregex_j.txt	/*eregex*
 eregex-about-vimregex	eregex_j.txt	/*eregex-about-vimregex*
 eregex-commands	eregex_j.txt	/*eregex-commands*
@@ -277,10 +279,12 @@ taglist-session	taglist.txt	/*taglist-session*
 taglist-todo	taglist.txt	/*taglist-todo*
 taglist-using	taglist.txt	/*taglist-using*
 taglist.txt	taglist.txt	/*taglist.txt*
+vS	surround.txt	/*vS*
 v_<Plug>(fakeclip-Y)	fakeclip.txt	/*v_<Plug>(fakeclip-Y)*
 v_<Plug>(fakeclip-screen-Y)	fakeclip.txt	/*v_<Plug>(fakeclip-screen-Y)*
 v_<Plug>(fakeclip-screen-y)	fakeclip.txt	/*v_<Plug>(fakeclip-screen-y)*
 v_<Plug>(fakeclip-y)	fakeclip.txt	/*v_<Plug>(fakeclip-y)*
+vgS	surround.txt	/*vgS*
 vs	surround.txt	/*vs*
 winmanager	winmanager.txt	/*winmanager*
 winmanager-adding	winmanager.txt	/*winmanager-adding*
