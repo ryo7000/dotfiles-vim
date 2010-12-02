@@ -237,29 +237,6 @@ let g:acp_ignorecaseOption = 1
 let g:acp_completeOption = '.,w,b,u'
 " キーワード補完の最小文字数を3に
 let g:acp_behaviorKeywordLength = 3
-" RubyのSymbol補完を行わない
-let g:acp_behavior = {
-\ 'ruby' : [
-\ {
-\ 'command' : "\<C-n>",
-\ 'pattern' : '\k\k$',
-\ 'excluded' : '^$',
-\ 'repeat' : 0,
-\ },
-\ {
-\ 'command' : "\<C-x>\<C-f>",
-\ 'pattern' : (has('win32') || has('win64') ? '\f[/\\]\f*$' : '\f[/]\f*$'),
-\ 'excluded' : '[*/\\][/\\]\f*$\|[^[:print:]]\f*$',
-\ 'repeat' : 1,
-\ },
-\ {
-\ 'command' : "\<C-x>\<C-o>",
-\ 'pattern' : '\([^. \t]\.\|::\)$',
-\ 'excluded' : (has('ruby') ? '^$' : '.*'),
-\ 'repeat' : 0,
-\ },
-\ ],
-\ }
 
 " DirDiff {{{2
 
