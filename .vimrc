@@ -237,6 +237,8 @@ let g:acp_ignorecaseOption = 1
 let g:acp_completeOption = '.,w,b,u'
 " キーワード補完の最小文字数を3に
 let g:acp_behaviorKeywordLength = 3
+" snipMate トリガー補完
+let g:acp_behaviorSnipmateLength = 1
 
 " DirDiff {{{2
 
