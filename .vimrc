@@ -207,6 +207,29 @@ nmap <silent> ers :e ++enc=cp932<CR>
 " matchit
 so $VIMRUNTIME/macros/matchit.vim
 
+" Unite {{{2
+
+let g:unite_enable_start_insert = 1
+
+nmap <silent> <C-s> :Unite -buffer-name=files buffer<CR>
+nnoremap <C-q><C-b> :Unite -buffer-name=files buffer<CR>
+nnoremap <C-q><C-n> :Unite -buffer-name=files file_mru<CR>
+nnoremap <C-q><C-f> :Unite -buffer-name=files file<CR>
+nnoremap <C-q><C-v> :Unite -buffer-name=files bookmark<CR>
+
+" replace buffer dir
+call unite#set_substitute_pattern('files', '^@@', '\=fnamemodify(expand("#"), ":p:h")."/*"', 2)
+
+" replace current dir
+call unite#set_substitute_pattern('files', '^@', '\=getcwd()."/*"', 1)
+
+" replace home dir
+call unite#set_substitute_pattern('files', '^\\', '~/*')
+
+" fuzzy match
+call unite#set_substitute_pattern('files', '[[:alnum:]]', '*\0', 100)
+
+
 " fuzzyfinder {{{2
 
 let g:fuf_modesDisable = [ 'mrucmd' ]
@@ -217,17 +240,17 @@ else
 endif
 let g:fuf_mrufile_maxItem = 100
 
-nmap <silent> <C-s> :FufBuffer<CR>
-nnoremap <C-q><C-b> :FufBuffer<CR>
-nnoremap <C-q><C-n> :FufMruFile<CR>
-nnoremap <C-q><C-v> :FufBookmark<CR>
-nnoremap <C-q><C-d> :FufDir<CR>
-nnoremap <C-q><C-t> :FufTag!<CR>
-nnoremap <C-q><C-]> :FufTagWithCursorWord!<CR>
-nnoremap <C-q><C-g> :FufTaggedFile<CR>
-nnoremap <C-q><C-f> :FufFile<CR>
-nnoremap <C-q><C-x> :FufFileWithCurrentBufferDir<CR>
-nnoremap <C-q><C-r> :FufRenewCache<CR>
+"nmap <silent> <C-s> :FufBuffer<CR>
+"nnoremap <C-q><C-b> :FufBuffer<CR>
+"nnoremap <C-q><C-n> :FufMruFile<CR>
+"nnoremap <C-q><C-v> :FufBookmark<CR>
+"nnoremap <C-q><C-d> :FufDir<CR>
+"nnoremap <C-q><C-t> :FufTag!<CR>
+"nnoremap <C-q><C-]> :FufTagWithCursorWord!<CR>
+"nnoremap <C-q><C-g> :FufTaggedFile<CR>
+"nnoremap <C-q><C-f> :FufFile<CR>
+"nnoremap <C-q><C-x> :FufFileWithCurrentBufferDir<CR>
+"nnoremap <C-q><C-r> :FufRenewCache<CR>
 
 " autocomplpop {{{2
 
@@ -239,6 +262,11 @@ let g:acp_completeOption = '.,w,b,u'
 let g:acp_behaviorKeywordLength = 3
 " snipMate トリガー補完
 let g:acp_behaviorSnipmateLength = 1
+
+" for Unite
+au FileType unite :AcpLock
+au BufLeave \*unite\* :AcpUnlock
+
 
 " DirDiff {{{2
 
