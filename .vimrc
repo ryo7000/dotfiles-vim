@@ -350,4 +350,17 @@ function! s:GetBufferDirectory()
     return '.'
   endif
 endfunction
+
+" source pc-local vimrc
+let s:localrc = ''
+if has('win32')
+  let s:localrc = $VIM . '/.vimrc.local'
+else
+  let s:localrc = $HOME . '/.vimrc.local'
+endif
+
+if filereadable(s:localrc)
+  source `=s:localrc`
+end
+
 " vim: et sts=2 sw=2 fdm=marker fdc=3
