@@ -216,6 +216,7 @@ nnoremap <C-q><C-b> :Unite -buffer-name=files buffer<CR>
 nnoremap <C-q><C-n> :Unite -buffer-name=files file_mru<CR>
 nnoremap <C-q><C-f> :Unite -buffer-name=files file<CR>
 nnoremap <C-q><C-v> :Unite -buffer-name=files bookmark<CR>
+nnoremap <C-q><C-x> :UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <C-q><C-t> :Unite tab<CR>
 
 " replace buffer dir
