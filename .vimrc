@@ -229,7 +229,7 @@ call unite#set_substitute_pattern('files', '^@', '\=getcwd()."/*"', 1)
 call unite#set_substitute_pattern('files', '^\\', '~/*')
 
 " fuzzy match
-call unite#set_substitute_pattern('files', '[[:alnum:]]', '*\0', -1)
+"call unite#set_substitute_pattern('files', '[[:alnum:]]', '*\0', -1)
 
 
 " fuzzyfinder {{{2
