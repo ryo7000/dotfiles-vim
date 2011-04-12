@@ -185,12 +185,13 @@ noremap <C-@> <Esc>
 noremap! <C-@> <Esc>
 
 " 検索語を画面の真ん中に {{{2
-nmap n nzz
-nmap N Nzz
-nmap * *zz
-nmap # #zz
-nmap g* g*zz
-nmap g# g#zz
+" *, #, g*, g#はカーソル移動を抑制
+noremap n nzz
+noremap N Nzz
+noremap * *Nzz
+noremap # #Nzz
+noremap g* g*Nzz
+noremap g# g#Nzz
  
 " set fenc {{{2
 nmap <silent> eu :set fenc=utf-8<CR>
