@@ -1,4 +1,4 @@
-colorscheme desert
+colorscheme solarized
 
 " Font {{{1
 
@@ -37,12 +37,6 @@ if has('multi_byte_ime') || has('xim')
   " 挿入モードでのIME状態を記憶させない場合、次行のコメントを解除
   "inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 endif
-
-"---------------------------------------------------------------------------
-" 補完リストの色
-hi Pmenu guibg=grey40
-hi PmenuSel guibg=olivedrab
-hi PmenuSbar ctermbg=Gray
 
 highlight ZenkakuSpace guibg=gray40
 au BufRead,BufNew * match ZenkakuSpace /　/

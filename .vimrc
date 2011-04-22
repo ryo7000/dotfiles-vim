@@ -77,8 +77,9 @@ if !has("gui_running")
   endif
 
   if !exists('g:colors_name')
-    colorscheme desert256
+    colorscheme solarized
     set background=dark
+    let g:solarized_termcolors=256
   endif
 
   set t_Co=256
@@ -86,10 +87,6 @@ if !has("gui_running")
   " Termでmouseを使う設定
   "set mouse=a
   "set ttymouse=xterm2
-
-  hi Pmenu ctermbg=242
-  hi PmenuSel cterm=reverse ctermfg=64 ctermbg=222
-  hi PmenuSbar ctermbg=249
 endif
 
 if has('win32')
