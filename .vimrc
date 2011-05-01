@@ -156,8 +156,8 @@ noremap! <C-@>  <Esc>
 inoremap <C-U> <C-G>u<C-U>
 
 " 日本語入力中にESCで、Nomalに戻る & 日本語入力を終了する
-if has("gui_running")
-  inoremap <ESC> <ESC>:set iminsert=0<CR>
+if has("kaoriya")
+  imap <silent> <ESC> <ESC>:set iminsert=0<CR>
 endif
 
 " folding {{{2
