@@ -1,4 +1,5 @@
 colorscheme solarized
+set background="dark"
 
 " Font {{{1
 
