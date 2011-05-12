@@ -229,6 +229,9 @@ call unite#set_substitute_pattern('files', '^\\', '~/*')
 " fuzzy match
 "call unite#set_substitute_pattern('files', '[[:alnum:]]', '*\0', -1)
 
+" Unite中はsmartcase無視
+call unite#set_buffer_name_option('files', 'smartcase', 0)
+
 
 " fuzzyfinder {{{2
 
