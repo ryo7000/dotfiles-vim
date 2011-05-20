@@ -840,10 +840,16 @@ endfunction
 function! <SID>DirDiffExec(cmd, interactive)
     let error = 0
     if (a:interactive)
+        let l:old_lang = $LANG
+        let $LANG = "C"
         exe (a:cmd)
+        let $LANG = l:old_lang
         let error = v:shell_error
     else
+        let l:old_lang = $LANG
+        let $LANG = "C"
         silent exe (a:cmd)
+        let $LANG = l:old_lang
         let error = v:shell_error
     endif
 "    let d = input("DirDiffExec: " . a:cmd . " " . a:interactive . " returns " . v:shell_error)
