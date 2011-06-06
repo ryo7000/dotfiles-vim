@@ -85,8 +85,8 @@ if !has("gui_running")
   set t_Co=256
 
   " Termでmouseを使う設定
-  "set mouse=a
-  "set ttymouse=xterm2
+  set mouse=a
+  set ttymouse=xterm2
 endif
 
 if has('win32')
@@ -267,9 +267,23 @@ let g:acp_behaviorKeywordLength = 3
 let g:acp_behaviorSnipmateLength = 1
 
 " for Unite
-au FileType unite :AcpLock
-au BufLeave \*unite\* :AcpUnlock
+"au FileType unite :AcpLock
+"au BufLeave \*unite\* :AcpUnlock
 
+" neocomplcache {{{2
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplcache.
+let g:neocomplcache_enable_at_startup = 1
+" Use smartcase.
+let g:neocomplcache_enable_smart_case = 1
+" Use camel case completion.
+let g:neocomplcache_enable_camel_case_completion = 1
+" Use underbar completion.
+let g:neocomplcache_enable_underbar_completion = 1
+" Set minimum syntax keyword length.
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
 " DirDiff {{{2
 
