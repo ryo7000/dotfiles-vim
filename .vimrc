@@ -109,7 +109,7 @@ set grepprg=grep\ -nH\ $*\ \\\|\ grep\ -v\ \"\\.svn\"
 set history=100
 set hlsearch
 set incsearch
-set listchars=tab:>-,eol:<
+set listchars=tab:>-,eol:<,trail:-
 set laststatus=2
 set nobackup
 set nowrapscan
@@ -332,6 +332,9 @@ augroup CloseTagMacro
   au!
   au Filetype html,xml,xsl,ant,tpl,php,eruby ru macros/closetag.vim
 augroup END
+
+" Show EOL WhiteSpace
+autocmd WinEnter * match ErrorMsg /\s\+$/
 
 " kaoriya cmdex.vimより {{{2
 " :CdCurrent
