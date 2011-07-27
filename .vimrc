@@ -334,7 +334,7 @@ augroup CloseTagMacro
 augroup END
 
 " Show EOL WhiteSpace
-autocmd WinEnter * match ErrorMsg /\s\+$/
+autocmd BufEnter *.c,*.cpp,*.rb match ErrorMsg /\s\+$/
 
 " kaoriya cmdex.vimより {{{2
 " :CdCurrent
