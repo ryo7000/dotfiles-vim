@@ -7,3 +7,6 @@
 [submodule ".vim/bundle/neocomplcache"]
 	path = .vim/bundle/neocomplcache
 	url = http://github.com/Shougo/neocomplcache
+[submodule ".vim/bundle/vimproc"]
+	path = .vim/bundle/vimproc
+	url = http://github.com/Shougo/vimproc
