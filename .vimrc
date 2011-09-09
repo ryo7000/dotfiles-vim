@@ -283,6 +283,15 @@ let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
+if has('win32')
+  let g:neocomplcache_snippets_dir = $VIM . '/.vim/snippets'
+else
+  let g:neocomplcache_snippets_dir = $HOME . '/.vim/snippets'
+endif
+
+imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <silent><TAB> <Plug>(neocomplcache_snippets_expand)
+
 " DirDiff {{{2
 
 let g:DirDiffExcludes = ".svn"
