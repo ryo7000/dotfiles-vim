@@ -255,22 +255,7 @@ let g:fuf_mrufile_maxItem = 100
 "nnoremap <C-q><C-x> :FufFileWithCurrentBufferDir<CR>
 "nnoremap <C-q><C-r> :FufRenewCache<CR>
 
-" autocomplpop {{{2
-
-" 候補は大文字小文字無視する
-let g:acp_ignorecaseOption = 1
-" 補完時の'complete'
-let g:acp_completeOption = '.,w,b,u'
-" キーワード補完の最小文字数を3に
-let g:acp_behaviorKeywordLength = 3
-
-" for Unite
-"au FileType unite :AcpLock
-"au BufLeave \*unite\* :AcpUnlock
-
 " neocomplcache {{{2
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
 " Use neocomplcache.
 let g:neocomplcache_enable_at_startup = 1
 " Use smartcase.
