@@ -233,28 +233,6 @@ call unite#set_substitute_pattern('files', '^\\', '~/*')
 call unite#set_buffer_name_option('files', 'smartcase', 0)
 
 
-" fuzzyfinder {{{2
-
-let g:fuf_modesDisable = [ 'mrucmd' ]
-if has('win32')
-  let g:fuf_infoFile = '$VIM/.vim-fuf'
-else
-  let g:fuf_infoFile = '$HOME/.vim-fuf'
-endif
-let g:fuf_mrufile_maxItem = 100
-
-"nmap <silent> <C-s> :FufBuffer<CR>
-"nnoremap <C-q><C-b> :FufBuffer<CR>
-"nnoremap <C-q><C-n> :FufMruFile<CR>
-"nnoremap <C-q><C-v> :FufBookmark<CR>
-"nnoremap <C-q><C-d> :FufDir<CR>
-"nnoremap <C-q><C-t> :FufTag!<CR>
-"nnoremap <C-q><C-]> :FufTagWithCursorWord!<CR>
-"nnoremap <C-q><C-g> :FufTaggedFile<CR>
-"nnoremap <C-q><C-f> :FufFile<CR>
-"nnoremap <C-q><C-x> :FufFileWithCurrentBufferDir<CR>
-"nnoremap <C-q><C-r> :FufRenewCache<CR>
-
 " neocomplcache {{{2
 " Use neocomplcache.
 let g:neocomplcache_enable_at_startup = 1
