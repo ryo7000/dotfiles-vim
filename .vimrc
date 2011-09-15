@@ -64,7 +64,7 @@ end
 
 "" $VIMRUNTIME/menu.vimを読みこまない
 set guioptions&
-"set guioptions+=M
+set guioptions+=M
 set guioptions-=T
 set guioptions-=m
 
