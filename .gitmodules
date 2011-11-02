@@ -10,3 +10,6 @@
 [submodule ".vim/bundle/vimproc"]
 	path = .vim/bundle/vimproc
 	url = http://github.com/Shougo/vimproc
+[submodule ".vim/bundle/unite-outline"]
+	path = .vim/bundle/unite-outline
+	url = http://github.com/h1mesuke/unite-outline
