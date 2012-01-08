@@ -13,3 +13,6 @@
 [submodule ".vim/bundle/unite-outline"]
 	path = .vim/bundle/unite-outline
 	url = http://github.com/h1mesuke/unite-outline
+[submodule ".vim/bundle/neobundle"]
+	path = .vim/bundle/neobundle
+	url = https://github.com/Shougo/neobundle.vim.git
