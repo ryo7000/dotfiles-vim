@@ -1,7 +1,7 @@
 set nocompatible
 
 " Windowsで$HOME/vimfilesの代わりに、$VIM/.vimを使う
-if has('win32')
+if has('win32') || has('win64')
   " filetype onで、runtime! ftdetect/*.vimするので、
   " その前にruntimepathを設定
   " (filetype onは、syntax on/enableで読み込まれる$VIMRUNTIME/syntax/syntax.vimの中で実行される)
@@ -13,7 +13,7 @@ call pathogen#runtime_append_all_bundles()
 " Encoding {{{1
 
 " for Japanese lang
-if has('win32')
+if has('win32') || has('win64')
   set encoding=japan
 else
   set encoding=utf-8
@@ -89,7 +89,7 @@ if !has("gui_running")
   set ttymouse=xterm2
 endif
 
-if has('win32')
+if has('win32') || has('win64')
   " for gf
   set isfname-=:
 endif
@@ -245,7 +245,7 @@ let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
-if has('win32')
+if has('win32') || has('win64')
   let g:neocomplcache_snippets_dir = $VIM . '/.vim/snippets'
 else
   let g:neocomplcache_snippets_dir = $HOME . '/.vim/snippets'
@@ -342,7 +342,7 @@ endfunction
 
 " source pc-local vimrc
 let s:localrc = ''
-if has('win32')
+if has('win32') || has('win64')
   let s:localrc = $VIM . '/.vimrc.local'
 else
   let s:localrc = $HOME . '/.vimrc.local'
