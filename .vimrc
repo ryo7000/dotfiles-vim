@@ -1,4 +1,5 @@
 set nocompatible
+filetype plugin indent off
 
 if has('win32') || has('win64')
   let s:vim_home = $VIM
@@ -6,15 +7,39 @@ else
   let s:vim_home = $HOME
 endif
 
-" Windowsで$HOME/vimfilesの代わりに、$VIM/.vimを使う
-if has('win32') || has('win64')
-  " filetype onで、runtime! ftdetect/*.vimするので、
-  " その前にruntimepathを設定
-  " (filetype onは、syntax on/enableで読み込まれる$VIMRUNTIME/syntax/syntax.vimの中で実行される)
-  set runtimepath=$VIM/.vim,$VIMRUNTIME,$VIM/.vim/after
+if has('vim_starting')
+  " Windowsで$HOME/vimfilesの代わりに、$VIM/.vimを使う
+  if has('win32') || has('win64')
+    " filetype onで、runtime! ftdetect/*.vimするので、
+    " その前にruntimepathを設定
+    " (filetype onは、syntax on/enableで読み込まれる$VIMRUNTIME/syntax/syntax.vimの中で実行される)
+    set runtimepath=$VIM/.vim,$VIMRUNTIME,$VIM/.vim/after
+  endif
+
+  let &runtimepath .= ',' . s:vim_home . '/.vim/bundle/neobundle/'
+  call neobundle#rc(expand(s:vim_home . '/.vim/bundle/'))
 endif
 
-call pathogen#runtime_append_all_bundles()
+" NeoBundle {{{1
+
+" v2.8
+NeoBundle 'https://github.com/kana/vim-fakeclip.git', '48b32f1e1b'
+" v2.2
+NeoBundle 'https://github.com/Shougo/unite.vim.git', '8475439880'
+" v6.1
+NeoBundle 'https://github.com/Shougo/neocomplcache.git', '4bbdc7359d'
+" v5.3
+NeoBundle 'https://github.com/Shougo/vimproc.git', '73fa395152'
+" v7.3
+NeoBundle 'https://github.com/vim-ruby/vim-ruby.git', 'd6f9955057'
+" v0.5.0
+NeoBundle 'https://github.com/h1mesuke/unite-outline.git', '122c0483ea'
+" v4.3
+NeoBundle 'https://github.com/tpope/vim-rails.git', '61907a99c1'
+" v1.99.42
+NeoBundle 'http://repo.or.cz/r/vcscommand.git', 'c31929c04f'
+
+filetype plugin indent on
 
 " Encoding {{{1
 
