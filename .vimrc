@@ -1,5 +1,11 @@
 set nocompatible
 
+if has('win32') || has('win64')
+  let s:vim_home = $VIM
+else
+  let s:vim_home = $HOME
+endif
+
 " Windowsで$HOME/vimfilesの代わりに、$VIM/.vimを使う
 if has('win32') || has('win64')
   " filetype onで、runtime! ftdetect/*.vimするので、
@@ -244,12 +250,7 @@ let g:neocomplcache_enable_underbar_completion = 1
 " Set minimum syntax keyword length.
 let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-
-if has('win32') || has('win64')
-  let g:neocomplcache_snippets_dir = $VIM . '/.vim/snippets'
-else
-  let g:neocomplcache_snippets_dir = $HOME . '/.vim/snippets'
-endif
+let g:neocomplcache_snippets_dir = s:vim_home . '/.vim/snippets'
 
 imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 smap <silent><TAB> <Plug>(neocomplcache_snippets_expand)
@@ -341,13 +342,7 @@ function! s:GetBufferDirectory()
 endfunction
 
 " source pc-local vimrc
-let s:localrc = ''
-if has('win32') || has('win64')
-  let s:localrc = $VIM . '/.vimrc.local'
-else
-  let s:localrc = $HOME . '/.vimrc.local'
-endif
-
+let s:localrc = s:vim_home . '/.vimrc.local'
 if filereadable(s:localrc)
   source `=s:localrc`
 end
