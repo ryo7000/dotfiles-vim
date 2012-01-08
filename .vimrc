@@ -28,8 +28,8 @@ NeoBundle 'https://github.com/kana/vim-fakeclip.git', '48b32f1e1b'
 NeoBundle 'https://github.com/Shougo/unite.vim.git', '8475439880'
 " v6.1
 NeoBundle 'https://github.com/Shougo/neocomplcache.git', '4bbdc7359d'
-" v5.3
-NeoBundle 'https://github.com/Shougo/vimproc.git', '73fa395152'
+" v6.1-
+NeoBundle 'https://github.com/Shougo/vimproc.git'
 " v7.3
 NeoBundle 'https://github.com/vim-ruby/vim-ruby.git', 'd6f9955057'
 " v0.5.0
