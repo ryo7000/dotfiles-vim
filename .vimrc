@@ -22,22 +22,18 @@ endif
 
 " NeoBundle {{{1
 
-" v2.8
-NeoBundle 'https://github.com/kana/vim-fakeclip.git', '48b32f1e1b'
-" v2.2
-NeoBundle 'https://github.com/Shougo/unite.vim.git', '8475439880'
-" v6.1
-NeoBundle 'https://github.com/Shougo/neocomplcache.git', '4bbdc7359d'
+NeoBundle 'https://github.com/kana/vim-fakeclip.git', {'rev': '0.2.8'}
+NeoBundle 'https://github.com/Shougo/unite.vim.git', {'rev': 'ver.3.0'}
+NeoBundle 'https://github.com/Shougo/neocomplcache.git', {'rev': 'ver.6.2'}
 " v6.1-
 NeoBundle 'https://github.com/Shougo/vimproc.git'
-" v7.3
+
+NeoBundle 'https://github.com/Shougo/vimfiler.git', {'rev': 'Ver.3.0'}
+" v7.3-
 NeoBundle 'https://github.com/vim-ruby/vim-ruby.git', 'd6f9955057'
-" v0.5.0
-NeoBundle 'https://github.com/h1mesuke/unite-outline.git', '122c0483ea'
-" v4.3
-NeoBundle 'https://github.com/tpope/vim-rails.git', '61907a99c1'
-" v1.99.42
-NeoBundle 'http://repo.or.cz/r/vcscommand.git', 'c31929c04f'
+NeoBundle 'https://github.com/h1mesuke/unite-outline.git', {'rev': 'v0.5.0'}
+NeoBundle 'https://github.com/tpope/vim-rails.git', {'rev': 'v4.4'}
+NeoBundle 'http://repo.or.cz/r/vcscommand.git', {'rev': 'v1.99.46'}
 
 filetype plugin indent on
 
@@ -279,6 +275,9 @@ let g:neocomplcache_snippets_dir = s:vim_home . '/.vim/snippets'
 
 imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 smap <silent><TAB> <Plug>(neocomplcache_snippets_expand)
+
+" VimFiler {{{2
+let g:vimfiler_as_default_explorer = 1
 
 " DirDiff {{{2
 
