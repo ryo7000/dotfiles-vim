@@ -24,7 +24,8 @@ endif
 
 NeoBundle 'https://github.com/kana/vim-fakeclip.git', {'rev': '0.2.8'}
 NeoBundle 'https://github.com/Shougo/unite.vim.git', {'rev': 'ver.3.0'}
-NeoBundle 'https://github.com/Shougo/neocomplcache.git', {'rev': 'ver.6.2'}
+NeoBundle 'https://github.com/Shougo/neocomplcache.git'
+NeoBundle 'https://github.com/Shougo/neocomplcache-snippets-complete.git'
 " v6.1-
 NeoBundle 'https://github.com/Shougo/vimproc.git'
 
@@ -273,7 +274,8 @@ let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 let g:neocomplcache_snippets_dir = s:vim_home . '/.vim/snippets'
 
-imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ?
+      \ "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 smap <silent><TAB> <Plug>(neocomplcache_snippets_expand)
 
 " VimFiler {{{2
