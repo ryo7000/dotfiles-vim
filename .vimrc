@@ -24,8 +24,8 @@ endif
 
 NeoBundle 'https://github.com/kana/vim-fakeclip.git', {'rev': '0.2.8'}
 NeoBundle 'https://github.com/Shougo/unite.vim.git', {'rev': 'ver.3.0'}
-NeoBundle 'https://github.com/Shougo/neocomplcache.git'
-NeoBundle 'https://github.com/Shougo/neocomplcache-snippets-complete.git'
+NeoBundle 'https://github.com/Shougo/neocomplcache.git', {'rev': 'ver.7.0'}
+NeoBundle 'https://github.com/Shougo/neocomplcache-snippets-complete.git', {'rev': 'ver.2.0'}
 " v6.1-
 NeoBundle 'https://github.com/Shougo/vimproc.git'
 
