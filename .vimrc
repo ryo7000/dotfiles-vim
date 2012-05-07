@@ -34,6 +34,7 @@ NeoBundle 'https://github.com/Shougo/vimfiler.git', {'rev': 'Ver.3.0'}
 NeoBundle 'https://github.com/vim-ruby/vim-ruby.git', 'd6f9955057'
 NeoBundle 'https://github.com/h1mesuke/unite-outline.git', {'rev': 'v0.5.0'}
 NeoBundle 'https://github.com/tpope/vim-rails.git', {'rev': 'v4.4'}
+NeoBundle 'https://github.com/thinca/vim-ref', {'rev': 'unite-ref-v0.1.1'}
 NeoBundle 'http://repo.or.cz/r/vcscommand.git', {'rev': 'v1.99.46'}
 
 filetype plugin indent on
