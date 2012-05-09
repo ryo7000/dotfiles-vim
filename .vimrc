@@ -23,7 +23,7 @@ endif
 " NeoBundle {{{1
 
 NeoBundle 'https://github.com/kana/vim-fakeclip.git', {'rev': '0.2.8'}
-NeoBundle 'https://github.com/Shougo/unite.vim.git', {'rev': 'ver.3.0'}
+NeoBundle 'https://github.com/Shougo/unite.vim.git', {'rev': 'ver.3.1'}
 NeoBundle 'https://github.com/Shougo/neocomplcache.git', {'rev': 'ver.7.0'}
 NeoBundle 'https://github.com/Shougo/neocomplcache-snippets-complete.git', {'rev': 'ver.2.0'}
 " v6.1-
@@ -33,6 +33,7 @@ NeoBundle 'https://github.com/Shougo/vimfiler.git', {'rev': 'Ver.3.0'}
 " v7.3-
 NeoBundle 'https://github.com/vim-ruby/vim-ruby.git', 'd6f9955057'
 NeoBundle 'https://github.com/h1mesuke/unite-outline.git', {'rev': 'v0.5.0'}
+NeoBundle 'https://github.com/Sixeight/unite-grep.git'
 NeoBundle 'https://github.com/tpope/vim-rails.git', {'rev': 'v4.4'}
 NeoBundle 'https://github.com/thinca/vim-ref', {'rev': 'unite-ref-v0.1.1'}
 NeoBundle 'http://repo.or.cz/r/vcscommand.git', {'rev': 'v1.99.46'}
