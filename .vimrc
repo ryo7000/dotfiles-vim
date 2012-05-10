@@ -246,6 +246,8 @@ nnoremap <C-q><C-v> :Unite -buffer-name=files bookmark<CR>
 nnoremap <C-q><C-x> :UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <C-q><C-o> :Unite outline<CR>
 nnoremap <C-q><C-t> :Unite tab<CR>
+nnoremap <C-q><C-g> :Unite grep<CR>
+nnoremap <C-q><C-r> :UniteResume<CR>
 
 " replace buffer dir
 call unite#set_substitute_pattern('files', '^@@', '\=fnamemodify(expand("#"), ":p:h")."/*"', 2)
