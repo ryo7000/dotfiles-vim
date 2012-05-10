@@ -238,16 +238,14 @@ so $VIMRUNTIME/macros/matchit.vim
 
 let g:unite_enable_start_insert = 1
 
-nmap <silent> <C-s> :Unite -buffer-name=files buffer<CR>
-nnoremap <C-q><C-b> :Unite -buffer-name=files buffer<CR>
-nnoremap <C-q><C-n> :Unite -buffer-name=files file_mru<CR>
-nnoremap <C-q><C-f> :Unite -buffer-name=files file<CR>
-nnoremap <C-q><C-v> :Unite -buffer-name=files bookmark<CR>
-nnoremap <C-q><C-x> :UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <C-q><C-o> :Unite outline<CR>
-nnoremap <C-q><C-t> :Unite tab<CR>
-nnoremap <C-q><C-g> :Unite grep<CR>
-nnoremap <C-q><C-r> :UniteResume<CR>
+nnoremap    [unite]   <Nop>
+nmap    <Space> [unite]
+nnoremap <silent> [unite]c :UniteWithCurrentDir -buffer-name=files file buffer file_mru bookmark<CR>
+nnoremap <silent> [unite]b :UniteWithBufferDir -buffer-name=files -prompt=%\  file buffer file_mru bookmark<CR>
+nnoremap <silent> [unite]n :Unite -buffer-name=files file_mru<CR>
+nnoremap <silent> [unite]o :Unite outline<CR>
+nnoremap <silent> [unite]g :Unite grep<CR>
+nnoremap <silent> [unite]r :UniteResume<CR>
 
 " replace buffer dir
 call unite#set_substitute_pattern('files', '^@@', '\=fnamemodify(expand("#"), ":p:h")."/*"', 2)
