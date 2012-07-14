@@ -138,7 +138,8 @@ set grepprg=grep\ -nH\ $*\ \\\|\ grep\ -v\ \"\\.svn\"
 set history=100
 set hlsearch
 set incsearch
-set listchars=tab:>-,eol:<,trail:-
+set list
+set listchars=tab:>-,trail:-
 set laststatus=2
 set nobackup
 set nowrapscan
