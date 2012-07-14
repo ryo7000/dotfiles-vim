@@ -300,8 +300,9 @@ let g:rubycomplete_rails = 1
 let g:rubycomplete_classes_in_global = 1
 
 " git-commit {{{2
-let git_diff_spawn_mode=1
-autocmd BufNewFile,BufRead COMMIT_EDITMSG set filetype=git
+augroup gitcommit
+  au FileType gitcommit DiffGitCached | wincmd R
+augroup END
 
 " Etc {{{1
 
