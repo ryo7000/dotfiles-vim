@@ -30,8 +30,7 @@ NeoBundle 'https://github.com/Shougo/neocomplcache-snippets-complete.git', {'rev
 NeoBundle 'https://github.com/Shougo/vimproc.git'
 
 NeoBundle 'https://github.com/Shougo/vimfiler.git', {'rev': 'Ver.3.0'}
-" v7.3-
-NeoBundle 'https://github.com/vim-ruby/vim-ruby.git', 'd6f9955057'
+NeoBundle 'https://github.com/vim-ruby/vim-ruby.git'
 NeoBundle 'https://github.com/h1mesuke/unite-outline.git', {'rev': 'v0.5.0'}
 NeoBundle 'https://github.com/tpope/vim-rails.git', {'rev': 'v4.4'}
 NeoBundle 'https://github.com/thinca/vim-ref', {'rev': 'unite-ref-v0.1.1'}
