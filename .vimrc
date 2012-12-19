@@ -21,19 +21,20 @@ if has('vim_starting')
 endif
 
 " NeoBundle {{{1
+let g:neobundle_default_git_protocol = 'https'
 
-NeoBundle 'https://github.com/kana/vim-fakeclip.git', {'rev': '0.2.8'}
-NeoBundle 'https://github.com/Shougo/unite.vim.git', {'rev': 'ver.3.1'}
-NeoBundle 'https://github.com/Shougo/neocomplcache.git', {'rev': 'ver.7.0'}
-NeoBundle 'https://github.com/Shougo/neocomplcache-snippets-complete.git', {'rev': 'ver.2.0'}
+NeoBundle 'kana/vim-fakeclip.git', {'rev': '0.2.8'}
+NeoBundle 'Shougo/unite.vim.git', {'rev': 'ver.3.1'}
+NeoBundle 'Shougo/neocomplcache.git', {'rev': 'ver.7.0'}
+NeoBundle 'Shougo/neocomplcache-snippets-complete.git', {'rev': 'ver.2.0'}
 " v6.1-
-NeoBundle 'https://github.com/Shougo/vimproc.git'
+NeoBundle 'Shougo/vimproc.git'
 
-NeoBundle 'https://github.com/Shougo/vimfiler.git', {'rev': 'Ver.3.0'}
-NeoBundle 'https://github.com/vim-ruby/vim-ruby.git'
-NeoBundle 'https://github.com/h1mesuke/unite-outline.git', {'rev': 'v0.5.0'}
-NeoBundle 'https://github.com/tpope/vim-rails.git', {'rev': 'v4.4'}
-NeoBundle 'https://github.com/thinca/vim-ref', {'rev': 'unite-ref-v0.1.1'}
+NeoBundle 'Shougo/vimfiler.git', {'rev': 'Ver.3.0'}
+NeoBundle 'vim-ruby/vim-ruby.git'
+NeoBundle 'h1mesuke/unite-outline.git', {'rev': 'v0.5.0'}
+NeoBundle 'tpope/vim-rails.git', {'rev': 'v4.4'}
+NeoBundle 'thinca/vim-ref', {'rev': 'unite-ref-v0.1.1'}
 NeoBundle 'http://repo.or.cz/r/vcscommand.git', {'rev': 'v1.99.46'}
 
 filetype plugin indent on
