@@ -6,7 +6,7 @@ set background="dark"
 if has('win32')
   set guifont=BDF_M+:h9:cSHIFTJIS
 elseif has('unix')
-  set guifont=M+1MN+IPAG\ 10
+  set guifont=Ricty\ 11
 endif
 
 " Options {{{1

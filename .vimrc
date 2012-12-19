@@ -35,6 +35,7 @@ NeoBundle 'vim-ruby/vim-ruby.git'
 NeoBundle 'h1mesuke/unite-outline.git', {'rev': 'v0.5.0'}
 NeoBundle 'tpope/vim-rails.git', {'rev': 'v4.4'}
 NeoBundle 'thinca/vim-ref', {'rev': 'unite-ref-v0.1.1'}
+NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'http://repo.or.cz/r/vcscommand.git', {'rev': 'v1.99.46'}
 
 filetype plugin indent on
@@ -234,6 +235,9 @@ nmap <silent> ers :e ++enc=cp932<CR>
 
 " matchit
 so $VIMRUNTIME/macros/matchit.vim
+
+" powerline
+let g:Powerline_symbols = 'fancy'
 
 " Unite {{{2
 
