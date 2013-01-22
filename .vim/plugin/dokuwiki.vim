@@ -177,7 +177,7 @@ function! s:DW_get_list_page(site_name, param) " {{{
 
     if line =~ '.*<a href=".\{-}".*'
       let page = substitute(line, '.*<a href=".\+\/\(.\{-}\)".*', '\1', '')
-      let page = AL_urldecode(page)
+      let page = Urldecode(page)
       let page = iconv(page, 'utf-8', &enc)
       if level > 1
         silent! exec "normal! " .(level * 2). "i "
@@ -264,9 +264,16 @@ endfunction " }}}
 
 function! s:Urlencode(str) " {{{
   let r = a:str
-	let r = substitute(r, '[^ a-zA-Z0-9_.-]', '\=s:Char2hex(submatch(0))', 'g')
+  let r = substitute(r, '[^ a-zA-Z0-9_.-]', '\=s:Char2hex(submatch(0))', 'g')
   let r = substitute(r, ' ', '+', 'g')
   return r
+endfunction " }}}
+
+function! s:Urldecode(str) " {{{
+  let retval = a:str
+  let retval = substitute(retval, '+', ' ', 'g')
+  let retval = substitute(retval, '%\(\x\x\)', '\=nr2char("0x".submatch(1))', 'g')
+  return retval
 endfunction " }}}
 
 function! s:Char2hex(c) " {{{
