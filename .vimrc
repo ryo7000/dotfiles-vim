@@ -37,6 +37,7 @@ NeoBundle 'tpope/vim-rails.git', {'rev': 'v4.4'}
 NeoBundle 'thinca/vim-ref', {'rev': 'unite-ref-v0.1.1'}
 NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'majutsushi/tagbar', {'rev': 'v2.4.1'}
+NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'http://repo.or.cz/r/vcscommand.git', {'rev': 'v1.99.46'}
 
 "" $VIMRUNTIME/menu.vimを読みこまない
@@ -295,11 +296,6 @@ let g:DirDiffExcludes = ".svn"
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_rails = 1
 let g:rubycomplete_classes_in_global = 1
-
-" git-commit {{{2
-augroup gitcommit
-  au FileType gitcommit DiffGitCached | wincmd R
-augroup END
 
 " tagbar
 let g:tagbar_left = 1
