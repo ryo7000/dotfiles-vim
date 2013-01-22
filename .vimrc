@@ -39,6 +39,12 @@ NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'majutsushi/tagbar', {'rev': 'v2.4.1'}
 NeoBundle 'http://repo.or.cz/r/vcscommand.git', {'rev': 'v1.99.46'}
 
+"" $VIMRUNTIME/menu.vimを読みこまない
+set guioptions&
+set guioptions+=M
+set guioptions-=T
+set guioptions-=m
+
 filetype plugin indent on
 
 " Encoding {{{1
@@ -92,15 +98,7 @@ if !exists('did_encoding_settings') && has('iconv')
 end
 
 " Options {{{1
-
-"" $VIMRUNTIME/menu.vimを読みこまない
-set guioptions&
-set guioptions+=M
-set guioptions-=T
-set guioptions-=m
-
 syntax enable
-filetype plugin indent on
 
 if !has("gui_running")
   if has('unix')
