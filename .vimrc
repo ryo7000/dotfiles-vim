@@ -36,6 +36,7 @@ NeoBundle 'h1mesuke/unite-outline.git', {'rev': 'v0.5.0'}
 NeoBundle 'tpope/vim-rails.git', {'rev': 'v4.4'}
 NeoBundle 'thinca/vim-ref', {'rev': 'unite-ref-v0.1.1'}
 NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'majutsushi/tagbar', {'rev': 'v2.4.1'}
 NeoBundle 'http://repo.or.cz/r/vcscommand.git', {'rev': 'v1.99.46'}
 
 filetype plugin indent on
@@ -292,13 +293,6 @@ let g:vimfiler_as_default_explorer = 1
 
 let g:DirDiffExcludes = ".svn"
 
-" winmanager {{{2
-
-let g:winManagerWindowLayout = "TagList"
-let g:winManagerWidth = 40
-map <c-w><c-t> :WMToggle<cr>
-hi link MyTagListTagName Visual
-
 " vim-ruby (rubycomplete.vim) {{{2
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_rails = 1
@@ -308,6 +302,10 @@ let g:rubycomplete_classes_in_global = 1
 augroup gitcommit
   au FileType gitcommit DiffGitCached | wincmd R
 augroup END
+
+" tagbar
+let g:tagbar_left = 1
+nmap <C-w><C-t> :TagbarToggle<cr>
 
 " Etc {{{1
 
