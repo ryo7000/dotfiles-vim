@@ -39,6 +39,9 @@ NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'majutsushi/tagbar', {'rev': 'v2.4.1'}
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'http://repo.or.cz/r/vcscommand.git', {'rev': 'v1.99.46'}
+" Javascript
+NeoBundle 'jiangmiao/simple-javascript-indenter'
+NeoBundle 'jelera/vim-javascript-syntax'
 
 "" $VIMRUNTIME/menu.vimを読みこまない
 set guioptions&
