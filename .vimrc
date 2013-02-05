@@ -25,8 +25,8 @@ let g:neobundle_default_git_protocol = 'https'
 
 NeoBundle 'kana/vim-fakeclip.git', {'rev': '0.2.8'}
 NeoBundle 'Shougo/unite.vim.git', {'rev': 'ver.3.1'}
-NeoBundle 'Shougo/neocomplcache.git', {'rev': 'ver.7.0'}
-NeoBundle 'Shougo/neocomplcache-snippets-complete.git', {'rev': 'ver.2.0'}
+NeoBundle 'Shougo/neocomplcache.git'
+NeoBundle 'Shougo/neosnippet.git'
 " v6.1-
 NeoBundle 'Shougo/vimproc.git'
 
