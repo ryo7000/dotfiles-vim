@@ -42,7 +42,6 @@ NeoBundle 'http://repo.or.cz/r/vcscommand.git', {'rev': 'v1.99.46'}
 NeoBundle 'mattn/zencoding-vim'
 " Javascript
 NeoBundle 'jiangmiao/simple-javascript-indenter'
-NeoBundle 'jelera/vim-javascript-syntax'
 
 "" $VIMRUNTIME/menu.vimを読みこまない
 set guioptions&
