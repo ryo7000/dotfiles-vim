@@ -242,6 +242,9 @@ so $VIMRUNTIME/macros/matchit.vim
 " powerline
 let g:Powerline_symbols = 'fancy'
 
+" Simple Javascript Indenter
+let g:SimpleJsIndenter_BriefMode = 1
+
 " Unite {{{2
 
 let g:unite_enable_start_insert = 1
