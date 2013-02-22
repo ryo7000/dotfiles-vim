@@ -1,4 +1,4 @@
-colorscheme solarized
+colorscheme lucius
 set background="dark"
 
 " Font {{{1
