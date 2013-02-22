@@ -1,4 +1,5 @@
 colorscheme lucius
+let g:lucius_contrast = 'low'
 set background="dark"
 
 " Font {{{1
