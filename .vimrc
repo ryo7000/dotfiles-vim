@@ -30,7 +30,7 @@ NeoBundle 'Shougo/neosnippet.git'
 " v6.1-
 NeoBundle 'Shougo/vimproc.git'
 
-NeoBundle 'Shougo/vimfiler.git', {'rev': 'Ver.3.0'}
+NeoBundle 'Shougo/vimfiler.git', {'rev': 'ver.3.2'}
 NeoBundle 'vim-ruby/vim-ruby.git'
 NeoBundle 'h1mesuke/unite-outline.git', {'rev': 'v0.5.0'}
 NeoBundle 'tpope/vim-rails.git', {'rev': 'v4.4'}
