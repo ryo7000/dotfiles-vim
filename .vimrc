@@ -271,7 +271,7 @@ nnoremap    [unite]   <Nop>
 nmap    <Space> [unite]
 nmap <silent> <C-s> [unite]c
 nnoremap <silent> [unite]c :UniteWithCurrentDir -buffer-name=files file file/new buffer file_mru bookmark<CR>
-nnoremap <silent> [unite]b :UniteWithBufferDir -buffer-name=files -prompt=%\  file buffer file_mru bookmark<CR>
+nnoremap <silent> [unite]b :UniteWithBufferDir -buffer-name=files -prompt=%\  file file/new buffer file_mru bookmark<CR>
 nnoremap <silent> [unite]n :Unite -buffer-name=files file_mru<CR>
 nnoremap <silent> [unite]o :Unite outline<CR>
 nnoremap <silent> [unite]g :Unite grep<CR>
