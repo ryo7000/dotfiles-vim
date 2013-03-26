@@ -16,24 +16,23 @@ if has('vim_starting')
     set runtimepath=$VIM/.vim,$VIMRUNTIME,$VIM/.vim/after
   endif
 
-  let &runtimepath .= ',' . s:vim_home . '/.vim/bundle/neobundle/'
+  let &runtimepath .= ',' . s:vim_home . '/.vim/bundle/neobundle.vim/'
   call neobundle#rc(expand(s:vim_home . '/.vim/bundle/'))
 endif
 
 " NeoBundle {{{1
 let g:neobundle_default_git_protocol = 'https'
 
-NeoBundle 'kana/vim-fakeclip.git', {'rev': '0.2.8'}
-NeoBundle 'Shougo/unite.vim.git', {'rev': 'ver.3.1'}
-NeoBundle 'Shougo/neocomplcache.git'
-NeoBundle 'Shougo/neosnippet.git'
-" v6.1-
-NeoBundle 'Shougo/vimproc.git'
+NeoBundleFetch 'Shougo/neobundle.vim'
 
-NeoBundle 'Shougo/vimfiler.git', {'rev': 'ver.3.2'}
-NeoBundle 'vim-ruby/vim-ruby.git'
-NeoBundle 'h1mesuke/unite-outline.git', {'rev': 'v0.5.0'}
-NeoBundle 'tpope/vim-rails.git', {'rev': 'v4.4'}
+NeoBundle 'kana/vim-fakeclip', '0.2.10'
+NeoBundle 'Shougo/unite.vim', 'ver.4.1'
+NeoBundle 'Shougo/neocomplcache', 'ver.7.2'
+NeoBundle 'Shougo/neosnippet', 'ver.3.0'
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimfiler', {'rev': 'ver.3.2'}
+NeoBundle 'h1mesuke/unite-outline', {'rev': 'v0.5.0', 'depends': 'Shougo/unite.vim' }
+NeoBundle 'tpope/vim-rails', {'rev': 'v4.4'}
 NeoBundle 'thinca/vim-ref', {'rev': 'unite-ref-v0.1.1'}
 NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'majutsushi/tagbar', {'rev': 'v2.4.1'}
@@ -42,8 +41,25 @@ NeoBundle 'http://repo.or.cz/r/vcscommand.git', {'rev': 'v1.99.46'}
 NeoBundle 'mattn/zencoding-vim'
 " Colorscheme
 NeoBundle 'jonathanfilip/vim-lucius'
+" Ruby
+NeoBundleLazy 'vim-ruby/vim-ruby', {
+  \ 'autoload' : { 'filetypes' : ['ruby', 'eruby', 'haml'] } }
+" Rails
+NeoBundleLazy 'ujihisa/unite-rake', { 'depends' : 'Shougo/unite.vim' }
+NeoBundleLazy 'basyura/unite-rails', { 'depends' : 'Shougo/unite.vim' }
+
+let s:bundle_rails = "unite-rake unite-rails"
+function! s:bundleLoadDepends(bundle_names)
+  execute 'NeoBundleSource '.a:bundle_names
+  au! RailsLazyPlugins
+endfunction
+aug RailsLazyPlugins
+  au User Rails call <SID>bundleLoadDepends(s:bundle_rails)
+aug END
+
 " Javascript
-NeoBundle 'jiangmiao/simple-javascript-indenter'
+NeoBundleLazy 'jiangmiao/simple-javascript-indenter', {
+  \ 'autoload' : { 'filetypes' : ['javascript'] } }
 
 "" $VIMRUNTIME/menu.vimを読みこまない
 set guioptions&
