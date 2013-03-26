@@ -23,6 +23,7 @@ endif
 " NeoBundle {{{1
 let g:neobundle_default_git_protocol = 'https'
 
+" git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'kana/vim-fakeclip', '0.2.10'
