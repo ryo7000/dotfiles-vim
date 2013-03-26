@@ -343,10 +343,6 @@ com! -bar -nargs=1 OpenURL call OpenNewTab("<args>")
 " via http://vimwiki.net/?tips/54
 com! -nargs=0 EnterSpace s/\%(\([^\t -~]\)\%([!#-~]\)\@=\|\([!#-~]\)\%([^\t -~]\)\@=\)/\1\2 /g
 
-" fix SEGV for Gentoo + vim + rails.vim
-" http://www.nabble.com/Omni-completion-stack-overflow-td8922044.html
-silent! ruby nil
-
 " closetag
 let g:closetag_html_style=1
 augroup CloseTagMacro
