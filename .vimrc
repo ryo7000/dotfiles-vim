@@ -74,7 +74,8 @@ filetype plugin indent on
 
 " for Japanese lang
 if has('win32') || has('win64')
-  set encoding=japan
+  "set encoding=japan
+  set encoding=utf-8
 else
   set encoding=utf-8
 end
