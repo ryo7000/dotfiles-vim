@@ -130,11 +130,11 @@ if !has("gui_running")
   endif
 
   if !exists('g:colors_name')
-    colorscheme solarized
+    colorscheme lucius
     set background=dark
-    let g:solarized_termcolors=256
     " for tmux + urxvt
-    let g:solarized_termtrans=1
+    " via http://snk.tuxfamily.org/log/vim-256color-bce.html
+    set t_ut=
   endif
 
   set t_Co=256
