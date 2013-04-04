@@ -228,6 +228,9 @@ vnoremap <expr> h col('.') == 1 && foldlevel(line('.')) > 0 ? 'zcgv' : 'h'
 " 折畳上で l を押すと選択範囲に含まれる折畳を開く。
 vnoremap <expr> l foldclosed(line('.')) != -1 ? 'zogv0' : 'l'
 
+" for urxvt {{{2
+map <Esc>[27;5;9~ <C-tab>
+
 " tab navigation like firefox {{{2
 map <C-S-tab> :tabprevious<cr>
 map <C-tab> :tabnext<cr>
