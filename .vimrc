@@ -133,6 +133,8 @@ if !has("gui_running")
     colorscheme solarized
     set background=dark
     let g:solarized_termcolors=256
+    " for tmux + urxvt
+    let g:solarized_termtrans=1
   endif
 
   set t_Co=256
