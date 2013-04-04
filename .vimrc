@@ -277,8 +277,8 @@ let g:unite_enable_start_insert = 1
 nnoremap    [unite]   <Nop>
 nmap    <Space> [unite]
 nmap <silent> <C-s> [unite]c
-nnoremap <silent> [unite]c :UniteWithCurrentDir -buffer-name=files file file/new buffer file_mru bookmark<CR>
-nnoremap <silent> [unite]b :UniteWithBufferDir -buffer-name=files -prompt=%\  file file/new buffer file_mru bookmark<CR>
+nnoremap <silent> [unite]c :UniteWithCurrentDir -buffer-name=files tab buffer file file/new file_mru bookmark<CR>
+nnoremap <silent> [unite]b :UniteWithBufferDir -buffer-name=files -prompt=%\  file file/new<CR>
 nnoremap <silent> [unite]n :Unite -buffer-name=files file_mru<CR>
 nnoremap <silent> [unite]o :Unite outline<CR>
 nnoremap <silent> [unite]g :Unite grep<CR>
@@ -296,7 +296,7 @@ call unite#set_substitute_pattern('files', '^\\', '~/*')
 " fuzzy match
 "call unite#set_substitute_pattern('files', '[[:alnum:]]', '*\0', -1)
 
-" Unite中はsmartcase無視
+" Unite file中はsmartcase無視
 call unite#set_buffer_name_option('files', 'smartcase', 0)
 
 
