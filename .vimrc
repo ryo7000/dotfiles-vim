@@ -40,6 +40,7 @@ NeoBundle 'majutsushi/tagbar', {'rev': 'v2.4.1'}
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'http://repo.or.cz/r/vcscommand.git', {'rev': 'v1.99.46'}
 NeoBundle 'mattn/zencoding-vim'
+NeoBundle 'rking/ag.vim'
 " Colorscheme
 NeoBundle 'jonathanfilip/vim-lucius'
 " Ruby
