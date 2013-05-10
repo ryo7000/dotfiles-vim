@@ -7,7 +7,7 @@ set background="dark"
 if has('win32')
   if has('directx')
     " TODO: renderingoptions and values will changed in official release
-    set renderingoptions=type:directx,mode:5
+    set renderoptions=type:directx,renmode:5
     set guifont=Ricty_for_Powerline:h12:cSHIFTJIS
   else
     set guifont=BDF_M+:h9:cSHIFTJIS
