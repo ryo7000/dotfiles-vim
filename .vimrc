@@ -45,7 +45,9 @@ NeoBundle 'rking/ag.vim'
 NeoBundle 'jonathanfilip/vim-lucius'
 " Ruby
 NeoBundleLazy 'vim-ruby/vim-ruby', {
-  \ 'autoload' : { 'filetypes' : ['ruby', 'eruby', 'haml'] } }
+  \ 'autoload' : { 'filetypes' : ['ruby', 'eruby'] } }
+NeoBundleLazy 'slim-template/vim-slim', {
+  \ 'autoload' : { 'filetypes' : ['slim'] } }
 " Rails
 NeoBundleLazy 'ujihisa/unite-rake', { 'depends' : 'Shougo/unite.vim' }
 NeoBundleLazy 'basyura/unite-rails', { 'depends' : 'Shougo/unite.vim' }
