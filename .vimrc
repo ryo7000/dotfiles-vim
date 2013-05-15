@@ -335,6 +335,11 @@ let g:rubycomplete_classes_in_global = 1
 let g:tagbar_left = 1
 nmap <C-w><C-t> :TagbarToggle<cr>
 
+" go {{{2
+if $GOROOT != ''
+  set rtp+=$GOROOT/misc/vim
+endif
+
 " Etc {{{1
 
 let g:mapleader = "\<C-k>"
