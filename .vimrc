@@ -31,7 +31,7 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neocomplcache', 'ver.7.2'
 NeoBundle 'Shougo/neosnippet', 'ver.3.0'
 NeoBundle 'Shougo/vimproc'
-NeoBundle 'Shougo/vimfiler', {'rev': 'ver.3.2'}
+NeoBundle 'Shougo/vimfiler'
 NeoBundle 'h1mesuke/unite-outline', {'rev': 'v0.5.0', 'depends': 'Shougo/unite.vim' }
 NeoBundle 'tpope/vim-rails', {'rev': 'v4.4'}
 NeoBundle 'thinca/vim-ref', {'rev': 'unite-ref-v0.1.1'}
