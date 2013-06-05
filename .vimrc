@@ -297,7 +297,7 @@ call unite#set_substitute_pattern('files', '^@', '\=getcwd()."/*"', 1)
 call unite#set_substitute_pattern('files', '^\\', '~/*')
 
 " fuzzy match
-"call unite#set_substitute_pattern('files', '[[:alnum:]]', '*\0', -1)
+call unite#custom_source('file,file/new,buffer,file_mru', 'matchers', 'matcher_fuzzy')
 
 " Unite file中はsmartcase無視
 call unite#set_buffer_name_option('files', 'smartcase', 0)
