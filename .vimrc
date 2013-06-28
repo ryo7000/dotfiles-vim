@@ -39,7 +39,8 @@ NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'majutsushi/tagbar', {'rev': 'v2.4.1'}
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'http://repo.or.cz/r/vcscommand.git', {'rev': 'v1.99.46'}
-NeoBundle 'mattn/zencoding-vim'
+NeoBundle 'mattn/zencoding-vim', {
+  \ 'autoload' : { 'filetypes' : ['css', 'haml', 'html', 'sass', 'scss', 'slim'] } }
 NeoBundle 'rking/ag.vim'
 " Colorscheme
 NeoBundle 'jonathanfilip/vim-lucius'
