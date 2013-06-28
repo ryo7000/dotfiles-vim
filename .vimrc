@@ -289,19 +289,22 @@ nnoremap <silent> [unite]g :Unite grep<CR>
 nnoremap <silent> [unite]r :UniteResume<CR>
 
 " replace buffer dir
-call unite#set_substitute_pattern('files', '^@@', '\=fnamemodify(expand("#"), ":p:h")."/*"', 2)
+call unite#custom#substitute('files', '^@@', '\=fnamemodify(expand("#"), ":p:h")."/"', 2)
 
 " replace current dir
-call unite#set_substitute_pattern('files', '^@', '\=getcwd()."/*"', 1)
+call unite#custom#substitute('files', '^@', '\=getcwd()."/"', 1)
 
 " replace home dir
-call unite#set_substitute_pattern('files', '^\\', '~/*')
+call unite#custom#substitute('files', '^\\', '~/')
+
+" replace .vim dir
+call unite#custom#substitute('files', '^;v', '~/.vim/')
 
 " fuzzy match
 call unite#custom_source('file,file/new,buffer,file_mru', 'matchers', 'matcher_fuzzy')
 
 " Unite file中はsmartcase無視
-call unite#set_buffer_name_option('files', 'smartcase', 0)
+call unite#set_profile('files', 'smartcase', 0)
 
 
 " neocomplcache {{{2
