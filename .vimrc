@@ -33,23 +33,25 @@ NeoBundle 'Shougo/neosnippet', 'ver.3.0'
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'h1mesuke/unite-outline', {'rev': 'v0.5.0', 'depends': 'Shougo/unite.vim' }
-NeoBundle 'tpope/vim-rails', {'rev': 'v4.4'}
 NeoBundle 'thinca/vim-ref', {'rev': 'unite-ref-v0.1.1'}
 NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'majutsushi/tagbar', {'rev': 'v2.4.1'}
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'http://repo.or.cz/r/vcscommand.git', {'rev': 'v1.99.46'}
-NeoBundle 'mattn/zencoding-vim', {
-  \ 'autoload' : { 'filetypes' : ['css', 'haml', 'html', 'sass', 'scss', 'slim'] } }
 NeoBundle 'rking/ag.vim'
 " Colorscheme
 NeoBundle 'jonathanfilip/vim-lucius'
+
+NeoBundleLazy 'mattn/zencoding-vim', {
+  \ 'autoload' : { 'filetypes' : ['css', 'haml', 'html', 'sass', 'scss', 'slim'] } }
 " Ruby
 NeoBundleLazy 'vim-ruby/vim-ruby', {
   \ 'autoload' : { 'filetypes' : ['ruby', 'eruby'] } }
 NeoBundleLazy 'slim-template/vim-slim', {
   \ 'autoload' : { 'filetypes' : ['slim'] } }
 " Rails
+NeoBundleLazy 'tpope/vim-rails', {
+  \ 'autoload' : { 'filetypes' : ['ruby', 'eruby'], 'rev': 'v4.4'} }
 NeoBundleLazy 'ujihisa/unite-rake', { 'depends' : 'Shougo/unite.vim' }
 NeoBundleLazy 'basyura/unite-rails', { 'depends' : 'Shougo/unite.vim' }
 
