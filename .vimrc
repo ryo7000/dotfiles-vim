@@ -305,8 +305,9 @@ call unite#custom#substitute('files', '^\\', '~/')
 " replace .vim dir
 call unite#custom#substitute('files', '^;v', '~/.vim/')
 
-" fuzzy match
+" fuzzy match and sort
 call unite#custom_source('file,file/new,buffer,file_mru', 'matchers', 'matcher_fuzzy')
+call unite#custom_source('file,file/new,buffer,file_mru', 'sorters',  'sorter_rank')
 
 " Unite file中はsmartcase無視
 call unite#set_profile('files', 'smartcase', 0)
