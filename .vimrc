@@ -42,6 +42,7 @@ NeoBundle 'http://repo.or.cz/r/vcscommand.git', {'rev': 'v1.99.46'}
 NeoBundle 'rking/ag.vim'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'leafgarland/typescript-vim'
+NeoBundle 'othree/eregex.vim'
 NeoBundle 'renamer.vim'
 NeoBundle 'Align'
 
