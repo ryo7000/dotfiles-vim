@@ -1,16 +1,16 @@
-*help.txt*	For Vim バージョン 7.2.  Last change: 2008 Jul 21
+*help.txt*	For Vim バージョン 7.4.  Last change: 2012 Dec 06
 
 			   VIM - メインヘルプファイル
 									 k
 	      移動:  カーソルを使用するか、"h" で左、"j" で下、	       h   l
 		     "k" で上、"l" で右に移動できます。			 j
       ヘルプの終了:  ":q<Enter>" とタイプします。
-	Vim の終了:  ":qa!<Enter>" とします(注意! 変更はすべて破棄される)。
+	Vim の終了:  ":qa!<Enter>" とします(注意! 変更はすべて破棄されます)。
 
-    項目へジャンプ:  タグ (例:|bars|) にカーソルを合わせ、CTRL-] を押します。
-  マウスでジャンプ:  ":set mouse=a"と入力してマウスを有効にしてください (xterm
-		     or GUI で利用可)。タグ (例:|bars|) をマウスの左ボタンでダ
-		     ブルクリックすると、項目にジャンプできます。
+    項目へジャンプ:  タグ (例: |bars|) にカーソルを合わせ、CTRL-] を押します。
+  マウスでジャンプ:  ":set mouse=a" と入力してマウスを有効にしてください
+		     (xterm or GUI で利用可)。タグ (例: |bars|) をマウスの左ボ
+		     タンでダブルクリックすると、項目にジャンプできます。
     元の場所に戻る:  CTRL-T or CTRL-O を押す。
 
     項目を指定する:  |:help| コマンドに項目を指定することで、その項目を直ちに
@@ -26,6 +26,7 @@
 		  オプション			 '	   :help 'textwidth'
   ヘルプを検索する: ":help word" とタイプしてから CTRL-D を押すと "word" に
 		    マッチするヘルプ項目の一覧が表示されます。
+		    もしくは ":helpgrep word" を使ってください。 |:helpgrep|
 
 VIM は Vi IMproved の略です。VIM の大部分は Bram Moolenaar によって作成され、
 たくさんの人が協力しました。|credits| 参照。
@@ -36,13 +37,13 @@ VIM は Vi IMproved の略です。VIM の大部分は Bram Moolenaar によっ�
 |tutor|		30分の初心者向けトレーニングコース
 |copying|	著作権について
 |iccf|		ウガンダの恵まれない子供達への支援活動
-|sponsor|	Vim 開発スポンサー制度、Vim の登録ユーザになろう
+|sponsor|	Vim 開発スポンサー制度、Vim の登録ユーザーになろう
 |www|		インターネット上の Vim 情報
 |bugs|		バグレポートの送信先
 
-ユーザマニュアルでは編集作業の進め方を説明します。
+ユーザーマニュアルでは編集作業の進め方を説明します。
 
-|usr_toc.txt|	ユーザマニュアル目次
+|usr_toc.txt|	ユーザーマニュアル目次
 
 初級編 ~
 |usr_01.txt|  マニュアルについて
@@ -85,12 +86,12 @@ VIM は Vi IMproved の略です。VIM の大部分は Bram Moolenaar によっ�
 |usr_90.txt|  Vim のインストール
 
 
-								*reference_toc*
-リファレンスマニュアルでは Vim の詳細を説明します。
+リファレンスマニュアルでは Vim の詳細を説明します。		*reference_toc*
 
 一般事項 ~
 |intro.txt|	Vimについての前書き。と、ヘルプの表記について
 |help.txt|	全体説明とクイックリファレンス (今見ているファイル)
+|helphelp.txt|	ヘルプの使い方
 |index.txt|	全コマンド一覧。アルファベット順
 |help-tags|	ジャンプできるタグ一覧
 |howto.txt|	一般的な編集操作についてのHow to
@@ -107,7 +108,7 @@ VIM は Vi IMproved の略です。VIM の大部分は Bram Moolenaar によっ�
 |editing.txt|	ファイルの編集と保存
 |motion.txt|	移動コマンド
 |scroll.txt|	ウィンドウのスクロール
-|insert.txt|	挿入モードと上書きモード
+|insert.txt|	挿入モードと置換モード
 |change.txt|	テキストの削除と変更
 |indent.txt|	C言語や、その他の言語の自動インデント
 |undo.txt|	アンドゥとリドゥ
@@ -135,9 +136,9 @@ VIM は Vi IMproved の略です。VIM の大部分は Bram Moolenaar によっ�
 
 特定機能 ~
 |print.txt|	印刷
-|remote.txt|	クライアント/サーバ機能
+|remote.txt|	クライアント/サーバー機能
 |term.txt|	いろいろな端末やマウスについて
-|digraph.txt|	利用可能な二重字の一覧
+|digraph.txt|	利用可能なダイグラフ (digraph) の一覧
 |mbyte.txt|	マルチバイトテキストのサポート
 |mlang.txt|	英語以外の言語のサポート
 |arabic.txt|	アラビア語のサポート
@@ -150,13 +151,14 @@ VIM は Vi IMproved の略です。VIM の大部分は Bram Moolenaar によっ�
 |rileft.txt|	右横書き (書字方向が右から左になるモード)
 
 GUI ~
-|gui.txt|	グラフィカルユーザインターフェース (GUI)
+|gui.txt|	グラフィカルユーザーインターフェース (GUI)
 |gui_w16.txt|	Windows 3.1 GUI
 |gui_w32.txt|	Win32 GUI
 |gui_x11.txt|	X11 GUI
 
 拡張インターフェース ~
 |if_cscop.txt|	cscopeを使う
+|if_lua.txt|	Lua インターフェース
 |if_mzsch.txt|	MzScheme インターフェース
 |if_perl.txt|	Perl インターフェース
 |if_pyth.txt|	Python インターフェース
@@ -193,12 +195,12 @@ GUI ~
 						*standard-plugin-list*
 標準プラグイン ~
 |pi_getscript.txt| Vim スクリプトの最新版をダウンロードする
-|pi_gzip.txt|	   圧縮ファイルの読み書き
-|pi_netrw.txt|	   ネットワークファイルの読み書き
-|pi_paren.txt|	   対括弧の強調表示
-|pi_tar.txt|	   Tar ファイルエクスプローラ
+|pi_gzip.txt|      圧縮ファイルの読み書き
+|pi_netrw.txt|     ネットワークファイルの読み書き
+|pi_paren.txt|     対括弧の強調表示
+|pi_tar.txt|       Tar ファイルエクスプローラ
 |pi_vimball.txt|   Vim スクリプトインストーラを作成する
-|pi_zip.txt|	   Zip アーカイブエクスプローラ
+|pi_zip.txt|       Zip アーカイブエクスプローラ
 
 その他 ~
 |vim_faq.txt|	FAQ
@@ -215,7 +217,8 @@ Note: タグは | で囲まれていますが、その文字は、カラー表�
 合は表示されません。読みやすさのためです。
 
 CTRL-] はどの単語の上でも使えます。| で囲まれていない単語でも大丈夫です。選択
-された単語がヘルプから検索されます。
+された単語がヘルプから検索されます。特にシングルクォートで囲まれたオプション名
+(例: 'compatible')。
 
 ------------------------------------------------------------------------------
  vim:tw=78:fo=tcq2:isk=!-~,^*,^\|,^\":ts=8:ft=help:norl:

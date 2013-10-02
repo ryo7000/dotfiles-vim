@@ -1,4 +1,4 @@
-*usr_29.txt*	For Vim バージョン 7.2.  Last change: 2008 Jun 28
+*usr_29.txt*	For Vim バージョン 7.4.  Last change: 2008 Jun 28
 
 		     VIM USER MANUAL - by Bram Moolenaar
 
@@ -580,8 +580,8 @@ C プログラムを編集していて、変数の型が "int" なのか "unsign
 
 	gD
 
-ヒント: Goto Definition (定義に移動)。このコマンドはローカル(C 用語で"static")
-に定義された変数や関数を検索するのに便利です。例 (カーソルは"counter" の上):
+ヒント: Goto Definition (定義に移動)。このコマンドはローカル(C 用語で "static")
+に定義された変数や関数を検索するのに便利です。例 (カーソルは "counter" の上):
 
 	   +->   static int counter = 0;
 	   |
