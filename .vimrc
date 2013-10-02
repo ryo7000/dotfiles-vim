@@ -28,7 +28,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'kana/vim-fakeclip', '0.2.10'
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neocomplcache', 'ver.7.2'
+NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet', 'ver.3.0'
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/vimfiler'
