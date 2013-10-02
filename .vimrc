@@ -43,6 +43,7 @@ NeoBundle 'rking/ag.vim'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'leafgarland/typescript-vim'
 NeoBundle 'renamer.vim'
+NeoBundle 'Align'
 
 " Colorscheme
 NeoBundle 'jonathanfilip/vim-lucius'
