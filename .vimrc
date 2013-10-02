@@ -284,6 +284,9 @@ let g:Powerline_symbols = 'fancy'
 " Simple Javascript Indenter
 let g:SimpleJsIndenter_BriefMode = 1
 
+" eregex
+let g:eregex_default_enable = 0
+
 " Unite {{{2
 
 let g:unite_enable_start_insert = 1
