@@ -28,7 +28,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'kana/vim-fakeclip', '0.2.10'
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet', 'ver.3.0'
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/vimfiler'
@@ -321,21 +321,14 @@ call unite#custom_source('file,file/new,buffer,file_mru', 'sorters',  'sorter_ra
 call unite#set_profile('files', 'smartcase', 0)
 
 
-" neocomplcache {{{2
-" Use neocomplcache.
-let g:neocomplcache_enable_at_startup = 1
+" neocomplete {{{2
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
 " Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
-" Use underbar completion.
-let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-let g:neocomplcache_snippets_dir = s:vim_home . '/.vim/snippets'
-
-imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ?
-      \ "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <silent><TAB> <Plug>(neocomplcache_snippets_expand)
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
 " neosnippet {{{2
 " Plugin key-mappings.
