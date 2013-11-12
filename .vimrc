@@ -29,7 +29,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'kana/vim-fakeclip', '0.2.10'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neocomplete'
-NeoBundle 'Shougo/neosnippet', 'ver.3.0'
+NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'h1mesuke/unite-outline', {'rev': 'v0.5.0', 'depends': 'Shougo/unite.vim' }
@@ -343,6 +343,8 @@ imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)"
 \: "\<TAB>"
+
+let g:neosnippet#snippets_directory = s:vim_home . '/.vim/snippets'
 
 " For snippet_complete marker.
 if has('conceal')
