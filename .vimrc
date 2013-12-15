@@ -34,7 +34,7 @@ NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'h1mesuke/unite-outline', {'rev': 'v0.5.0', 'depends': 'Shougo/unite.vim' }
 NeoBundle 'thinca/vim-ref', {'rev': 'unite-ref-v0.1.1'}
-NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'majutsushi/tagbar', {'rev': 'v2.4.1'}
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-surround'
@@ -278,8 +278,24 @@ nmap <silent> ers :e ++enc=cp932<CR>
 " matchit
 so $VIMRUNTIME/macros/matchit.vim
 
-" powerline
-let g:Powerline_symbols = 'fancy'
+" lightline
+let g:lightline = {
+\ 'colorscheme': 'wombat',
+\ 'active': {
+\   'left': [ ['mode', 'paste'], ['fugitive', 'filename'] ]
+\ },
+\ 'component': {
+\   'readonly': '%{&readonly?"\u2b64":""}',
+\ },
+\ 'component_function': {
+\   'mode': 'lightline_component#mode',
+\   'readonly': 'lightline_component#readonly',
+\   'fugitive': 'lightline_component#fugitive',
+\   'filename': 'lightline_component#filename',
+\ },
+\ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
+\ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" },
+\ }
 
 " Simple Javascript Indenter
 let g:SimpleJsIndenter_BriefMode = 1
