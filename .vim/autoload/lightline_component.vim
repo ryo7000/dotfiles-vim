@@ -23,6 +23,7 @@ function! lightline_component#filename()
         \ (&ft == 'vimfiler' ? vimfiler#get_status_string() : 
         \  &ft == 'unite' ? unite#get_status_string() : 
         \  &ft == 'vimshell' ? vimshell#get_status_string() :
+        \  &ft == 'qf' ? '[qf] '. w:quickfix_title :
         \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
         \ ('' != lightline_component#modified() ? ' ' . lightline_component#modified() : '')
 endfunction
