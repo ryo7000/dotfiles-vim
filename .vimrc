@@ -30,6 +30,7 @@ NeoBundle 'kana/vim-fakeclip', '0.2.10'
 NeoBundle 'Shougo/unite.vim', {'rev': 'ver.5.1'}
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'h1mesuke/unite-outline', {'rev': 'v0.5.0', 'depends': 'Shougo/unite.vim' }
