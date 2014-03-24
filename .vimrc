@@ -45,7 +45,7 @@ NeoBundle 'rking/ag.vim'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'leafgarland/typescript-vim'
 NeoBundle 'othree/eregex.vim'
-NeoBundle 'skammer/vim-css-color'
+NeoBundle 'lilydjwg/colorizer'
 NeoBundle 'renamer.vim'
 NeoBundle 'Align'
 
