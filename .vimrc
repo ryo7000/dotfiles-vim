@@ -45,9 +45,11 @@ NeoBundle 'rking/ag.vim'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'leafgarland/typescript-vim'
 NeoBundle 'othree/eregex.vim'
-NeoBundle 'lilydjwg/colorizer'
 NeoBundle 'renamer.vim'
 NeoBundle 'Align'
+
+NeoBundleLazy 'lilydjwg/colorizer', {
+  \ 'autoload' : { 'commands' : ['ColorToggle', 'ColorHighlight', 'ColorClear'] } }
 
 " Colorscheme
 NeoBundle 'jonathanfilip/vim-lucius'
