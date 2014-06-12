@@ -266,16 +266,6 @@ noremap * *Nzz
 noremap # #Nzz
 noremap g* g*Nzz
 noremap g# g#Nzz
- 
-" set fenc {{{2
-nmap <silent> eu :set fenc=utf-8<CR>
-nmap <silent> ee :set fenc=euc-jp<CR>
-nmap <silent> es :set fenc=cp932<CR>
-
-" e ++enc {{{2
-nmap <silent> eru :e ++enc=utf-8<CR>
-nmap <silent> ere :e ++enc=euc-jp<CR>
-nmap <silent> ers :e ++enc=cp932<CR>
 
 " Plugins & Macros {{{1
 
