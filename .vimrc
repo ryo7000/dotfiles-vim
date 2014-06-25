@@ -48,6 +48,7 @@ NeoBundle 'leafgarland/typescript-vim'
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'renamer.vim'
 NeoBundle 'Align'
+NeoBundle 'plasticboy/vim-markdown'
 
 NeoBundleLazy 'lilydjwg/colorizer', {
   \ 'autoload' : { 'commands' : ['ColorToggle', 'ColorHighlight', 'ColorClear'] } }
@@ -297,6 +298,9 @@ let g:SimpleJsIndenter_BriefMode = 1
 
 " eregex
 let g:eregex_default_enable = 0
+
+" vim-markdown
+let g:vim_markdown_folding_disabled = 1
 
 " Unite {{{2
 
