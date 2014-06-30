@@ -181,7 +181,9 @@ set backspace=indent,eol,start
 set cinoptions=g0,(0
 set cmdheight=2
 set formatoptions=tcqmM
-set grepprg=grep\ -nH\ $*\ \\\|\ grep\ -v\ \"\\.svn\"
+if executable('jvgrep')
+  set grepprg=jvgrep
+endif
 set history=100
 set hlsearch
 set incsearch
