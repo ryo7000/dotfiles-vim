@@ -312,7 +312,7 @@ let g:unite_enable_start_insert = 1
 nnoremap    [unite]   <Nop>
 nmap    <Space> [unite]
 nmap <silent> <C-s> [unite]c
-nnoremap <silent> [unite]c :UniteWithCurrentDir -buffer-name=files tab buffer file file/new file_mru bookmark<CR>
+nnoremap <silent> [unite]c :UniteWithCurrentDir -buffer-name=files file tab buffer file/new bookmark<CR>
 nnoremap <silent> [unite]b :UniteWithBufferDir -buffer-name=files -prompt=%\  file file/new<CR>
 nnoremap <silent> [unite]n :Unite -buffer-name=files file_mru<CR>
 nnoremap <silent> [unite]o :Unite outline<CR>
