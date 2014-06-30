@@ -28,7 +28,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'kana/vim-fakeclip', '0.2.10'
-NeoBundle 'Shougo/unite.vim', {'rev': 'ver.5.1'}
+NeoBundle 'Shougo/unite.vim', {'rev': 'ver.6.0'}
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
@@ -36,6 +36,7 @@ NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'h1mesuke/unite-outline', {'rev': 'v0.5.0', 'depends': 'Shougo/unite.vim' }
+NeoBundle 'Shougo/neomru.vim', {'depends': 'Shougo/unite.vim'}
 NeoBundle 'thinca/vim-ref', {'rev': 'unite-ref-v0.1.1'}
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'majutsushi/tagbar', {'rev': 'v2.4.1'}
