@@ -40,7 +40,6 @@ NeoBundle 'majutsushi/tagbar', {'rev': 'v2.6.1'}
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'http://repo.or.cz/r/vcscommand.git', {'rev': 'v1.99.46'}
-NeoBundle 'rking/ag.vim'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'leafgarland/typescript-vim'
 NeoBundle 'othree/eregex.vim'
