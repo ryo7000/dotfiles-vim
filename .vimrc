@@ -31,7 +31,6 @@ NeoBundle 'Shougo/unite.vim', {'rev': 'ver.6.0'}
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/unite-outline', {'depends': 'Shougo/unite.vim'}
@@ -49,6 +48,15 @@ NeoBundle 'othree/eregex.vim'
 NeoBundle 'renamer.vim'
 NeoBundle 'Align'
 NeoBundle 'plasticboy/vim-markdown'
+
+if has('unix')
+  " kaoriya vim bundled vimproc dll
+  NeoBundle 'Shougo/vimproc', {
+    \ 'build' : {
+    \     'unix' : 'make -f make_unix.mak'
+    \   },
+    \ }
+end
 
 NeoBundleLazy 'lilydjwg/colorizer', {
   \ 'autoload' : { 'commands' : ['ColorToggle', 'ColorHighlight', 'ColorClear'] } }
