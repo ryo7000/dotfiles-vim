@@ -32,7 +32,6 @@ NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/vimfiler'
-NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/unite-outline', {'depends': 'Shougo/unite.vim'}
 NeoBundle 'Shougo/neomru.vim', {'depends': 'Shougo/unite.vim'}
 NeoBundle 'thinca/vim-ref', {'rev': 'unite-ref-v0.1.1'}
