@@ -36,7 +36,7 @@ NeoBundle 'Shougo/unite-outline', {'depends': 'Shougo/unite.vim'}
 NeoBundle 'Shougo/neomru.vim', {'depends': 'Shougo/unite.vim'}
 NeoBundle 'thinca/vim-ref', {'rev': 'unite-ref-v0.1.1'}
 NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'majutsushi/tagbar', {'rev': 'v2.4.1'}
+NeoBundle 'majutsushi/tagbar', {'rev': 'v2.6.1'}
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'http://repo.or.cz/r/vcscommand.git', {'rev': 'v1.99.46'}
