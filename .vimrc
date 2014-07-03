@@ -1,7 +1,7 @@
-set nocompatible
-filetype plugin indent off
-
 if has('vim_starting')
+  filetype plugin indent off
+  set nocompatible
+
   " Windowsで$HOME/vimfilesの代わりに、$VIM/.vimを使う
   if has('win32') || has('win64')
     let s:vim_home = $VIM
@@ -15,8 +15,9 @@ if has('vim_starting')
   endif
 
   let &runtimepath .= ',' . s:vim_home . '/.vim/bundle/neobundle.vim/'
-  call neobundle#rc(expand(s:vim_home . '/.vim/bundle/'))
 endif
+
+call neobundle#begin(expand(s:vim_home . '/.vim/bundle/'))
 
 " NeoBundle {{{1
 let g:neobundle_default_git_protocol = 'https'
@@ -80,6 +81,8 @@ aug END
 " Javascript
 NeoBundleLazy 'jiangmiao/simple-javascript-indenter', {
   \ 'autoload' : { 'filetypes' : ['javascript'] } }
+
+call neobundle#end()
 
 "" $VIMRUNTIME/menu.vimを読みこまない
 set guioptions&
