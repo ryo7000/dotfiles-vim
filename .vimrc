@@ -1,19 +1,17 @@
 set nocompatible
 filetype plugin indent off
 
-if has('win32') || has('win64')
-  let s:vim_home = $VIM
-else
-  let s:vim_home = $HOME
-endif
-
 if has('vim_starting')
   " Windowsで$HOME/vimfilesの代わりに、$VIM/.vimを使う
   if has('win32') || has('win64')
+    let s:vim_home = $VIM
+
     " filetype onで、runtime! ftdetect/*.vimするので、
     " その前にruntimepathを設定
     " (filetype onは、syntax on/enableで読み込まれる$VIMRUNTIME/syntax/syntax.vimの中で実行される)
     set runtimepath=$VIM/.vim,$VIMRUNTIME,$VIM/.vim/after
+  else
+    let s:vim_home = $HOME
   endif
 
   let &runtimepath .= ',' . s:vim_home . '/.vim/bundle/neobundle.vim/'
