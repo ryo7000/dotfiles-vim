@@ -217,7 +217,7 @@ set ignorecase
 set smartcase
 
 if has('persistent_undo')
-  set undodir=./.vimundo,~/.vimundo
+  let &undodir = s:vim_home . '/.vim/undo'
   set undofile
 endif
 
