@@ -98,6 +98,8 @@ filetype plugin indent on
 
 " Encoding {{{1
 
+set encoding=utf-8
+
 " from kaoriya encoding_japan.vim & kana .vimrc
 if !exists('did_encoding_settings') && has('iconv')
   let s:enc_eucjp = 'euc-jp'
