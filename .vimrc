@@ -24,7 +24,7 @@ call neobundle#begin(expand(s:vim_home . '/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'vim-jp/vimdoc-ja'
-NeoBundle 'kana/vim-fakeclip', '0.2.10'
+NeoBundle 'kana/vim-fakeclip', '0.3.0'
 NeoBundle 'Shougo/unite.vim', {'rev': 'ver.6.0'}
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet'
@@ -145,10 +145,6 @@ end
 syntax enable
 
 if !has("gui_running")
-  if has('unix')
-    set term=builtin_linux
-  endif
-
   if !exists('g:colors_name')
     colorscheme lucius
     set background=dark
