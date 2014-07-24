@@ -406,6 +406,13 @@ endif
 " eclim {{{2
 let g:EclimCompletionMethod = 'omnifunc'
 
+" quickfixが多いとgetqflist()が遅い
+" CursorMoved
+let g:EclimShowCurrentError = 0
+
+" WinEnter, BufWinEnter
+let g:EclimShowQuickfixSigns = 0
+
 " Etc {{{1
 
 let g:mapleader = "\<C-k>"
