@@ -44,6 +44,8 @@ NeoBundle 'othree/eregex.vim'
 NeoBundle 'renamer.vim'
 NeoBundle 'Align'
 NeoBundle 'plasticboy/vim-markdown'
+NeoBundle 'kannokanno/previm'
+NeoBundle 'tyru/open-browser.vim'
 
 if has('unix')
   " kaoriya vim bundled vimproc dll
