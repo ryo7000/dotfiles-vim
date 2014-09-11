@@ -40,7 +40,7 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'http://repo.or.cz/r/vcscommand.git', {'rev': 'v1.99.46'}
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'leafgarland/typescript-vim'
-NeoBundle 'othree/eregex.vim'
+"NeoBundle 'othree/eregex.vim'
 NeoBundle 'renamer.vim'
 NeoBundle 'Align'
 NeoBundle 'plasticboy/vim-markdown'
