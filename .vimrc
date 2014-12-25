@@ -46,6 +46,7 @@ NeoBundle 'Align'
 NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'kannokanno/previm'
 NeoBundle 'tyru/open-browser.vim'
+NeoBundle 'nsf/gocode', {'rtp': 'vim/'}
 
 if has('unix')
   " kaoriya vim bundled vimproc dll
@@ -401,10 +402,6 @@ let g:rubycomplete_classes_in_global = 1
 let g:tagbar_left = 1
 nmap <C-w><C-t> :TagbarToggle<cr>
 
-" go {{{2
-if $GOROOT != ''
-  set rtp+=$GOROOT/misc/vim
-endif
 
 " eclim {{{2
 let g:EclimCompletionMethod = 'omnifunc'
