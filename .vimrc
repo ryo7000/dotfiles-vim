@@ -25,7 +25,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'kana/vim-fakeclip', '0.3.0'
-NeoBundle 'Shougo/unite.vim', {'rev': 'ver.6.0'}
+NeoBundle 'Shougo/unite.vim', {'rev': 'ver.6.1'}
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
@@ -335,7 +335,9 @@ call unite#custom_source('file,file/new,buffer,file_mru', 'matchers', 'matcher_f
 call unite#custom_source('file,file/new,buffer,file_mru', 'sorters',  'sorter_rank')
 
 " Unite file中はsmartcase無視
-call unite#set_profile('files', 'smartcase', 0)
+call unite#custom#profile('action', 'context', {
+\   'smartcase' : 0
+\ })
 
 
 " neocomplete {{{2
