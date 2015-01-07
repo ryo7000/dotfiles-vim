@@ -311,7 +311,7 @@ let g:unite_enable_start_insert = 1
 nnoremap    [unite]   <Nop>
 nmap    <Space> [unite]
 nmap <silent> <C-s> [unite]c
-nnoremap <silent> [unite]c :UniteWithCurrentDir -buffer-name=files file file/new<CR>
+nnoremap <silent> [unite]c :Unite -buffer-name=files file file/new buffer bookmark<CR>
 nnoremap <silent> [unite]b :UniteWithBufferDir -buffer-name=files -prompt=%\  file file/new<CR>
 nnoremap <silent> [unite]n :Unite -buffer-name=files file_mru<CR>
 nnoremap <silent> [unite]t :Unite tab<CR>
@@ -327,15 +327,18 @@ call unite#custom#substitute('files', '^@@', '\=fnamemodify(expand("#"), ":p:h")
 " replace current dir
 call unite#custom#substitute('files', '^@', '\=getcwd()."/"', 1)
 
-" replace home dir
-call unite#custom#substitute('files', '^\\', '~/')
-
 " replace .vim dir
-call unite#custom#substitute('files', '^;v', '~/.vim/')
+call unite#custom#profile('files', 'substitute_patterns', {
+      \ 'pattern' : '^\.v/',
+      \ 'subst' : [expand('~/.vim/'),
+      \   unite#util#substitute_path_separator($HOME)
+      \       . '/.bundle/*/'],
+      \ 'priority' : 1000,
+      \ })
 
 " fuzzy match and sort
-call unite#custom_source('file,file/new,buffer,file_mru', 'matchers', 'matcher_fuzzy')
-call unite#custom_source('file,file/new,buffer,file_mru', 'sorters',  'sorter_rank')
+call unite#custom#source('file,file/new,buffer,file_mru', 'matchers', 'matcher_fuzzy')
+call unite#custom#source('file,file/new,buffer,file_mru', 'sorters',  'sorter_rank')
 
 " Unite file中はsmartcase無視
 call unite#custom#profile('action', 'context', {
