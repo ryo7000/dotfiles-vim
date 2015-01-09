@@ -337,7 +337,8 @@ call unite#custom#profile('files', 'substitute_patterns', {
       \ })
 
 " fuzzy match and sort
-call unite#custom#source('file,file/new,buffer,file_mru', 'matchers', 'matcher_fuzzy')
+call unite#custom#source('file,file/new', 'matchers', ['matcher_hide_hidden_files', 'matcher_fuzzy'])
+call unite#custom#source('buffer,file_mru', 'matchers', 'matcher_fuzzy')
 call unite#custom#source('file,file/new,buffer,file_mru', 'sorters',  'sorter_rank')
 
 " Unite file中はsmartcase無視
