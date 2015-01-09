@@ -345,6 +345,18 @@ call unite#custom#profile('action', 'context', {
 \   'smartcase' : 0
 \ })
 
+autocmd FileType unite call s:unite_my_settings()
+function! s:unite_my_settings()
+  imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
+  nmap <buffer> <C-z>     <Plug>(unite_toggle_transpose_window)
+  imap <buffer> <C-z>     <Plug>(unite_toggle_transpose_window)
+  nmap <buffer> <C-j>     <Plug>(unite_toggle_auto_preview)
+  nnoremap <silent><buffer><expr> l
+          \ unite#smart_map('l', unite#do_action('default'))
+
+  " Runs "split" action by <C-s>.
+  imap <silent><buffer><expr> <C-s>     unite#do_action('split')
+endfunction
 
 " neocomplete {{{2
 " Use neocomplete.
