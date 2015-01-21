@@ -339,7 +339,8 @@ call unite#custom#profile('files', 'substitute_patterns', {
 " fuzzy match and sort
 call unite#custom#source('file,file/new', 'matchers', ['matcher_hide_hidden_files', 'matcher_fuzzy'])
 call unite#custom#source('buffer,file_mru', 'matchers', 'matcher_fuzzy')
-call unite#custom#source('file,file/new,buffer,file_mru', 'sorters',  'sorter_rank')
+call unite#custom#source('file,file/new,buffer', 'sorters',  'sorter_rank')
+call unite#custom#source('file_mru', 'sorters',  ['sorter_ftime', 'sorter_reverse'])
 
 " Unite file中はsmartcase無視
 call unite#custom#profile('action', 'context', {
@@ -358,6 +359,8 @@ function! s:unite_my_settings()
   " Runs "split" action by <C-s>.
   imap <silent><buffer><expr> <C-s>     unite#do_action('split')
 endfunction
+
+let g:neomru#time_format = "(%Y/%m/%d %H:%M:%S) "
 
 " neocomplete {{{2
 " Use neocomplete.
