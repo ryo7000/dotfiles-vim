@@ -47,6 +47,7 @@ NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'kannokanno/previm'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'nsf/gocode', {'rtp': 'vim/'}
+NeoBundle 'ntpeters/vim-better-whitespace'
 
 if has('unix')
   " kaoriya vim bundled vimproc dll
@@ -303,6 +304,9 @@ let g:eregex_default_enable = 0
 
 " vim-markdown
 let g:vim_markdown_folding_disabled = 1
+
+" vim-better-whitespace
+let g:better_whitespace_filetypes_blacklist = ['vimfiler', 'unite', 'diff']
 
 " Unite {{{2
 
