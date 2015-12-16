@@ -26,7 +26,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'kana/vim-fakeclip', '0.3.0'
 NeoBundle 'DirDiff.vim'
-NeoBundle 'Shougo/unite.vim', {'rev': 'ver.6.1'}
+NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
@@ -311,20 +311,25 @@ let g:better_whitespace_filetypes_blacklist = ['vimfiler', 'unite', 'diff']
 
 " Unite {{{2
 
-let g:unite_enable_start_insert = 1
-
 nnoremap    [unite]   <Nop>
 nmap    <Space> [unite]
 nmap <silent> <C-s> [unite]c
 nnoremap <silent> [unite]c :Unite -buffer-name=files file file/new buffer bookmark<CR>
 nnoremap <silent> [unite]b :UniteWithBufferDir -buffer-name=files -prompt=%\  file file/new<CR>
+nnoremap <silent> [unite]r :Unite -buffer-name=files file_rec/git<CR>
 nnoremap <silent> [unite]n :Unite -buffer-name=files file_mru<CR>
 nnoremap <silent> [unite]t :Unite tab<CR>
 nnoremap <silent> [unite]u :Unite buffer<CR>
 nnoremap <silent> [unite]k :Unite bookmark<CR>
 nnoremap <silent> [unite]o :Unite outline<CR>
 nnoremap <silent> [unite]g :Unite grep<CR>
-nnoremap <silent> [unite]r :UniteResume<CR>
+
+let g:unite_enable_auto_select = 0
+
+call unite#custom#profile('default', 'context', {
+    \ 'prompt' : '> ',
+    \ 'start_insert' : 1
+\ })
 
 " replace buffer dir
 call unite#custom#substitute('files', '^@@', '\=fnamemodify(expand("#"), ":p:h")."/"', 2)
@@ -362,6 +367,7 @@ function! s:unite_my_settings()
 
   " Runs "split" action by <C-s>.
   imap <silent><buffer><expr> <C-s>     unite#do_action('split')
+  imap <silent><buffer><expr> <C-r>     unite#do_action('rec/async')
 endfunction
 
 " neocomplete {{{2
