@@ -53,6 +53,7 @@ NeoBundle 'ntpeters/vim-better-whitespace'
 if has('unix')
   " kaoriya vim bundled vimproc dll
   NeoBundle 'Shougo/vimproc', {
+    \ 'rev': 'ver.9.2',
     \ 'build' : {
     \     'unix' : 'make -f make_unix.mak'
     \   },
