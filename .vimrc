@@ -75,13 +75,14 @@ NeoBundleLazy 'slim-template/vim-slim', {
   \ 'autoload' : { 'filetypes' : ['slim'] } }
 " Rails
 NeoBundleLazy 'tpope/vim-rails', {
-  \ 'autoload' : { 'filetypes' : ['ruby', 'eruby'], 'rev': 'v4.4'} }
+  \ 'rev': 'v5.2',
+  \ 'autoload' : { 'filetypes' : ['ruby', 'eruby'] } }
 NeoBundleLazy 'ujihisa/unite-rake', { 'depends' : 'Shougo/unite.vim' }
 NeoBundleLazy 'basyura/unite-rails', { 'depends' : 'Shougo/unite.vim' }
 " Java
 NeoBundleLazy 'artur-shaik/vim-javacomplete2', {
   \ 'rev': 'v2.3.4',
-  \ 'autoload' : { 'filetypes' : ['java'] }}
+  \ 'autoload' : { 'filetypes' : ['java'] } }
 
 let s:bundle_rails = "unite-rake unite-rails"
 function! s:bundleLoadDepends(bundle_names)
