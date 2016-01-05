@@ -20,7 +20,7 @@ endif
 call neobundle#begin(expand(s:vim_home . '/.vim/bundle/'))
 
 " NeoBundle {{{1
-" git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+" git clone -b ver.3.2 https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'vim-jp/vimdoc-ja'
