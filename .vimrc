@@ -78,6 +78,10 @@ NeoBundleLazy 'tpope/vim-rails', {
   \ 'autoload' : { 'filetypes' : ['ruby', 'eruby'], 'rev': 'v4.4'} }
 NeoBundleLazy 'ujihisa/unite-rake', { 'depends' : 'Shougo/unite.vim' }
 NeoBundleLazy 'basyura/unite-rails', { 'depends' : 'Shougo/unite.vim' }
+" Java
+NeoBundleLazy 'artur-shaik/vim-javacomplete2', {
+  \ 'rev': 'v2.3.4',
+  \ 'autoload' : { 'filetypes' : ['java'] }}
 
 let s:bundle_rails = "unite-rake unite-rails"
 function! s:bundleLoadDepends(bundle_names)
@@ -380,7 +384,7 @@ let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
-" for eclim & java
+" for java
 if !exists('g:neocomplete#force_omni_input_patterns')
   let g:neocomplete#force_omni_input_patterns = {}
 endif
@@ -436,15 +440,8 @@ let g:tagbar_left = 1
 nmap <C-w><C-t> :TagbarToggle<cr>
 
 
-" eclim {{{2
-let g:EclimCompletionMethod = 'omnifunc'
-
-" quickfixが多いとgetqflist()が遅い
-" CursorMoved
-let g:EclimShowCurrentError = 0
-
-" WinEnter, BufWinEnter
-let g:EclimShowQuickfixSigns = 0
+" vim-javacomplete2 {{{2
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
 " Etc {{{1
 
