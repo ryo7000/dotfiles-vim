@@ -27,7 +27,7 @@ NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'kana/vim-fakeclip', '0.3.0'
 NeoBundle 'DirDiff.vim'
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neocomplete'
+NeoBundle 'Shougo/neocomplete', {'rev': 'ver.2.1'}
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/vimfiler'
