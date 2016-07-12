@@ -93,6 +93,10 @@ hook_post_update = '''
   let g:dein#plugin.build = cmd
 '''
 
+# Android
+[[plugins]]
+repo  = 'thinca/vim-logcat'
+
 # Colorscheme
 [[plugins]]
 repo = 'jonathanfilip/vim-lucius'
