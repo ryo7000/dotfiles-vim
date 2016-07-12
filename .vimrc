@@ -1,6 +1,9 @@
+if !&compatible
+  set nocompatible
+endif
+
 if has('vim_starting')
   filetype plugin indent off
-  set nocompatible
 
   " Windowsで$HOME/vimfilesの代わりに、$VIM/.vimを使う
   if has('win32') || has('win64')
