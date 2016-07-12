@@ -17,90 +17,37 @@ if has('vim_starting')
     let s:vim_home = $HOME
   endif
 
-  let &runtimepath .= ',' . s:vim_home . '/.vim/bundle/neobundle.vim/'
+  let &runtimepath .= ',' . s:vim_home . '/.vim/dein/dein.vim/'
 endif
 
-call neobundle#begin(expand(s:vim_home . '/.vim/bundle/'))
+let s:dein_dir = expand(s:vim_home . '/.vim/dein/')
 
-" NeoBundle {{{1
-" git clone -b ver.3.2 https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
-NeoBundleFetch 'Shougo/neobundle.vim'
+" dein.vim {{{1
+" git clone https://github.com/Shougo/dein.vim ~/.vim/dein/dein.vim
 
-NeoBundle 'vim-jp/vimdoc-ja'
-NeoBundle 'kana/vim-fakeclip', '0.3.0'
-NeoBundle 'DirDiff.vim'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neocomplete', {'rev': 'ver.2.1'}
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'Shougo/vimfiler'
-NeoBundle 'Shougo/unite-outline', {'depends': 'Shougo/unite.vim'}
-NeoBundle 'Shougo/neomru.vim', {'depends': 'Shougo/unite.vim'}
-NeoBundle 'thinca/vim-ref', {'rev': 'unite-ref-v0.1.1'}
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'majutsushi/tagbar', {'rev': 'v2.6.1'}
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'http://repo.or.cz/r/vcscommand.git', {'rev': 'v1.99.46'}
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'leafgarland/typescript-vim'
-"NeoBundle 'othree/eregex.vim'
-NeoBundle 'renamer.vim'
-NeoBundle 'Align'
-NeoBundle 'plasticboy/vim-markdown'
-NeoBundle 'kannokanno/previm'
-NeoBundle 'tyru/open-browser.vim'
-NeoBundle 'nsf/gocode', {'rtp': 'vim/'}
-NeoBundle 'ntpeters/vim-better-whitespace'
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
 
-if has('unix')
-  " kaoriya vim bundled vimproc dll
-  NeoBundle 'Shougo/vimproc', {
-    \ 'rev': 'ver.9.2',
-    \ 'build' : {
-    \     'unix' : 'make -f make_unix.mak'
-    \   },
-    \ }
-end
+  let s:toml      = s:dein_dir . '/dein.toml'
+  let s:lazy_toml = s:dein_dir . '/dein_lazy.toml'
 
-NeoBundleLazy 'lilydjwg/colorizer', {
-  \ 'autoload' : { 'commands' : ['ColorToggle', 'ColorHighlight', 'ColorClear'] } }
+  call dein#load_toml(s:toml,      {'lazy': 0})
+  call dein#load_toml(s:lazy_toml, {'lazy': 1})
 
-" Colorscheme
-NeoBundle 'jonathanfilip/vim-lucius'
+  call dein#end()
+  call dein#save_state()
+endif
 
-NeoBundleLazy 'mattn/zencoding-vim', {
-  \ 'autoload' : { 'filetypes' : ['css', 'haml', 'html', 'sass', 'scss', 'slim'] } }
-" Ruby
-NeoBundleLazy 'vim-ruby/vim-ruby', {
-  \ 'autoload' : { 'filetypes' : ['ruby', 'eruby'] } }
-NeoBundleLazy 'slim-template/vim-slim', {
-  \ 'autoload' : { 'filetypes' : ['slim'] } }
-" Rails
-NeoBundleLazy 'tpope/vim-rails', {
-  \ 'rev': 'v5.2',
-  \ 'autoload' : { 'filetypes' : ['ruby', 'eruby'] } }
-NeoBundleLazy 'ujihisa/unite-rake', { 'depends' : 'Shougo/unite.vim' }
-NeoBundleLazy 'basyura/unite-rails', { 'depends' : 'Shougo/unite.vim' }
-" Java
-NeoBundleLazy 'artur-shaik/vim-javacomplete2', {
-  \ 'rev': 'v2.3.4',
-  \ 'autoload' : { 'filetypes' : ['java'] } }
+if has('vim_starting')
+  " install vimproc at first.
+  if dein#check_install(['vimproc'])
+    call dein#install(['vimproc'])
+  endif
 
-let s:bundle_rails = "unite-rake unite-rails"
-function! s:bundleLoadDepends(bundle_names)
-  execute 'NeoBundleSource '.a:bundle_names
-  au! RailsLazyPlugins
-endfunction
-aug RailsLazyPlugins
-  au User Rails call <SID>bundleLoadDepends(s:bundle_rails)
-aug END
-
-" Javascript
-NeoBundleLazy 'jiangmiao/simple-javascript-indenter', {
-  \ 'autoload' : { 'filetypes' : ['javascript'] } }
-
-call neobundle#end()
+  if dein#check_install()
+    call dein#install()
+  endif
+endif
 
 "" $VIMRUNTIME/menu.vimを読みこまない
 set guioptions&

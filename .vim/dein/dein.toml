@@ -1,0 +1,98 @@
+[[plugins]]
+repo = 'vim-jp/vimdoc-ja'
+
+[[plugins]]
+repo = 'kana/vim-fakeclip'
+rev  = '0.3.0'
+
+[[plugins]]
+repo = 'DirDiff.vim'
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+
+[[plugins]]
+repo = 'Shougo/neocomplete'
+rev  = 'ver.2.1'
+
+[[plugins]]
+repo = 'Shougo/neosnippet'
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'Shougo/vimfiler'
+
+[[plugins]]
+repo    = 'Shougo/unite-outline'
+depends = 'Shougo/unite.vim'
+
+[[plugins]]
+repo    = 'Shougo/neomru.vim'
+depends = 'Shougo/unite.vim'
+
+[[plugins]]
+repo = 'thinca/vim-ref'
+rev  = 'unite-ref-v0.1.1'
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+
+[[plugins]]
+repo = 'majutsushi/tagbar'
+rev  = 'v2.6.1'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'vcscommand.vim'
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+
+[[plugins]]
+repo = 'leafgarland/typescript-vim'
+
+#[[plugins]]
+#repo = 'othree/eregex.vim'
+
+[[plugins]]
+repo = 'renamer.vim'
+
+[[plugins]]
+repo = 'Align'
+
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
+
+[[plugins]]
+repo = 'kannokanno/previm'
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+
+[[plugins]]
+repo = 'nsf/gocode'
+rtp  = 'vim/'
+
+[[plugins]]
+repo = 'ntpeters/vim-better-whitespace'
+
+[[plugins]]
+repo = 'Shougo/vimproc'
+rev  = 'ver.9.2'
+hook_post_update = '''
+  if executable('make')
+    let cmd = 'make'
+  endif
+  let g:dein#plugin.build = cmd
+'''
+
+# Colorscheme
+[[plugins]]
+repo = 'jonathanfilip/vim-lucius'

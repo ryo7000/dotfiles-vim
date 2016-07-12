@@ -1,0 +1,41 @@
+[[plugins]]
+repo   = 'lilydjwg/colorizer'
+on_cmd = ['ColorToggle', 'ColorHighlight', 'ColorClear']
+
+[[plugins]]
+repo  = 'mattn/zencoding-vim'
+on_ft = ['css', 'haml', 'html', 'sass', 'scss', 'slim']
+
+# Ruby
+[[plugins]]
+repo  = 'vim-ruby/vim-ruby'
+on_ft = ['ruby', 'eruby']
+
+[[plugins]]
+repo  = 'slim-template/vim-slim'
+on_ft = ['slim']
+
+# Rails
+[[plugins]]
+repo  = 'tpope/vim-rails'
+rev   = 'v5.2'
+on_ft = ['ruby', 'eruby']
+
+[[plugins]]
+repo    = 'ujihisa/unite-rake'
+depends = 'Shougo/unite.vim'
+
+[[plugins]]
+repo    = 'basyura/unite-rails'
+depends = 'Shougo/unite.vim'
+
+# Java
+[[plugins]]
+repo  = 'artur-shaik/vim-javacomplete2'
+rev   = 'v2.3.4'
+on_ft = ['java']
+
+# Javascript
+[[plugins]]
+repo  = 'jiangmiao/simple-javascript-indenter'
+on_ft = ['javascript']
