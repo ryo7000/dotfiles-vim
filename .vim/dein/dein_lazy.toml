@@ -32,7 +32,7 @@ depends = 'Shougo/unite.vim'
 # Java
 [[plugins]]
 repo  = 'artur-shaik/vim-javacomplete2'
-rev   = 'v2.3.4'
+rev   = 'v2.3.5'
 on_ft = ['java']
 
 # Javascript
