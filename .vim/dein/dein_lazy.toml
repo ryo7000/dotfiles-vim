@@ -31,9 +31,12 @@ depends = 'Shougo/unite.vim'
 
 # Java
 [[plugins]]
-repo  = 'artur-shaik/vim-javacomplete2'
-rev   = 'v2.3.5'
-on_ft = ['java']
+repo   = 'artur-shaik/vim-javacomplete2'
+rev    = 'v2.3.5'
+on_cmd = ['JCserverStart']
+hook_post_source = '''
+  autocmd FileType java setlocal omnifunc=javacomplete#Complete
+'''
 
 # Javascript
 [[plugins]]

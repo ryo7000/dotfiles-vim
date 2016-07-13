@@ -390,10 +390,6 @@ let g:rubycomplete_classes_in_global = 1
 let g:tagbar_left = 1
 nmap <C-w><C-t> :TagbarToggle<cr>
 
-
-" vim-javacomplete2 {{{2
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
-
 " Etc {{{1
 
 let g:mapleader = "\<C-k>"
