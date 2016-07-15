@@ -13,7 +13,6 @@ repo = 'Shougo/unite.vim'
 
 [[plugins]]
 repo = 'Shougo/neocomplete'
-rev  = 'ver.2.1'
 
 [[plugins]]
 repo = 'Shougo/neosnippet'
