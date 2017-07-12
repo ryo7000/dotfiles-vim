@@ -7,7 +7,7 @@ repo = 'kana/vim-fakeclip'
 rev  = '0.3.0'
 
 [[plugins]]
-repo = 'DirDiff.vim'
+repo = 'vim-scripts/DirDiff.vim'
 
 [[plugins]]
 repo = 'Shougo/unite.vim'
@@ -50,7 +50,7 @@ repo = 'tpope/vim-fugitive'
 repo = 'tpope/vim-surround'
 
 [[plugins]]
-repo = 'vcscommand.vim'
+repo = 'vim-scripts/vcscommand.vim'
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
@@ -62,10 +62,10 @@ repo = 'leafgarland/typescript-vim'
 #repo = 'othree/eregex.vim'
 
 [[plugins]]
-repo = 'renamer.vim'
+repo = 'vim-scripts/renamer.vim'
 
 [[plugins]]
-repo = 'Align'
+repo = 'vim-scripts/Align'
 
 [[plugins]]
 repo = 'plasticboy/vim-markdown'
