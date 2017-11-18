@@ -18,7 +18,6 @@ on_ft = ['slim']
 # Rails
 [[plugins]]
 repo  = 'tpope/vim-rails'
-rev   = 'v5.2'
 on_ft = ['ruby', 'eruby']
 
 [[plugins]]
