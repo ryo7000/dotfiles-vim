@@ -267,11 +267,41 @@ let g:vim_markdown_folding_disabled = 1
 " vim-better-whitespace
 let g:better_whitespace_filetypes_blacklist = ['vimfiler', 'unite', 'diff']
 
+" Denite {{{2
+
+nnoremap    [denite]   <Nop>
+nmap    <Space> [denite]
+nmap <silent> <C-s> [denite]c
+nnoremap <silent> [denite]c :Denite file buffer<CR>
+nnoremap <silent> [denite]d :Denite directory_rec<CR>
+nnoremap <silent> [denite]b :DeniteBufferDir file<CR>
+nnoremap <silent> [denite]r :Denite file_rec/git<CR>
+nnoremap <silent> [denite]n :Denite file_mru<CR>
+nnoremap <silent> [denite]u :Denite buffer<CR>
+
+call denite#custom#option('default', {
+      \ 'highlight_matched_char': 'Identifier'})
+
+call denite#custom#map('insert', '<C-n>',
+      \ '<denite:move_to_next_line>', 'noremap')
+call denite#custom#map('insert', '<C-p>',
+      \ '<denite:move_to_previous_line>', 'noremap')
+call denite#custom#map('insert', '<C-w>',
+      \ '<denite:move_up_path>', 'noremap')
+
+call denite#custom#action('directory', 'rec',
+      \ {context -> denite#start('file_rec', context)})
+call denite#custom#map('insert', '<C-r>',
+      \ '<denite:do_action:rec>', 'noremap')
+
+call denite#custom#alias('source', 'file_rec/git', 'file_rec')
+call denite#custom#var('file_rec/git', 'command',
+      \ ['git', 'ls-files', '-co', '--exclude-standard'])
+
 " Unite {{{2
 
 nnoremap    [unite]   <Nop>
-nmap    <Space> [unite]
-nmap <silent> <C-s> [unite]c
+nmap    <Tab> [unite]
 nnoremap <silent> [unite]c :Unite -buffer-name=files file file/new buffer bookmark<CR>
 nnoremap <silent> [unite]b :UniteWithBufferDir -buffer-name=files -prompt=%\  file file/new<CR>
 nnoremap <silent> [unite]r :Unite -buffer-name=files file_rec/git<CR>

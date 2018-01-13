@@ -13,6 +13,9 @@ repo = 'vim-scripts/DirDiff.vim'
 repo = 'Shougo/unite.vim'
 
 [[plugins]]
+repo = 'Shougo/denite.nvim'
+
+[[plugins]]
 repo = 'Shougo/neocomplete'
 
 [[plugins]]
