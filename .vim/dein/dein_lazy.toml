@@ -39,5 +39,13 @@ hook_post_source = '''
 
 # Javascript
 [[plugins]]
-repo  = 'jiangmiao/simple-javascript-indenter'
+repo  = 'othree/yajs.vim'
+on_ft = ['javascript']
+
+[[plugins]]
+repo  = 'pangloss/vim-javascript'
+on_ft = ['javascript']
+
+[[plugins]]
+repo  = 'moll/vim-node'
 on_ft = ['javascript']
