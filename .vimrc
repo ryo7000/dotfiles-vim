@@ -280,7 +280,8 @@ nnoremap <silent> [denite]n :Denite file_mru<CR>
 nnoremap <silent> [denite]u :Denite buffer<CR>
 
 call denite#custom#option('default', {
-      \ 'highlight_matched_char': 'Identifier'})
+      \ 'highlight_matched_char': 'Identifier',
+      \ 'cursor_wrap': v:true })
 
 call denite#custom#map('insert', '<C-n>',
       \ '<denite:move_to_next_line>', 'noremap')
