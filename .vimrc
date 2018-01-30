@@ -278,6 +278,7 @@ nnoremap <silent> [denite]b :DeniteBufferDir file<CR>
 nnoremap <silent> [denite]r :Denite file_rec/git<CR>
 nnoremap <silent> [denite]n :Denite file_mru<CR>
 nnoremap <silent> [denite]u :Denite buffer<CR>
+nnoremap <silent> [denite]o :Denite unite:outline<CR>
 
 call denite#custom#option('default', {
       \ 'highlight_matched_char': 'Identifier',
