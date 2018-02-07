@@ -292,7 +292,7 @@ call denite#custom#map('insert', '<C-w>',
       \ '<denite:move_up_path>', 'noremap')
 
 call denite#custom#action('directory', 'rec',
-      \ {context -> denite#start('file_rec', context)})
+      \ {context -> denite#start([{'name': 'file_rec', 'args': [context['targets'][0]['word']]}])})
 call denite#custom#map('insert', '<C-r>',
       \ '<denite:do_action:rec>', 'noremap')
 
