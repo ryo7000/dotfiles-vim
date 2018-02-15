@@ -240,7 +240,10 @@ so $VIMRUNTIME/macros/matchit.vim
 let g:lightline = {
 \ 'colorscheme': 'wombat',
 \ 'active': {
-\   'left': [ ['mode', 'paste'], ['fugitive', 'filename'] ]
+\   'left':  [['mode', 'paste'], ['fugitive', 'filename']],
+\   'right': [['lineinfo'], ['percent'],
+\             ['fileformat', 'fileencoding', 'filetype'],
+\             ['linter_errors', 'linter_warnings', 'linter_ok']]
 \ },
 \ 'component': {
 \   'readonly': '%{&readonly?"\u2b64":""}',
@@ -251,9 +254,27 @@ let g:lightline = {
 \   'fugitive': 'lightline_component#fugitive',
 \   'filename': 'lightline_component#filename',
 \ },
+\ 'component_expand': {
+\   'linter_warnings': 'lightline#ale#warnings',
+\   'linter_errors': 'lightline#ale#errors',
+\   'linter_ok': 'lightline#ale#ok',
+\ },
+\ 'component_type': {
+\   'linter_warnings': 'warning',
+\   'linter_errors': 'error',
+\   'linter_ok': 'left',
+\ },
 \ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
 \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" },
 \ }
+
+" ale
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%][%severity%]%[code]% %s '
 
 " Simple Javascript Indenter
 let g:SimpleJsIndenter_BriefMode = 1

@@ -39,7 +39,14 @@ depends = 'Shougo/unite.vim'
 repo = 'thinca/vim-ref'
 
 [[plugins]]
+repo  = 'w0rp/ale'
+
+[[plugins]]
 repo = 'itchyny/lightline.vim'
+
+[[plugins]]
+repo    = 'maximbaz/lightline-ale'
+depends = ['w0rp/ale', 'itchyny/lightline.vim']
 
 [[plugins]]
 repo = 'majutsushi/tagbar'
