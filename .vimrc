@@ -61,6 +61,12 @@ set guioptions-=m
 
 filetype plugin indent on
 
+" python3 {{{1
+if has('win32') || has('win64')
+  set runtimepath+=$VIM
+  set pythonthreedll=$VIM/python3/python35.dll
+endif
+
 " Encoding {{{1
 
 " from kaoriya encoding_japan.vim & kana .vimrc
