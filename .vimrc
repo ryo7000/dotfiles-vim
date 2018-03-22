@@ -346,6 +346,12 @@ nnoremap <silent> [unite]g :Unite grep<CR>
 
 let g:unite_enable_auto_select = 0
 
+if has('win32') || has('win64')
+  if executable(expand('$ProgramFiles/Git/usr/bin/find.exe'))
+    let g:unite_source_rec_async_command = [expand('$ProgramFiles/Git/usr/bin/find.exe'), '-L']
+  end
+endif
+
 call unite#custom#profile('default', 'context', {
     \ 'prompt' : '> ',
     \ 'start_insert' : 1
