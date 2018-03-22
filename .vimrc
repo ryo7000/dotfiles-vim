@@ -450,6 +450,14 @@ let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_rails = 1
 let g:rubycomplete_classes_in_global = 1
 
+" omnisharp with roslyn {{{2
+" download and expand https://github.com/OmniSharp/omnisharp-roslyn/releases
+
+if has('win32') || has('win64')
+  let g:OmniSharp_server_type = 'roslyn'
+  let g:OmniSharp_server_path = $VIM . '\omnisharp\OmniSharp.exe'
+endif
+
 " tagbar
 let g:tagbar_left = 1
 nmap <C-w><C-t> :TagbarToggle<cr>
