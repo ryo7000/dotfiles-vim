@@ -145,7 +145,10 @@ set backspace=indent,eol,start
 set cinoptions=g0,(0
 set cmdheight=2
 set formatoptions=tcqmM
-if executable('jvgrep')
+if executable('rg')
+  set grepprg=rg\ --vimgrep\ --no-heading
+  set grepformat=%f:%l:%c:%m,%f:%l:%m
+elseif if executable('jvgrep')
   set grepprg=jvgrep
 endif
 set history=100
