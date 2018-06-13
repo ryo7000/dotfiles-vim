@@ -530,10 +530,17 @@ function! s:GetBufferDirectory()
   endif
 endfunction
 
-" source pc-local vimrc
-let s:localrc = s:vim_home . '/.vimrc.local'
-if filereadable(s:localrc)
-  source `=s:localrc`
-end
+" source directory local vimrc {{{2
+augroup vimrc-local
+  autocmd!
+  autocmd BufNewFile,BufReadPost * call s:vimrc_local(expand('<afile>:p:h'))
+augroup END
+
+function! s:vimrc_local(loc)
+  let files = findfile('.vimrc.local', escape(a:loc, ' ') . ';', -1)
+  for i in reverse(filter(files, 'filereadable(v:val)'))
+    source `=i`
+  endfor
+endfunction
 
 " vim: et sts=2 sw=2 fdm=marker fdc=3
