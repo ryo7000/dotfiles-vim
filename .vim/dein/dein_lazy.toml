@@ -50,7 +50,16 @@ on_ft = ['javascript']
 repo  = 'moll/vim-node'
 on_ft = ['javascript']
 
-# c#
 [[plugins]]
-repo = 'OmniSharp/omnisharp-vim'
-on_ft = ['cs', 'csi', 'csx']
+repo  = 'posva/vim-vue'
+on_ft = ['vue']
+
+# Typescript
+[[plugins]]
+repo  = 'leafgarland/typescript-vim'
+on_ft = ['typescript']
+
+# c#
+#[[plugins]]
+#repo = 'OmniSharp/omnisharp-vim'
+#on_ft = ['cs', 'csi', 'csx']
