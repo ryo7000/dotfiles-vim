@@ -148,7 +148,7 @@ set formatoptions=tcqmM
 if executable('rg')
   set grepprg=rg\ --vimgrep\ --no-heading
   set grepformat=%f:%l:%c:%m,%f:%l:%m
-elseif if executable('jvgrep')
+elseif executable('jvgrep')
   set grepprg=jvgrep
 endif
 set history=100
