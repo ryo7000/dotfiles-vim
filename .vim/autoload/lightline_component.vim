@@ -9,13 +9,13 @@ endfunction
 function! lightline_component#fugitive()
   if &ft !~? 'vimfiler' && exists("*fugitive#head")
     let _ = fugitive#head()
-    return strlen(_) ? "\u2b60 "._ : ''
+    return strlen(_) ? "\ue0a0 "._ : ''
   endif
   return ''
 endfunction
 
 function! lightline_component#readonly()
-  return &ft !~? 'help\|vimfiler' && &readonly ? "\u2b64" : ''
+  return &ft !~? 'help\|vimfiler' && &readonly ? "\ue0a2" : ''
 endfunction
 
 function! lightline_component#filename()
