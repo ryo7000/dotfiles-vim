@@ -8,7 +8,7 @@ if has('win32')
   if has('directx')
     " TODO: renderingoptions and values will changed in official release
     set renderoptions=type:directx,renmode:5
-    set guifont=Ricty_for_Powerline:h14:cSHIFTJIS
+    set guifont=Ricty_NF:h14:cSHIFTJIS:qDRAFT
   else
     set guifont=BDF_M+:h9:cSHIFTJIS
   endif
