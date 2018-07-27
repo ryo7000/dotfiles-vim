@@ -8,12 +8,12 @@ if (([System.Net.ServicePointManager]::SecurityProtocol -band [System.Net.Securi
 }
 
 # vim
-Invoke-WebRequest -Uri "https://github.com/koron/vim-kaoriya/releases/download/v8.0.0596-20170502/vim80-kaoriya-win64-8.0.0596-20170502.zip" -OutFile vim.zip
+Invoke-WebRequest -Uri "https://github.com/koron/vim-kaoriya/releases/download/v8.1.0005-20180520/vim81-kaoriya-win64-8.1.0005-20180520.zip" -OutFile vim.zip
 
 Expand-Archive vim.zip .
-Move-Item vim80-kaoriya-win64\* .
+Move-Item vim81-kaoriya-win64\* .
 Remove-Item vim.zip
-Remove-Item vim80-kaoriya-win64
+Remove-Item vim81-kaoriya-win64
 
 # ripgrep
 Invoke-WebRequest -Uri "https://github.com/BurntSushi/ripgrep/releases/download/0.8.1/ripgrep-0.8.1-x86_64-pc-windows-msvc.zip" -OutFile ripgrep.zip
