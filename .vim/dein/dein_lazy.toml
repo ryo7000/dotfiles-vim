@@ -63,3 +63,8 @@ on_ft = ['typescript']
 #[[plugins]]
 #repo = 'OmniSharp/omnisharp-vim'
 #on_ft = ['cs', 'csi', 'csx']
+
+# go
+[[plugins]]
+repo = 'fatih/vim-go'
+on_ft = ['go']

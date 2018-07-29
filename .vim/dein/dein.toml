@@ -86,10 +86,6 @@ repo = 'kannokanno/previm'
 repo = 'tyru/open-browser.vim'
 
 [[plugins]]
-repo = 'nsf/gocode'
-rtp  = 'vim/'
-
-[[plugins]]
 repo = 'ntpeters/vim-better-whitespace'
 
 [[plugins]]
