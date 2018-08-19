@@ -2,10 +2,6 @@
 repo   = 'lilydjwg/colorizer'
 on_cmd = ['ColorToggle', 'ColorHighlight', 'ColorClear']
 
-[[plugins]]
-repo  = 'mattn/zencoding-vim'
-on_ft = ['css', 'haml', 'html', 'sass', 'scss', 'slim']
-
 # Ruby
 [[plugins]]
 repo  = 'vim-ruby/vim-ruby'
