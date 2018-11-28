@@ -125,3 +125,13 @@ repo  = 'thinca/vim-logcat'
 # Colorscheme
 [[plugins]]
 repo = 'jonathanfilip/vim-lucius'
+
+repo = 'autozimu/LanguageClient-neovim'
+rev  = 'next'
+hook_post_update = '''
+  let cmd = ''
+  if executable('sh')
+    let cmd = 'sh ./install.sh'
+  endif
+  let g:dein#plugin.build = cmd
+'''

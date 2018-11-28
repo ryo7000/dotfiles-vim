@@ -448,17 +448,42 @@ let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_rails = 1
 let g:rubycomplete_classes_in_global = 1
 
+" ALE {{{2
+let g:ale_linters = {
+   \   'html': ['htmlhint'],
+   \   'javascript': ['eslint'],
+   \   'cs': [],
+   \}
+
 " omnisharp with roslyn {{{2
 " download and expand https://github.com/OmniSharp/omnisharp-roslyn/releases
 
+let g:OmniSharp_server_type = 'roslyn'
 if has('win32') || has('win64')
-  let g:OmniSharp_server_type = 'roslyn'
   let g:OmniSharp_server_path = $VIM . '\omnisharp\OmniSharp.exe'
+else
+  let g:OmniSharp_server_path = $HOME . '/.vim/omnisharp/run'
 endif
+let g:Omnisharp_start_server = 0
 
 " tagbar
 let g:tagbar_left = 1
 nmap <C-w><C-t> :TagbarToggle<cr>
+
+" LanguageClient-neovim {{{2
+let g:LanguageClient_serverCommands = {
+\ 'vue': ['vls'],
+\ 'html': [],
+\ 'css': [],
+\ 'javascript': ['javascript-typescript-stdio'],
+\ 'typescript': ['javascript-typescript-stdio'],
+\}
+let g:LanguageClient_diagnosticsList = 'Location'
+let g:LanguageClient_windowLogMessageLevel = 'Error'
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 " Etc {{{1
 
