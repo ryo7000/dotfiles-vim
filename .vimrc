@@ -396,20 +396,9 @@ function! s:unite_my_settings()
   imap <silent><buffer><expr> <C-r>     unite#do_action('rec/async')
 endfunction
 
-" neocomplete {{{2
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
-" for java
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
-let g:neocomplete#sources#omni#input_patterns.java = '\h\w\{2,\}\|[^. \t]\.\%(\h\w\+\)\?'
+" deoplate {{{2
+let g:deoplete#enable_at_startup = 1
 
 " neosnippet {{{2
 " Plugin key-mappings.

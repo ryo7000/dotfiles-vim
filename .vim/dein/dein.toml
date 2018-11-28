@@ -16,7 +16,16 @@ repo = 'Shougo/unite.vim'
 repo = 'Shougo/denite.nvim'
 
 [[plugins]]
-repo = 'Shougo/neocomplete'
+repo = 'Shougo/deoplete.nvim'
+rev  = '4.1'
+
+# for deoplate
+[[plugins]]
+repo = 'roxma/nvim-yarp'
+
+# for deoplate
+[[plugins]]
+repo = 'roxma/vim-hug-neovim-rpc'
 
 [[plugins]]
 repo = 'Shougo/neosnippet'
