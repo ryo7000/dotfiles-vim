@@ -330,6 +330,9 @@ call denite#custom#alias('source', 'file_rec/git', 'file_rec')
 call denite#custom#var('file_rec/git', 'command',
       \ ['git', 'ls-files', '-co', '--exclude-standard'])
 
+call denite#custom#source(
+      \ 'file_rec/git', 'matchers', ['matcher/cpsm'])
+
 " Unite {{{2
 
 nnoremap    [unite]   <Nop>

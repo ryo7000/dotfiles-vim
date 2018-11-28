@@ -108,6 +108,16 @@ hook_post_update = '''
   let g:dein#plugin.build = cmd
 '''
 
+[[plugins]]
+repo = 'nixprime/cpsm'
+hook_post_update = '''
+  let cmd = ''
+  if executable('make')
+    let cmd = 'sh -c "PY3=ON ./install.sh"'
+  endif
+  let g:dein#plugin.build = cmd
+'''
+
 # Android
 [[plugins]]
 repo  = 'thinca/vim-logcat'
