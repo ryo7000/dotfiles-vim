@@ -118,6 +118,13 @@ hook_post_update = '''
   let g:dein#plugin.build = cmd
 '''
 
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+depends = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
 # Android
 [[plugins]]
 repo  = 'thinca/vim-logcat'
