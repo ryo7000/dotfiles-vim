@@ -277,14 +277,6 @@ let g:lightline = {
 \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
 \ }
 
-" ale
-let g:ale_linters = {
-\   'javascript': ['eslint'],
-\}
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%][%severity%]%[code]% %s '
-
 " Simple Javascript Indenter
 let g:SimpleJsIndenter_BriefMode = 1
 
@@ -449,6 +441,15 @@ let g:rubycomplete_rails = 1
 let g:rubycomplete_classes_in_global = 1
 
 " ALE {{{2
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%][%severity%]%[code]% %s '
+let g:ale_fixers = {
+\  '*': ['remove_trailing_lines', 'trim_whitespace'],
+\  'javascript': ['prettier', 'eslint'],
+\  'typescript': ['prettier'],
+\}
+
 let g:ale_linters = {
    \   'html': ['htmlhint'],
    \   'javascript': ['eslint'],
