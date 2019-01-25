@@ -134,6 +134,7 @@ repo  = 'thinca/vim-logcat'
 [[plugins]]
 repo = 'jonathanfilip/vim-lucius'
 
+[[plugins]]
 repo = 'autozimu/LanguageClient-neovim'
 rev  = 'next'
 hook_post_update = '''
