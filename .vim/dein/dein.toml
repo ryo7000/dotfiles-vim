@@ -137,6 +137,13 @@ repo = 'jonathanfilip/vim-lucius'
 [[plugins]]
 repo = 'autozimu/LanguageClient-neovim'
 rev  = 'next'
+hook_add = '''
+  augroup LanguageClient_config
+    autocmd!
+    autocmd User LanguageClientStarted setlocal signcolumn=yes
+    autocmd User LanguageClientStopped setlocal signcolumn=auto
+  augroup END
+'''
 hook_post_update = '''
   let cmd = ''
   if executable('sh')
