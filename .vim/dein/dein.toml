@@ -81,7 +81,7 @@ repo = 'leafgarland/typescript-vim'
 #repo = 'othree/eregex.vim'
 
 [[plugins]]
-repo = 'vim-scripts/renamer.vim'
+repo = 'qpkorr/vim-renamer'
 
 [[plugins]]
 repo = 'vim-scripts/Align'
