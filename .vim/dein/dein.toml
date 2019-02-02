@@ -19,18 +19,6 @@ repo = 'Shougo/unite.vim'
 repo = 'Shougo/denite.nvim'
 
 [[plugins]]
-repo = 'Shougo/deoplete.nvim'
-rev  = '4.1'
-
-# for deoplate
-[[plugins]]
-repo = 'roxma/nvim-yarp'
-
-# for deoplate
-[[plugins]]
-repo = 'roxma/vim-hug-neovim-rpc'
-
-[[plugins]]
 repo = 'Shougo/neosnippet'
 
 [[plugins]]
@@ -138,19 +126,45 @@ repo  = 'thinca/vim-logcat'
 repo = 'jonathanfilip/vim-lucius'
 
 [[plugins]]
-repo = 'autozimu/LanguageClient-neovim'
-rev  = 'next'
-hook_add = '''
-  augroup LanguageClient_config
-    autocmd!
-    autocmd User LanguageClientStarted setlocal signcolumn=yes
-    autocmd User LanguageClientStopped setlocal signcolumn=auto
-  augroup END
+repo='prabirshrestha/async.vim'
+
+[[plugins]]
+repo='prabirshrestha/vim-lsp'
+hook_add='''
+if executable('typescript-language-server')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'javascript-typescript-langserver',
+        \ 'cmd': {server_info->['javascript-typescript-stdio']},
+        \ 'whitelist': ['typescript', 'typescript.tsx'],
+        \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
+        \ })
+endif
 '''
-hook_post_update = '''
-  let cmd = ''
-  if executable('sh')
-    let cmd = 'sh ./install.sh'
-  endif
-  let g:dein#plugin.build = cmd
+
+[[plugins]]
+repo='prabirshrestha/asyncomplete.vim'
+
+[[plugins]]
+repo='prabirshrestha/asyncomplete-lsp.vim'
+
+[[plugins]]
+repo='prabirshrestha/asyncomplete-buffer.vim'
+hook_add='''
+au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+    \ 'name': 'b',
+    \ 'whitelist': ['*'],
+    \ 'priority': 3,
+    \ 'completor': function('asyncomplete#sources#buffer#completor'),
+    \ }))
+'''
+
+[[plugins]]
+repo='prabirshrestha/asyncomplete-file.vim'
+hook_add='''
+au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+    \ 'name': 'f',
+    \ 'whitelist': ['*'],
+    \ 'priority': 5,
+    \ 'completor': function('asyncomplete#sources#file#completor')
+    \ }))
 '''
