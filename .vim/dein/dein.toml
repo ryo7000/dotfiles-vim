@@ -7,7 +7,7 @@ repo = 'kana/vim-fakeclip'
 rev  = '0.3.0'
 
 [[plugins]]
-repo = 'vim-scripts/DirDiff.vim'
+repo = 'will133/vim-dirdiff'
 
 [[plugins]]
 repo = 'cespare/vim-toml'
