@@ -10,6 +10,9 @@ rev  = '0.3.0'
 repo = 'vim-scripts/DirDiff.vim'
 
 [[plugins]]
+repo = 'cespare/vim-toml'
+
+[[plugins]]
 repo = 'Shougo/unite.vim'
 
 [[plugins]]
