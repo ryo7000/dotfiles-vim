@@ -134,7 +134,7 @@ hook_add='''
 if executable('typescript-language-server')
     au User lsp_setup call lsp#register_server({
         \ 'name': 'javascript-typescript-langserver',
-        \ 'cmd': {server_info->['javascript-typescript-stdio']},
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
         \ 'whitelist': ['typescript', 'typescript.tsx'],
         \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
         \ })
@@ -153,6 +153,7 @@ hook_add='''
 au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
     \ 'name': 'b',
     \ 'whitelist': ['*'],
+    \ 'blacklist': ['typescript', 'typescript.tsx'],
     \ 'priority': 3,
     \ 'completor': function('asyncomplete#sources#buffer#completor'),
     \ }))
