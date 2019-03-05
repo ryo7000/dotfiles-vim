@@ -53,7 +53,7 @@ on_ft = ['vue']
 # Typescript
 [[plugins]]
 repo  = 'leafgarland/typescript-vim'
-on_ft = ['typescript']
+on_ft = ['typescript', 'vue']
 
 # c#
 #[[plugins]]
