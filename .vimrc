@@ -443,18 +443,24 @@ let g:rubycomplete_classes_in_global = 1
 " ALE {{{2
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%][%severity%]%[code]% %s '
+let g:ale_echo_msg_format = 'ALE: [%linter%][%severity%]%[code]% %s '
 let g:ale_fixers = {
 \  '*': ['remove_trailing_lines', 'trim_whitespace'],
 \  'javascript': ['prettier', 'eslint'],
 \  'typescript': ['prettier'],
+\  'vue': ['vls'],
 \}
 
 let g:ale_linters = {
-   \   'html': ['htmlhint'],
-   \   'javascript': ['eslint'],
-   \   'cs': [],
-   \}
+\   'html': ['htmlhint'],
+\   'javascript': ['eslint'],
+\   'cs': [],
+\   'vue': ['vls'],
+\}
+
+let g:ale_linters_ignore = {
+\   'vue': ['tsserver'],
+\}
 
 " omnisharp with roslyn {{{2
 " download and expand https://github.com/OmniSharp/omnisharp-roslyn/releases
