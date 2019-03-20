@@ -541,17 +541,9 @@ augroup END
 
 " c_CTRL-X
 "   Input current buffer's directory on command line.
-cnoremap <C-X> <C-R>=<SID>GetBufferDirectory()<CR>/
+cnoremap <C-X> <C-R>=<SID>GetBufferDirectory()<CR>
 function! s:GetBufferDirectory()
-  let path = expand('%:p:h')
-  let cwd = getcwd()
-  if match(path, cwd) != 0
-    return path
-  elseif strlen(path) > strlen(cwd)
-    return strpart(path, strlen(cwd) + 1)
-  else
-    return '.'
-  endif
+  return fnamemodify(expand("%"), ":.:h") . (exists('+shellslash') && !&shellslash ? '\' : '/')
 endfunction
 
 " source directory local vimrc {{{2
