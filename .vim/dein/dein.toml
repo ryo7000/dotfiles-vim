@@ -125,6 +125,7 @@ repo='prabirshrestha/async.vim'
 [[plugins]]
 repo='prabirshrestha/vim-lsp'
 hook_add='''
+let g:lsp_diagnostics_echo_cursor = 1
 if executable('typescript-language-server')
     au User lsp_setup call lsp#register_server({
         \ 'name': 'javascript-typescript-langserver',
