@@ -144,6 +144,8 @@ if executable('vls')
     au FileType vue call s:configure_lsp()
 endif
 if executable('ccls')
+    " Add clang.resourceDir to initialization_options if the header referenced at ccls build is in another location.
+    " via https://github.com/MaskRay/ccls/wiki/Install#clang-resource-directory
     au User lsp_setup call lsp#register_server({
         \ 'name': 'ccls',
         \ 'cmd': {server_info->['ccls']},
