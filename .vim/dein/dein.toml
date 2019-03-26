@@ -132,6 +132,7 @@ if executable('typescript-language-server')
         \ 'whitelist': ['typescript', 'typescript.tsx'],
         \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
         \ })
+    au FileType typescript call s:configure_lsp()
 endif
 if executable('vls')
     au User lsp_setup call lsp#register_server({
@@ -139,7 +140,31 @@ if executable('vls')
         \ 'cmd': {server_info->['vls']},
         \ 'whitelist': ['vue'],
         \ })
+    au FileType vue call s:configure_lsp()
 endif
+if executable('ccls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'ccls',
+        \ 'cmd': {server_info->['ccls']},
+        \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
+        \ 'initialization_options': {'cache': {'directory': '/tmp/ccls/cache'}},
+        \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
+        \ })
+    au FileType c,cpp,objc,objcpp,cc call s:configure_lsp()
+endif
+
+function! s:configure_lsp() abort
+    nmap <buffer> <C-]> <plug>(lsp-definition)
+    nmap <buffer> gd <plug>(lsp-definition)
+    nmap <buffer> gD <plug>(lsp-references)
+    nmap <buffer> gs <plug>(lsp-document-symbol)
+    nmap <buffer> gS <plug>(lsp-workspace-symbol)
+    nmap <buffer> gQ <plug>(lsp-document-format)
+    vmap <buffer> gQ <plug>(lsp-document-format)
+    nmap <buffer> K <plug>(lsp-hover)
+    nmap <buffer> <F1> <plug>(lsp-implementation)
+    nmap <buffer> <F2> <plug>(lsp-rename)
+endfunction
 '''
 
 [[plugins]]
