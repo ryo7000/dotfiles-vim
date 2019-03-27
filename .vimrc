@@ -414,20 +414,6 @@ let g:Omnisharp_start_server = 0
 let g:tagbar_left = 1
 nmap <C-w><C-t> :TagbarToggle<cr>
 
-" LanguageClient-neovim {{{2
-let g:LanguageClient_serverCommands = {
-\ 'vue': ['vls'],
-\ 'html': [],
-\ 'css': [],
-\ 'javascript': ['javascript-typescript-stdio'],
-\ 'typescript': ['javascript-typescript-stdio'],
-\}
-let g:LanguageClient_diagnosticsList = 'Location'
-let g:LanguageClient_windowLogMessageLevel = 'Error'
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 " Etc {{{1
 
