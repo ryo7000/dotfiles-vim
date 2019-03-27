@@ -363,6 +363,9 @@ let g:quickrun_config = {
 \      "outputter/error/success" : "buffer",
 \      "outputter/error/error" : "quickfix"
 \ },
+\ 'cpp': {
+\   'cmdopt': '-std=c++11',
+\ },
 \}
 
 " DirDiff {{{2
