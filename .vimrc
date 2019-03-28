@@ -414,6 +414,8 @@ let g:Omnisharp_start_server = 0
 let g:tagbar_left = 1
 nmap <C-w><C-t> :TagbarToggle<cr>
 
+" gist vim
+let g:gist_post_private = 1
 
 " Etc {{{1
 

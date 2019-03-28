@@ -120,6 +120,13 @@ repo  = 'thinca/vim-logcat'
 repo = 'jonathanfilip/vim-lucius'
 
 [[plugins]]
+repo = 'mattn/webapi-vim'
+
+[[plugins]]
+repo = 'mattn/gist-vim'
+depends = 'mattn/webapi-vim'
+
+[[plugins]]
 repo='prabirshrestha/async.vim'
 
 [[plugins]]
