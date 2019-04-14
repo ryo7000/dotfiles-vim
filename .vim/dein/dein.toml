@@ -162,6 +162,14 @@ if executable('ccls')
         \ })
     au FileType c,cpp,objc,objcpp,cc call s:configure_lsp()
 endif
+if executable('gopls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'gopls',
+        \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
+        \ 'whitelist': ['go'],
+        \ })
+    au FileType go call s:configure_lsp()
+endif
 
 function! s:configure_lsp() abort
     nmap <buffer> <C-]> <plug>(lsp-definition)
