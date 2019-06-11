@@ -147,6 +147,14 @@ if executable('vls')
         \ 'name': 'vue-language-server',
         \ 'cmd': {server_info->['vls']},
         \ 'whitelist': ['vue'],
+        \ 'initialization_options': {
+        \   'config': {
+        \     'html': {},
+        \     'vetur': {
+        \       'validation': {}
+        \     }
+        \   }
+        \ }
         \ })
     au FileType vue call s:configure_lsp()
 endif
