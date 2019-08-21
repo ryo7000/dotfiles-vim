@@ -137,12 +137,12 @@ let g:lsp_diagnostics_echo_cursor = 1
 " let g:lsp_log_file = expand('/home/ryo/vim-lsp.log')
 if executable('typescript-language-server')
     au User lsp_setup call lsp#register_server({
-        \ 'name': 'javascript-typescript-langserver',
+        \ 'name': 'typescript-language-server',
         \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
-        \ 'whitelist': ['typescript', 'typescript.tsx'],
+        \ 'whitelist': ['typescript', 'typescript.tsx', 'javascript'],
         \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
         \ })
-    au FileType typescript call s:configure_lsp()
+    au FileType typescript,javascript call s:configure_lsp()
 endif
 if executable('vls')
     au User lsp_setup call lsp#register_server({
