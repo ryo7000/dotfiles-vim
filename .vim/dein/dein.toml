@@ -133,6 +133,8 @@ repo='prabirshrestha/async.vim'
 repo='prabirshrestha/vim-lsp'
 hook_add='''
 let g:lsp_diagnostics_echo_cursor = 1
+" let g:lsp_log_verbose = 1
+" let g:lsp_log_file = expand('/home/ryo/vim-lsp.log')
 if executable('typescript-language-server')
     au User lsp_setup call lsp#register_server({
         \ 'name': 'javascript-typescript-langserver',
@@ -151,9 +153,13 @@ if executable('vls')
         \   'config': {
         \     'html': {},
         \     'vetur': {
+        \       'completion': {
+        \         'scaffoldSnippetSources': {}
+        \       },
         \       'validation': {}
         \     }
-        \   }
+        \   },
+        \   'globalSnippetDir': ''
         \ }
         \ })
     au FileType vue call s:configure_lsp()
