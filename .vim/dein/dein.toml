@@ -210,6 +210,11 @@ function! s:configure_lsp() abort
     nmap <buffer> <F1> <plug>(lsp-implementation)
     nmap <buffer> <F2> <plug>(lsp-rename)
 endfunction
+
+augroup lsp_float_colours
+    autocmd!
+    autocmd User lsp_float_opened call win_execute(lsp#ui#vim#output#getpreviewwinid(), 'setlocal wincolor=Conceal')
+augroup end
 '''
 
 [[plugins]]
