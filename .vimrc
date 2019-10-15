@@ -146,7 +146,7 @@ set cinoptions=g0,(0
 set cmdheight=2
 set formatoptions=tcqmM
 if executable('rg')
-  set grepprg=rg\ --vimgrep\ --sort\ path
+  set grepprg=rg\ --vimgrep\ --sort\ path\ -M\ 200\ --max-columns-preview
   set grepformat=%f:%l:%c:%m,%f:%l:%m
 elseif executable('jvgrep')
   set grepprg=jvgrep
