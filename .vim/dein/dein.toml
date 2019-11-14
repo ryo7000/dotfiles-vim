@@ -41,7 +41,7 @@ repo = 'thinca/vim-ref'
 
 [[plugins]]
 repo  = 'w0rp/ale'
-rev  = 'v2.3.1'
+rev  = 'v2.6.0'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
