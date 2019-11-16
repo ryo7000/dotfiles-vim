@@ -92,7 +92,6 @@ repo = 'ntpeters/vim-better-whitespace'
 
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
-rev  = 'ver.9.3'
 hook_post_update = '''
   let cmd = ''
   if executable('make')
