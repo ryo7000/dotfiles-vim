@@ -26,7 +26,7 @@ repo = 'Shougo/neosnippet'
 repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
-repo = 'Shougo/vimfiler'
+repo = 'justinmk/vim-dirvish'
 
 [[plugins]]
 repo    = 'Shougo/unite-outline'
