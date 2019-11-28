@@ -287,7 +287,7 @@ let g:eregex_default_enable = 0
 let g:vim_markdown_folding_disabled = 1
 
 " vim-better-whitespace
-let g:better_whitespace_filetypes_blacklist = ['vimfiler', 'unite', 'diff']
+let g:better_whitespace_filetypes_blacklist = ['unite', 'diff']
 
 " Denite {{{2
 
@@ -349,9 +349,6 @@ let g:neosnippet#snippets_directory = s:vim_home . '/.vim/snippets'
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
-
-" VimFiler {{{2
-let g:vimfiler_as_default_explorer = 1
 
 " QuickRun {{{2
 
