@@ -144,7 +144,6 @@ if executable('typescript-language-server')
         \ 'whitelist': ['typescript', 'typescript.tsx', 'javascript'],
         \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
         \ })
-    au FileType typescript,javascript call s:configure_lsp()
 endif
 if executable('vls')
     au User lsp_setup call lsp#register_server({
@@ -164,7 +163,6 @@ if executable('vls')
         \   'globalSnippetDir': ''
         \ }
         \ })
-    au FileType vue call s:configure_lsp()
 endif
 if executable('ccls')
     " Add clang.resourceDir to initialization_options if the header referenced at ccls build is in another location.
@@ -181,7 +179,6 @@ if executable('ccls')
         \ 'initialization_options': {'cache': {'directory': '/tmp/ccls-cache'}},
         \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
         \ })
-    au FileType c,cpp,objc,objcpp,cc call s:configure_lsp()
 endif
 if executable('gopls')
     au User lsp_setup call lsp#register_server({
@@ -198,7 +195,6 @@ if executable('gopls')
         \   hoverKind: 'SingleLine',
         \ }}
         \ })
-    au FileType go call s:configure_lsp()
 endif
 if executable('rls')
     au User lsp_setup call lsp#register_server({
@@ -207,10 +203,9 @@ if executable('rls')
         \ 'workspace_config': {'rust': {'clippy_preference': 'on'}},
         \ 'whitelist': ['rust'],
         \ })
-    au FileType rust call s:configure_lsp()
 endif
 
-function! s:configure_lsp() abort
+function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> <C-]> <plug>(lsp-definition)
     nmap <buffer> gd <plug>(lsp-definition)
     nmap <buffer> gD <plug>(lsp-references)
@@ -225,8 +220,14 @@ endfunction
 
 augroup lsp_float_colours
     autocmd!
-    autocmd User lsp_float_opened call win_execute(lsp#ui#vim#output#getpreviewwinid(), 'setlocal wincolor=Conceal')
+    autocmd User lsp_float_opened call win_execute(lsp#ui#vim#output#getpreviewwinid(), 'setlocal wincolor=SignColumn')
 augroup end
+
+augroup lsp_install
+    au!
+    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
 '''
 
 [[plugins]]
