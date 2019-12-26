@@ -176,7 +176,10 @@ if executable('ccls')
         \        lsp#utils#get_buffer_path(),
         \        ['.ccls', 'compile_commands.json']
         \    ))},
-        \ 'initialization_options': {'cache': {'directory': '/tmp/ccls-cache'}},
+        \ 'initialization_options': #{
+        \    cache: #{directory: '/tmp/ccls-cache'},
+        \    completion: #{detailedLabel: v:false}
+        \ },
         \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
         \ })
 endif
