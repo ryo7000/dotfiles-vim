@@ -396,6 +396,12 @@ let g:ale_linters_ignore = {
 \   'vue': ['tsserver'],
 \}
 
+" ALE C/C++ {{{3
+" for handling c++ header with clang-tidy
+let g:ale_c_parse_compile_commands = 1
+" for clang-tidy to recognize .h file as c++ header
+let g:ale_cpp_clangtidy_options = '-x c++'
+
 " omnisharp with roslyn {{{2
 " download and expand https://github.com/OmniSharp/omnisharp-roslyn/releases
 
