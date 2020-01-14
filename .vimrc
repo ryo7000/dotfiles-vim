@@ -18,40 +18,9 @@ if has('vim_starting')
   else
     let s:vim_home = $HOME
   endif
-
-  let &runtimepath .= ',' . s:vim_home . '/.vim/dein/dein.vim/'
 endif
 
-let s:dein_dir = expand(s:vim_home . '/.vim/dein/')
-
-" dein.vim {{{1
-" git clone https://github.com/Shougo/dein.vim ~/.vim/dein/dein.vim
-
-if dein#load_state(s:dein_dir)
-  let s:toml      = s:dein_dir . '/dein.toml'
-  let s:lazy_toml = s:dein_dir . '/dein_lazy.toml'
-
-  call dein#begin(s:dein_dir, [s:toml, s:lazy_toml])
-
-  call dein#load_toml(s:toml,      {'lazy': 0})
-  call dein#load_toml(s:lazy_toml, {'lazy': 1})
-
-  call dein#end()
-  call dein#save_state()
-endif
-
-if has('vim_starting')
-  let g:vimproc#download_windows_dll = 1
-
-  " install vimproc at first.
-  if dein#check_install(['vimproc.vim'])
-    call dein#install(['vimproc.vim'])
-  endif
-
-  if dein#check_install()
-    call dein#install()
-  endif
-endif
+" git clone https://github.com/k-takata/minpac.git ~/.vim/pack/minpac/opt/minpac
 
 "" $VIMRUNTIME/menu.vimを読みこまない
 set guioptions&
@@ -289,43 +258,6 @@ let g:vim_markdown_folding_disabled = 1
 " vim-better-whitespace
 let g:better_whitespace_filetypes_blacklist = ['unite', 'diff']
 
-" Denite {{{2
-
-nnoremap    [denite]   <Nop>
-nmap    <Space> [denite]
-nmap <silent> <C-s> [denite]c
-nnoremap <silent> [denite]c :Denite file buffer<CR>
-nnoremap <silent> [denite]d :Denite directory_rec<CR>
-nnoremap <silent> [denite]b :DeniteBufferDir file<CR>
-nnoremap <silent> [denite]r :Denite file_rec/git<CR>
-nnoremap <silent> [denite]n :Denite file_mru<CR>
-nnoremap <silent> [denite]u :Denite buffer<CR>
-nnoremap <silent> [denite]o :Denite unite:outline<CR>
-
-call denite#custom#option('default', {
-      \ 'highlight_matched_char': 'Identifier',
-      \ 'cursor_wrap': v:true })
-
-call denite#custom#map('insert', '<C-n>',
-      \ '<denite:move_to_next_line>', 'noremap')
-call denite#custom#map('insert', '<C-p>',
-      \ '<denite:move_to_previous_line>', 'noremap')
-call denite#custom#map('insert', '<C-w>',
-      \ '<denite:move_up_path>', 'noremap')
-
-call denite#custom#action('directory', 'rec',
-      \ {context -> denite#start([{'name': 'file_rec', 'args': [context['targets'][0]['word']]}])})
-call denite#custom#map('insert', '<C-r>',
-      \ '<denite:do_action:rec>', 'noremap')
-
-call denite#custom#alias('source', 'file_rec/git', 'file_rec')
-call denite#custom#var('file_rec/git', 'command',
-      \ ['git', 'ls-files', '-co', '--exclude-standard'])
-
-call denite#custom#source(
-      \ 'file_rec/git', 'matchers', ['matcher/cpsm'])
-
-
 " deoplate {{{2
 let g:deoplete#enable_at_startup = 1
 
@@ -473,6 +405,8 @@ cnoremap <C-X> <C-R>=<SID>GetBufferDirectory()<CR>
 function! s:GetBufferDirectory()
   return fnamemodify(expand("%"), ":.:h") . (exists('+shellslash') && !&shellslash ? '\' : '/')
 endfunction
+
+call map(split(globpath(&runtimepath, 'config/*.vim')), {->[execute('exec "so" v:val')]})
 
 " source directory local vimrc {{{2
 augroup vimrc-local
