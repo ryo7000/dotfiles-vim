@@ -207,6 +207,9 @@ if has("kaoriya")
   imap <silent> <ESC> <ESC>:set iminsert=0<CR>
 endif
 
+" ins-completion-menu 表示中にcrで候補を決定して終了させる
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+
 " folding {{{2
 " http://d.hatena.ne.jp/ns9tks/20080318/1205851539
 
