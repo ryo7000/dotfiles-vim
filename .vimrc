@@ -381,6 +381,8 @@ let g:rubycomplete_classes_in_global = 1
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = 'ALE: [%linter%][%severity%]%[code]% %s '
+let g:ale_disable_lsp = 1
+let g:ale_linters_explicit = 1
 let g:ale_fixers = {
 \  '*': ['remove_trailing_lines', 'trim_whitespace'],
 \  'javascript': ['prettier', 'eslint'],
@@ -391,12 +393,9 @@ let g:ale_fixers = {
 let g:ale_linters = {
 \   'html': ['htmlhint'],
 \   'javascript': ['eslint'],
-\   'cs': [],
 \   'vue': ['vls'],
-\}
-
-let g:ale_linters_ignore = {
-\   'vue': ['tsserver'],
+\   'c': ['clangtidy'],
+\   'cpp': ['clangtidy'],
 \}
 
 " ALE C/C++ {{{3
