@@ -180,8 +180,9 @@ if executable('ccls')
         \    cache: #{directory: '/tmp/ccls-cache'},
         \    completion: #{detailedLabel: v:false}
         \ },
-        \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
+        \ 'whitelist': ['c', 'cpp', 'cc'],
         \ })
+    autocmd BufWritePre *.c,*.cpp,*.cc,*.h,*.hpp LspDocumentFormatSync
 endif
 if executable('gopls')
     au User lsp_setup call lsp#register_server({
