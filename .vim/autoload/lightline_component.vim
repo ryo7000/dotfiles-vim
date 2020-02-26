@@ -7,8 +7,8 @@ function! lightline_component#modified()
 endfunction
 
 function! lightline_component#fugitive()
-  if &ft !~? 'vimfiler' && exists("*fugitive#head")
-    let _ = fugitive#head()
+  if &ft !~? 'vimfiler' && exists("*FugitiveHead")
+    let _ = FugitiveHead()
     return strlen(_) ? "\ue0a0 "._ : ''
   endif
   return ''
