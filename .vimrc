@@ -384,7 +384,6 @@ let g:ale_echo_msg_format = 'ALE: [%linter%][%severity%]%[code]% %s '
 let g:ale_disable_lsp = 1
 let g:ale_linters_explicit = 1
 let g:ale_fixers = {
-\  '*': ['remove_trailing_lines', 'trim_whitespace'],
 \  'javascript': ['prettier', 'eslint'],
 \  'typescript': ['prettier'],
 \  'vue': ['vls'],
