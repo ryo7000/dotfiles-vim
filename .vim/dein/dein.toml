@@ -138,6 +138,8 @@ let g:lsp_diagnostics_float_cursor = 1
 " let g:lsp_log_verbose = 1
 " let g:lsp_log_file = expand('/home/ryo/vim-lsp.log')
 if executable('typescript-language-server')
+    " npm install -g typescript typescript-language-server
+
     augroup lsp_ts
         au!
         au User lsp_setup call lsp#register_server({
