@@ -35,11 +35,19 @@ hook_post_source = '''
 
 # Javascript
 [[plugins]]
+repo  = 'pangloss/vim-javascript'
+on_ft = ['javascript']
+
+[[plugins]]
 repo  = 'othree/yajs.vim'
 on_ft = ['javascript']
 
 [[plugins]]
-repo  = 'pangloss/vim-javascript'
+repo  = 'othree/es.next.syntax.vim'
+on_ft = ['javascript']
+
+[[plugins]]
+repo  = 'MaxMEllon/vim-jsx-pretty'
 on_ft = ['javascript']
 
 [[plugins]]
