@@ -225,6 +225,16 @@ if executable('rls')
         autocmd BufWritePre *.rs LspDocumentFormatSync
     augroup END
 endif
+if executable('solargraph')
+    augroup lsp_ruby
+        au User lsp_setup call lsp#register_server({
+            \ 'name': 'solargraph',
+            \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
+            \ 'initialization_options': {"diagnostics": "true"},
+            \ 'whitelist': ['ruby'],
+            \ })
+    augroup END
+endif
 
 function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> <C-]> <plug>(lsp-definition)
