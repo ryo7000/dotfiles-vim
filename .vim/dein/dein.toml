@@ -107,8 +107,10 @@ hook_post_update = '''
 repo = 'nixprime/cpsm'
 hook_post_update = '''
   let cmd = ''
-  if executable('make')
+  if executable('make') && executable('cmake')
     let cmd = 'sh -c "PY3=ON ./install.sh"'
+  else
+    echoe 'install build essentials such as make and cmake, gcc'
   endif
   let g:dein#plugin.build = cmd
 '''
