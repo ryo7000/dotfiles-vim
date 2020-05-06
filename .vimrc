@@ -9,57 +9,19 @@ if has('vim_starting')
 
   " Windowsで$HOME/vimfilesの代わりに、$VIM/.vimを使う
   if has('win32') || has('win64')
-    let s:vim_home = $VIM
+    let g:vim_home = $VIM
 
     " filetype onで、runtime! ftdetect/*.vimするので、
     " その前にruntimepathを設定
     " (filetype onは、syntax on/enableで読み込まれる$VIMRUNTIME/syntax/syntax.vimの中で実行される)
     set runtimepath=$VIM/.vim,$VIMRUNTIME,$VIM/.vim/after
   else
-    let s:vim_home = $HOME
+    let g:vim_home = $HOME
   endif
-
-  let &runtimepath .= ',' . s:vim_home . '/.vim/dein/dein.vim/'
 endif
-
-let s:dein_dir = expand(s:vim_home . '/.vim/dein/')
 
 " dein.vim {{{1
-" git clone https://github.com/Shougo/dein.vim ~/.vim/dein/dein.vim
-
-if dein#load_state(s:dein_dir)
-  let s:toml      = s:dein_dir . '/dein.toml'
-  let s:lazy_toml = s:dein_dir . '/dein_lazy.toml'
-
-  call dein#begin(s:dein_dir, [s:toml, s:lazy_toml])
-
-  call dein#load_toml(s:toml,      {'lazy': 0})
-  call dein#load_toml(s:lazy_toml, {'lazy': 1})
-
-  call dein#end()
-  call dein#save_state()
-endif
-
-if has('vim_starting')
-  let g:vimproc#download_windows_dll = 1
-
-  " install vimproc at first.
-  if dein#check_install(['vimproc.vim'])
-    call dein#install(['vimproc.vim'])
-  endif
-
-  if dein#check_install()
-    call dein#install()
-  endif
-endif
-
-"" $VIMRUNTIME/menu.vimを読みこまない
-set guioptions&
-set guioptions+=M
-set guioptions-=T
-set guioptions-=m
-
-filetype plugin indent on
+execute('source ' . g:vim_home . '/.vim/dein/dein.conf.vim')
 
 " python3 {{{1
 if has('win32') || has('win64')
@@ -111,6 +73,13 @@ if !exists('did_encoding_settings') && has('iconv')
 end
 
 " Options {{{1
+
+"" $VIMRUNTIME/menu.vimを読みこまない
+set guioptions+=M
+set guioptions-=T
+set guioptions-=m
+
+filetype plugin indent on
 syntax enable
 
 if !has("gui_running")
@@ -177,7 +146,7 @@ set ignorecase
 set smartcase
 
 if has('persistent_undo')
-  let &undodir = s:vim_home . '/.vim/undo'
+  let &undodir = g:vim_home . '/.vim/undo'
   set undofile
 endif
 
@@ -346,7 +315,7 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)"
 \: "\<TAB>"
 
-let g:neosnippet#snippets_directory = s:vim_home . '/.vim/snippets'
+let g:neosnippet#snippets_directory = g:vim_home . '/.vim/snippets'
 
 " For snippet_complete marker.
 if has('conceal')
