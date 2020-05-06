@@ -13,11 +13,7 @@ repo = 'will133/vim-dirdiff'
 repo = 'cespare/vim-toml'
 
 [[plugins]]
-repo = 'Shougo/unite.vim'
-
-[[plugins]]
-repo = 'Shougo/denite.nvim'
-rev = '1.2'
+repo = 'ctrlpvim/ctrlp.vim'
 
 [[plugins]]
 repo = 'Shougo/neosnippet'
@@ -30,14 +26,6 @@ repo = 'justinmk/vim-dirvish'
 
 [[plugins]]
 repo = 'tpope/vim-eunuch'
-
-[[plugins]]
-repo    = 'Shougo/unite-outline'
-depends = 'Shougo/unite.vim'
-
-[[plugins]]
-repo    = 'Shougo/neomru.vim'
-depends = 'Shougo/unite.vim'
 
 [[plugins]]
 repo = 'thinca/vim-ref'
