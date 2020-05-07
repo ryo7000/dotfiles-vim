@@ -259,29 +259,44 @@ let g:eregex_default_enable = 0
 let g:vim_markdown_folding_disabled = 1
 
 " vim-better-whitespace
-let g:better_whitespace_filetypes_blacklist = ['unite', 'diff']
+let g:better_whitespace_filetypes_blacklist = ['diff']
 
-"" ctrlp.vim
-nnoremap    [ctrlp]   <Nop>
-nmap <Space> [ctrlp]
-nmap <silent> <C-s> [ctrlp]c
-nnoremap <silent> [ctrlp]c :CtrlP<CR>
-nnoremap <silent> [ctrlp]b :CtrlPBuffer<CR>
-nnoremap <silent> [ctrlp]l :CtrlPLine<CR>
-nnoremap <silent> [ctrlp]n :CtrlPMRU<CR>
-nnoremap <silent> [ctrlp]m :CtrlPMixed<CR>
-nnoremap <silent> [ctrlp]q :CtrlPQuickfix<CR>
+" Denite {{{2
 
-let g:ctrlp_map = '<Nop>'
-let g:ctrlp_mruf_max = 1000
-let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
-let g:ctrlp_match_window = 'bottom,order:ttb,min:18,max:18'
-let g:ctrlp_prompt_mappings = {
-    \ 'PrtSelectMove("j")':   ['<c-n>', '<down>'],
-    \ 'PrtSelectMove("k")':   ['<c-p>', '<up>'],
-    \ 'PrtHistory(-1)':       ['<c-j>'],
-    \ 'PrtHistory(1)':        ['<c-k>'],
-    \ }
+nnoremap    [denite]   <Nop>
+nmap    <Space> [denite]
+nmap <silent> <C-s> [denite]c
+nnoremap <silent> [denite]c :Denite file buffer<CR>
+nnoremap <silent> [denite]d :Denite directory_rec<CR>
+nnoremap <silent> [denite]b :DeniteBufferDir file<CR>
+nnoremap <silent> [denite]r :Denite file/rec<CR>
+nnoremap <silent> [denite]n :Denite file_mru<CR>
+nnoremap <silent> [denite]u :Denite buffer<CR>
+nnoremap <silent> [denite]o :Denite unite:outline<CR>
+
+autocmd FileType denite call s:denite_settings()
+function! s:denite_settings() abort
+  nnoremap <silent><buffer><expr> <CR>
+  \ denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> d
+  \ denite#do_map('do_action', 'delete')
+  nnoremap <silent><buffer><expr> p
+  \ denite#do_map('do_action', 'preview')
+  nnoremap <silent><buffer><expr> q
+  \ denite#do_map('quit')
+  nnoremap <silent><buffer><expr> i
+  \ denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> <Space>
+  \ denite#do_map('toggle_select').'j'
+endfunction
+
+call denite#custom#option('default', {
+      \ 'highlight_matched_char': 'Identifier',
+      \ 'start_filter': v:true })
+call denite#custom#option('_', 'max_dynamic_update_candidates', 50000)
+
+call denite#custom#var('file/rec', 'command', ['rg', '--files', '--glob', '!.git'])
+call denite#custom#source('file/rec', 'matchers', ['matcher/cpsm'])
 
 " neosnippet {{{2
 " Plugin key-mappings.
