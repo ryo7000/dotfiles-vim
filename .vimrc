@@ -268,8 +268,8 @@ nmap <silent> <C-s> [ctrlp]c
 nnoremap <silent> [ctrlp]c :CtrlP<CR>
 nnoremap <silent> [ctrlp]b :CtrlPBuffer<CR>
 nnoremap <silent> [ctrlp]l :CtrlPLine<CR>
-nnoremap <silent> [ctrlp]m :CtrlPMRU<CR>
-nnoremap <silent> [ctrlp]n :CtrlPMixed<CR>
+nnoremap <silent> [ctrlp]n :CtrlPMRU<CR>
+nnoremap <silent> [ctrlp]m :CtrlPMixed<CR>
 nnoremap <silent> [ctrlp]q :CtrlPQuickfix<CR>
 
 let g:ctrlp_map = '<Nop>'
