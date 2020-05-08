@@ -269,8 +269,8 @@ nmap <silent> <C-s> [denite]c
 nnoremap <silent> [denite]c :Denite file buffer<CR>
 nnoremap <silent> [denite]d :Denite directory_rec<CR>
 nnoremap <silent> [denite]b :DeniteBufferDir file<CR>
-nnoremap <silent> [denite]r :Denite file/rec<CR>
-nnoremap <silent> [denite]n :Denite file_mru<CR>
+nnoremap <silent> [denite]r :Denite -start-filter file/rec<CR>
+nnoremap <silent> [denite]n :Denite -start-filter file_mru<CR>
 nnoremap <silent> [denite]u :Denite buffer<CR>
 nnoremap <silent> [denite]o :Denite unite:outline<CR>
 
@@ -290,10 +290,14 @@ function! s:denite_settings() abort
   \ denite#do_map('toggle_select').'j'
 endfunction
 
-call denite#custom#option('default', {
-      \ 'highlight_matched_char': 'Identifier',
-      \ 'start_filter': v:true })
-call denite#custom#option('_', 'max_dynamic_update_candidates', 50000)
+autocmd FileType denite-filter call s:denite_filter_settings()
+function! s:denite_filter_settings() abort
+  imap <silent><buffer> <C-o> <Plug>(denite_filter_quit)
+endfunction
+
+call denite#custom#option('_', #{
+  \ max_dynamic_update_candidates: 50000,
+  \ highlight_matched_char: 'Identifier'})
 
 call denite#custom#var('file/rec', 'command', ['rg', '--files', '--glob', '!.git'])
 call denite#custom#source('file/rec', 'matchers', ['matcher/cpsm'])
