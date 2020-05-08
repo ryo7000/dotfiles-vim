@@ -291,8 +291,18 @@ function! s:denite_settings() abort
 endfunction
 
 autocmd FileType denite-filter call s:denite_filter_settings()
+function! s:denite_move_cursor(down) abort
+  let winid = win_getid(winnr('#'))
+  let pos = line('.', winid) + (a:down ? 1 : -1)
+  call win_execute(winid, 'call cursor(' . pos . ', 0)|redraw')
+  return ''
+endfunction
 function! s:denite_filter_settings() abort
   imap <silent><buffer> <C-o> <Plug>(denite_filter_quit)
+  inoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
+
+  imap <silent><buffer><expr> <C-j> <SID>denite_move_cursor(v:true)
+  imap <silent><buffer><expr> <C-k> <SID>denite_move_cursor(v:false)
 endfunction
 
 call denite#custom#option('_', #{
