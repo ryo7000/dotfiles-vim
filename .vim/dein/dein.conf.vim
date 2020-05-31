@@ -76,7 +76,7 @@ function! s:init(filename)
     call dein#add('mattn/webapi-vim')
     call dein#add('mattn/gist-vim', #{depends: ['mattn/webapi-vim'], hook_add: 'source ' . dein_home . '/configs/gist-vim.vim'})
     call dein#add('prabirshrestha/async.vim')
-    " call dein#add('othree/eregex.vim')
+    call dein#add('othree/eregex.vim', #{hook_add: 'source ' . dein_home . '/configs/eregex.vim'})
 
     " asyncomplete
     call dein#add('prabirshrestha/vim-lsp', #{hook_add: 'source ' . dein_home . '/configs/vim-lsp.vim'})
