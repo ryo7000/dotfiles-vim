@@ -26,7 +26,7 @@ execute('source ' . g:vim_home . '/.vim/dein/dein.conf.vim')
 " python3 {{{1
 if has('win32') || has('win64')
   set runtimepath+=$VIM
-  set pythonthreedll=$VIM/python3/python35.dll
+  set pythonthreedll=$VIM/python3/python38.dll
 endif
 
 " Encoding {{{1

@@ -29,12 +29,21 @@ if (!(Test-Path rg.exe -PathType Leaf)) {
 
 # python3
 if (!(Test-Path python3 -PathType Container)) {
-  Invoke-WebRequest -Uri "https://www.python.org/ftp/python/3.5.4/python-3.5.4-embed-amd64.zip" -OutFile python3.zip
+  Invoke-WebRequest -Uri "https://www.python.org/ftp/python/3.8.3/python-3.8.3-embed-amd64.zip" -OutFile python3.zip
 
   Expand-Archive python3.zip python3
-  Expand-Archive python3\python35.zip python3
+  Expand-Archive python3\python38.zip python3
   Copy-Item python3\vcruntime140.dll .
+  Copy-Item python3\vcruntime140_1.dll .
   Remove-Item python3.zip
+
+  # for denite.nvim
+  cd python3
+  (Get-Content python38._pth) -replace '#import site', 'import site' | Set-Content python38._pth
+  Invoke-WebRequest -Uri "https://bootstrap.pypa.io/get-pip.py" -OutFile get-pip.py
+  .\python.exe get-pip.py
+  .\python.exe -m pip install pynvim
+  cd ..
 }
 
 # dein
