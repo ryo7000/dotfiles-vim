@@ -9,12 +9,21 @@ if (([System.Net.ServicePointManager]::SecurityProtocol -band [System.Net.Securi
 
 # vim
 if (!(Test-Path vim.exe -PathType Leaf)) {
-  Invoke-WebRequest -Uri "https://github.com/koron/vim-kaoriya/releases/download/v8.2.0087-20200106/vim82-kaoriya-win64-8.2.0087-20200106.zip" -OutFile vim.zip
+  if ($FALSE) {
+    Invoke-WebRequest -Uri "https://github.com/koron/vim-kaoriya/releases/download/v8.2.0087-20200106/vim82-kaoriya-win64-8.2.0087-20200106.zip" -OutFile vim.zip
 
-  Expand-Archive vim.zip .
-  Move-Item vim82-kaoriya-win64\* .
-  Remove-Item vim.zip
-  Remove-Item vim82-kaoriya-win64
+    Expand-Archive vim.zip .
+    Move-Item vim82-kaoriya-win64\* .
+    Remove-Item vim.zip
+    Remove-Item vim82-kaoriya-win64
+  } else {
+    Invoke-WebRequest -Uri "https://github.com/vim/vim-win32-installer/releases/download/v8.2.0940/gvim_8.2.0940_x64_signed.zip" -OutFile vim.zip
+
+    Expand-Archive vim.zip .
+    Move-Item vim\vim82\* .
+    Remove-Item vim.zip
+    Remove-Item -Recurse vim
+  }
 }
 
 # ripgrep
