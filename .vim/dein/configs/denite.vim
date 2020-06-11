@@ -47,4 +47,6 @@ call denite#custom#option('_', #{
 call denite#custom#var('file/rec', 'command', ['rg', '--files', '--glob', '!.git'])
 call denite#custom#source('file/rec', 'matchers', ['matcher/cpsm'])
 
-let g:python3_host_prog = g:vim_home . '/python3/python.exe'
+if has('win32') || has('win64')
+  let g:python3_host_prog = g:vim_home . '/python3/python.exe'
+endif
