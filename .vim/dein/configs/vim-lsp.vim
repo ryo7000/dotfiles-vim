@@ -99,6 +99,17 @@ if executable('solargraph')
             \ })
     augroup END
 endif
+if executable('intelephense')
+    " npm install -g intelephense
+    augroup lsp_php
+        au User lsp_setup call lsp#register_server({
+            \ 'name': 'intelephense',
+            \ 'cmd': {server_info->[&shell, &shellcmdflag, 'intelephense --stdio']},
+            \ 'initialization_options': {'storagePath': '/tmp/intelephense'},
+            \ 'whitelist': ['php'],
+            \ })
+    augroup END
+endif
 
 function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> <C-]> <plug>(lsp-definition)
