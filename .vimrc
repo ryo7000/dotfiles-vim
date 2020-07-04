@@ -29,48 +29,6 @@ if has('win32') || has('win64')
   set pythonthreedll=$VIM/python3/python38.dll
 endif
 
-" Encoding {{{1
-
-" from kaoriya encoding_japan.vim & kana .vimrc
-if !exists('did_encoding_settings') && has('iconv')
-  let s:enc_eucjp = 'euc-jp'
-  let s:enc_jisx = 'iso-2022-jp'
-
-  " 利用しているiconvライブラリの性能を調べる。
-  "
-  " 比較的新しいJISX0213をサポートしているか検査する。euc-jisx0213が定義してい
-  " る範囲の文字をcp932からeuc-jisx0213へ変換できるかどうかで判断する。
-  "
-  if iconv("\x87\x64\x87\x6a", 'cp932', 'euc-jisx0213') ==# "\xad\xc5\xad\xcb"
-    let s:enc_eucjp = 'euc-jisx0213,euc-jp'
-    let s:enc_jisx = 'iso-2022-jp-3'
-  endif
-
-  let value = 'ucs-bom'
-  if &encoding !=? 'utf-8'
-    let value = value. ',ucs-2le,ucs-2'
-  endif
-
-  if &encoding ==? 'utf-8'
-    " UTF-8環境向けにfileencodingsを設定する
-    let value = value. ','.s:enc_jisx. ','.s:enc_eucjp. ',cp932'
-  elseif &encoding ==? 'cp932'
-    " CP932環境向けにfileencodingsを設定する
-    let value = value. ','.s:enc_jisx. ',utf-8,'.s:enc_eucjp
-  elseif &encoding ==? 'euc-jp' || &encoding ==? 'euc-jisx0213'
-    " EUC-JP環境向けにfileencodingsを設定する
-    let value = value. ','.s:enc_jisx. ',utf-8,cp932'
-  endif
-  if has('guess_encode')
-    let value = 'guess,'.value
-  endif
-  let &fileencodings = value
-
-  unlet s:enc_eucjp
-  unlet s:enc_jisx
-
-  let did_encoding_settings = 1
-end
 
 " Options {{{1
 
