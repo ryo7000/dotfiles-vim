@@ -16,6 +16,7 @@ let g:ale_linters = {
 \   'c': ['clangtidy'],
 \   'cpp': ['clangtidy'],
 \   'php': ['phpcs', 'phpstan'],
+\   'ruby': ['rubocop'],
 \}
 
 " C/C++
