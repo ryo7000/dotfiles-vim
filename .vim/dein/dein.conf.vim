@@ -16,6 +16,15 @@ function! s:build_cpsm()
   let g:dein#plugin.build = cmd
 endfunction
 
+function! s:install_vim_clap()
+  if has('win32') || has('win64')
+    let cmd = 'powershell.exe .\install.ps1'
+  else
+    let cmd = './install.sh'
+  end
+  let g:dein#plugin.build = cmd
+endfunction
+
 function! s:init(filename)
   let dein_home = g:vim_home . '/.vim/dein'
   let dein_repo = dein_home . '/dein.vim'
@@ -44,12 +53,11 @@ function! s:init(filename)
     call dein#add('Shougo/unite-outline', #{depends: 'Shougo/unite.vim'})
 
     " denite
-    call dein#add('Shougo/denite.nvim',
-      \ #{rev: '3.2',
-      \   depends: ['roxma/nvim-yarp', 'roxma/vim-hug-neovim-rpc'],
-      \   hook_add: 'source ' . dein_home . '/configs/denite.vim'})
-    call dein#add('roxma/nvim-yarp')
-    call dein#add('roxma/vim-hug-neovim-rpc')
+    " call dein#add('Shougo/denite.nvim',
+    "   \ #{depends: ['roxma/nvim-yarp', 'roxma/vim-hug-neovim-rpc'],
+    "   \   hook_add: 'source ' . dein_home . '/configs/denite.vim'})
+    " call dein#add('roxma/nvim-yarp')
+    " call dein#add('roxma/vim-hug-neovim-rpc')
 
     call dein#add('Shougo/neosnippet', #{hook_add: 'source ' . dein_home . '/configs/neosnippet.vim'})
     call dein#add('Shougo/neosnippet-snippets')
@@ -77,6 +85,7 @@ function! s:init(filename)
     call dein#add('mattn/gist-vim', #{depends: ['mattn/webapi-vim'], hook_add: 'source ' . dein_home . '/configs/gist-vim.vim'})
     call dein#add('prabirshrestha/async.vim')
     call dein#add('othree/eregex.vim', #{hook_add: 'source ' . dein_home . '/configs/eregex.vim'})
+    call dein#add('liuchengxu/vim-clap', #{hook_post_update: function('s:install_vim_clap'), hook_add: 'source ' . dein_home . '/configs/vim-clap.vim'})
 
     " asyncomplete
     call dein#add('prabirshrestha/vim-lsp', #{hook_add: 'source ' . dein_home . '/configs/vim-lsp.vim'})
