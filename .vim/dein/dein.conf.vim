@@ -85,7 +85,8 @@ function! s:init(filename)
     call dein#add('mattn/gist-vim', #{depends: ['mattn/webapi-vim'], hook_add: 'source ' . dein_home . '/configs/gist-vim.vim'})
     call dein#add('prabirshrestha/async.vim')
     call dein#add('othree/eregex.vim', #{hook_add: 'source ' . dein_home . '/configs/eregex.vim'})
-    call dein#add('liuchengxu/vim-clap', #{hook_post_update: function('s:install_vim_clap'), hook_add: 'source ' . dein_home . '/configs/vim-clap.vim'})
+    " call dein#add('liuchengxu/vim-clap', #{hook_post_update: function('s:install_vim_clap'), hook_add: 'source ' . dein_home . '/configs/vim-clap.vim'})
+    call dein#add('ryo7000/vim-clap', #{rev: 'fix-vim8-job-id', hook_post_update: function('s:install_vim_clap'), hook_add: 'source ' . dein_home . '/configs/vim-clap.vim'})
 
     " asyncomplete
     call dein#add('prabirshrestha/vim-lsp', #{hook_add: 'source ' . dein_home . '/configs/vim-lsp.vim'})
