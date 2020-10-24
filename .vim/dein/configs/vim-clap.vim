@@ -6,3 +6,4 @@ nnoremap <silent> [clap]n :Clap history<CR>
 nnoremap <silent> [clap]r :Clap files<CR>
 
 let g:clap_theme = 'atom_dark'
+let g:clap_layout = { 'relative': 'editor' }
