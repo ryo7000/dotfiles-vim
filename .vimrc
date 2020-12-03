@@ -99,6 +99,7 @@ set ruler
 set wildmenu
 set fileformat=unix
 set expandtab
+set diffopt& diffopt+=algorithm:histogram,indent-heuristic
 
 set ignorecase
 set smartcase
