@@ -7,3 +7,7 @@ nnoremap <silent> [clap]r :Clap files<CR>
 
 let g:clap_theme = 'atom_dark'
 let g:clap_layout = { 'relative': 'editor' }
+if exists('*matchfuzzypos')
+  " use vim builtin matchfuzzy
+  let g:clap_force_matchfuzzy = v:true
+endif
