@@ -88,11 +88,12 @@ function! s:init(filename)
     call dein#add('liuchengxu/vim-clap', #{hook_post_update: function('s:install_vim_clap'), hook_add: 'source ' . dein_home . '/configs/vim-clap.vim'})
 
     " asyncomplete
-    call dein#add('prabirshrestha/vim-lsp', #{hook_add: 'source ' . dein_home . '/configs/vim-lsp.vim'})
-    call dein#add('prabirshrestha/asyncomplete.vim')
-    call dein#add('prabirshrestha/asyncomplete-lsp.vim')
-    call dein#add('prabirshrestha/asyncomplete-buffer.vim', #{hook_add: 'source ' . dein_home . '/configs/asyncomplete-buffer.vim'})
-    call dein#add('prabirshrestha/asyncomplete-file.vim', #{hook_add: 'source ' . dein_home . '/configs/asyncomplete-file.vim'})
+"   call dein#add('prabirshrestha/vim-lsp', #{hook_add: 'source ' . dein_home . '/configs/vim-lsp.vim'})
+"   call dein#add('prabirshrestha/asyncomplete.vim')
+"   call dein#add('prabirshrestha/asyncomplete-lsp.vim')
+"   call dein#add('prabirshrestha/asyncomplete-buffer.vim', #{hook_add: 'source ' . dein_home . '/configs/asyncomplete-buffer.vim'})
+"   call dein#add('prabirshrestha/asyncomplete-file.vim', #{hook_add: 'source ' . dein_home . '/configs/asyncomplete-file.vim'})
+    call dein#add('neoclide/coc.nvim', #{lazy: 1, on_event: ['VimEnter'], rev: 'release', hook_post_source: 'source ' . dein_home . '/configs/coc.vim'})
 
     " lazy
     call dein#add('plasticboy/vim-markdown', #{lazy: 1, on_ft: 'markdown', hook_source: 'source ' . dein_home . '/configs/vim-markdown.vim'})
