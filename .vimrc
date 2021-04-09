@@ -100,6 +100,7 @@ set wildmenu
 set fileformat=unix
 set expandtab
 set diffopt& diffopt+=algorithm:histogram,indent-heuristic
+set synmaxcol=320
 
 set ignorecase
 set smartcase
