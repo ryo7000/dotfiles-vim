@@ -146,4 +146,8 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
+" To fix cursor disappear
+let g:coc_disable_transparent_cursor = 1
+
 hi CocFloating ctermfg=188 ctermbg=238 guifg=#d7d7d7 guibg=#444444
+
