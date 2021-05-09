@@ -44,12 +44,7 @@ if !has("gui_running")
   if !exists('g:colors_name')
     colorscheme lucius
     set background=dark
-    " for tmux + urxvt
-    " via http://snk.tuxfamily.org/log/vim-256color-bce.html
-    set t_ut=
   endif
-
-  set t_Co=256
 
   " Termでmouseを使う設定
   set mouse=a
