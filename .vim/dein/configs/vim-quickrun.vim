@@ -9,4 +9,7 @@ let g:quickrun_config = {
 \ 'cpp': {
 \   'cmdopt': '-std=c++11',
 \ },
+\ 'rust': {
+\   'type': 'rust/cargo',
+\ },
 \}
