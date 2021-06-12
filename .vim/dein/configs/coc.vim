@@ -151,3 +151,5 @@ let g:coc_disable_transparent_cursor = 1
 
 hi CocFloating ctermfg=188 ctermbg=238 guifg=#d7d7d7 guibg=#444444
 
+inoremap <silent><expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+inoremap <silent><expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
