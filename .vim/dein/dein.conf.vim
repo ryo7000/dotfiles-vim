@@ -3,7 +3,7 @@ function! s:init(path, filename)
   let dein_repo = dein_home . '/dein.vim'
 
   if has('vim_starting')
-    let &runtimepath .= ',' . a:path
+    let &runtimepath .= ',' . a:path . '/configs'
     let &runtimepath .= ',' . dein_repo
   endif
 
@@ -95,7 +95,7 @@ function! s:init(path, filename)
     call dein#add('tpope/vim-rails', #{lazy: 1, on_ft: ['ruby', 'eruby']})
 
     " go
-    call dein#add('fatih/vim-go', #{lazy: 1, on_ft: 'go', hook_post_source:  'source ' . dein_home . '/configs/asyncomplete-buffer.vim'})
+    "call dein#add('fatih/vim-go', #{lazy: 1, on_ft: 'go', hook_post_source:  'source ' . dein_home . '/configs/asyncomplete-buffer.vim'})
 
     call dein#end()
     call dein#save_state()
