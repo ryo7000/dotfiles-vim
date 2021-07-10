@@ -28,49 +28,49 @@ function! s:init(path, filename)
 
     " denite
     " call dein#add('Shougo/denite.nvim',
-    "   \ #{depends: ['roxma/nvim-yarp', 'roxma/vim-hug-neovim-rpc'],
-    "   \   hook_add: 'source ' . dein_home . '/configs/denite.vim'})
+    "   \ extend(#{depends: ['roxma/nvim-yarp', 'roxma/vim-hug-neovim-rpc']},
+    "   \   configure#denite#hooks()))
     " call dein#add('roxma/nvim-yarp')
     " call dein#add('roxma/vim-hug-neovim-rpc')
 
-    call dein#add('Shougo/neosnippet', #{hook_add: 'source ' . dein_home . '/configs/neosnippet.vim'})
+    call dein#add('Shougo/neosnippet', configure#neosnippet#hooks())
     call dein#add('Shougo/neosnippet-snippets')
-    call dein#add('justinmk/vim-dirvish', #{hook_add: 'source ' . dein_home . '/configs/vim-dirvish.vim'})
+    call dein#add('justinmk/vim-dirvish', configure#vim_dirvish#hooks())
     call dein#add('tpope/vim-eunuch')
     call dein#add('Shougo/neomru.vim')
     call dein#add('thinca/vim-ref')
-    call dein#add('w0rp/ale', #{rev: 'v3.0.0', hook_add: 'source ' . dein_home . '/configs/ale.vim'})
+    call dein#add('w0rp/ale', extend(#{rev: 'v3.0.0'}, configure#ale#hooks()))
     call dein#add('maximbaz/lightline-ale', #{depends: ['w0rp/ale', 'itchyny/lightline.vim']})
-    call dein#add('itchyny/lightline.vim', #{hook_add: 'source ' . dein_home . '/configs/lightline.vim'})
-    call dein#add('majutsushi/tagbar', #{rev: 'v2.6.1', hook_add: 'source ' . dein_home . '/configs/tagbar.vim'})
-    call dein#add('tpope/vim-fugitive', #{hook_add: 'source ' . dein_home . '/configs/vim-fugitive.vim'})
+    call dein#add('itchyny/lightline.vim', configure#lightline#hooks())
+    call dein#add('majutsushi/tagbar', extend(#{rev: 'v2.6.1'}, configure#tagbar#hooks()))
+    call dein#add('tpope/vim-fugitive', configure#vim_fugitive#hooks())
     call dein#add('tpope/vim-surround')
     call dein#add('vim-scripts/vcscommand.vim')
-    call dein#add('thinca/vim-quickrun', #{hook_add: 'source ' . dein_home . '/configs/vim-quickrun.vim'})
+    call dein#add('thinca/vim-quickrun', configure#vim_quickrun#hooks())
     call dein#add('qpkorr/vim-renamer')
     call dein#add('vim-scripts/Align')
     call dein#add('kannokanno/previm')
     call dein#add('tyru/open-browser.vim')
-    call dein#add('ntpeters/vim-better-whitespace', #{hook_add: 'source ' . dein_home . '/configs/vim-better-whitespace.vim'})
-    call dein#add('Shougo/vimproc.vim', #{hook_post_update: 'call installer#vimproc()'})
-    call dein#add('nixprime/cpsm', #{hook_post_update: 'call installer#cpsm()'})
+    call dein#add('ntpeters/vim-better-whitespace', configure#vim_better_whitespace#hooks())
+    call dein#add('Shougo/vimproc.vim', configure#vimproc#hooks())
+    call dein#add('nixprime/cpsm', configure#cpsm#hooks())
     call dein#add('jonathanfilip/vim-lucius')
     call dein#add('mattn/webapi-vim')
-    call dein#add('mattn/gist-vim', #{depends: ['mattn/webapi-vim'], hook_add: 'source ' . dein_home . '/configs/gist-vim.vim'})
+    call dein#add('mattn/gist-vim', extend(#{depends: ['mattn/webapi-vim']}, configure#gist_vim#hooks()))
     call dein#add('prabirshrestha/async.vim')
-    call dein#add('othree/eregex.vim', #{hook_add: 'source ' . dein_home . '/configs/eregex.vim'})
-    call dein#add('liuchengxu/vim-clap', #{hook_post_update: 'call installer#vim_clap()', hook_add: 'source ' . dein_home . '/configs/vim-clap.vim'})
+    call dein#add('othree/eregex.vim', configure#eregex#hooks())
+    call dein#add('liuchengxu/vim-clap', configure#vim_clap#hooks())
 
     " asyncomplete
-"   call dein#add('prabirshrestha/vim-lsp', #{hook_add: 'source ' . dein_home . '/configs/vim-lsp.vim'})
+"   call dein#add('prabirshrestha/vim-lsp', configure#vim_lsp#hooks())
 "   call dein#add('prabirshrestha/asyncomplete.vim')
 "   call dein#add('prabirshrestha/asyncomplete-lsp.vim')
-"   call dein#add('prabirshrestha/asyncomplete-buffer.vim', #{hook_add: 'source ' . dein_home . '/configs/asyncomplete-buffer.vim'})
-"   call dein#add('prabirshrestha/asyncomplete-file.vim', #{hook_add: 'source ' . dein_home . '/configs/asyncomplete-file.vim'})
-    call dein#add('neoclide/coc.nvim', #{lazy: 1, on_event: ['VimEnter'], rev: 'release', hook_post_source: 'source ' . dein_home . '/configs/coc.vim'})
+"   call dein#add('prabirshrestha/asyncomplete-buffer.vim', configure#asyncomplete_buffer#hooks())
+"   call dein#add('prabirshrestha/asyncomplete-file.vim', configure#asyncomplete_file#hooks())
+    call dein#add('neoclide/coc.nvim', extend(#{lazy: 1, on_event: ['VimEnter'], rev: 'release'}, configure#coc#hooks()))
 
     " lazy
-    call dein#add('plasticboy/vim-markdown', #{lazy: 1, on_ft: 'markdown', hook_source: 'source ' . dein_home . '/configs/vim-markdown.vim'})
+    call dein#add('plasticboy/vim-markdown', extend(#{lazy: 1, on_ft: 'markdown'}, configure#vim_markdown#hooks()))
     call dein#add('lilydjwg/colorizer',
       \ #{lazy: 1,
       \   on_cmd: [
@@ -90,7 +90,7 @@ function! s:init(path, filename)
     call dein#add('posva/vim-vue', #{lazy: 1, on_ft: 'vue'})
 
     " ruby
-    call dein#add('vim-ruby/vim-ruby', #{lazy: 1, on_ft: ['ruby', 'eruby'], hook_source: 'source ' . dein_home . '/configs/vim-ruby.vim'})
+    call dein#add('vim-ruby/vim-ruby', extend(#{lazy: 1, on_ft: ['ruby', 'eruby']}, configure#vim_ruby#hooks()))
     call dein#add('slim-template/vim-slim', #{lazy: 1, on_ft: 'slim'})
     call dein#add('tpope/vim-rails', #{lazy: 1, on_ft: ['ruby', 'eruby']})
 
