@@ -1,35 +1,9 @@
-function! s:build_vimproc()
-  let cmd = ''
-  if executable('make')
-    let cmd = 'make'
-  endif
-  let g:dein#plugin.build = cmd
-endfunction
-
-function! s:build_cpsm()
-  let cmd = ''
-  if executable('make') && executable('cmake')
-    let cmd = 'sh -c "PY3=ON ./install.sh"'
-  else
-    echoe 'install build essentials such as make and cmake, gcc'
-  endif
-  let g:dein#plugin.build = cmd
-endfunction
-
-function! s:install_vim_clap()
-  if has('win32') || has('win64')
-    let cmd = 'powershell.exe .\install.ps1'
-  else
-    let cmd = './install.sh'
-  end
-  let g:dein#plugin.build = cmd
-endfunction
-
-function! s:init(filename)
+function! s:init(path, filename)
   let dein_home = g:vim_home . '/.vim/dein'
   let dein_repo = dein_home . '/dein.vim'
 
   if has('vim_starting')
+    let &runtimepath .= ',' . a:path
     let &runtimepath .= ',' . dein_repo
   endif
 
@@ -78,14 +52,14 @@ function! s:init(filename)
     call dein#add('kannokanno/previm')
     call dein#add('tyru/open-browser.vim')
     call dein#add('ntpeters/vim-better-whitespace', #{hook_add: 'source ' . dein_home . '/configs/vim-better-whitespace.vim'})
-    call dein#add('Shougo/vimproc.vim', #{hook_post_update: function('s:build_vimproc')})
-    call dein#add('nixprime/cpsm', #{hook_post_update: function('s:build_cpsm')})
+    call dein#add('Shougo/vimproc.vim', #{hook_post_update: 'call installer#vimproc()'})
+    call dein#add('nixprime/cpsm', #{hook_post_update: 'call installer#cpsm()'})
     call dein#add('jonathanfilip/vim-lucius')
     call dein#add('mattn/webapi-vim')
     call dein#add('mattn/gist-vim', #{depends: ['mattn/webapi-vim'], hook_add: 'source ' . dein_home . '/configs/gist-vim.vim'})
     call dein#add('prabirshrestha/async.vim')
     call dein#add('othree/eregex.vim', #{hook_add: 'source ' . dein_home . '/configs/eregex.vim'})
-    call dein#add('liuchengxu/vim-clap', #{hook_post_update: function('s:install_vim_clap'), hook_add: 'source ' . dein_home . '/configs/vim-clap.vim'})
+    call dein#add('liuchengxu/vim-clap', #{hook_post_update: 'call installer#vim_clap()', hook_add: 'source ' . dein_home . '/configs/vim-clap.vim'})
 
     " asyncomplete
 "   call dein#add('prabirshrestha/vim-lsp', #{hook_add: 'source ' . dein_home . '/configs/vim-lsp.vim'})
@@ -134,4 +108,4 @@ function! s:init(filename)
   let g:vimproc#download_windows_dll = 1
 endfunction
 
-call s:init(expand('<sfile>'))
+call s:init(expand('<sfile>:p:h'), expand('<sfile>'))
