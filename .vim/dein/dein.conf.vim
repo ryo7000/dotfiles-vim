@@ -81,17 +81,17 @@ function! s:init(path, filename)
     call dein#add('thinca/vim-logcat', #{lazy: 1, on_ft: 'logcat'})
 
     " javascript
-    call dein#add('pangloss/vim-javascript', #{lazy: 1, on_ft: ['javascript']})
-    call dein#add('othree/yajs.vim', #{lazy: 1, on_ft: ['javascript']})
-    call dein#add('othree/es.next.syntax.vim', #{lazy: 1, on_ft: ['javascript']})
-    call dein#add('MaxMEllon/vim-jsx-pretty', #{lazy: 1, on_ft: ['javascript']})
+    call dein#add('pangloss/vim-javascript')
+    call dein#add('othree/yajs.vim')
+    call dein#add('othree/es.next.syntax.vim')
+    call dein#add('MaxMEllon/vim-jsx-pretty')
     call dein#add('moll/vim-node', #{lazy: 1, on_ft: ['javascript']})
-    call dein#add('leafgarland/typescript-vim', #{lazy: 1, on_ft: 'typescript'})
-    call dein#add('posva/vim-vue', #{lazy: 1, on_ft: 'vue'})
+    call dein#add('leafgarland/typescript-vim')
+    call dein#add('posva/vim-vue')
 
     " ruby
     call dein#add('vim-ruby/vim-ruby', extend(#{lazy: 1, on_ft: ['ruby', 'eruby']}, configure#vim_ruby#hooks()))
-    call dein#add('slim-template/vim-slim', #{lazy: 1, on_ft: 'slim'})
+    call dein#add('slim-template/vim-slim')
     call dein#add('tpope/vim-rails', #{lazy: 1, on_ft: ['ruby', 'eruby']})
 
     " go
