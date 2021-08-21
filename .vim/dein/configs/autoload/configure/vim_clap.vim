@@ -1,7 +1,7 @@
 function! configure#vim_clap#hooks()
   return #{
   \ hook_post_update: 'call configure#vim_clap#hook_post_update()',
-  \ hook_add: 'call configure#vim_clap#hook_add()',
+  \ hook_post_source: 'call configure#vim_clap#hook_post_source()',
   \}
 endfunction
 
@@ -14,7 +14,7 @@ function! configure#vim_clap#hook_post_update()
   end
 endfunction
 
-function! configure#vim_clap#hook_add()
+function! configure#vim_clap#hook_post_source()
   nnoremap    [clap]   <Nop>
   nmap    <Space> [clap]
   nmap <silent> <C-s> [clap]c
@@ -37,4 +37,3 @@ function! configure#vim_clap#hook_add()
   \ 'sink': 'Clap files'
   \ }
 endfunction
-

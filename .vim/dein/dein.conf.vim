@@ -59,7 +59,7 @@ function! s:init(path, filename)
     call dein#add('mattn/gist-vim', extend(#{depends: ['mattn/webapi-vim']}, configure#gist_vim#hooks()))
     call dein#add('prabirshrestha/async.vim')
     call dein#add('othree/eregex.vim', configure#eregex#hooks())
-    call dein#add('liuchengxu/vim-clap', configure#vim_clap#hooks())
+    call dein#add('liuchengxu/vim-clap', extend(#{lazy: v:true, on_event: ['VimEnter']}, configure#vim_clap#hooks()))
 
     " asyncomplete
 "   call dein#add('prabirshrestha/vim-lsp', configure#vim_lsp#hooks())
