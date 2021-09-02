@@ -33,8 +33,6 @@ function! s:init(path, filename)
     " call dein#add('roxma/nvim-yarp')
     " call dein#add('roxma/vim-hug-neovim-rpc')
 
-    call dein#add('Shougo/neosnippet', configure#neosnippet#hooks())
-    call dein#add('Shougo/neosnippet-snippets')
     call dein#add('justinmk/vim-dirvish', configure#vim_dirvish#hooks())
     call dein#add('tpope/vim-eunuch')
     call dein#add('Shougo/neomru.vim')

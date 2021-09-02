@@ -162,6 +162,7 @@ function! configure#coc#hook_post_source()
   inoremap <silent><expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 
   let g:coc_global_extensions = [
+    \ 'coc-snippets',
     \ 'coc-tsserver',
     \ 'coc-rust-analyzer',
     \ 'coc-json',
