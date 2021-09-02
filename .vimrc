@@ -64,7 +64,6 @@ endif
 
 set autoindent
 set backspace=indent,eol,start
-set cinoptions=g0,(0
 set cmdheight=2
 set formatoptions=tcqmM
 if executable('rg')
