@@ -13,7 +13,7 @@ function! configure#ale#hook_add()
   let g:ale_fixers = {
   \  'javascript': ['prettier', 'eslint'],
   \  'typescript': ['prettier'],
-  \  'vue': ['vls'],
+  \  'vue': ['prettier'],
   \}
 
   let g:ale_linters = {
