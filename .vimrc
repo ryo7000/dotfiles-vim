@@ -95,6 +95,7 @@ set fileformat=unix
 set expandtab
 set diffopt& diffopt+=algorithm:histogram,indent-heuristic
 set synmaxcol=320
+set belloff=all
 
 set ignorecase
 set smartcase
