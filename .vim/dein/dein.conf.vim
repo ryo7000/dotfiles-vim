@@ -3,7 +3,6 @@ function! s:init(path, filename)
   let dein_repo = dein_home . '/dein.vim'
 
   if has('vim_starting')
-    let &runtimepath .= ',' . a:path . '/configs'
     let &runtimepath .= ',' . dein_repo
   endif
 
