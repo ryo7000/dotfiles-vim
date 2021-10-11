@@ -22,6 +22,9 @@ function! configure#ale#hook_add()
   let g:ale_linters = {
   \   'html': ['htmlhint'],
   \   'javascript': ['eslint'],
+  \   'javascriptreact': ['eslint'],
+  \   'typescript': ['eslint'],
+  \   'typescriptreact': ['eslint'],
   \   'vue': ['vls'],
   \   'c': ['clangtidy'],
   \   'cpp': ['clangtidy'],
