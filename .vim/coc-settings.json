@@ -1,5 +1,5 @@
 {
     "coc.preferences.formatOnSaveFiletypes": ["rust"],
     "rust-analyzer.checkOnSave.command": "clippy",
-    "snippets.userSnippetsDirectory": "~/.vim/snippets"
+    "snippets.userSnippetsDirectory": "~/.vim/UltiSnips"
 }
