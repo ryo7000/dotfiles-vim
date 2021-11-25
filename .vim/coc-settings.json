@@ -1,5 +1,6 @@
 {
     "coc.preferences.formatOnSaveFiletypes": ["rust"],
     "rust-analyzer.checkOnSave.command": "clippy",
-    "snippets.userSnippetsDirectory": "~/.vim/UltiSnips"
+    "snippets.userSnippetsDirectory": "~/.vim/UltiSnips",
+    "go.goplsPath": "~/devel/go/bin/gopls"
 }
