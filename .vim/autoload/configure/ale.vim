@@ -16,6 +16,7 @@ function! configure#ale#hook_add()
   \  'typescript': ['prettier'],
   \  'typescriptreact': ['prettier'],
   \  'vue': ['prettier'],
+  \  'go': ['gofmt'],
   \}
   let g:ale_fix_on_save = 1
 
