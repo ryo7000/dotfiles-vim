@@ -14,7 +14,7 @@ function! configure#vim_quickrun#hook_add()
   \      "outputter/error/error" : "quickfix"
   \ },
   \ 'cpp': {
-  \   'cmdopt': '-std=c++11',
+  \   'cmdopt': '-std=c++14',
   \ },
   \ 'rust': {
   \   'type': 'rust/cargo',
