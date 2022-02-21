@@ -57,4 +57,4 @@ if (!(Test-Path python3 -PathType Container)) {
 
 # dein
 echo "clone dein.vim"
-Start-Process -Wait -FilePath "C:\Program Files\Git\bin\git.exe" -ArgumentList "clone", "https://github.com/Shougo/dein.vim", ".vim\dein\dein.vim"
+Start-Process -Wait -FilePath "git" -ArgumentList "clone", "https://github.com/Shougo/dein.vim", ".vim\dein\dein.vim"
