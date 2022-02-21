@@ -17,7 +17,7 @@ if (!(Test-Path vim.exe -PathType Leaf)) {
     Remove-Item vim.zip
     Remove-Item vim82-kaoriya-win64
   } else {
-    Invoke-WebRequest -Uri "https://github.com/vim/vim-win32-installer/releases/download/v8.2.3113/gvim_8.2.3113_x64_signed.zip" -OutFile vim.zip
+    Invoke-WebRequest -Uri "https://github.com/vim/vim-win32-installer/releases/download/v8.2.4428/gvim_8.2.4428_x64.zip" -OutFile vim.zip
 
     Expand-Archive vim.zip .
     Move-Item vim\vim82\* .
@@ -38,7 +38,7 @@ if (!(Test-Path rg.exe -PathType Leaf)) {
 
 # python3
 if (!(Test-Path python3 -PathType Container)) {
-  Invoke-WebRequest -Uri "https://www.python.org/ftp/python/3.9.6/python-3.9.6-embed-amd64.zip" -OutFile python3.zip
+  Invoke-WebRequest -Uri "https://www.python.org/ftp/python/3.9.10/python-3.9.10-embed-amd64.zip" -OutFile python3.zip
 
   Expand-Archive python3.zip python3
   Expand-Archive python3\python39.zip python3
@@ -56,4 +56,5 @@ if (!(Test-Path python3 -PathType Container)) {
 }
 
 # dein
-Start-Process -Wait -FilePath "C:\Program Files\Git\bin\git.exe" -ArgumentList "clone https://github.com/Shougo/dein.vim .vim\dein\dein.vim"
+echo "clone dein.vim"
+Start-Process -Wait -FilePath "C:\Program Files\Git\bin\git.exe" -ArgumentList "clone", "https://github.com/Shougo/dein.vim", ".vim\dein\dein.vim"
