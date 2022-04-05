@@ -159,6 +159,13 @@ function! configure#coc#hook_post_source()
   " To fix cursor disappear
   let g:coc_disable_transparent_cursor = 1
 
+  " Coc highlight for lucius
+  hi link CocFloating CursorLine
+  hi link CocErrorFloat CursorLine
+  hi link CocWarningFloat CursorLine
+  hi link CocInfoFloat CursorLine
+  hi link CocHintFloat CursorLine
+
   inoremap <silent><expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
   inoremap <silent><expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 
