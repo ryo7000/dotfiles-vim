@@ -4,6 +4,14 @@ function! configure#coc#hooks()
   \}
 endfunction
 
+function! configure#coc#add_extensions(list)
+  if (!exists('g:coc_global_extensions'))
+    let g:coc_global_extensions = []
+  endif
+  call extend(g:coc_global_extensions, a:list)
+  let g:coc_global_extensions = uniq(sort(g:coc_global_extensions))
+endfunction
+
 function! configure#coc#hook_post_source()
   " Always show the signcolumn, otherwise it would shift the text each time
   " diagnostics appear/become resolved.
@@ -169,11 +177,5 @@ function! configure#coc#hook_post_source()
   inoremap <silent><expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
   inoremap <silent><expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 
-  let g:coc_global_extensions = [
-    \ 'coc-snippets',
-    \ 'coc-tsserver',
-    \ 'coc-rust-analyzer',
-    \ 'coc-json',
-    \ 'coc-go'
-    \ ]
+  call configure#coc#add_extensions(['coc-snippets', 'coc-json'])
 endfunction
