@@ -1,5 +1,5 @@
 {
-    "coc.preferences.formatOnSaveFiletypes": ["rust", "go"],
+    "coc.preferences.formatOnSaveFiletypes": ["rust", "go", "cpp"],
     "rust-analyzer.checkOnSave.command": "clippy",
     "snippets.userSnippetsDirectory": "~/.vim/UltiSnips",
     "go.goplsPath": "~/devel/go/bin/gopls",
@@ -11,6 +11,19 @@
             "command": "efm-langserver",
             "args": [],
             "filetypes": ["sh"]
+        },
+        "ccls": {
+            "command": "ccls",
+            "filetypes": ["c", "cpp", "cc", "objc", "objcpp"],
+            "rootPatterns": [".ccls-root", "compile_commands.json"],
+            "initializationOptions": {
+                "cache": {
+                    "directory": ".ccls-cache"
+                },
+                "client": {
+                    "snippetSupport": true
+                }
+            }
         }
     }
 }
