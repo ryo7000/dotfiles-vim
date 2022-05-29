@@ -11,6 +11,21 @@ tools:
       - '%f:%l:%c: %tarning: %m'
       - '%f:%l:%c: %tote: %m'
 
+  cpp-clang-tidy: &cpp-clang-tidy
+    lint-command: 'clang-tidy'
+    lint-source: 'clang-tidy'
+    lint-ignore-exit-code: true
+    lint-formats:
+      - '%f:%l:%c: %trror: %m'
+      - '%f:%l:%c: %tarning: %m'
+      - '%f:%l:%c: %tote: %m'
+
 languages:
   sh:
     - <<: *sh-shellcheck
+
+  c:
+    - <<: *cpp-clang-tidy
+
+  cpp:
+    - <<: *cpp-clang-tidy

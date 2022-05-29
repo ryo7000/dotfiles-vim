@@ -26,8 +26,6 @@ function! configure#ale#hook_add()
   \   'typescript': ['eslint'],
   \   'typescriptreact': ['eslint'],
   \   'vue': ['vls'],
-  \   'c': ['clangtidy'],
-  \   'cpp': ['clangtidy'],
   \   'php': ['phpcs', 'phpstan'],
   \   'go' : ['go vet'],
   \}
