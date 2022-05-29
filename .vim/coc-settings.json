@@ -5,5 +5,12 @@
     "go.goplsPath": "~/devel/go/bin/gopls",
     "go.goplsOptions": {
       "gofumpt": true
+    },
+    "languageserver": {
+        "efm": {
+            "command": "efm-langserver",
+            "args": [],
+            "filetypes": ["sh"]
+        }
     }
 }
