@@ -24,6 +24,15 @@ tools:
   js-formatter: &js-formatter
     format-command: './node_modules/.bin/prettier'
 
+  js-eslint: &js-eslint
+    lint-command: './node_modules/.bin/eslint -f visualstudio --stdin --stdin-filename ${INPUT}'
+    lint-source: 'eslint'
+    lint-ignore-exit-code: true
+    lint-stdin: true
+    lint-formats:
+      - "%f(%l,%c): %tarning %m"
+      - "%f(%l,%c): %rror %m"
+
 languages:
   sh:
     - <<: *sh-shellcheck
@@ -36,18 +45,24 @@ languages:
 
   js:
     - <<: *js-formatter
+    - <<: *js-eslint
 
   javascript:
     - <<: *js-formatter
+    - <<: *js-eslint
 
   javascriptreact:
     - <<: *js-formatter
+    - <<: *js-eslint
 
   typescript:
     - <<: *js-formatter
+    - <<: *js-eslint
 
   typescriptreact:
     - <<: *js-formatter
+    - <<: *js-eslint
 
   vue:
     - <<: *js-formatter
+    - <<: *js-eslint
