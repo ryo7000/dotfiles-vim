@@ -21,6 +21,9 @@ tools:
       - '%f:%l:%c: %tarning: %m'
       - '%f:%l:%c: %tote: %m'
 
+  js-formatter: &js-formatter
+    format-command: './node_modules/.bin/prettier'
+
 languages:
   sh:
     - <<: *sh-shellcheck
@@ -30,3 +33,21 @@ languages:
 
   cpp:
     - <<: *cpp-clang-tidy
+
+  js:
+    - <<: *js-formatter
+
+  javascript:
+    - <<: *js-formatter
+
+  javascriptreact:
+    - <<: *js-formatter
+
+  typescript:
+    - <<: *js-formatter
+
+  typescriptreact:
+    - <<: *js-formatter
+
+  vue:
+    - <<: *js-formatter

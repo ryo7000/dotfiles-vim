@@ -1,5 +1,14 @@
 {
-    "coc.preferences.formatOnSaveFiletypes": ["rust", "go", "cpp"],
+    "coc.preferences.formatOnSaveFiletypes": [
+      "rust",
+      "go",
+      "cpp",
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact",
+      "vue"
+    ],
     "rust-analyzer.checkOnSave.command": "clippy",
     "snippets.userSnippetsDirectory": "~/.vim/UltiSnips",
     "go.goplsPath": "~/devel/go/bin/gopls",
@@ -10,7 +19,16 @@
         "efm": {
             "command": "efm-langserver",
             "args": [],
-            "filetypes": ["sh", "c", "cpp"]
+            "filetypes": [
+              "sh",
+              "c",
+              "cpp",
+              "javascript",
+              "javascriptreact",
+              "typescript",
+              "typescriptreact",
+              "vue"
+            ]
         },
         "ccls": {
             "command": "ccls",

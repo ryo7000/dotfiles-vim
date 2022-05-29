@@ -10,14 +10,6 @@ function! configure#ale#hook_add()
   let g:ale_echo_msg_format = 'ALE: [%linter%][%severity%]%[code]% %s '
   let g:ale_disable_lsp = 1
   let g:ale_linters_explicit = 1
-  let g:ale_fixers = {
-  \  'javascript': ['prettier'],
-  \  'javascriptreact': ['prettier'],
-  \  'typescript': ['prettier'],
-  \  'typescriptreact': ['prettier'],
-  \  'vue': ['prettier'],
-  \}
-  let g:ale_fix_on_save = 1
 
   let g:ale_linters = {
   \   'html': ['htmlhint'],
