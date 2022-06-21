@@ -24,6 +24,13 @@ tools:
   js-formatter: &js-formatter
     format-command: './node_modules/.bin/prettier --stdin-filepath ${INPUT}'
     format-stdin: true
+    root-markers:
+      - package.json
+      - .prettierrc.js
+      - .prettierrc.yml
+      - .prettierrc.yaml
+      - .prettierrc.toml
+      - .prettierrc.json
 
   js-eslint: &js-eslint
     lint-command: './node_modules/.bin/eslint -f visualstudio --stdin --stdin-filename ${INPUT}'
@@ -33,6 +40,12 @@ tools:
     lint-formats:
       - "%f(%l,%c): %tarning %m"
       - "%f(%l,%c): %rror %m"
+    root-markers:
+      - package.json
+      - .eslintrc.js
+      - .eslintrc.yaml
+      - .eslintrc.yml
+      - .eslintrc.json
 
   python-flake8: &python-flake8
     lint-command: 'flake8 --stdin-display-name ${INPUT} -'
