@@ -61,12 +61,6 @@ if has('win32') || has('win64')
   set isfname-=:
 endif
 
-if has('kaoriya')
-  set ambiwidth=auto
-else
-  set ambiwidth=double
-endif
-
 set autoindent
 set backspace=indent,eol,start
 set cmdheight=2
