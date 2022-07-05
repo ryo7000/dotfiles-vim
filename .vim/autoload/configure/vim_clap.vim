@@ -22,6 +22,7 @@ function! configure#vim_clap#hook_post_source()
   nnoremap <silent> [clap]n :Clap history<CR>
   nnoremap <silent> [clap]r :Clap files<CR>
   nnoremap <silent> [clap]q :Clap quick_open<CR>
+  nnoremap <silent> [clap]w :Clap windows<CR>
 
   let g:clap_theme = 'atom_dark'
   let g:clap_layout = { 'relative': 'editor' }
