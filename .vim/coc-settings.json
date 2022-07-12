@@ -3,10 +3,6 @@
       "rust",
       "go",
       "cpp",
-      "javascript",
-      "javascriptreact",
-      "typescript",
-      "typescriptreact",
       "vue",
       "python"
     ],
