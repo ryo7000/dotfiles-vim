@@ -21,6 +21,12 @@ tools:
       - '%f:%l:%c: %tarning: %m'
       - '%f:%l:%c: %tote: %m'
 
+  clang-format: &clang-format
+    format-command: 'clang-format --assume-filename ${INPUT}'
+    format-stdin: true
+    root-markers:
+      - .clang-format
+
   js-formatter: &js-formatter
     format-command: './node_modules/.bin/prettier --stdin-filepath ${INPUT}'
     format-stdin: true
@@ -105,3 +111,6 @@ languages:
     - <<: *python-flake8
     - <<: *python-mypy
     - <<: *python-autopep8
+
+  proto:
+    - <<: *clang-format
