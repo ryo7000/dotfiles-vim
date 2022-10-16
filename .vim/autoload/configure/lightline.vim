@@ -48,9 +48,6 @@ function! configure#lightline#hook_add()
   \             ['fileformat', 'fileencoding', 'filetype'],
   \             ['linter_errors', 'linter_warnings', 'linter_ok']]
   \ },
-  \ 'component': {
-  \   'readonly': '%{&readonly?"\u2b64":""}',
-  \ },
   \ 'component_function': {
   \   'mode': printf('<SNR>%d_LightlineMode', sid),
   \   'readonly': printf('<SNR>%d_LightlineReadonly', sid),
