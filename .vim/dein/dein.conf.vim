@@ -92,6 +92,9 @@ function! s:init(path, filename)
     call dein#add('slim-template/vim-slim')
     call dein#add('tpope/vim-rails', #{lazy: 1, on_ft: ['ruby', 'eruby']})
 
+    " dart
+    call dein#add('dart-lang/dart-vim-plugin', #{lazy: 1, on_ft: ['dart']})
+
     " go
     "call dein#add('fatih/vim-go', #{lazy: 1, on_ft: 'go', hook_post_source:  'source ' . dein_home . '/configs/asyncomplete-buffer.vim'})
 

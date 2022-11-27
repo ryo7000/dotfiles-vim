@@ -1,5 +1,5 @@
 {
-    "[rust][go][cpp][vue][python][proto]": {
+    "[rust][go][cpp][vue][python][proto][dart]": {
       "coc.preferences.formatOnSave": true
     },
     "rust-analyzer.checkOnSave.command": "clippy",
