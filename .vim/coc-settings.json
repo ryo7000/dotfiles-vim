@@ -1,12 +1,7 @@
 {
-    "coc.preferences.formatOnSaveFiletypes": [
-      "rust",
-      "go",
-      "cpp",
-      "vue",
-      "python",
-      "proto"
-    ],
+    "[rust][go][cpp][vue][python][proto]": {
+      "coc.preferences.formatOnSave": true
+    },
     "rust-analyzer.checkOnSave.command": "clippy",
     "snippets.userSnippetsDirectory": "~/.vim/UltiSnips",
     "go.goplsPath": "~/devel/go/bin/gopls",
