@@ -65,7 +65,7 @@ function! s:init(path, filename)
 "   call dein#add('prabirshrestha/asyncomplete-lsp.vim')
 "   call dein#add('prabirshrestha/asyncomplete-buffer.vim', configure#asyncomplete_buffer#hooks())
 "   call dein#add('prabirshrestha/asyncomplete-file.vim', configure#asyncomplete_file#hooks())
-    call dein#add('neoclide/coc.nvim', extend(#{lazy: 1, on_event: ['VimEnter'], rev: 'release'}, configure#coc#hooks()))
+    call dein#add('neoclide/coc.nvim', extend(#{rev: 'release'}, configure#coc#hooks()))
 
     " lazy
     call dein#add('plasticboy/vim-markdown', extend(#{lazy: 1, on_ft: 'markdown'}, configure#vim_markdown#hooks()))

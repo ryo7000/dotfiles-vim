@@ -1,6 +1,6 @@
 function! configure#coc#hooks()
   return #{
-  \ hook_post_source: 'call configure#coc#hook_post_source()',
+  \ hook_add: 'call configure#coc#hook_add()',
   \}
 endfunction
 
@@ -12,7 +12,7 @@ function! configure#coc#add_extensions(list)
   let g:coc_global_extensions = uniq(sort(g:coc_global_extensions))
 endfunction
 
-function! configure#coc#hook_post_source()
+function! configure#coc#hook_add()
   " Always show the signcolumn, otherwise it would shift the text each time
   " diagnostics appear/become resolved.
   set signcolumn=yes
@@ -94,8 +94,8 @@ function! configure#coc#hook_post_source()
   " Apply AutoFix to problem on the current line.
   nmap <leader>qf  <Plug>(coc-fix-current)
 
-  " Toggle diagnostics
-  nmap <silent> <leader>g :call CocAction('diagnosticToggle')<CR>
+  " Run the Code Lens action on the current line.
+  nmap <leader>cl  <Plug>(coc-codelens-action)
 
   " Map function and class text objects
   " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
@@ -154,6 +154,9 @@ function! configure#coc#hook_post_source()
   nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
   " Resume latest coc list.
   nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+  " Toggle diagnostics
+  nmap <silent> <leader>g :call CocAction('diagnosticToggle')<CR>
 
   " To fix cursor disappear
   let g:coc_disable_transparent_cursor = 1
