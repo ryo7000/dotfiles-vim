@@ -170,6 +170,7 @@ function! configure#coc#hook_add()
 
   inoremap <silent><expr> <C-j> coc#pum#visible() ? coc#pum#next(1) : "\<C-j>"
   inoremap <silent><expr> <C-k> coc#pum#visible() ? coc#pum#prev(1) : "\<C-k>"
+  nnoremap <silent><nowait> <C-i> :<C-u>CocCommand document.toggleInlayHint<cr>
 
   let g:coc_snippet_next = '<tab>'
 

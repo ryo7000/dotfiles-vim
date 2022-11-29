@@ -2,6 +2,9 @@
     "[rust][go][cpp][vue][python][proto][dart]": {
       "coc.preferences.formatOnSave": true
     },
+    "[rust]": {
+      "inlayHint.display": false
+    },
     "rust-analyzer.checkOnSave.command": "clippy",
     "snippets.userSnippetsDirectory": "~/.vim/UltiSnips",
     "go.goplsPath": "~/devel/go/bin/gopls",
