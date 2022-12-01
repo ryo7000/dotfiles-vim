@@ -16,6 +16,9 @@ function! s:init(path, filename)
     call dein#begin(dein_home, [a:filename])
     call dein#add(dein_repo)
 
+    " colorschme設定でhighlight clearされるため先頭で呼び出す
+    call dein#add('jonathanfilip/vim-lucius', configure#lucius#hooks())
+
     call dein#add('vim-jp/vimdoc-ja', #{type__depth: 1})
     call dein#add('kana/vim-fakeclip')
     call dein#add('will133/vim-dirdiff')
@@ -51,7 +54,6 @@ function! s:init(path, filename)
     call dein#add('ntpeters/vim-better-whitespace', configure#vim_better_whitespace#hooks())
     call dein#add('Shougo/vimproc.vim', configure#vimproc#hooks())
     call dein#add('nixprime/cpsm', configure#cpsm#hooks())
-    call dein#add('jonathanfilip/vim-lucius')
     call dein#add('mattn/webapi-vim')
     call dein#add('mattn/gist-vim', extend(#{depends: ['mattn/webapi-vim']}, configure#gist_vim#hooks()))
     call dein#add('prabirshrestha/async.vim')
