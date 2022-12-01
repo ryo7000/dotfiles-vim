@@ -20,6 +20,9 @@ if has('vim_starting')
   endif
 endif
 
+" configureの中で<leader>を使うためdeinのload前に設定
+let g:mapleader = "\<C-k>"
+
 " dein.vim {{{1
 execute('source ' . g:vim_home . '/.vim/dein/dein.conf.vim')
 
@@ -175,8 +178,6 @@ so $VIMRUNTIME/macros/matchit.vim
 let g:DirDiffExcludes = ".svn"
 
 " Etc {{{1
-
-let g:mapleader = "\<C-k>"
 
 " ファイルを開いた時にファイル内の最後の記憶している位置にジャンプ
 autocmd BufReadPost *
