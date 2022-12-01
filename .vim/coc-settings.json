@@ -5,6 +5,7 @@
     "[rust]": {
       "inlayHint.display": false
     },
+    "diagnostic.warningSign": "! ",
     "rust-analyzer.checkOnSave.command": "clippy",
     "snippets.userSnippetsDirectory": "~/.vim/UltiSnips",
     "go.goplsPath": "~/devel/go/bin/gopls",
