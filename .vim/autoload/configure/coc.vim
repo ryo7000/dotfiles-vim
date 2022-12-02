@@ -162,11 +162,10 @@ function! configure#coc#hook_add()
   let g:coc_disable_transparent_cursor = 1
 
   " Coc highlight for lucius
-  hi link CocFloating CursorLine
-  hi link CocErrorFloat CursorLine
-  hi link CocWarningFloat CursorLine
-  hi link CocInfoFloat CursorLine
-  hi link CocHintFloat CursorLine
+  hi link CocErrorFloat ErrorMsg
+  hi link CocWarningFloat WarningMsg
+  hi link CocInfoFloat MoreMsg
+  hi link CocHintFloat Directory
 
   inoremap <silent><expr> <C-j> coc#pum#visible() ? coc#pum#next(1) : "\<C-j>"
   inoremap <silent><expr> <C-k> coc#pum#visible() ? coc#pum#prev(1) : "\<C-k>"
