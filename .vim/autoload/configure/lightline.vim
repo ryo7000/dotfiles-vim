@@ -45,19 +45,13 @@ function! configure#lightline#hook_add()
   \ 'active': {
   \   'left':  [['mode', 'paste'], ['fugitive', 'filename']],
   \   'right': [['lineinfo'], ['percent'],
-  \             ['fileformat', 'fileencoding', 'filetype'],
-  \             ['linter_errors', 'linter_warnings', 'linter_ok']]
+  \             ['fileformat', 'fileencoding', 'filetype']],
   \ },
   \ 'component_function': {
   \   'mode': printf('<SNR>%d_LightlineMode', sid),
   \   'readonly': printf('<SNR>%d_LightlineReadonly', sid),
   \   'fugitive': printf('<SNR>%d_LightlineFugitive', sid),
   \   'filename': printf('<SNR>%d_LightlineFilename', sid),
-  \ },
-  \ 'component_type': {
-  \   'linter_warnings': 'warning',
-  \   'linter_errors': 'error',
-  \   'linter_ok': 'left',
   \ },
   \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
   \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
