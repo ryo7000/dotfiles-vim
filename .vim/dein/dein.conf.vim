@@ -99,6 +99,9 @@ function! s:init(path, filename)
     " go
     "call dein#add('fatih/vim-go', #{lazy: 1, on_ft: 'go', hook_post_source:  'source ' . dein_home . '/configs/asyncomplete-buffer.vim'})
 
+    " rust
+    call dein#add('rust-lang/rust.vim', #{lazy: 1, on_ft: ['rust']})
+
     call dein#end()
     call dein#save_state()
   endif
