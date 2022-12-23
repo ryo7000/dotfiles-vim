@@ -37,6 +37,7 @@ function! s:init(path, filename)
 
     call dein#add('lambdalisue/fern.vim', configure#fern#hooks())
     call dein#add('lambdalisue/fern-git-status.vim', #{depends: 'fern.vim'})
+    call dein#add('lambdalisue/fern-hijack.vim', #{depends: 'fern.vim'})
     call dein#add('tpope/vim-eunuch')
     call dein#add('Shougo/neomru.vim')
     call dein#add('thinca/vim-ref')
