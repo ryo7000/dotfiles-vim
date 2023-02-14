@@ -10,6 +10,8 @@ endfunction
 
 function! configure#fern#hook_add()
   let g:fern#default_hidden = 1
+  let g:fern#keepalt_on_edit = 1
+  let g:fern#keepjumps_on_edit = 1
   nmap <silent> - :<C-U> Fern %:h -reveal=%<CR>
 
   augroup fern-custom
