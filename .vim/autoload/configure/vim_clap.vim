@@ -14,13 +14,21 @@ function! configure#vim_clap#hook_post_update()
   end
 endfunction
 
+function! configure#vim_clap#files()
+  if (strpart(bufname(), 0, 4) ==# "fern")
+    execute 'Clap files ' . getcwd()
+  else
+    execute 'Clap files'
+  endif
+endfunction
+
 function! configure#vim_clap#hook_post_source()
   nnoremap    [clap]   <Nop>
   nmap    <Space> [clap]
   nmap <silent> <C-s> [clap]c
   nnoremap <silent> [clap]c :Clap filer<CR>
   nnoremap <silent> [clap]n :Clap history<CR>
-  nnoremap <silent> [clap]r :Clap files<CR>
+  nnoremap <silent> [clap]r :call configure#vim_clap#files()<CR>
   nnoremap <silent> [clap]q :Clap quick_open<CR>
   nnoremap <silent> [clap]w :Clap windows<CR>
 
