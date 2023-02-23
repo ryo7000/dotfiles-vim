@@ -12,6 +12,14 @@ tools:
       - '%f:%l:%c: %tarning: %m'
       - '%f:%l:%c: %tote: %m'
 
+  dockerfile-hadolint: &dockerfile-hadolint
+    lint-command: 'hadolint --no-color'
+    lint-formats:
+      - '%f:%l %.%.%n %tnfo: %m'
+      - '%f:%l %.%.%n %tarning: %m'
+      - '%f:%l %.%.%n %trror: %m'
+
+
   cpp-clang-tidy: &cpp-clang-tidy
     lint-command: 'clang-tidy'
     lint-source: 'clang-tidy'
@@ -114,3 +122,6 @@ languages:
 
   proto:
     - <<: *clang-format
+
+  dockerfile:
+    - <<: *dockerfile-hadolint
