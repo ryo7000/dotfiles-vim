@@ -97,6 +97,11 @@ set nomodeline
 set ignorecase
 set smartcase
 
+set backupcopy=yes
+if has('win32') || has('win64')
+  set backupcopy=auto
+endif
+
 if has('persistent_undo')
   let &undodir = g:vim_home . '/.vim/undo'
   set undofile
