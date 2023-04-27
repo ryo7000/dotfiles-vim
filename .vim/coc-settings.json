@@ -12,6 +12,7 @@
     "go.goplsOptions": {
       "gofumpt": true
     },
+    "volar.disableFormatting": true,
     "languageserver": {
         "efm": {
             "command": "efm-langserver",
