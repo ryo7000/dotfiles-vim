@@ -2,7 +2,7 @@
     "[rust][go][cpp][vue][python][proto][dart]": {
       "coc.preferences.formatOnSave": true
     },
-    "[rust]": {
+    "[rust][cpp]": {
       "inlayHint.display": false
     },
     "diagnostic.warningSign": "! ",
@@ -29,19 +29,5 @@
               "proto",
               "dockerfile"
             ]
-        },
-        "ccls": {
-            "command": "ccls",
-            "filetypes": ["c", "cpp", "cc", "objc", "objcpp"],
-            "rootPatterns": [".ccls-root", "compile_commands.json"],
-            "initializationOptions": {
-                "cache": {
-                    "directory": ".ccls-cache"
-                },
-                "client": {
-                    "snippetSupport": true
-                }
-            }
         }
-    }
 }
