@@ -6,12 +6,8 @@ function! configure#vim_clap#hooks()
 endfunction
 
 function! configure#vim_clap#hook_post_update()
-  echo 'Building: vim_clap'
-  if has('win32') || has('win64')
-    call system('powershell.exe .\install.ps1')
-  else
-    call system('./install.sh')
-  end
+  echo 'Download vim_clap'
+  call clap#installer#force_download()
 endfunction
 
 function! configure#vim_clap#files()
