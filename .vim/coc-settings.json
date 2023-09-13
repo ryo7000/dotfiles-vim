@@ -26,7 +26,6 @@
               "typescript",
               "typescriptreact",
               "vue",
-              "python",
               "proto",
               "dockerfile"
             ]
