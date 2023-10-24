@@ -9,6 +9,7 @@
     "snippets.userSnippetsDirectory": "~/.vim/UltiSnips",
     "go.goplsPath": "~/devel/go/bin/gopls",
     "go.goplsOptions": {
+      "staticcheck": true,
       "gofumpt": true
     },
     "volar.disableFormatting": true,
