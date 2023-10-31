@@ -37,8 +37,8 @@ function! configure#vim_clap#hook_post_source()
 
   let g:clap_provider_quick_open = {
   \ 'source': [
-  \   '/home/ryo/',
+  \   'home                              /home/ryo',
   \ ],
-  \ 'sink': 'Clap files'
+  \ 'sink': { selected -> execute('Fern '.split(selected)[1]) },
   \ }
 endfunction
