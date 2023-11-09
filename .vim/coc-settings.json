@@ -2,9 +2,7 @@
     "[rust][go][cpp][vue][python][proto][dart]": {
       "coc.preferences.formatOnSave": true
     },
-    "[rust][cpp]": {
-      "inlayHint.display": false
-    },
+    "inlayHint.display": false,
     "diagnostic.warningSign": "! ",
     "snippets.userSnippetsDirectory": "~/.vim/UltiSnips",
     "go.goplsPath": "~/devel/go/bin/gopls",
