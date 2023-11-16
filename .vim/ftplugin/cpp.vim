@@ -1,4 +1,4 @@
-set ts=4 sw=4 sts=4 et
+set ts=2 sw=2 sts=2 et
 set cinoptions=g0,(0
 
 call configure#coc#add_extensions(['coc-clangd'])
