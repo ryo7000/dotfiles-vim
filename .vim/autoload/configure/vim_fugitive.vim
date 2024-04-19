@@ -11,4 +11,5 @@ endfunction
 
 function! configure#vim_fugitive#hook_add()
   command! -nargs=1 GdiffHash call s:diff_hash(<q-args>)
+  nmap <leader>cv :Gvdiffsplit<cr>
 endfunction
