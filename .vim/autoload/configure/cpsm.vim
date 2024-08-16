@@ -1,10 +1,10 @@
 function! configure#cpsm#hooks()
   return #{
-  \ hook_post_update: 'call configure#cpsm#hook_post_update()',
+  \ do: { -> configure#cpsm#do() },
   \}
 endfunction
 
-function! configure#cpsm#hook_post_update()
+function! configure#cpsm#do()
   echo 'Building: cpsm'
   if executable('make') && executable('cmake')
     call system('sh -c "PY3=ON ./install.sh"')

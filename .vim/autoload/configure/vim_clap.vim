@@ -1,12 +1,11 @@
 function! configure#vim_clap#hooks()
   return #{
-  \ hook_post_update: 'call configure#vim_clap#hook_post_update()',
+  \ do: { -> configure#vim_clap#do() },
   \ hook_post_source: 'call configure#vim_clap#hook_post_source()',
   \}
 endfunction
 
-function! configure#vim_clap#hook_post_update()
-  echo 'Download vim_clap'
+function! configure#vim_clap#do()
   call clap#installer#force_download()
 endfunction
 

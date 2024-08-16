@@ -20,11 +20,11 @@ if has('vim_starting')
   endif
 endif
 
-" configureの中で<leader>を使うためdeinのload前に設定
+" configureの中で<leader>を使うためvim-jetpackのload前に設定
 let g:mapleader = "\<C-k>"
 
-" dein.vim {{{1
-execute('source ' . g:vim_home . '/.vim/dein/dein.conf.vim')
+" vim-jetpack.vim {{{1
+execute('source ' . g:vim_home . '/.vim/jetpack.conf.vim')
 
 " python3 {{{1
 if has('win32') || has('win64')
