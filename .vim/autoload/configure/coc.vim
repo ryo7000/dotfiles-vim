@@ -162,10 +162,14 @@ function! configure#coc#hook_add()
   let g:coc_disable_transparent_cursor = 1
 
   " Coc highlight for lucius
-  hi link CocErrorFloat ErrorMsg
-  hi link CocWarningFloat WarningMsg
-  hi link CocInfoFloat MoreMsg
-  hi link CocHintFloat Directory
+  " Overwrite highlight after load lucius ColorScheme
+  augroup CocHighlight
+    au!
+    autocmd ColorScheme * hi link CocErrorFloat ErrorMsg
+    autocmd ColorScheme * hi link CocWarningFloat WarningMsg
+    autocmd ColorScheme * hi link CocInfoFloat MoreMsg
+    autocmd ColorScheme * hi link CocHintFloat Directory
+  augroup END
 
   inoremap <silent><expr> <C-j> coc#pum#visible() ? coc#pum#next(1) : "\<C-j>"
   inoremap <silent><expr> <C-k> coc#pum#visible() ? coc#pum#prev(1) : "\<C-k>"
