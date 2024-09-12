@@ -198,6 +198,8 @@ endfunction
 
 function! s:coc_ft_cpp()
   call configure#coc#add_extensions(['coc-clangd'])
+
+  nnoremap <silent><nowait> <space>^ :<C-u>CocCommand clangd.switchSourceHeader<cr>
 endfunction
 
 function! s:coc_ft_go()
