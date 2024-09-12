@@ -178,4 +178,51 @@ function! configure#coc#hook_add()
   let g:coc_snippet_next = '<tab>'
 
   call configure#coc#add_extensions(['coc-snippets', 'coc-json'])
+
+  " ft functions
+  augroup coc_ft_functions
+    autocmd!
+    autocmd FileType rust call s:coc_ft_rust()
+    autocmd FileType cpp call s:coc_ft_cpp()
+    autocmd FileType go call s:coc_ft_go()
+    autocmd FileType javascript,typescript call s:coc_ft_js_ts()
+    autocmd FileType vue call s:coc_ft_vue()
+    autocmd FileType python call s:coc_ft_python()
+    autocmd FileType dart call s:coc_ft_dart()
+  augroup END
+endfunction
+
+function! s:coc_ft_rust()
+  call configure#coc#add_extensions(['coc-rust-analyzer'])
+endfunction
+
+function! s:coc_ft_cpp()
+  call configure#coc#add_extensions(['coc-clangd'])
+endfunction
+
+function! s:coc_ft_go()
+  call configure#coc#add_extensions(['coc-go'])
+endfunction
+
+function! s:coc_ft_js_ts()
+  call configure#coc#add_extensions(['coc-tsserver'])
+
+  augroup coc_ft_js_ts
+    autocmd!
+    " Use this instead of coc.preferences.formatOnSaveFiletypes to avoid timeout
+    " https://github.com/neoclide/coc.nvim/issues/3441
+    autocmd BufWritePre *.ts,*.tsx silent :call CocAction('format')
+  augroup end
+endfunction
+
+function! s:coc_ft_vue()
+  call configure#coc#add_extensions(['@yaegassy/coc-volar'])
+endfunction
+
+function! s:coc_ft_python()
+  call configure#coc#add_extensions(['coc-pyright'])
+endfunction
+
+function! s:coc_ft_dart()
+  call configure#coc#add_extensions(['coc-flutter'])
 endfunction
