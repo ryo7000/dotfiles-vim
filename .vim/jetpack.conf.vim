@@ -27,7 +27,7 @@ call jetpack#add('Shougo/unite-outline', #{depends: 'Shougo/unite.vim'})
 " call jetpack#add('roxma/vim-hug-neovim-rpc')
 
 call jetpack#add('lambdalisue/fern.vim', configure#fern#hooks())
-call jetpack#add('lambdalisue/fern-git-status.vim', #{depends: 'fern.vim'})
+call jetpack#add('lambdalisue/fern-git-status.vim', extend(#{depends: 'fern.vim'}, configure#fern_git_status#hooks()))
 call jetpack#add('lambdalisue/fern-hijack.vim', #{depends: 'fern.vim'})
 call jetpack#add('tpope/vim-eunuch')
 call jetpack#add('Shougo/neomru.vim')
