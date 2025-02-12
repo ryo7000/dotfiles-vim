@@ -50,6 +50,7 @@ call jetpack#add('prabirshrestha/async.vim')
 call jetpack#add('othree/eregex.vim', configure#eregex#hooks())
 call jetpack#add('liuchengxu/vim-clap', extend(#{on_event: ['VimEnter']}, configure#vim_clap#hooks()))
 call jetpack#add('rbtnn/vim-ambiwidth', configure#ambiwidth#hooks())
+call jetpack#add('mtdl9/vim-log-highlighting', configure#vim_log#hooks())
 
 " asyncomplete
 " call jetpack#add('prabirshrestha/vim-lsp', configure#vim_lsp#hooks())
