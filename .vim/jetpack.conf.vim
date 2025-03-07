@@ -34,7 +34,6 @@ call jetpack#add('Shougo/neomru.vim')
 call jetpack#add('thinca/vim-ref')
 call jetpack#add('itchyny/lightline.vim', configure#lightline#hooks())
 call jetpack#add('majutsushi/tagbar', extend(#{tag: 'v2.6.1'}, configure#tagbar#hooks()))
-call jetpack#add('tpope/vim-fugitive', configure#vim_fugitive#hooks())
 call jetpack#add('tpope/vim-surround')
 call jetpack#add('thinca/vim-quickrun', configure#vim_quickrun#hooks())
 call jetpack#add('qpkorr/vim-renamer')
@@ -51,6 +50,10 @@ call jetpack#add('othree/eregex.vim', configure#eregex#hooks())
 call jetpack#add('liuchengxu/vim-clap', extend(#{on_event: ['VimEnter']}, configure#vim_clap#hooks()))
 call jetpack#add('rbtnn/vim-ambiwidth', configure#ambiwidth#hooks())
 call jetpack#add('mtdl9/vim-log-highlighting', configure#vim_log#hooks())
+
+" for git
+call jetpack#add('tpope/vim-fugitive', configure#vim_fugitive#hooks())
+call jetpack#add('lambdalisue/vim-gina', configure#vim_gina#hooks())
 
 " asyncomplete
 " call jetpack#add('prabirshrestha/vim-lsp', configure#vim_lsp#hooks())
