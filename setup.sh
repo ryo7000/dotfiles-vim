@@ -31,3 +31,4 @@ mk_symlink "$HOME/dotfiles/vim/.config/efm-langserver" "$HOME/.config/efm-langse
 chk_command efm-langserver
 chk_command rg
 chk_command node
+chk_command xclip
