@@ -1,5 +1,5 @@
 {
-    "[rust][go][cpp][vue][python][proto][dart]": {
+    "[rust][go][cpp][vue][python][proto][dart][nix]": {
       "coc.preferences.formatOnSave": true
     },
     "inlayHint.display": false,
@@ -35,6 +35,29 @@
               "proto",
               "dockerfile"
             ]
+        },
+        "nix": {
+            "command": "nixd",
+            "filetypes": ["nix"],
+            "rootPatterns": ["flake.nix", ".git"],
+            "settings": {
+                "nixd": {
+                    "nixpkgs": {
+                        "expr": "(import ./.nixd-options.nix).nixpkgs"
+                    },
+                    "formatting": {
+                        "command": ["nixfmt"]
+                    }
+                },
+                "options": {
+                    "nixos": {
+                        "expr": "(import ./.nixd-options.nix).nixos"
+                    },
+                    "home-manager": {
+                        "expr": "(import ./.nixd-options.nix).home-manager"
+                    }
+                }
+            }
         }
     }
 }
