@@ -51,6 +51,7 @@ function! configure#coc#hook_add()
   " GoTo code navigation.
   nmap <silent> <C-]> <plug>(coc-definition)
   nmap <silent> gd <Plug>(coc-definition)
+  nmap <silent> gD <Plug>(coc-declaration)
   nmap <silent> gy <Plug>(coc-type-definition)
   nmap <silent> gi <Plug>(coc-implementation)
   nmap <silent> gr <Plug>(coc-references)
